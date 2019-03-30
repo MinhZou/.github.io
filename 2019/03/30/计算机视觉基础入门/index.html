@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -79,20 +86,20 @@
 
 
 
-<meta name="description" content="一、 计算机视觉概述和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性   三大任务：图像识别（image classification）车牌识别，人脸识别 三大任务：目标检测（object detection = classification + localizat">
+<meta name="description" content="一、 计算机视觉和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性">
 <meta name="keywords" content="计算机视觉，基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机视觉基础入门">
 <meta property="og:url" content="http://yoursite.com/2019/03/30/计算机视觉基础入门/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
-<meta property="og:description" content="一、 计算机视觉概述和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性   三大任务：图像识别（image classification）车牌识别，人脸识别 三大任务：目标检测（object detection = classification + localizat">
+<meta property="og:description" content="一、 计算机视觉和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/03/30/计算机视觉基础入门/images/图像分类定义.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/30/计算机视觉基础入门/images/目标分类框架.png">
-<meta property="og:updated_time" content="2019-03-29T12:19:27.004Z">
+<meta property="og:updated_time" content="2019-03-30T12:43:16.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机视觉基础入门">
-<meta name="twitter:description" content="一、 计算机视觉概述和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性   三大任务：图像识别（image classification）车牌识别，人脸识别 三大任务：目标检测（object detection = classification + localizat">
+<meta name="twitter:description" content="一、 计算机视觉和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/30/计算机视觉基础入门/images/图像分类定义.png">
 
 
@@ -103,7 +110,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -166,7 +173,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">成长的路上，每一步都算数</p>
+        <p class="site-subtitle">成长的路上每一步都算数</p>
       
   </div>
 
@@ -325,7 +332,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-30T20:43:16+08:00">
+                2019-03-30
+              </time>
             
           </span>
 
@@ -356,6 +375,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  694 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 min
+                </span>
+              
+            </div>
+          
 
           
 
@@ -372,23 +422,18 @@
       
 
       
-        <h5 id="一、-计算机视觉概述和深度学习概述"><a href="#一、-计算机视觉概述和深度学习概述" class="headerlink" title="一、 计算机视觉概述和深度学习概述"></a>一、 计算机视觉概述和深度学习概述</h5><ol>
+        <h5 id="一、-计算机视觉和深度学习概述"><a href="#一、-计算机视觉和深度学习概述" class="headerlink" title="一、 计算机视觉和深度学习概述"></a>一、 计算机视觉和深度学习概述</h5><ol>
 <li>计算机视觉回顾<ol>
 <li>计算机视觉（computer vision）定义<ul>
 <li>数据（静态图片，视频）</li>
 <li>算法（机器学习算法，神经网络）本质上是一个回归+分类</li>
 </ul>
-<ol start="2">
-<li>计算机视觉的重要性</li>
-</ol>
+</li>
+<li>计算机视觉的重要性<a id="more"></a>
 <ul>
 <li>三大任务：图像识别（image classification）<br>车牌识别，人脸识别</li>
 <li>三大任务：目标检测（object detection = classification + localization）<br>行人检测和车辆检测</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>三大任务：图像分割<br>图像语义分割<br>个体分割 = 检测 + 分割<ul>
+<li>三大任务：图像分割<br>图像语义分割<br>个体分割 = 检测 + 分割</li>
 <li>视觉目标跟踪（tracking）</li>
 <li>视频分割</li>
 <li>图像风格迁移</li>
@@ -396,7 +441,7 @@
 <li>视频生成</li>
 </ul>
 </li>
-</ul>
+</ol>
 </li>
 <li>深度学习介绍<br> 2006 Hinton bp(反向传播)<br> 2012 Krizhevsky A 深度学习 深度卷积<br> RNN<br> LSTM 持续信息<br> 视觉识别，语音识别，DeepMind, AlphaGo<br> 人脸识别：LFW 错误率5% -&gt; 0.5%<br> 图像分割<br> VGGNet, GoogleNet, ResNet, DenseNet<ul>
 <li>常见的深度学习开发平台<br>  Torch, TensorFlow, MatConvNetTheano, Caffe</li>
@@ -459,6 +504,15 @@
     
     
     
+    <div>
+  		
+   		  <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+ 		
+	</div>
 
     
 
@@ -470,7 +524,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/计算机视觉，基础/" rel="tag"># 计算机视觉，基础</a>
+            <a href="/tags/计算机视觉，基础/" rel="tag"> <i class="fa fa-tag"></i> 计算机视觉，基础</a>
           
         </div>
       
@@ -613,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、-计算机视觉概述和深度学习概述"><span class="nav-number">1.</span> <span class="nav-text">一、 计算机视觉概述和深度学习概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、-图像分类与深度卷积网络的模型"><span class="nav-number">2.</span> <span class="nav-text">二、 图像分类与深度卷积网络的模型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、-计算机视觉和深度学习概述"><span class="nav-number">1.</span> <span class="nav-text">一、 计算机视觉和深度学习概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、-图像分类与深度卷积网络的模型"><span class="nav-number">2.</span> <span class="nav-text">二、 图像分类与深度卷积网络的模型</span></a></li></ol></div>
             
 
           </div>
@@ -621,6 +675,13 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -635,7 +696,7 @@
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Minh</span>
 
@@ -682,11 +743,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     

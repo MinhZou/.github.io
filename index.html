@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -98,7 +105,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -162,7 +169,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">成长的路上，每一步都算数</p>
+        <p class="site-subtitle">成长的路上每一步都算数</p>
       
   </div>
 
@@ -323,7 +330,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-30T20:43:16+08:00">
+                2019-03-30
+              </time>
             
           </span>
 
@@ -349,6 +368,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  694 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 min
+                </span>
+              
+            </div>
+          
 
           
 
@@ -366,96 +416,30 @@
 
       
         
-          
-            <h5 id="一、-计算机视觉概述和深度学习概述"><a href="#一、-计算机视觉概述和深度学习概述" class="headerlink" title="一、 计算机视觉概述和深度学习概述"></a>一、 计算机视觉概述和深度学习概述</h5><ol>
+          <h5 id="一、-计算机视觉和深度学习概述"><a href="#一、-计算机视觉和深度学习概述" class="headerlink" title="一、 计算机视觉和深度学习概述"></a>一、 计算机视觉和深度学习概述</h5><ol>
 <li>计算机视觉回顾<ol>
 <li>计算机视觉（computer vision）定义<ul>
 <li>数据（静态图片，视频）</li>
 <li>算法（机器学习算法，神经网络）本质上是一个回归+分类</li>
 </ul>
-<ol start="2">
-<li>计算机视觉的重要性</li>
-</ol>
-<ul>
-<li>三大任务：图像识别（image classification）<br>车牌识别，人脸识别</li>
-<li>三大任务：目标检测（object detection = classification + localization）<br>行人检测和车辆检测</li>
-</ul>
 </li>
-</ol>
-<ul>
-<li>三大任务：图像分割<br>图像语义分割<br>个体分割 = 检测 + 分割<ul>
-<li>视觉目标跟踪（tracking）</li>
-<li>视频分割</li>
-<li>图像风格迁移</li>
-<li>生成对抗网络（GAN）</li>
-<li>视频生成</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>深度学习介绍<br> 2006 Hinton bp(反向传播)<br> 2012 Krizhevsky A 深度学习 深度卷积<br> RNN<br> LSTM 持续信息<br> 视觉识别，语音识别，DeepMind, AlphaGo<br> 人脸识别：LFW 错误率5% -&gt; 0.5%<br> 图像分割<br> VGGNet, GoogleNet, ResNet, DenseNet<ul>
-<li>常见的深度学习开发平台<br>  Torch, TensorFlow, MatConvNetTheano, Caffe</li>
-</ul>
-</li>
-<li>课程介绍<ul>
-<li>图像识别：<br>Alexnet, VGGnet, GoogleNet, ResNet, DenseNet</li>
-<li>目标检测<br>Fast-rcnn, faster-rcnn, Yolo, Retina-Net</li>
-<li>图像分割<br>FCN, Mask-Rcnn</li>
-<li>目标跟踪<br>GORURN， ECO</li>
-<li>图像生成<br>GAN， WGAN</li>
-<li>光流<br>FlowNet</li>
-<li>视频分割<br>Segnet <h5 id="二、-图像分类与深度卷积网络的模型"><a href="#二、-图像分类与深度卷积网络的模型" class="headerlink" title="二、 图像分类与深度卷积网络的模型"></a>二、 图像分类与深度卷积网络的模型</h5></li>
-</ul>
-</li>
-<li>图像分类<ul>
-<li>图像分类的挑战<br>光照变化<br>形变<br>类内变化</li>
-<li>图像分类定义<br><img src="./images/图像分类定义.png" alt="图像分类定义"></li>
-<li>目标分类框架<br><img src="./images/目标分类框架.png" alt="enter description here"></li>
-<li>泛化能力<br>如何提高泛化能力？ 需要用图像特征来描述图像</li>
-<li>训练和测试的流程</li>
-<li>图像特征<br>  color: Qutantize RGB values<br>  global shape: PCA space<br>  local shape: shape context<br>  texture: Filter banks<br>  SIFT, Hog, LBP, Harr</li>
-<li>支持向量机（SVM）<br>   超平面与支持向量<br>   最大化间隔<br>   svm分类（python）以lris兰花分类为例<br>   程序实现</li>
-<li>更好的特征<br>  CNN特征<br>  学习出来的<br>  如何学习？ 构造神经网络</li>
-</ul>
-</li>
-<li>神经网络原理<ul>
-<li>神经网络做图像分类</li>
-<li>神经网络搭建</li>
-<li>神经网络的基本单元：神经元</li>
-<li>激励函数<br>  Sigmoid、tanh、ReLU、Leaky ReLU、Maxout、ELU</li>
-<li>卷积层</li>
-<li>卷积滤波的计算</li>
-<li>卷积层可视化</li>
-<li>池化层（pooling layer）<br>  特征表达更加紧凑，同时具有位移不变性</li>
-<li>全连接层</li>
-<li>损失函数<br>  交叉熵损失函数（SIGMOID_CROSS_ENTROPY_LOSS) 应用于二分类问题<br>  Softmax 损失函数（SOFTMAX_LOSS)  多分类问题<br>  欧式距离损失函数（EUCLIDEAN_LOSS）回归问题<br>  对比损失函数（Contrastive loss）用来计算两个图像之间的相似度<br>  Triplet loss</li>
-<li>训练网络</li>
-<li>网络训练和测试</li>
-</ul>
-</li>
-<li>卷积神经网络介绍<br> Alexnet, VGGnet, GoogleNet, ResNet, DenseNet<ul>
-<li>训练技巧， 防止过拟合（泛化能力不强）<ul>
-<li>数据增强（Data augmentation）<br>  水平翻转， 随机裁剪和平移变换，颜色、光照变换</li>
-<li>Dropout</li>
-</ul>
-</li>
-<li>其他有助于训练的手段<ul>
-<li>L1， L2正则化</li>
-<li>Batch Normalization</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>利用caffe搭建深度网络做图像分类</li>
-</ol>
-
-          
+<li>计算机视觉的重要性
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/30/计算机视觉基础入门/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </li></ol></li></ol></div>
     
     
     
+    <div>
+  		
+	</div>
 
     
 
@@ -580,6 +564,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -593,7 +584,7 @@
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Minh</span>
 
@@ -640,11 +631,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
