@@ -160,7 +160,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">成长的路上，每一步都算数</p>
       
   </div>
 
@@ -327,6 +327,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/28/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/28/hello-world/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -427,6 +437,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -466,7 +479,7 @@
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Minh">
             
               <p class="site-author-name" itemprop="name">Minh</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">既然相遇，不如同行</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -725,6 +738,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '6EPnyXCThXwcbw7bdMdV8mEW-gzGzoHsz',
+        appKey: 'pLe1UvLJvlysvxS7vy8aJgqz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
