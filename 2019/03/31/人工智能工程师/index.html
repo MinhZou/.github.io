@@ -81,6 +81,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Minh's Blog" type="application/atom+xml">
+
 
 
 
@@ -611,7 +613,7 @@
 </li>
 <li>非线性模型<ul>
 <li>基函数： x^2, log, exp, 样条函数，决策树….</li>
-<li>核化：将原问题转化为对偶问题，将对偶问题中的向量积&lt;xi, xj&gt; 换成核函数k(xi,xj)</li>
+<li>核化：将原问题转化为对偶问题，将对偶问题中的向量积<xi, xj> 换成核函数k(xi,xj)</xi,></li>
 </ul>
 </li>
 <li>目标函数：通常包含两项：损失函数和正则项<ul>
@@ -660,6 +662,7 @@
 </ul>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -701,6 +704,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li>模型训练<ul>
 <li>在训练数据上求目标函数极小值：优化</li>
@@ -951,6 +955,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -1222,7 +1233,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {
@@ -1548,6 +1559,8 @@
   
 
   
+  
+
 
   
 

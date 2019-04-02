@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Minh&#39;s Blog</title>
+  
+  <subtitle>成长的路上每一步都算数</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://minhzou.top/"/>
+  <updated>2019-04-02T03:45:00.129Z</updated>
+  <id>http://minhzou.top/</id>
+  
+  <author>
+    <name>Minh</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo + GitHub Pages + Next在windows下搭建个人博客</title>
+    <link href="http://minhzou.top/2019/04/01/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://minhzou.top/2019/04/01/Hexo搭建博客/</id>
+    <published>2019-04-01T03:43:22.257Z</published>
+    <updated>2019-04-02T03:45:00.129Z</updated>
+    
+    <content type="html"><![CDATA[<p>才搭好博客，发现在博客发布文章确实比微信公众号方便很多，这里简略说下用 Hexo + GitHub Pages + Next搭建个人博客的课程，大部分经验都是来自于网络，我会在整个过程后面附上参考的文章，一来总结搭建博客的过程，二来减少后来人踩坑。<br><a id="more"></a></p><h5 id="整个过程："><a href="#整个过程：" class="headerlink" title="整个过程："></a>整个过程：</h5><ul><li>1、注册Github账号及创建仓库</li><li>2、安装Git for Windows</li><li>3、配置Git</li><li>4、安装node.js</li><li>5、安装Hexo</li><li>6、使用next设计个性化博客</li><li>7、连接Hexo和Github Pages及部署博客</li><li>8、购买域名并解析<br>以上就是全部的过程，当然具体还有很多细节，比如更换配置、设置文章字数的单位，阅读时常的单位，设置评论区，具体的东西还是要依据个人的喜好调整，但是next主题里面基本都集成了这些功能，只要稍微调整下就行。</li></ul><h5 id="参考的文章："><a href="#参考的文章：" class="headerlink" title="参考的文章："></a>参考的文章：</h5><ul><li><a href="https://blog.csdn.net/wapchief/article/details/70801995" target="_blank" rel="noopener">参考的整个过程</a></li><li><a href="https://blog.csdn.net/qq_33699981/article/details/72716951" target="_blank" rel="noopener">各种个性化小功能</a></li><li><a href="https://blog.csdn.net/wangxw725/article/details/71602256?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="noopener">给统计量添加单位</a></li><li><a href="https://www.jianshu.com/p/efbeddc5eb19?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">各种个性化设置</a></li><li><a href="https://www.jianshu.com/p/35e197cb1273" target="_blank" rel="noopener">文章发布</a></li><li><a href="https://blog.csdn.net/weixin_41196185/article/details/79234078" target="_blank" rel="noopener">GitHub/Coding双线部署</a></li><li><a href="https://www.jianshu.com/p/1edb4b42ff72" target="_blank" rel="noopener">小书匠Markdown使用手册</a></li><li><a href="https://www.jianshu.com/p/a0aa94ef8ab2" target="_blank" rel="noopener">在Markdown中输入数学公式(MathJax)</a></li><li><a href="https://blog.csdn.net/wgshun616/article/details/81019687" target="_blank" rel="noopener">Hexo 的 Next 主题中渲染 MathJax 数学公式</a></li><li><a href="https://www.leiyawu.com/2018/02/28/hexo-fs-SyncWriteStream-is-deprecated/" target="_blank" rel="noopener">报错：hexo fs.SyncWriteStream is deprecated</a></li><li><a href="https://www.jianshu.com/p/6f77c96b7eff" target="_blank" rel="noopener">Hexo Next主题博客功能完善</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;才搭好博客，发现在博客发布文章确实比微信公众号方便很多，这里简略说下用 Hexo + GitHub Pages + Next搭建个人博客的课程，大部分经验都是来自于网络，我会在整个过程后面附上参考的文章，一来总结搭建博客的过程，二来减少后来人踩坑。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="总结" scheme="http://minhzou.top/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="Hexo" scheme="http://minhzou.top/tags/Hexo/"/>
+    
+      <category term="GitHub Pages" scheme="http://minhzou.top/tags/GitHub-Pages/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人工智能工程师 学习笔记</title>
+    <link href="http://minhzou.top/2019/03/31/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
+    <id>http://minhzou.top/2019/03/31/人工智能工程师/</id>
+    <published>2019-03-31T12:37:15.065Z</published>
+    <updated>2019-04-01T06:28:25.891Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、机器学习原理及商品推荐系统实现"><a href="#一、机器学习原理及商品推荐系统实现" class="headerlink" title="一、机器学习原理及商品推荐系统实现"></a>一、机器学习原理及商品推荐系统实现</h4><h5 id="1-1-引入"><a href="#1-1-引入" class="headerlink" title="1.1 引入"></a>1.1 引入</h5><ul><li>一个Kaggle竞赛优胜解决方案<ul><li>任务：Avazu点击率预估竞赛</li><li>Rank 2nd Owen Zhang的解法<a id="more"></a></li><li>优胜算法的特点<ul><li>特征工程</li><li>融合大法<ul><li>多层</li><li>多种不同模型的组合</li></ul></li><li>所以：<ul><li>基础模型很重要（线性模型）</li><li>集成学习模型单模型性能好（GBDT）</li><li>特定问题的模型贡献大（FM）</li><li>模型融合很重要</li></ul></li></ul></li></ul></li><li>课程内容安排<ul><li>基本模型<ul><li>线性模型： 线性回归， logistic回归， SVM</li><li>非线性模型： （线性模型核化）、分类回归树</li><li>集成学习模型（随机森林、GBDT）</li><li>数据预处理：数据清洗，特征工程，降维，聚类</li></ul></li><li>模型融合</li><li>推荐系统/点击率预估问题特定解决方案<h5 id="1-2-机器学习简介"><a href="#1-2-机器学习简介" class="headerlink" title="1.2 机器学习简介"></a>1.2 机器学习简介</h5></li></ul></li><li>定义</li><li>数据<ul><li>数据通常以二维数据表形式给出<ul><li>每一行： 一个样本</li><li>每一列：一个属性/特征</li></ul></li><li>例：Boston房价预测数据，根据某地区房屋属性，预测该地区预测房价<ul><li>506行， 506个样本</li><li>14列</li></ul></li></ul></li><li>机器学习任务类型<ul><li>监督学习（Supervised Learning）<ul><li>分类（classfication）</li><li>回归（regression）</li><li>排序（ranking）</li></ul></li><li>非监督学习（unsupervised learning）<ul><li>聚类（clustering）</li><li>降维（dimensionality reduction）</li><li>概率密度估计（density estimation）</li></ul></li><li>增强学习（reinforcement learning）</li><li>半监督学习（semi-supervised learning）</li><li>迁移学习（transfer learning）</li><li>……</li></ul></li><li>监督学习<br>  学习一个x-&gt;y 的映射f, 从而对新输入的x进行预测f（x）<br>  例：波士顿房价预测<ul><li>回归<ul><li>若输出y∈R为连续值，则我们称之为一个回归（regression）任务<br>例： 房价预测，预测二手车的价格</li><li>回归模型：</li><li>训练：</li><li>预测：y带帽表示预测</li><li>学习目标：训练集上预测值与真值之间的差异最小<ul><li>损失函数：度量模型预测值与真值之间的差异</li><li>目标函数: </li></ul></li></ul></li><li>分类<br>   若输出y为离散值，则我们称之为一个分类，标签空间y = {1,2, … C}<br>   例：信用评分<ul><li>分类： 概率问题</li><li>学习目标：<ul><li>损失函数：01损失 </li></ul></li><li>需要预测的概率：</li><li>预测：最大后验估计（Maximum a Posteriori, MAP）</li></ul></li><li>排序（Rank）<br>  排序学习是推荐、搜素、广告的核心方法<br>  排序学习中需要首先根据查询q及其文档集合进行标注（data labeling） 和提取特征（feature extraction） 才能得到D = {….}</li></ul></li><li>非监督学习<br>  发现数据中的“有意义的模式”， 亦被称为知识发现<br>  训练数据不包含标签<br>  标签在训练数据中为隐含变量<ul><li>聚类<br>例：人的“类型”<br>分多少类？ 模型选择<br>某个样本属于哪个类？</li><li>降维<br>多维特征，有些特征之间会相关而存在冗余<br>很多算法中，降维算法成为了数据预处理的一部分， 如主成分分析（Principal Components Analysis, PCA）</li></ul></li><li>半监督学习<br>  当标注数据“昂贵”时有用<br>  例：标注3D姿态、 蛋白质功能等等</li><li>多标签学习</li><li>有歧义标签学习</li><li>多实例学习</li><li>增强学习<br>从行为的反馈(奖励或惩罚)中学习<ul><li>设计一个回报函数（reward function）， 如果learning agent(如机器人、围棋ai程序)，在决定一步之后，获得了较好的结果，那么我们给agent一些回报（比如回报函数结果为正），得到较差的结果，那么回报函数为负</li><li>增强学习的任务：找到一条回报值最大的路径<h5 id="1-3-一个典型的机器学习案例-对鱼进行分类"><a href="#1-3-一个典型的机器学习案例-对鱼进行分类" class="headerlink" title="1.3 一个典型的机器学习案例-对鱼进行分类"></a>1.3 一个典型的机器学习案例-对鱼进行分类</h5></li></ul></li><li>根据一些光学传感器对传送带上的鱼进行分类</li><li>形式化为机器学习问题<ul><li>训练数据<ul><li>每条鱼的测量向量</li><li>每条鱼的标签</li></ul></li><li>测试<ul><li>给定一个新的特征向量x</li><li>预测对应的标签y </li></ul></li><li>将长度作为特征进行分类（直方图）<ul><li>需要先做一个决策边界<ul><li>最小化平均损失</li></ul></li></ul></li><li>将亮度作为特征进行分类 （直方图）</li><li>将长度和亮度一起作为特征（二维散点图）<ul><li>线性决策函数</li><li>二次决策函数</li><li>更复杂的决策边界<br>训练集上的误差 ≠ 测试集上的误差<br>数据过拟合（overfitting）<br>推广性（generalization）差</li></ul></li></ul></li><li>小结：设计一个鱼的分类器<ul><li>选择特征<ul><li>可能是最重要的步骤！（收集训练数据）</li></ul></li><li>选择模型（如决策边界的形状）</li><li>根据训练数据估计模型</li><li>利用模型对新样本进行分类<h5 id="1-4-机器学习算法的组成部分"><a href="#1-4-机器学习算法的组成部分" class="headerlink" title="1.4 机器学习算法的组成部分"></a>1.4 机器学习算法的组成部分</h5></li></ul></li><li>机器学习任务的一般步骤<ul><li>确定特征<ul><li>可能是最重要的步骤！（收集训练数据）</li></ul></li><li>确定模型<ul><li>目标函数/决策边界形状</li></ul></li><li>模型训练：根据训练数据估计模型参数<ul><li>优化计算</li></ul></li><li>模型评估：在校验集上评估模型预测性能</li><li>模型应用/预测 </li></ul></li><li>模型<ul><li>监督学习任务：</li><li>确定模型类别后，模型训练转化为求解模型参数</li><li>求解模型参数：目标函数最小化</li></ul></li><li>非线性模型<ul><li>基函数： x^2, log, exp, 样条函数，决策树….</li><li>核化：将原问题转化为对偶问题，将对偶问题中的向量积<xi, xj> 换成核函数k(xi,xj)</xi,></li></ul></li><li>目标函数：通常包含两项：损失函数和正则项<ul><li>损失函数<ul><li>损失函数 - 回归<ul><li>损失函数：度量模型预测值与真值之间的差异</li><li>对回归问题：令残差 r = f(x) - y<ul><li>L2损失：连续，但对噪声敏感</li><li>L1损失：不连续，对噪声不敏感</li><li>Huber 损失： 连续，对噪声不敏感</li></ul></li></ul></li><li>损失函数 - 分类<ul><li>损失函数：度量模型预测值与真值之间的差异</li><li>对分类问题<ul><li>0-1损失：</li><li>logistic损失：亦称负log似然损失</li><li>指数损失：</li><li>合页损失：</li></ul></li></ul></li></ul></li><li>正则项<br>  复杂模型（预测）不稳定：方差大<br>  正则项对复杂模型施加惩罚<ul><li>正则项的必要性<br>例：sin曲线拟合</li><li>增加L2正则<br>岭回归：最小化RSS</li><li>欠拟合：模型太简单/对复杂性惩罚太多</li><li>样本数目增多时，可以考虑更复杂的模型</li><li>常见正则项<ul><li>L2正则</li><li>L1正则</li><li>L0正则<ul><li>非0参数的数目</li><li>不好优化，通常用L1正则近似</li></ul></li></ul></li><li>常见线性模型的损失和正则项组合</li></ul></li></ul></li></ul><div class="table-container"><table><thead><tr><th></th><th>L2损失</th><th>L1损失</th><th>Huber损失</th><th>Logistic损失</th><th>合页损失</th><th>e-insensitive损失</th></tr></thead><tbody><tr><td>L2正则</td><td>岭回归</td><td></td><td></td><td>L2正则 Logistic回归</td><td>SVM</td><td>SVR</td></tr><tr><td>L1正则</td><td>LASSO</td><td></td><td></td><td>L1正则 Logistic回归</td><td></td><td></td></tr><tr><td>L2+L1正则</td><td>Elastic</td><td></td><td></td><td></td><td></td></tr></tbody></table></div><ul><li>模型训练<ul><li>在训练数据上求目标函数极小值：优化</li><li>简单目标函数直接求解<ul><li>如小数据集上的线性回归</li></ul></li><li>更复杂问题：凸优化<ul><li>（随机）梯度下降</li><li>牛顿法/拟牛顿法</li><li>… </li></ul></li></ul></li><li>梯度下降（Gradient Descent）算法<ul><li>梯度下降/最速下降算法：快速寻找函数局部极小值</li><li>梯度下降算法：求函数J（θ）的最小值<ul><li>给定初始值θ0</li><li>跟新θ，使得J（θ）越来越小<ul><li>θt = θ t-1 - n▽θ J（θ） ( n : 学习率 )</li></ul></li><li>直到收敛到 / 达到预先设定的最大迭代次数</li><li>下降的步伐太小（学习率）非常重要：如果太小，收敛速度慢； 如果太大，可能会出现overshoot the minimum的现象</li><li>梯度下降求得的只是局部最小值<ul><li>二阶导数 &gt; 0, 则目标函数为凸函数，局部极小值即为全局最小值</li><li>随机选择多个初始值，得到函数的多个局部极小值点。多个局部极小值点的最小值为函数的全局最小值</li></ul></li><li>梯度下降算法每次学习都使用整个训练集，这样对大的训练数据集合，每次学习时间过长，对大的训练集需要消耗大量的内存。此时可采用随机梯度下降（Stochastic gradient descent, SGD), 每次从训练集中随机选择一部分样本进行学习。</li><li>更多（随机）梯度下降算法的改进版<ul><li>动量（Momentum）</li><li>Nesterov accelerated gradient (NAG)</li><li>Adagrad</li><li>RMSprop</li><li>Adaptive Moment Estimation (Adam)…</li></ul></li></ul></li></ul></li><li>模型选择与模型评估<ul><li>同一个问题有不同的解决方案<br>  如线性回归 vs. 决策树</li><li>哪个更好？ 模型评估与模型选择<ul><li>在新数据点的预测误差最小</li></ul></li><li>模型评估：已经选定最终的模型，估计它在新数据上的预测误差</li><li>模型选择：估计不同模型的性能，选出最好的模型</li></ul></li><li>样本足够多：训练集和校验集</li><li>样本不够多：重采样技术来模拟校验集：交叉验证和bootstrap<ul><li>K-折交叉验证<ul><li>交叉验证（Cross Validation, CV）： 将训练数据分成容量大致相等的K份（通常K = 5/10）</li><li>交叉验证估计的误差为：CV（M）= 1 / K…</li></ul></li></ul></li><li>模型选择<ul><li>对多个不同模型，计算其对应的误差CV（M）， 最佳模型为CV（M）最小的模型</li><li>模型复杂度和泛化误差的关系通常是U形曲线：<h5 id="1-5-学习环境简介"><a href="#1-5-学习环境简介" class="headerlink" title="1.5 学习环境简介"></a>1.5 学习环境简介</h5><ul><li>编程语言 Python</li><li>数据处理工具包</li><li>Numpy</li><li>SciPy</li><li>pandas</li></ul></li></ul></li><li>数据可视化工具包<ul><li>Matplotlib</li><li>Seaborn</li></ul></li><li>机器学习工具包<ul><li>scikit learn</li></ul></li><li>示例代码：INotebook </li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;一、机器学习原理及商品推荐系统实现&quot;&gt;&lt;a href=&quot;#一、机器学习原理及商品推荐系统实现&quot; class=&quot;headerlink&quot; title=&quot;一、机器学习原理及商品推荐系统实现&quot;&gt;&lt;/a&gt;一、机器学习原理及商品推荐系统实现&lt;/h4&gt;&lt;h5 id=&quot;1-1-引入&quot;&gt;&lt;a href=&quot;#1-1-引入&quot; class=&quot;headerlink&quot; title=&quot;1.1 引入&quot;&gt;&lt;/a&gt;1.1 引入&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;一个Kaggle竞赛优胜解决方案&lt;ul&gt;
+&lt;li&gt;任务：Avazu点击率预估竞赛&lt;/li&gt;
+&lt;li&gt;Rank 2nd Owen Zhang的解法
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://minhzou.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习笔记" scheme="http://minhzou.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="人工智能," scheme="http://minhzou.top/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机视觉基础入门 学习笔记</title>
+    <link href="http://minhzou.top/2019/03/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/"/>
+    <id>http://minhzou.top/2019/03/30/计算机视觉基础入门/</id>
+    <published>2019-03-30T11:22:46.082Z</published>
+    <updated>2019-04-01T06:28:59.487Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="一、-计算机视觉和深度学习概述"><a href="#一、-计算机视觉和深度学习概述" class="headerlink" title="一、 计算机视觉和深度学习概述"></a>一、 计算机视觉和深度学习概述</h5><ol><li>计算机视觉回顾<ol><li>计算机视觉（computer vision）定义<ul><li>数据（静态图片，视频）</li><li>算法（机器学习算法，神经网络）本质上是一个回归+分类</li></ul></li><li>计算机视觉的重要性<a id="more"></a><ul><li>三大任务：图像识别（image classification）<br>车牌识别，人脸识别</li><li>三大任务：目标检测（object detection = classification + localization）<br>行人检测和车辆检测</li><li>三大任务：图像分割<br>图像语义分割<br>个体分割 = 检测 + 分割</li><li>视觉目标跟踪（tracking）</li><li>视频分割</li><li>图像风格迁移</li><li>生成对抗网络（GAN）</li><li>视频生成</li></ul></li></ol></li><li>深度学习介绍<br> 2006 Hinton bp(反向传播)<br> 2012 Krizhevsky A 深度学习 深度卷积<br> RNN<br> LSTM 持续信息<br> 视觉识别，语音识别，DeepMind, AlphaGo<br> 人脸识别：LFW 错误率5% -&gt; 0.5%<br> 图像分割<br> VGGNet, GoogleNet, ResNet, DenseNet<ul><li>常见的深度学习开发平台<br>  Torch, TensorFlow, MatConvNetTheano, Caffe</li></ul></li><li>课程介绍<ul><li>图像识别：<br>Alexnet, VGGnet, GoogleNet, ResNet, DenseNet</li><li>目标检测<br>Fast-rcnn, faster-rcnn, Yolo, Retina-Net</li><li>图像分割<br>FCN, Mask-Rcnn</li><li>目标跟踪<br>GORURN， ECO</li><li>图像生成<br>GAN， WGAN</li><li>光流<br>FlowNet</li><li>视频分割<br>Segnet <h5 id="二、-图像分类与深度卷积网络的模型"><a href="#二、-图像分类与深度卷积网络的模型" class="headerlink" title="二、 图像分类与深度卷积网络的模型"></a>二、 图像分类与深度卷积网络的模型</h5></li></ul></li><li>图像分类<ul><li>图像分类的挑战<br>光照变化<br>形变<br>类内变化</li><li>图像分类定义</li><li>目标分类框架</li><li>泛化能力<br>如何提高泛化能力？ 需要用图像特征来描述图像</li><li>训练和测试的流程</li><li>图像特征<br>  color: Qutantize RGB values<br>  global shape: PCA space<br>  local shape: shape context<br>  texture: Filter banks<br>  SIFT, Hog, LBP, Harr</li><li>支持向量机（SVM）<br>   超平面与支持向量<br>   最大化间隔<br>   svm分类（python）以lris兰花分类为例<br>   程序实现</li><li>更好的特征<br>  CNN特征<br>  学习出来的<br>  如何学习？ 构造神经网络</li></ul></li><li>神经网络原理<ul><li>神经网络做图像分类</li><li>神经网络搭建</li><li>神经网络的基本单元：神经元</li><li>激励函数<br>  Sigmoid、tanh、ReLU、Leaky ReLU、Maxout、ELU</li><li>卷积层</li><li>卷积滤波的计算</li><li>卷积层可视化</li><li>池化层（pooling layer）<br>  特征表达更加紧凑，同时具有位移不变性</li><li>全连接层</li><li>损失函数<br>  交叉熵损失函数（SIGMOID_CROSS_ENTROPY_LOSS) 应用于二分类问题<br>  Softmax 损失函数（SOFTMAX_LOSS)  多分类问题<br>  欧式距离损失函数（EUCLIDEAN_LOSS）回归问题<br>  对比损失函数（Contrastive loss）用来计算两个图像之间的相似度<br>  Triplet loss</li><li>训练网络</li><li>网络训练和测试</li></ul></li><li>卷积神经网络介绍<br> Alexnet, VGGnet, GoogleNet, ResNet, DenseNet<ul><li>训练技巧， 防止过拟合（泛化能力不强）<ul><li>数据增强（Data augmentation）<br>  水平翻转， 随机裁剪和平移变换，颜色、光照变换</li><li>Dropout</li></ul></li><li>其他有助于训练的手段<ul><li>L1， L2正则化</li><li>Batch Normalization</li></ul></li></ul></li><li>利用caffe搭建深度网络做图像分类</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;一、-计算机视觉和深度学习概述&quot;&gt;&lt;a href=&quot;#一、-计算机视觉和深度学习概述&quot; class=&quot;headerlink&quot; title=&quot;一、 计算机视觉和深度学习概述&quot;&gt;&lt;/a&gt;一、 计算机视觉和深度学习概述&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;计算机视觉回顾&lt;ol&gt;
+&lt;li&gt;计算机视觉（computer vision）定义&lt;ul&gt;
+&lt;li&gt;数据（静态图片，视频）&lt;/li&gt;
+&lt;li&gt;算法（机器学习算法，神经网络）本质上是一个回归+分类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;计算机视觉的重要性
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://minhzou.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="计算机视觉" scheme="http://minhzou.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+      <category term="基础" scheme="http://minhzou.top/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="学习笔记" scheme="http://minhzou.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+</feed>
