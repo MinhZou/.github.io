@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Minh&#39;s Blog">
 <meta property="og:description" content="一、机器学习原理及商品推荐系统实现1.1 引入 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T08:11:30.552Z">
+<meta property="og:updated_time" content="2019-04-02T15:54:38.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工智能工程师 学习笔记">
 <meta name="twitter:description" content="一、机器学习原理及商品推荐系统实现1.1 引入 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-02T16:11:30+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-02T23:54:38+08:00">
                 2019-04-02
               </time>
             
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.7k 字
+                  3.4k 字
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9 min
+                  13 min
                 </span>
               
             </div>
@@ -637,10 +637,10 @@
 <li>损失函数<ul>
 <li>损失函数 - 回归<ul>
 <li>损失函数：度量模型预测值与真值之间的差异</li>
-<li>对回归问题：令残差 r = f(x) - y<ul>
-<li>L2损失：连续，但对噪声敏感</li>
-<li>L1损失：不连续，对噪声不敏感</li>
-<li>Huber 损失： 连续，对噪声不敏感</li>
+<li>对回归问题：令残差 $r = f(\bf x) - y$<ul>
+<li>L2损失：连续，但对噪声敏感<script type="math/tex; mode=display">L_2 (r) = \frac 12 r ^2</script></li>
+<li>L1损失：不连续，对噪声不敏感<script type="math/tex; mode=display">L_1(r) = |r|</script></li>
+<li>Huber 损失： 连续，对噪声不敏感<script type="math/tex; mode=display">L_\delta (r) = \begin{cases}  \frac 12 r^2 & if|r| \le \delta\\ \delta |r| - \frac 12 \delta^2 & if|r| \ge \delta\end{cases}</script></li>
 </ul>
 </li>
 </ul>
@@ -648,10 +648,10 @@
 <li>损失函数 - 分类<ul>
 <li>损失函数：度量模型预测值与真值之间的差异</li>
 <li>对分类问题<ul>
-<li>0-1损失：</li>
-<li>logistic损失：亦称负log似然损失</li>
-<li>指数损失：</li>
-<li>合页损失：</li>
+<li>0-1损失：$l_{0/1}(y,f(x)) = \begin{cases} 1 &amp; yf(x) \lt 0 \\ 0 &amp; othereise\end{cases}$</li>
+<li>logistic损失：亦称负log似然损失<br>  $l_{log}(y,f(x)) = log(1 + exp(-yf(x)))$</li>
+<li>指数损失：$l_{exp}(y,f(x)) = exp(-yf(x))$</li>
+<li>合页损失：$l_{hinge}(y,f(x)) = max(0, 1 - yf(x))$</li>
 </ul>
 </li>
 </ul>
@@ -664,9 +664,9 @@
 <li>欠拟合：模型太简单/对复杂性惩罚太多</li>
 <li>样本数目增多时，可以考虑更复杂的模型</li>
 <li>常见正则项<ul>
-<li>L2正则</li>
-<li>L1正则</li>
-<li>L0正则<ul>
+<li>L2正则: $R(\theta) = \lambda ||\theta||_2^2 = \lambda \sum^D_{j=1} \theta_j^2$</li>
+<li>L1正则: $R(\theta) = \lambda |\theta| = \lambda \sum ^D_{j=1}|\theta_j|$</li>
+<li>L0正则: $R(\theta) = \lambda||\theta||_0$<ul>
 <li>非0参数的数目</li>
 <li>不好优化，通常用L1正则近似</li>
 </ul>
@@ -742,7 +742,7 @@
 <li>梯度下降算法：求函数J（θ）的最小值<ul>
 <li>给定初始值θ0</li>
 <li>跟新θ，使得J（θ）越来越小<ul>
-<li>θt = θ t-1 - n▽θ J（θ） ( n : 学习率 )</li>
+<li>$θ_t = θ ^{t-1} - \eta\nabla J(θ)$ ( $\eta$ : 学习率 )</li>
 </ul>
 </li>
 <li>直到收敛到 / 达到预先设定的最大迭代次数</li>
@@ -779,7 +779,7 @@
 <li>样本不够多：重采样技术来模拟校验集：交叉验证和bootstrap<ul>
 <li>K-折交叉验证<ul>
 <li>交叉验证（Cross Validation, CV）： 将训练数据分成容量大致相等的K份（通常K = 5/10）</li>
-<li>交叉验证估计的误差为：CV（M）= 1 / K…</li>
+<li>交叉验证估计的误差为：<script type="math/tex; mode=display">CV(M)= \frac1K \sum  ^K_{k = 1} E_k(M)</script></li>
 </ul>
 </li>
 </ul>
@@ -806,6 +806,64 @@
 </ul>
 </li>
 <li>示例代码：INotebook </li>
+<li>NumPy<ul>
+<li>NumPy(Numeric Python)是Python的开源数值计算扩展，可用来存储和处理大型矩阵</li>
+<li>Numpy包括：<ul>
+<li>N维数组(ndarray)</li>
+<li>实用的线性代数、傅里叶变换和随机数生成函数</li>
+</ul>
+</li>
+<li>Numpy和稀疏矩阵运算包SciPy配合使用更加方便</li>
+</ul>
+</li>
+<li>SciPy<ul>
+<li>SciPy是建立在NumPy的基础上、是科学和工程设计的Python工具包，提供统计、优化和数值微积分计算等功能</li>
+<li>NumPy 处理$10^6$级别的数据通常没有大问题，但当数据量达到$10^7$级别时速度开始发慢，内存受到限制（具体情况取决于实际内存的大小）</li>
+<li>当处理超大规模数据集，比如$10^10$级别，且数据中包含大量的0时，可采用稀疏矩阵可显著的提高速度和效率</li>
+</ul>
+</li>
+<li>Pandas(<strong>Pan</strong>del <strong>da</strong>ta structures)<ul>
+<li>Pandas是Python语言的“关系型数据库”数据结构和数据分析工具，非常高效且易于使用<ul>
+<li>基于NumPy补充了大量数据操作功能，能实现统计、分组、排序、透视表(SQL语句的大部分功能)</li>
+<li>Pandas主要有2种重要的数据类型<ul>
+<li>series：一维序列</li>
+<li>DataFrame：二维表(机器学习数据的常用数据结构)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Matplotlib<ul>
+<li>Matplotlib是Python语言的2D图形绘制工具</li>
+</ul>
+</li>
+<li>Seaborn<ul>
+<li>Seaborn是一个基于Matplotlib的Python可视化工具包，提供更高层次的用户接口，可以给出漂亮的数据统计</li>
+</ul>
+</li>
+<li>Scikit - Learn<ul>
+<li>Machine Learning in Python</li>
+<li>Scikit-Learn是基于Python的开源机器学习模块，最早于2007年由David Cournapeau发起</li>
+<li>基本功能有六部分：分类（Classification），回归（Regression），聚类（Clustering），数据降维（Dimensionality reduction），模型选择（Model Selection），数据预处理（Preprocessing）</li>
+<li>对于具体的机器学习问题，通常可以分为三个步骤<ul>
+<li>数据准备与预处理（Preprocessing, Dimensionality reduction）</li>
+<li>模型选择与训练（Classification, Regression, Clustering）</li>
+<li>模型验证与参数调优（Model Selection）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>各种机器学习模型有统一的接口</li>
+<li>模型既有默认参数，也提供多种参数调优方法</li>
+<li>卓越的文档</li>
+<li>丰富的随附任务功能集合</li>
+<li>活跃的社区提供开发和支持<h5 id="1-6-线性回归"><a href="#1-6-线性回归" class="headerlink" title="1.6 线性回归"></a>1.6 线性回归</h5></li>
+<li>目标函数通常包含两项：损失函数和正则项<script type="math/tex; mode=display">J(\bf \theta) = \frac1N \sum_{i = 1}^N L(f(\bf x_i|\bf \theta), y_i) + \lambda R(\bf \theta)</script></li>
+<li>对回归问题，损失函数可以采用L2损失，得到<br>!<script type="math/tex">\begin{eqnarray}J(\theta) 
+  & = & \sum_{i=1}^NL(y_i,\hat y_i) \\
+  & = & \sum_{i=1}^N(y_i - \hat y_i)^2
+  \end{eqnarray}</script></li>
 </ul>
 
       
@@ -1014,7 +1072,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、机器学习原理及商品推荐系统实现"><span class="nav-number">1.</span> <span class="nav-text">一、机器学习原理及商品推荐系统实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-引入"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-机器学习简介"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 机器学习简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-一个典型的机器学习案例-对鱼进行分类"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 一个典型的机器学习案例-对鱼进行分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-机器学习算法的组成部分"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 机器学习算法的组成部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-学习环境简介"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 学习环境简介</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、机器学习原理及商品推荐系统实现"><span class="nav-number">1.</span> <span class="nav-text">一、机器学习原理及商品推荐系统实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-引入"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-机器学习简介"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 机器学习简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-一个典型的机器学习案例-对鱼进行分类"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 一个典型的机器学习案例-对鱼进行分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-机器学习算法的组成部分"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 机器学习算法的组成部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-学习环境简介"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 学习环境简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-6-线性回归"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 线性回归</span></a></li></ol></li></ol></div>
             
 
           </div>
