@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="学习笔记,人工智能,,">
+  <meta name="keywords" content="学习笔记,人工智能,">
 
 
 
@@ -89,14 +89,14 @@
 
 
 <meta name="description" content="一、机器学习原理及商品推荐系统实现1.1 引入 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
-<meta name="keywords" content="学习笔记,人工智能,">
+<meta name="keywords" content="学习笔记,人工智能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="人工智能工程师 学习笔记">
 <meta property="og:url" content="http://minhzou.top/2019/03/31/人工智能工程师/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
 <meta property="og:description" content="一、机器学习原理及商品推荐系统实现1.1 引入 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-01T06:28:25.891Z">
+<meta property="og:updated_time" content="2019-04-02T08:11:30.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工智能工程师 学习笔记">
 <meta name="twitter:description" content="一、机器学习原理及商品推荐系统实现1.1 引入 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-01T14:28:25+08:00">
-                2019-04-01
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-02T16:11:30+08:00">
+                2019-04-02
               </time>
             
           </span>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.3k 字
+                  2.7k 字
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 min
+                  9 min
                 </span>
               
             </div>
@@ -474,9 +474,11 @@
 </ul>
 </li>
 <li>模型融合</li>
-<li>推荐系统/点击率预估问题特定解决方案<h5 id="1-2-机器学习简介"><a href="#1-2-机器学习简介" class="headerlink" title="1.2 机器学习简介"></a>1.2 机器学习简介</h5></li>
+<li>推荐系统/点击率预估问题特定解决方案</li>
 </ul>
 </li>
+</ul>
+<h5 id="1-2-机器学习简介"><a href="#1-2-机器学习简介" class="headerlink" title="1.2 机器学习简介"></a>1.2 机器学习简介</h5><ul>
 <li>定义</li>
 <li>数据<ul>
 <li>数据通常以二维数据表形式给出<ul>
@@ -510,34 +512,37 @@
 <li>……</li>
 </ul>
 </li>
-<li>监督学习<br>  学习一个x-&gt;y 的映射f, 从而对新输入的x进行预测f（x）<br>  例：波士顿房价预测<ul>
+<li>监督学习<br>  学习一个x-&gt;y 的映射f, 从而对新输入的x进行预测f（x）<script type="math/tex; mode=display">D = \{X_i,y_i\}^N_{i=1}</script>  D：训练数据集<br>  N：训练样本数目<br>  $X_i$: 第i个样本的输入，亦被称为特征、属性或协变量<br>  $y_i$: 第i个训练样本的输出，亦被称为响应，如类别标签、序号或数值<br>  例：波士顿房价预测<ul>
 <li>回归<ul>
 <li>若输出y∈R为连续值，则我们称之为一个回归（regression）任务<br>例： 房价预测，预测二手车的价格</li>
-<li>回归模型：</li>
-<li>训练：</li>
-<li>预测：y带帽表示预测</li>
+<li>假设回归模型：$y = f(\mathbf x|\theta)$<ul>
+<li>如在线性回归中，$f(\mathbf x|w) = \mathbf w^T \mathbf x$</li>
+</ul>
+</li>
+<li>训练：根据训练数据 $D = \{\mathbf X_i,y_i\}^N_{i=1}$ 学习映射</li>
+<li>预测：对新的测试数据x进行预测：$\hat f = f(x)$ y带帽表示预测</li>
 <li>学习目标：训练集上预测值与真值之间的差异最小<ul>
-<li>损失函数：度量模型预测值与真值之间的差异</li>
-<li>目标函数: </li>
+<li>损失函数：度量模型预测值与真值之间的差异，如<script type="math/tex; mode=display">L(f(\mathbf x),y) = \frac 12(f(x) - y)^2</script></li>
+<li>目标函数为：$J(\mathbf \theta) = \frac1N \sum_{i = 1}^N L(f(\mathbf x_i|\mathbf \theta), y_i)$</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>分类<br>   若输出y为离散值，则我们称之为一个分类，标签空间y = {1,2, … C}<br>   例：信用评分<ul>
-<li>分类： 概率问题</li>
+<li>分类： 学习从输入x到输出y的映射f:概率问题<br>$\hat y = f(\mathbf x) = \underset{c}  {arg\ max} \ p(y = c\mid \mathbf x, D)$</li>
 <li>学习目标：<ul>
-<li>损失函数：01损失 </li>
+<li>损失函数：01损失 <script type="math/tex; mode=display">l_{0/1}(y, \hat y) = \begin {cases} 0 & y = \hat y \\ 1 & otherwise \end{cases}</script></li>
 </ul>
 </li>
 <li>需要预测的概率：</li>
-<li>预测：最大后验估计（Maximum a Posteriori, MAP）</li>
+<li>预测：最大后验估计（Maximum a Posteriori, MAP）<br>$\hat y = f(\mathbf x) = \underset{c} {arg\ max}\ p(y = c\mid \mathbf x, D)$</li>
 </ul>
 </li>
 <li>排序（Rank）<br>  排序学习是推荐、搜素、广告的核心方法<br>  排序学习中需要首先根据查询q及其文档集合进行标注（data labeling） 和提取特征（feature extraction） 才能得到D = {….}</li>
 </ul>
 </li>
-<li>非监督学习<br>  发现数据中的“有意义的模式”， 亦被称为知识发现<br>  训练数据不包含标签<br>  标签在训练数据中为隐含变量<ul>
-<li>聚类<br>例：人的“类型”<br>分多少类？ 模型选择<br>某个样本属于哪个类？</li>
+<li>非监督学习<br>  发现数据中的“有意义的模式”， 亦被称为知识发现<br>  训练数据不包含标签<br>  标签在训练数据中为隐含变量<br>  $ D = \{ \bf X_i\}_{ i= 1}^ N $<ul>
+<li>聚类<br>例：人的“类型”<br>分多少类？ 模型选择<br>$ K^* = arg\ max _K\ p(K \mid D)$<br>某个样本属于哪个类？</li>
 <li>降维<br>多维特征，有些特征之间会相关而存在冗余<br>很多算法中，降维算法成为了数据预处理的一部分， 如主成分分析（Principal Components Analysis, PCA）</li>
 </ul>
 </li>
@@ -547,9 +552,11 @@
 <li>多实例学习</li>
 <li>增强学习<br>从行为的反馈(奖励或惩罚)中学习<ul>
 <li>设计一个回报函数（reward function）， 如果learning agent(如机器人、围棋ai程序)，在决定一步之后，获得了较好的结果，那么我们给agent一些回报（比如回报函数结果为正），得到较差的结果，那么回报函数为负</li>
-<li>增强学习的任务：找到一条回报值最大的路径<h5 id="1-3-一个典型的机器学习案例-对鱼进行分类"><a href="#1-3-一个典型的机器学习案例-对鱼进行分类" class="headerlink" title="1.3 一个典型的机器学习案例-对鱼进行分类"></a>1.3 一个典型的机器学习案例-对鱼进行分类</h5></li>
+<li>增强学习的任务：找到一条回报值最大的路径</li>
 </ul>
 </li>
+</ul>
+<h5 id="1-3-一个典型的机器学习案例-对鱼进行分类"><a href="#1-3-一个典型的机器学习案例-对鱼进行分类" class="headerlink" title="1.3 一个典型的机器学习案例-对鱼进行分类"></a>1.3 一个典型的机器学习案例-对鱼进行分类</h5><ul>
 <li>根据一些光学传感器对传送带上的鱼进行分类</li>
 <li>形式化为机器学习问题<ul>
 <li>训练数据<ul>
@@ -585,9 +592,11 @@
 </li>
 <li>选择模型（如决策边界的形状）</li>
 <li>根据训练数据估计模型</li>
-<li>利用模型对新样本进行分类<h5 id="1-4-机器学习算法的组成部分"><a href="#1-4-机器学习算法的组成部分" class="headerlink" title="1.4 机器学习算法的组成部分"></a>1.4 机器学习算法的组成部分</h5></li>
+<li>利用模型对新样本进行分类</li>
 </ul>
 </li>
+</ul>
+<h5 id="1-4-机器学习算法的组成部分"><a href="#1-4-机器学习算法的组成部分" class="headerlink" title="1.4 机器学习算法的组成部分"></a>1.4 机器学习算法的组成部分</h5><ul>
 <li>机器学习任务的一般步骤<ul>
 <li>确定特征<ul>
 <li>可能是最重要的步骤！（收集训练数据）</li>
@@ -606,17 +615,25 @@
 </ul>
 </li>
 <li>模型<ul>
-<li>监督学习任务：</li>
-<li>确定模型类别后，模型训练转化为求解模型参数</li>
+<li>监督学习任务：$D = \{X_i, y_i\} _{i = 1} ^ N $</li>
+<li>模型：对给定的输入x, 如何预测其标签$ \hat y$<ul>
+<li>不同模型对数据的假设不同</li>
+<li>最简单的模型：线性模型$ f(x) = \sum_j w_j x_j = \bf w^T \bf x$</li>
+</ul>
+</li>
+<li>确定模型类别后，模型训练转化为求解模型参数<ul>
+<li>如对线性模型参数为!$\theta = \{w_j \mid j = 1,…, D\}$,其中D为特征维数</li>
+</ul>
+</li>
 <li>求解模型参数：目标函数最小化</li>
 </ul>
 </li>
 <li>非线性模型<ul>
-<li>基函数： x^2, log, exp, 样条函数，决策树….</li>
-<li>核化：将原问题转化为对偶问题，将对偶问题中的向量积<xi, xj> 换成核函数k(xi,xj)</xi,></li>
+<li>基函数： $x^2$, log, exp, 样条函数，决策树….</li>
+<li>核化：将原问题转化为对偶问题，将对偶问题中的向量积$\langle x_i, x_j\rangle$ 换成核函数$k(x_i,x_j)$</li>
 </ul>
 </li>
-<li>目标函数：通常包含两项：损失函数和正则项<ul>
+<li>目标函数：通常包含两项：损失函数和正则项<script type="math/tex; mode=display">J(\theta) = \frac 1N \sum_{i=1}^N\ L(f(x_i; \theta), y_i) + R(\theta)</script><ul>
 <li>损失函数<ul>
 <li>损失函数 - 回归<ul>
 <li>损失函数：度量模型预测值与真值之间的差异</li>
@@ -818,7 +835,7 @@
           
             <a href="/tags/学习笔记/" rel="tag"> <i class="fa fa-tag"></i> 学习笔记</a>
           
-            <a href="/tags/人工智能/" rel="tag"> <i class="fa fa-tag"></i> 人工智能,</a>
+            <a href="/tags/人工智能/" rel="tag"> <i class="fa fa-tag"></i> 人工智能</a>
           
         </div>
       
@@ -1559,6 +1576,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
