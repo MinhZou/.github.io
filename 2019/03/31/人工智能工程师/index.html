@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Minh&#39;s Blog">
 <meta property="og:description" content="一、机器学习原理及商品推荐系统实现1.1 引入 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T15:54:38.253Z">
+<meta property="og:updated_time" content="2019-04-03T12:21:43.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工智能工程师 学习笔记">
 <meta name="twitter:description" content="一、机器学习原理及商品推荐系统实现1.1 引入 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-02T23:54:38+08:00">
-                2019-04-02
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-03T20:21:43+08:00">
+                2019-04-03
               </time>
             
           </span>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.4k 字
+                  4.4k 字
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13 min
+                  17 min
                 </span>
               
             </div>
@@ -664,7 +664,7 @@
 <li>欠拟合：模型太简单/对复杂性惩罚太多</li>
 <li>样本数目增多时，可以考虑更复杂的模型</li>
 <li>常见正则项<ul>
-<li>L2正则: $R(\theta) = \lambda ||\theta||_2^2 = \lambda \sum^D_{j=1} \theta_j^2$</li>
+<li>L2正则: $R(\theta) = \lambda ||\theta||^2_2 = \lambda \sum^D_{j=1} \theta_j^2$</li>
 <li>L1正则: $R(\theta) = \lambda |\theta| = \lambda \sum ^D_{j=1}|\theta_j|$</li>
 <li>L0正则: $R(\theta) = \lambda||\theta||_0$<ul>
 <li>非0参数的数目</li>
@@ -858,12 +858,79 @@
 <li>模型既有默认参数，也提供多种参数调优方法</li>
 <li>卓越的文档</li>
 <li>丰富的随附任务功能集合</li>
-<li>活跃的社区提供开发和支持<h5 id="1-6-线性回归"><a href="#1-6-线性回归" class="headerlink" title="1.6 线性回归"></a>1.6 线性回归</h5></li>
+<li>活跃的社区提供开发和支持</li>
+</ul>
+<h5 id="1-6-线性回归"><a href="#1-6-线性回归" class="headerlink" title="1.6 线性回归"></a>1.6 线性回归</h5><ul>
 <li>目标函数通常包含两项：损失函数和正则项<script type="math/tex; mode=display">J(\bf \theta) = \frac1N \sum_{i = 1}^N L(f(\bf x_i|\bf \theta), y_i) + \lambda R(\bf \theta)</script></li>
-<li>对回归问题，损失函数可以采用L2损失，得到<br>!<script type="math/tex">\begin{eqnarray}J(\theta) 
-  & = & \sum_{i=1}^NL(y_i,\hat y_i) \\
-  & = & \sum_{i=1}^N(y_i - \hat y_i)^2
+<li>对回归问题，损失函数可以采用L2损失，得到<script type="math/tex; mode=display">\begin{eqnarray}J(\theta) 
+   &=&\sum_{i=1}^NL(y_i,\hat y_i) \\
+   &=&\sum_{i=1}^N(y_i - \hat y_i)^2\\
+   &=&\sum_{i=1}^N(y_i - \bf w^T \bf x_i)^2
+  \end{eqnarray}</script>  残差平方和（residual sum of squares, RSS）</li>
+<li>由于线性模型比较简单，实际应用中有时正则项为空，得到最小二乘线性回归（Ordinary Least Square, OLS<script type="math/tex; mode=display">\begin{eqnarray}J(\theta) 
+   &=&\sum_{i=1}^NL(y_i,\hat y_i) 
+   &=&\sum_{i=1}^N(y_i - \hat y_i)^2\\
+   &=&\sum_{i=1}^N(y_i - \bf w^T \bf x_i)^2
   \end{eqnarray}</script></li>
+<li>正则项可以为L2正则，得到岭回归（Ridge Regression）<script type="math/tex; mode=display">J(\bf w) = \sum_{i=1}^N(y_i - \bf w^Tx_i)^2 + \lambda ||w||^2_2</script></li>
+<li><p>正则项也可以选L1正则，得到Lasso模型：</p>
+<script type="math/tex; mode=display">J(\bf w) = \sum_{i=1}^N(y_i - \bf w^Tx_i)^2 + \lambda |w|</script><ul>
+<li>当$\lambda$取合适值时，Lasso（Least absolute shrinkage and selection operator）的结果是稀疏的（w的某些元素系数为0），起到特征选择作用</li>
+</ul>
+</li>
+<li><p>为什么L1正则的解是稀疏的？</p>
+</li>
+<li>线性回归模型的概率解释<ul>
+<li>最小二乘（线性）回归等价于极大似然估计<ul>
+<li>假设：$ y = f(\bf x) + \epsilon = w^T + \epsilon $<br>其中$\epsilon$为线性预测和真值之间的残差<br>我们通常假设残差的分布为$\epsilon \sim N(0,\sigma ^2)$,因此线性回归可写成：$p(y|x,\theta) \sim N(y| \bf w^T \bf x, \sigma^2)$,其中$ \bf \theta = (\bf w, \sigma ^2)$</li>
+</ul>
+</li>
+<li>正则（线性）回归等价于高斯先验（L2正则）或Laplace先验下（L1正则）的贝叶斯估计</li>
+</ul>
+</li>
+<li>Recall：极大似然估计<ul>
+<li>极大似然估计（Maximize Likelihood Estimator, MLE）定义为<script type="math/tex; mode=display">\hat \theta = \underset {\theta}  {arg\ max}\ log p(D\mid \theta)</script></li>
+<li>其中（log）似然函数为<script type="math/tex; mode=display">l(\bf \theta) = log\ p(D\mid \bf \theta) = \sum_{i=1}^N log\ p(y_i \mid x_i, \bf \theta)</script></li>
+<li>表示在参数为$\theta$的情况下，数据$D ={\bf x_i,y_i}^N_{i=1}$</li>
+<li>极大似然：选择数据出现概率最大的参数</li>
+</ul>
+</li>
+<li>线性回归的MLE<script type="math/tex; mode=display">p(y_i|x_i,\bf w,\sigma ^2) \sim N(y_i\mid \bf w^T \bf x_i, \sigma^2) = \frac 1{\sqrt{2\pi}\sigma} exp(-\frac 1{2 \sigma ^2}((y_i - \bf w^T \bf x_i)^2))</script><ul>
+<li>OLS的似然函数为<script type="math/tex; mode=display">l(\bf \theta) = log\ p(D\mid \bf \theta) = \sum_{i=1}^N log\ p(y_i \mid x_i, \bf \theta)</script></li>
+<li>极大似然可等价地写成极小负log似然损失（negative log likelihood, NLL）</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">\begin{eqnarray}{NLL(\bf \theta)}
+    &=& \sum_{i=1}^N log\ p(y_i \mid x_i, \bf \theta) \\
+    &=& - \sum_{i=1}^N log ((\frac 1{2 \pi \sigma^2})^ \frac 12 exp(- \frac 1{2 \sigma ^2}((y_i - \bf w^T \bf x_i)^2))) \\
+    &=& \frac N2 log(2\pi \sigma ^2) + \frac 1{2 \sigma^2} \sum_{i=1}^N(y_i - \bf w^T \bf x_i)^2
+    \end{eqnarray}</script><ul>
+<li>正则回归等价于贝叶斯估计<ul>
+<li>假设残差的分布为$\epsilon \sim N(0, \sigma ^2)$,线性回归可写成：<br>$p(y_i \mid \bf x_i, \theta) \sim N(y_i \mid \bf w^T \bf x_i，\sigma ^2)$<br>$p(y\mid \bf X, \bf w, \sigma ^2) = N(\bf y \mid \bf X \bf w, \sigma ^2 \bf I_N) \propto exp(- \frac 1{2\sigma ^2}((\bf y - \bf X \bf w)^T(\bf y - \bf X \bf w)))$</li>
+<li>若假设参数为w的先验分布为 $w_j \sim N(0, \tau ^2)$<ul>
+<li>偏向较小的系数值，从而得到的曲线也比较平滑<br>$p(\bf w) =\prod_{j=1}^{D} N(w_j \mid 0, \tau ^2) \propto exp(- \frac 1{2\tau^2} \sum_{j=1}^D \bf w_j^2 = exp(- \frac 1{2\tau^2} ( \bf w^T \bf w ) )) $</li>
+<li>其中$1/\tau ^2$控制先验的强度</li>
+</ul>
+</li>
+<li>根据贝叶斯公式，得到参数的后验分布为<br>$p(y\mid \bf X, \bf w, \sigma ^2) = \propto exp(- \frac 1{2\sigma ^2} ((\bf y - \bf X \bf w)^T(\bf y - \bf X \bf w) ) - \frac 1{2 \tau^2} ( w^Tw ) )$</li>
+<li>则最大后验估计(MAP)等价于最小目标函数<br>$J(\bf w) = (\bf y - \bf X\bf w)^T(\bf y - \bf X\bf w) + \frac {\sigma ^2}{\tau^2} \bf w^T \bf w $</li>
+<li>对比岭回归的目标函数<br>$J(\bf w) = \sum_{i=1}^N(y_i -\bf w^T\bf x_i)^2 + \lambda \Vert \bf w\Vert ^2_2$</li>
+</ul>
+</li>
+<li>小结<ul>
+<li>线性回归模型可以放到机器学习一般框架<ul>
+<li>损失函数：L2损失，…</li>
+<li>正则：无正则， L2正则，L1正则…</li>
+</ul>
+</li>
+<li>正则回归模型可视为先验为正则、似然为高斯分布的贝叶斯估计<ul>
+<li>L2正则：先验分布为高斯分布</li>
+<li>L1正则：先验分布为Laplace分布<br>```</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
       
