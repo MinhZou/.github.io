@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Minh&#39;s Blog">
 <meta property="og:description" content="一、机器学习原理及商品推荐系统实现1.1 引入 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-03T12:21:43.727Z">
+<meta property="og:updated_time" content="2019-04-04T13:52:38.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工智能工程师 学习笔记">
 <meta name="twitter:description" content="一、机器学习原理及商品推荐系统实现1.1 引入 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-03T20:21:43+08:00">
-                2019-04-03
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T21:52:38+08:00">
+                2019-04-04
               </time>
             
           </span>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.4k 字
+                  5.8k 字
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  17 min
+                  23 min
                 </span>
               
             </div>
@@ -666,7 +666,7 @@
 <li>常见正则项<ul>
 <li>L2正则: $R(\theta) = \lambda ||\theta||^2_2 = \lambda \sum^D_{j=1} \theta_j^2$</li>
 <li>L1正则: $R(\theta) = \lambda |\theta| = \lambda \sum ^D_{j=1}|\theta_j|$</li>
-<li>L0正则: $R(\theta) = \lambda||\theta||_0$<ul>
+<li>L0正则: $R(\theta) = \lambda||\theta||_ 0$<ul>
 <li>非0参数的数目</li>
 <li>不好优化，通常用L1正则近似</li>
 </ul>
@@ -867,7 +867,7 @@
    &=&\sum_{i=1}^N(y_i - \hat y_i)^2\\
    &=&\sum_{i=1}^N(y_i - \bf w^T \bf x_i)^2
   \end{eqnarray}</script>  残差平方和（residual sum of squares, RSS）</li>
-<li>由于线性模型比较简单，实际应用中有时正则项为空，得到最小二乘线性回归（Ordinary Least Square, OLS<script type="math/tex; mode=display">\begin{eqnarray}J(\theta) 
+<li>由于线性模型比较简单，实际应用中有时正则项为空，得到最小二乘线性回归（Ordinary Least Square, OLS）<script type="math/tex; mode=display">\begin{eqnarray}J(\theta) 
    &=&\sum_{i=1}^NL(y_i,\hat y_i) 
    &=&\sum_{i=1}^N(y_i - \hat y_i)^2\\
    &=&\sum_{i=1}^N(y_i - \bf w^T \bf x_i)^2
@@ -926,7 +926,212 @@
 </li>
 <li>正则回归模型可视为先验为正则、似然为高斯分布的贝叶斯估计<ul>
 <li>L2正则：先验分布为高斯分布</li>
-<li>L1正则：先验分布为Laplace分布<br>```</li>
+<li>L1正则：先验分布为Laplace分布</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-7-线性回归模型-优化算法"><a href="#1-7-线性回归模型-优化算法" class="headerlink" title="1.7 线性回归模型-优化算法"></a>1.7 线性回归模型-优化算法</h5><ul>
+<li>线性回归的目标函数<ul>
+<li>无正则的最小二乘线性回归（Ordinary Least Square, OLS）：</li>
+<li>L2正则的岭回归（Ridge Regression）模型：</li>
+<li>L1正则的Lasso模型：</li>
+</ul>
+</li>
+<li>模型训练：<br>  根据训练数据求目标函数取极小值的参数：<br>  $\hat w = \underset {w} {arg\ min} J(\bf w)$<ul>
+<li>目标函数的最小值：<ul>
+<li>一阶的导数为0：$\frac{\partial J(w)} {\partial w}$</li>
+<li>二阶导数&gt;0：$\frac{\partial J^2(w)} {\partial w^2}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>OLS的优化求解：<ul>
+<li>OLS的优化求解<ul>
+<li>OLS的目标函数写成矩阵形式：<br>$J(w) = \sum ^N_{i=1}(y_i - w^Tx_i)^2 = (y - Xw)^T(y - Xw)$</li>
+<li>只取与w有关的项，得到<br>$J(w) = w^T(X^TX)w - 2w^T(X^Ty)$</li>
+<li>求导  $\frac{\partial J(w)} {\partial w} = 2X^TXw - 2X^Ty = 0 \Rightarrow X^TXw = X^Ty$`<br>$\hat w_{OLS} = (X^TX)^{-1}X^Ty$</li>
+</ul>
+</li>
+<li>OLS的优化求解 ——SVD<ul>
+<li>OLS目标函数：$J(w) = \Vert y - Xw\Vert_2^2$</li>
+<li>相当于求 $y = Xw$</li>
+<li>如果X为方阵，可求逆：$w = X^{-1}y$</li>
+<li>如果𝐗不是方阵，可求Moore-Penrose广义逆：$𝐰 = 𝐗^{\dagger }𝐲$。</li>
+<li>Moore-Penrose广义逆可采用奇异值分解(Singular Value Decomposition)<br>实现：<br>奇异值分解：$X = U \Sigma V^T$<br>$X^{\dagger } = V \Sigma ^{\dagger} U^T$<br>其中 $\Sigma = \begin{pmatrix}<br>{\sigma_1}&amp;{0}&amp;{\cdots}&amp;{0}\\<br>{0}&amp;{\sigma_2}&amp;{\cdots}&amp;{0}\\<br>{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\<br>{0}&amp;{0}&amp;{\cdots}&amp;{0}\\<br>\end{pmatrix}$,$\Sigma ^{\dagger} = \begin{pmatrix}<br>{\frac {1}{\sigma_1}}&amp;{0}&amp;{\cdots}&amp;{0}\\<br>{0}&amp;{\frac{1}{\sigma_2}}&amp;{\cdots}&amp;{0}\\<br>{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\<br>{0}&amp;{0}&amp;{\cdots}&amp;{0}\\<br>\end{pmatrix}$</li>
+</ul>
+</li>
+<li>OLS的优化求解——梯度下降</li>
+</ul>
+</li>
+<li>岭回归的优化求解</li>
+<li>Lasso的优化条件<ul>
+<li>软&amp; 硬阈值</li>
+<li>Lasso的优化求解——坐标轴下降法</li>
+</ul>
+</li>
+<li>小结<ul>
+<li>线性回归模型比较简单<ul>
+<li>当数据规模比较小时，可直接解析求解<ul>
+<li>scikit learn中的实现采用SVD分解实现</li>
+</ul>
+</li>
+<li>当数据规模较大时，可采用随机梯度下降<ul>
+<li>scikit learn提供一个SGDRegression类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>岭回归求解类似OLS，采用SVD分解实现</li>
+<li>Lasso优化求解采用坐标轴下降法</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-8-线性回归模型-模型选择"><a href="#1-8-线性回归模型-模型选择" class="headerlink" title="1.8 线性回归模型-模型选择"></a>1.8 线性回归模型-模型选择</h5><ul>
+<li>模型评估与模型选择<ul>
+<li>模型训练好后，需要在校验集上采用一些度量准则检查模型预测的效果<ul>
+<li>校验集划分（）</li>
+<li>评价指标（）</li>
+</ul>
+</li>
+<li>模型选择：<ul>
+<li>模型中通常有一些超参数，需要通过模型选择来确定<ul>
+<li>线性回归模型中的正则参数</li>
+<li>OLS中的特征的数目</li>
+</ul>
+</li>
+<li>参数搜索范围：网格搜索（GridSearch）</li>
+</ul>
+</li>
+<li>Scikit learn将交叉验证与网格搜索合并为一个函数</li>
+</ul>
+</li>
+<li>评价准则</li>
+<li>线性回归中的模型选择<br>Scikit learn中的model selection模块提供模型选择功能<ul>
+<li>对于线性模型，留一交叉验证（N折交叉验证，亦称为leave-oneout<br>cross-validation，LOOCV）有更简便的计算方式，因此Scikit<br>learn提供了RidgeCV类和LassoCV类实现了这种方式</li>
+<li>后续课程将讲述一般模型的交叉验证和参数调优GridSearchCV</li>
+<li>RidgeCV</li>
+<li>LassoCV</li>
+</ul>
+</li>
+<li>小结：线性回归之模型选择<ul>
+<li>采用交叉验证评估模型预测性能，从而选择最佳模型<ul>
+<li>回归性能的评价指标</li>
+<li>线性模型的交叉验证通常直接采用广义线性模型的留一交叉验证进行快速模型评估<ul>
+<li>Scikit learn中对RidgeCV和LassoCV实现该功能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-9-波士顿房价预测案例详解——数据探索"><a href="#1-9-波士顿房价预测案例详解——数据探索" class="headerlink" title="1.9 波士顿房价预测案例详解——数据探索"></a>1.9 波士顿房价预测案例详解——数据探索</h5><ul>
+<li>第一步：理解任务，准备数据<ul>
+<li>数据读取<ul>
+<li>Pandas支持多种格式的数据</li>
+</ul>
+</li>
+<li>数据探索&amp;特征工程<ul>
+<li>数据规模</li>
+<li>确定数据类型，是否需要进一步编码<ul>
+<li>特征编码</li>
+</ul>
+</li>
+<li>数据是否有缺失值<ul>
+<li>数据填补</li>
+</ul>
+</li>
+<li>查看数据分布，是否有异常数据点<ul>
+<li>离群点处理</li>
+</ul>
+</li>
+<li>查看两两特征之间的关系，看数据是否有冗余/相关<ul>
+<li>降维</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据概览<ul>
+<li>pandas:DataFrame<ul>
+<li>Head():数据前5行，可查看每一列的名字及数据类型</li>
+<li>Info():<ul>
+<li>数据规模：行数&amp;列数</li>
+<li>每列的数据类型、是否有空值</li>
+<li>占用存储量</li>
+</ul>
+</li>
+<li>shape:行数&amp;列数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>各属性的统计特性<ul>
+<li>直方图<br>  每个取值在数据集中出现的样本数目 </li>
+<li>离群点<ul>
+<li>离群点：奇异点（outlier）,指远离大多数样本的样本点。通常认为这些点是噪声，对模型有坏影响</li>
+</ul>
+</li>
+<li>相关性<ul>
+<li>相关性：相关性可以通过计算相关系数或打印散点图来发现</li>
+<li>相关系数：</li>
+<li>散点图<ul>
+<li>可以通过两个变量之间的散点图直观感受二者的相关性</li>
+</ul>
+</li>
+<li>数据预处理<ul>
+<li>数据标准化（ Standardization ）<ul>
+<li>某个特征的所有样本取值为0均值、1方差</li>
+</ul>
+</li>
+<li>数据归一化（ Scaling ）<ul>
+<li>某个特征的所有样本取值在规定范围内</li>
+</ul>
+</li>
+<li>数据正规化（ Normalization ）<ul>
+<li>每个样本模长为1</li>
+</ul>
+</li>
+<li>数据二值化<ul>
+<li>根据特征值取值是否大于阈值将特征值变为0或1，可用类Binarizer 实现</li>
+</ul>
+</li>
+<li>数据缺失</li>
+<li>数据类型变换<ul>
+<li>有些模型只能处理数值型数据。如果给定的数据是不同的类型，必须先将数据<br>变成数值型。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第二步：模型确定和模型训练<ul>
+<li>1、确定模型类型<ul>
+<li>目标函数（损失函数、正则）</li>
+</ul>
+</li>
+<li>2、模型训练<ul>
+<li>优化算法（解析法，梯度下降、随机梯度下降…）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第三步：模型评估与模型选择<ul>
+<li>模型训练好后，需要在校验集上采用一些度量准则检查模型预测的效果<ul>
+<li>校验集划分（train_test_split、交叉验证）</li>
+<li>评价指标 （sklearn.metics）</li>
+<li>也可以检查残差的分布</li>
+<li>还可以打印预测值与真值的散点图</li>
+</ul>
+</li>
+<li>模型选择：选择预测性能最好的模型<ul>
+<li>模型中通常有一些超参数，需要通过模型选择来确定</li>
+<li>参数搜索范围：网格搜索（GridSearch）</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1139,7 +1344,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、机器学习原理及商品推荐系统实现"><span class="nav-number">1.</span> <span class="nav-text">一、机器学习原理及商品推荐系统实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-引入"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-机器学习简介"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 机器学习简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-一个典型的机器学习案例-对鱼进行分类"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 一个典型的机器学习案例-对鱼进行分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-机器学习算法的组成部分"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 机器学习算法的组成部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-学习环境简介"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 学习环境简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-6-线性回归"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 线性回归</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、机器学习原理及商品推荐系统实现"><span class="nav-number">1.</span> <span class="nav-text">一、机器学习原理及商品推荐系统实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-引入"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-机器学习简介"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 机器学习简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-一个典型的机器学习案例-对鱼进行分类"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 一个典型的机器学习案例-对鱼进行分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-机器学习算法的组成部分"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 机器学习算法的组成部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-学习环境简介"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 学习环境简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-6-线性回归"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 线性回归</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-7-线性回归模型-优化算法"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 线性回归模型-优化算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-8-线性回归模型-模型选择"><span class="nav-number">1.8.</span> <span class="nav-text">1.8 线性回归模型-模型选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-9-波士顿房价预测案例详解——数据探索"><span class="nav-number">1.9.</span> <span class="nav-text">1.9 波士顿房价预测案例详解——数据探索</span></a></li></ol></li></ol></div>
             
 
           </div>
