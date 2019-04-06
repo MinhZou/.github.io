@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="人工智能,学习笔记,Logistic回归,SVM,">
+  <meta name="keywords" content="学习笔记,人工智能,Logistic回归,SVM,">
 
 
 
@@ -89,14 +89,14 @@
 
 
 <meta name="description" content="1、Logistic回归基本原理 分类 给定训练数据$D =\{\mathbf x_i, y_i\}^N_{i=1}$，分类任务学习一个从输入x到输出y的映射f ：$\hat y = f(\mathbf x) = \underset{c}{arg\ max}\ p(y = c \mid \mathbf x, D)$ 其中y为离散值，其取值范围称为标签空间:$Y =\{1,2,…,C\}$ 当C=2">
-<meta name="keywords" content="人工智能,学习笔记,Logistic回归,SVM">
+<meta name="keywords" content="学习笔记,人工智能,Logistic回归,SVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第二周 Logistic回归、SVM">
 <meta property="og:url" content="http://minhzou.top/2019/04/06/第二周 Logistic回归、SVM/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
 <meta property="og:description" content="1、Logistic回归基本原理 分类 给定训练数据$D =\{\mathbf x_i, y_i\}^N_{i=1}$，分类任务学习一个从输入x到输出y的映射f ：$\hat y = f(\mathbf x) = \underset{c}{arg\ max}\ p(y = c \mid \mathbf x, D)$ 其中y为离散值，其取值范围称为标签空间:$Y =\{1,2,…,C\}$ 当C=2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-06T13:06:35.182Z">
+<meta property="og:updated_time" content="2019-04-06T15:16:08.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第二周 Logistic回归、SVM">
 <meta name="twitter:description" content="1、Logistic回归基本原理 分类 给定训练数据$D =\{\mathbf x_i, y_i\}^N_{i=1}$，分类任务学习一个从输入x到输出y的映射f ：$\hat y = f(\mathbf x) = \underset{c}{arg\ max}\ p(y = c \mid \mathbf x, D)$ 其中y为离散值，其取值范围称为标签空间:$Y =\{1,2,…,C\}$ 当C=2">
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-06T21:06:35+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-06T23:16:08+08:00">
                 2019-04-06
               </time>
             
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k 字
+                  2.2k 字
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8 min
+                  10 min
                 </span>
               
             </div>
@@ -486,7 +486,7 @@
 <li>$\bf w^T \bf x = 0$:决策面</li>
 </ul>
 </li>
-<li>因此$a(\bf x) = w^Tx分类决策面$<ul>
+<li>因此$a(\bf x) = w^Tx$分类决策面<ul>
 <li>因此Logistic回归是一个线性分类器</li>
 </ul>
 </li>
@@ -525,7 +525,7 @@
 </ul>
 </li>
 <li>Iteratively Reweighted Least Squares（IRLS）<ul>
-<li>引入记号：<br>$\bf g^t(w) = X^T(\mu^t - y), \mu_i^t = \sigma((w^t)^Tx_i)$<br>$\bf H^t(w) = X^TS^tX$, S^t:diag(\mu_i^t(1-\mu_1^t),…,\mu_N^t(1-\mu_N^t))</li>
+<li>引入记号：<br>$\bf g^t(w) = X^T(\mu^t - y), \mu_i^t = \sigma((w^t)^Tx_i)$<br>$\bf H^t(w) = X^TS^tX$,$ S^t:diag(\mu_i^t(1-\mu_1^t),…,\mu_N^t(1-\mu_N^t))$</li>
 <li>根据牛顿法的结果：<br>$w^{t+1} = w^t - (H^t)^{-1}g^t = (X^TS^tX)^{-1}X^TS^tz$</li>
 <li>回忆最小二乘问题：<ul>
 <li>目标函数：$J(\bf w) = \sum_{i=1}^N(y_i - w^Tx)^2 = (y - Xw)^T(y - Xw)$</li>
@@ -538,7 +538,7 @@
 </ul>
 </li>
 <li>IRLS中，$\bf w^{t+1} = (X^TS^tX)^{-1}X^TS^t[Xw^t + (S^t)^{-1}(y - \mu ^t)]$<ul>
-<li>相当于权重矩阵为 \Sigma^{-1} = \bf S^t</li>
+<li>相当于权重矩阵为 $\Sigma^{-1} = \bf S^t$</li>
 <li>由于$S^t$是对角阵，$S^t$相当于给每个样本的权重$S_{ii}^t = \mu_i^t(1-\mu_i^t), \mathbf z_i^t = (\mathbf w^t)^T\mathbf x_i + \frac {y_i - \mu_i^t}{S_{ii}^t}$</li>
 </ul>
 </li>
@@ -584,7 +584,38 @@
 </ul>
 </li>
 </ul>
-<h5 id="2、Softmax分类器"><a href="#2、Softmax分类器" class="headerlink" title="2、Softmax分类器"></a>2、Softmax分类器</h5><h5 id="3、Scikit-learn中的Logistic回归实现"><a href="#3、Scikit-learn中的Logistic回归实现" class="headerlink" title="3、Scikit learn中的Logistic回归实现"></a>3、Scikit learn中的Logistic回归实现</h5><h5 id="4、不平衡数据分类学习"><a href="#4、不平衡数据分类学习" class="headerlink" title="4、不平衡数据分类学习"></a>4、不平衡数据分类学习</h5><h5 id="5、分类模型的评价"><a href="#5、分类模型的评价" class="headerlink" title="5、分类模型的评价"></a>5、分类模型的评价</h5><h5 id="6、Logistic回归之模型选择-参数调优"><a href="#6、Logistic回归之模型选择-参数调优" class="headerlink" title="6、Logistic回归之模型选择_参数调优"></a>6、Logistic回归之模型选择_参数调优</h5><h5 id="7、Logistic回归-Otto商品分类代码"><a href="#7、Logistic回归-Otto商品分类代码" class="headerlink" title="7、Logistic回归-Otto商品分类代码"></a>7、Logistic回归-Otto商品分类代码</h5><h5 id="8、支持向量机"><a href="#8、支持向量机" class="headerlink" title="8、支持向量机"></a>8、支持向量机</h5><h5 id="9、带松弛因子的C-SVM"><a href="#9、带松弛因子的C-SVM" class="headerlink" title="9、带松弛因子的C-SVM"></a>9、带松弛因子的C-SVM</h5><h5 id="10、核方法"><a href="#10、核方法" class="headerlink" title="10、核方法"></a>10、核方法</h5><h5 id="11、支持向量回归（SVR）"><a href="#11、支持向量回归（SVR）" class="headerlink" title="11、支持向量回归（SVR）"></a>11、支持向量回归（SVR）</h5><h5 id="12、sklearn中的SVM实现"><a href="#12、sklearn中的SVM实现" class="headerlink" title="12、sklearn中的SVM实现"></a>12、sklearn中的SVM实现</h5><h5 id="13、SVM-Otto"><a href="#13、SVM-Otto" class="headerlink" title="13、SVM-Otto"></a>13、SVM-Otto</h5>
+<h5 id="2、Softmax分类器"><a href="#2、Softmax分类器" class="headerlink" title="2、Softmax分类器"></a>2、Softmax分类器</h5><ul>
+<li>多类分类任务<ul>
+<li>一对所有(One-vs-all /One-vs-rest)：<br>$f_{w}^{c}(x) = p(y=c \mid \mathbf x, \mathbf W), c =1, 2, 3$<br>如果是正则LR，每类的模型都有自己正则参数</li>
+<li>One-vs-all<ul>
+<li>对每个类别c，训练一个logistic回归分类器$f_w^c(x)$，预测概率$y=c$</li>
+<li>对新的输入x，选择使得$f_w^c(x)$最大的类别作为其预测：$\underset{c}{max} f_w^c(\mathbf x)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Softmax分类器<ul>
+<li>从sigmoid（对应二项分布）扩展为softmax函数（对应多项分布Cat）：<br>$p(y=c \mid \mathbf x, \mathbf W) = Cat(y \mid S(\bf W^Tx))$</li>
+<li>Softmax 函数类似取最大函数：<br>$S(\mathbf \eta)_c = \frac {exp(\eta_c)}{\sum^C_{c\prime = 1}\  exp(\eta_{c\prime})}$</li>
+<li>综合起来：<br>$p(y = c \mid \mathbf x, \mathbf W) = \frac {exp(\mathbf w_c^T\mathbf x)}{\sum^C_{c\prime = 1}\  exp(\mathbf w_{c\prime}^T\mathbf x)}$</li>
+</ul>
+</li>
+<li>Softmax回归<ul>
+<li>引入记号：<br>$\mu_{ic} = p(y_i = c \mid \mathbf x_i, \mathbf W) = S(\eta_i)_c$<br>$\eta_i = \mathbf W^T\mathbf x_i$  C $\times$ vector<br>$y_{ic} = \prod (y_i =c)$</li>
+<li>则负似然函数为：$ \begin{eqnarray}J(\mathbf W)<br>&amp;=&amp;NLL(\mathbf W) \\<br>&amp;=&amp; -l(\mathbf W) \\<br>&amp;=&amp; -log\prod_{i=1}^N \prod_{c=1}^C \mu_{ic}^{y_{ic}} \\<br>&amp;=&amp; - \sum_{i=1}^N\sum_{c=1}^Cy_{ic}log \mu_{ic}\\<br>&amp;=&amp; -\sum_{i=1}^N[(\sum_{c=1}^Cy_{ic}\mathbf w_c^T \mathbf x_i) - log(\sum_{c \prime = 1}^C exp(\mathbf w^T_{c \prime} \mathbf x_i))]<br>\end{eqnarray}$<ul>
+<li>梯度:$g = [\nabla J(\mathbf w_i),…,\nabla J(\mathbf w_c)] = [\mathbf g_1,…,\mathbf g_c]$<br>$\mathbf g_c = \sum_{i=1}^N(\mu_{ic}-y_{ic})\mathbf x_i$</li>
+<li>Hessian矩阵为正定：$\mathbf H = \sum_{i=1}^N(diag(\mathbf \mu_i)-\mathbf \mu_i \mathbf \mu_i^T)\otimes \mathbf x_i \mathbf x_i^T$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>小结：Softmax分类器Logistic回归<ul>
+<li>Softmax分类器能实现多类分类，是对Logistic回归在两类分类任务上的扩展</li>
+<li>优化算法和正则与两类分类Logistic回归类似</li>
+</ul>
+</li>
+</ul>
+<h5 id="3、Scikit-learn中的Logistic回归实现"><a href="#3、Scikit-learn中的Logistic回归实现" class="headerlink" title="3、Scikit learn中的Logistic回归实现"></a>3、Scikit learn中的Logistic回归实现</h5><h5 id="4、不平衡数据分类学习"><a href="#4、不平衡数据分类学习" class="headerlink" title="4、不平衡数据分类学习"></a>4、不平衡数据分类学习</h5><h5 id="5、分类模型的评价"><a href="#5、分类模型的评价" class="headerlink" title="5、分类模型的评价"></a>5、分类模型的评价</h5><h5 id="6、Logistic回归之模型选择-参数调优"><a href="#6、Logistic回归之模型选择-参数调优" class="headerlink" title="6、Logistic回归之模型选择_参数调优"></a>6、Logistic回归之模型选择_参数调优</h5><h5 id="7、Logistic回归-Otto商品分类代码"><a href="#7、Logistic回归-Otto商品分类代码" class="headerlink" title="7、Logistic回归-Otto商品分类代码"></a>7、Logistic回归-Otto商品分类代码</h5><h5 id="8、支持向量机"><a href="#8、支持向量机" class="headerlink" title="8、支持向量机"></a>8、支持向量机</h5><h5 id="9、带松弛因子的C-SVM"><a href="#9、带松弛因子的C-SVM" class="headerlink" title="9、带松弛因子的C-SVM"></a>9、带松弛因子的C-SVM</h5><h5 id="10、核方法"><a href="#10、核方法" class="headerlink" title="10、核方法"></a>10、核方法</h5><h5 id="11、支持向量回归（SVR）"><a href="#11、支持向量回归（SVR）" class="headerlink" title="11、支持向量回归（SVR）"></a>11、支持向量回归（SVR）</h5><h5 id="12、sklearn中的SVM实现"><a href="#12、sklearn中的SVM实现" class="headerlink" title="12、sklearn中的SVM实现"></a>12、sklearn中的SVM实现</h5><h5 id="13、SVM-Otto"><a href="#13、SVM-Otto" class="headerlink" title="13、SVM-Otto"></a>13、SVM-Otto</h5>
       
     </div>
     
@@ -610,9 +641,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/人工智能/" rel="tag"> <i class="fa fa-tag"></i> 人工智能</a>
-          
             <a href="/tags/学习笔记/" rel="tag"> <i class="fa fa-tag"></i> 学习笔记</a>
+          
+            <a href="/tags/人工智能/" rel="tag"> <i class="fa fa-tag"></i> 人工智能</a>
           
             <a href="/tags/Logistic回归/" rel="tag"> <i class="fa fa-tag"></i> Logistic回归</a>
           
