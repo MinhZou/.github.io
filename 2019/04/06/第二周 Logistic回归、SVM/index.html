@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="人工智能,学习笔记,Logistic回归,SVM,">
 
 
 
@@ -88,16 +88,18 @@
 
 
 
-<meta name="description" content="既然相遇，不如同行">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Minh&#39;s Blog">
-<meta property="og:url" content="http://minhzou.top/tags/学习笔记/index.html">
+<meta name="description" content="1、Logistic回归基本原理 分类 给定训练数据$D =\{\mathbf x_i, y_i\}^N_{i=1}$，分类任务学习一个从输入x到输出y的映射f ：$\hat y = f(\mathbf x) = \underset{c}{arg\ max}\ p(y = c \mid \mathbf x, D)$ 其中y为离散值，其取值范围称为标签空间:$Y =\{1,2,…,C\}$ 当C=2">
+<meta name="keywords" content="人工智能,学习笔记,Logistic回归,SVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二周 Logistic回归、SVM">
+<meta property="og:url" content="http://minhzou.top/2019/04/06/第二周 Logistic回归、SVM/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
-<meta property="og:description" content="既然相遇，不如同行">
+<meta property="og:description" content="1、Logistic回归基本原理 分类 给定训练数据$D =\{\mathbf x_i, y_i\}^N_{i=1}$，分类任务学习一个从输入x到输出y的映射f ：$\hat y = f(\mathbf x) = \underset{c}{arg\ max}\ p(y = c \mid \mathbf x, D)$ 其中y为离散值，其取值范围称为标签空间:$Y =\{1,2,…,C\}$ 当C=2">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-06T13:06:35.182Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Minh&#39;s Blog">
-<meta name="twitter:description" content="既然相遇，不如同行">
+<meta name="twitter:title" content="第二周 Logistic回归、SVM">
+<meta name="twitter:description" content="1、Logistic回归基本原理 分类 给定训练数据$D =\{\mathbf x_i, y_i\}^N_{i=1}$，分类任务学习一个从输入x到输出y的映射f ：$\hat y = f(\mathbf x) = \underset{c}{arg\ max}\ p(y = c \mid \mathbf x, D)$ 其中y为离散值，其取值范围称为标签空间:$Y =\{1,2,…,C\}$ 当C=2">
 
 
 
@@ -127,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://minhzou.top/tags/学习笔记/">
+  <link rel="canonical" href="http://minhzou.top/2019/04/06/第二周 Logistic回归、SVM/">
 
 
 
 
 
-  <title>标签: 学习笔记 | Minh's Blog</title>
+  <title>第二周 Logistic回归、SVM | Minh's Blog</title>
   
 
 
@@ -152,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/minhzou" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -280,104 +282,382 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>学习笔记<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/04/06/第二周 Logistic回归、SVM/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minh">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minh's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/04/06/第二周 Logistic回归、SVM/" itemprop="url">
-              
-                <span itemprop="name">第二周 Logistic回归、SVM</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">第二周 Logistic回归、SVM</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-06T20:37:26+08:00" content="2019-04-06">
-          04-06
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-06T20:37:26+08:00">
+                2019-04-06
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-06T21:06:35+08:00">
+                2019-04-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/06/第二周 Logistic回归、SVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/第二周 Logistic回归、SVM/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/31/第一周 机器学习简介和线性回归/" itemprop="url">
-              
-                <span itemprop="name">第一周 机器学习简介与线性回归</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-31T20:37:15+08:00" content="2019-03-31">
-          03-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/30/计算机视觉基础入门/" itemprop="url">
-              
-                <span itemprop="name">计算机视觉基础入门 学习笔记</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-30T19:22:46+08:00" content="2019-03-30">
-          03-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+        <h5 id="1、Logistic回归基本原理"><a href="#1、Logistic回归基本原理" class="headerlink" title="1、Logistic回归基本原理"></a>1、Logistic回归基本原理</h5><ul>
+<li>分类<ul>
+<li>给定训练数据$D =\{\mathbf x_i, y_i\}^N_{i=1}$，分类任务学习一个从输入x到输出y的映射f ：<br>$\hat y = f(\mathbf x) = \underset{c}{arg\ max}\ p(y = c \mid \mathbf x, D)$</li>
+<li>其中y为离散值，其取值范围称为标签空间:$Y =\{1,2,…,C\}$</li>
+<li>当C=2时，为两类分类问题，计算出$p(y = 1 \mid \mathbf x)$即可。此时分布为Bernoulli分布: <script type="math/tex; mode=display">p(y \mid \mathbf x) = Ber(y \mid \mu (\mathbf x))</script>其中$\mu (\mathbf x) = \mathbb{E}(y \mid \mathbf x) = p(y = 1 \mid \mathbf x)$<a id="more"></a></li>
+</ul>
+</li>
+<li>Recall:Bernouili分布<ul>
+<li>Bernoulli分布又名两点分布或者0-1分布。若Bernoulli试验成功，则Bernoulli随机变量X取值为1，否则X为0。记试验成功概率为θ， 我们称X服从参数为θ的Bernoulli分布，记为: 𝑋~𝐵𝑒𝑟(θ), 概率函数（pmf）为：<script type="math/tex; mode=display">p(x) = \theta ^x(1- \theta)^{1-x} = \begin{cases} \theta & if\ x = 1\\ 1 - \theta & if\ x = 0 \end{cases}</script></li>
+<li>Bernoulli分布的均值：$\mu = \theta $</li>
+<li>方差：$\sigma^2 = \theta \times (1-\theta)$</li>
+</ul>
+</li>
+<li>Logistic回归模型<ul>
+<li>Logistic回归模型同线性回归模型类似，也是一个线性模型，只是条件概率𝑝(𝑦|𝐱)的形式不同：<script type="math/tex; mode=display">p(y \mid \mathbf x) = Ber(y \mid \mu (\mathbf  x))</script><script type="math/tex; mode=display">\mu (\mathbf x) = \sigma(\mathbf w^T\mathbf x)</script></li>
+<li>其中sigmoid函数（S形函数）定义为<script type="math/tex; mode=display">\sigma(a) = \frac{1}{1+exp(-a)} = \frac{exp(-a)}{exp(-a)+1}</script></li>
+<li>亦被称为logistic函数或logit函数，将实数a变换到[0,1]区间。<ul>
+<li>因为概率取值在[0,1]区间</li>
+<li>Logistic回归亦被称为logit回归</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>为什么用logistic函数？<ul>
+<li>在神经科学中<ul>
+<li>神经元对其输入进行加权和：$f(x) = w^Tx$</li>
+<li>如果该和大于某阈值 $f(x) &gt; \tau $，神经元发放脉冲</li>
+</ul>
+</li>
+<li>在Logistic回归，定义Log Odds Ratio:<script type="math/tex; mode=display">\begin{eqnarray} LOR(x) &=& log \frac {p(y=1 \mid \mathbf  x, \mathbf f w)}{p(y = 0 \mid \mathbf x, \mathbf w)} 
+  &=& log [\frac{1}{1+exp(-\mathbf  w^T\mathbf x)} \frac {1+exp(-\mathbf w^T\mathbf x)}{exp(-\mathbf w^T\mathbf x)}] \\
+  &=& log [exp(\mathbf w^T \mathbf x)]\\
+  &=& \mathbf w^T\mathbf x \end{eqnarray}</script></li>
+<li>因此，$iff LOR(\mathbf x) = \mathbf w^T \mathbf x &gt; 0$神经元发放脉冲，即<br>$p(y=1 \mid \mathbf x, \mathbf w) &gt; p(y=0 \mid \mathbf x, \mathbf w)$</li>
+</ul>
+</li>
+<li>线性决策函数<ul>
+<li>在Logistic回归中<ul>
+<li>$LOR(\bf x) = w^Tx &gt; 0, \hat y = 1$</li>
+<li>$LOR(\bf x) = w^Tx &lt;0, \hat y = 0$</li>
+<li>$\bf w^T \bf x = 0$:决策面</li>
+</ul>
+</li>
+<li>因此$a(\bf x) = w^Tx分类决策面$<ul>
+<li>因此Logistic回归是一个线性分类器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>极大似然估计<ul>
+<li>Logistic回归：$p(y \mid \mathbf {x,w}) = Ber(y \mid \mu (x)),  \mu (\mathbf x) = \sigma (\mathbf w^T\mathbf x)$</li>
+<li>令$\mu_i = \mu(\mathbf x_i)$，则负log似然为<br>$\begin{eqnarray} J(w) = NLL(\mathbf w) &amp;=&amp; - \sum_{i=1}^N log \left[(\mu_i)^{y_i} \times (1-\mu_i)^{1-y_i}\right]\\<br>  &amp;=&amp; \sum_{i=1}^N- \left[y_i log(\mu_i)+(1-y_i)log(1-u_i) \right]<br>  \end{eqnarray}$</li>
+<li>极大似然估计等价于最小Logistic损失</li>
+<li>优化求解：梯度下降／牛顿法</li>
+</ul>
+</li>
+<li>梯度<ul>
+<li>目标函数为<br>$J(\mathbf w) = \sum_{i=1}^N-[y_i log(\mu_i)+(1-y_i)log(1-u_i)]$</li>
+<li>梯度为<br>$\begin{eqnarray} g(\bf w) &amp;=&amp; \frac{\partial J(\bf w)}{\partial \bf w} = \frac{\partial}{\partial \bf w}[\sum_{i=1}^N-[y_i log(\mu_i)+(1-y_i)log(1-u_i)]]\\<br>&amp;=&amp; \sum_{i=1}^N[\mu(\mathbf x_i) - y_i] \mathbf x_i \\<br>&amp;=&amp; \bf X^T(\mu - y)<br>\end{eqnarray}$</li>
+<li>二阶Hessian矩阵为<br>$\begin{eqnarray} H(w) &amp;=&amp; \frac{\partial}{\partial \mathbf w}[\mathbf g( \mathbf w)^T] = \sum_{i=1}^N(\frac {\partial}{\partial \mathbf w}\mu_i) \mathbf x_i^T\\<br>&amp;=&amp; \sum_{i=1}{N}\mu_i(1-\mu_i)\bf x_ix_i^T = X^T\underset{S}{ \underbrace{diag(\mu_i(1-\mu_i)}}X = X^TSX<br>\end{eqnarray}$</li>
+</ul>
+</li>
+<li>牛顿法<ul>
+<li>亦称牛顿-拉夫逊（ Newton-Raphson ）方法<ul>
+<li>牛顿在17世纪提出的一种近似求解方程的方法</li>
+<li>使用函数f(x)的泰勒级数的前面几项来寻找方程f(x) = 0的根</li>
+</ul>
+</li>
+<li>在求极值问题中，求$g(\mathbf w) = \frac {\partial J(\mathbf w)}{\partial w} = 0$的根<ul>
+<li>对应$J(\mathbf w)$处取极值</li>
+</ul>
+</li>
+<li>将导数$g(\mathbf w)$在 $w^t$处进行Taylor展开：<br>$0 = \bf g(\hat w) = g(w^t)+(\hat w - w^t)H(w^t) + Op(\hat w - w^t)$</li>
+<li>去掉高阶无穷小$Op(\bf \hat w - w^t)$，从而得到<br>$g(\bf w^t)+(\hat w - w^t)H(w^t) = 0 \Rightarrow \hat w = w^t - H^{-1}(w^t)g(w^t)$</li>
+<li>因此迭代机制为：<br>$\bf w^{t+1} = w^t - H^{-1}(w^t)g(w^t)$<ul>
+<li>也被称为二阶梯度下降法，移动方向:$\bf d = -(H(w^t))^{-1}g(w^t)$</li>
+<li>Vs. 一阶梯度法，移动方向:$\bf d = -g(w^t)$移动</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Iteratively Reweighted Least Squares（IRLS）<ul>
+<li>引入记号：<br>$\bf g^t(w) = X^T(\mu^t - y), \mu_i^t = \sigma((w^t)^Tx_i)$<br>$\bf H^t(w) = X^TS^tX$, S^t:diag(\mu_i^t(1-\mu_1^t),…,\mu_N^t(1-\mu_N^t))</li>
+<li>根据牛顿法的结果：<br>$w^{t+1} = w^t - (H^t)^{-1}g^t = (X^TS^tX)^{-1}X^TS^tz$</li>
+<li>回忆最小二乘问题：<ul>
+<li>目标函数：$J(\bf w) = \sum_{i=1}^N(y_i - w^Tx)^2 = (y - Xw)^T(y - Xw)$</li>
+<li>解：$\hat w = (X^TX)^{-1}X^Ty$</li>
+</ul>
+</li>
+<li>回忆加权最小二乘问题：<ul>
+<li>目标函数:$J(\bf w) = \sum_{i=1}^N(y_i - w^Tx)^2 = (y - Xw)^T\Sigma^{-1}(y - Xw)$</li>
+<li>解：$\hat w = (X^T\Sigma^{-1}X)^{-1}X^T\Sigma^{-1}y$</li>
+</ul>
+</li>
+<li>IRLS中，$\bf w^{t+1} = (X^TS^tX)^{-1}X^TS^t[Xw^t + (S^t)^{-1}(y - \mu ^t)]$<ul>
+<li>相当于权重矩阵为 \Sigma^{-1} = \bf S^t</li>
+<li>由于$S^t$是对角阵，$S^t$相当于给每个样本的权重$S_{ii}^t = \mu_i^t(1-\mu_i^t), \mathbf z_i^t = (\mathbf w^t)^T\mathbf x_i + \frac {y_i - \mu_i^t}{S_{ii}^t}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>拟牛顿法<ul>
+<li>牛顿法比一般的梯度下降法收敛速度快，但是在高维情况下，计算目标函数的二阶偏导数的复杂度很大，而且有时候目标函数的海森矩阵无法保持正定，不存在逆矩阵，此时牛顿法将不再能使用。</li>
+<li>因此，人们提出了拟牛顿法。其基本思想是：不用二阶偏导数而构造出可以近似Hessian矩阵(或Hessian矩阵的逆矩阵)的正定对称矩阵，进而再逐步优化目标函数。不同的构造方法就产生了不同的拟牛顿法（Quasi-Newton Methods）<ul>
+<li>BFGS／LBFGS／Newton-CG</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>正则化的Logistic回归<ul>
+<li>若损失函数取logistic损失，则Logistic回归的目标函数为<br>$J(\mathbf w) = \sum_{i=1}^N-[y_i log(\mu_i)+(1-y_i)log(1-u_i)]$</li>
+<li>同线性回归类似，Logistic回归亦可加上L2正则<br>$J(\mathbf w) = \sum_{i=1}^N-[y_i log(\mu_i)+(1-y_i)log(1-u_i)]+\lambda \Vert \mathbf w\Vert ^2_2$</li>
+<li>或L1正则<br>$J(\mathbf w) = \sum_{i=1}^N-[y_i log(\mu_i)+(1-y_i)log(1-u_i)]+\lambda \vert \mathbf w\vert $</li>
+<li>L2正则的Logistic回归求解<ul>
+<li>梯度为:</li>
+<li>Hessian矩阵为：</li>
+<li>类似不带正则的Logistic回归，可采用（随机）梯度下降、牛顿法或拟牛顿法求解。</li>
+</ul>
+</li>
+<li>L1正则的Logistic回归求解<ul>
+<li>L1正则项的在0处不可导</li>
+<li>在此我们L1正则的Logistic回归的牛顿法（IRLS）求解<ul>
+<li>随机梯度下降（在线学习）在CTR预估部分讲解</li>
+</ul>
+</li>
+<li>Recall：IRLS</li>
+<li>L1正则的Logistic回归在每次迭代中可视为一个再加权的Lasso问题：</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>小结<ul>
+<li>Logistic回归：<ul>
+<li>损失函数：负log似然损失</li>
+<li>正则：L2/L1正则</li>
+<li>优化：梯度下降／牛顿法／拟牛顿法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2、Softmax分类器"><a href="#2、Softmax分类器" class="headerlink" title="2、Softmax分类器"></a>2、Softmax分类器</h5><h5 id="3、Scikit-learn中的Logistic回归实现"><a href="#3、Scikit-learn中的Logistic回归实现" class="headerlink" title="3、Scikit learn中的Logistic回归实现"></a>3、Scikit learn中的Logistic回归实现</h5><h5 id="4、不平衡数据分类学习"><a href="#4、不平衡数据分类学习" class="headerlink" title="4、不平衡数据分类学习"></a>4、不平衡数据分类学习</h5><h5 id="5、分类模型的评价"><a href="#5、分类模型的评价" class="headerlink" title="5、分类模型的评价"></a>5、分类模型的评价</h5><h5 id="6、Logistic回归之模型选择-参数调优"><a href="#6、Logistic回归之模型选择-参数调优" class="headerlink" title="6、Logistic回归之模型选择_参数调优"></a>6、Logistic回归之模型选择_参数调优</h5><h5 id="7、Logistic回归-Otto商品分类代码"><a href="#7、Logistic回归-Otto商品分类代码" class="headerlink" title="7、Logistic回归-Otto商品分类代码"></a>7、Logistic回归-Otto商品分类代码</h5><h5 id="8、支持向量机"><a href="#8、支持向量机" class="headerlink" title="8、支持向量机"></a>8、支持向量机</h5><h5 id="9、带松弛因子的C-SVM"><a href="#9、带松弛因子的C-SVM" class="headerlink" title="9、带松弛因子的C-SVM"></a>9、带松弛因子的C-SVM</h5><h5 id="10、核方法"><a href="#10、核方法" class="headerlink" title="10、核方法"></a>10、核方法</h5><h5 id="11、支持向量回归（SVR）"><a href="#11、支持向量回归（SVR）" class="headerlink" title="11、支持向量回归（SVR）"></a>11、支持向量回归（SVR）</h5><h5 id="12、sklearn中的SVM实现"><a href="#12、sklearn中的SVM实现" class="headerlink" title="12、sklearn中的SVM实现"></a>12、sklearn中的SVM实现</h5><h5 id="13、SVM-Otto"><a href="#13、SVM-Otto" class="headerlink" title="13、SVM-Otto"></a>13、SVM-Otto</h5>
       
     </div>
+    
+    
+    
+    <div>
+  		
+   		  <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+ 		
+	</div>
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/人工智能/" rel="tag"> <i class="fa fa-tag"></i> 人工智能</a>
+          
+            <a href="/tags/学习笔记/" rel="tag"> <i class="fa fa-tag"></i> 学习笔记</a>
+          
+            <a href="/tags/Logistic回归/" rel="tag"> <i class="fa fa-tag"></i> Logistic回归</a>
+          
+            <a href="/tags/SVM/" rel="tag"> <i class="fa fa-tag"></i> SVM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/01/Hexo搭建博客/" rel="next" title="Hexo + GitHub Pages + Next在windows下搭建个人博客">
+                <i class="fa fa-chevron-left"></i> Hexo + GitHub Pages + Next在windows下搭建个人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -385,6 +665,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -405,8 +692,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -485,6 +781,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、Logistic回归基本原理"><span class="nav-number">1.</span> <span class="nav-text">1、Logistic回归基本原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、Softmax分类器"><span class="nav-number">2.</span> <span class="nav-text">2、Softmax分类器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、Scikit-learn中的Logistic回归实现"><span class="nav-number">3.</span> <span class="nav-text">3、Scikit learn中的Logistic回归实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、不平衡数据分类学习"><span class="nav-number">4.</span> <span class="nav-text">4、不平衡数据分类学习</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、分类模型的评价"><span class="nav-number">5.</span> <span class="nav-text">5、分类模型的评价</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、Logistic回归之模型选择-参数调优"><span class="nav-number">6.</span> <span class="nav-text">6、Logistic回归之模型选择_参数调优</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7、Logistic回归-Otto商品分类代码"><span class="nav-number">7.</span> <span class="nav-text">7、Logistic回归-Otto商品分类代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8、支持向量机"><span class="nav-number">8.</span> <span class="nav-text">8、支持向量机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9、带松弛因子的C-SVM"><span class="nav-number">9.</span> <span class="nav-text">9、带松弛因子的C-SVM</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10、核方法"><span class="nav-number">10.</span> <span class="nav-text">10、核方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11、支持向量回归（SVR）"><span class="nav-number">11.</span> <span class="nav-text">11、支持向量回归（SVR）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12、sklearn中的SVM实现"><span class="nav-number">12.</span> <span class="nav-text">12、sklearn中的SVM实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13、SVM-Otto"><span class="nav-number">13.</span> <span class="nav-text">13、SVM-Otto</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -641,6 +953,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
