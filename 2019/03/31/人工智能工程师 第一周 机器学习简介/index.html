@@ -91,14 +91,14 @@
 <meta name="description" content="1.1 一个Kaggle竞赛优胜解决方案 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
 <meta name="keywords" content="学习笔记,人工智能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="人工智能工程师 第一周 机器学习简介">
+<meta property="og:title" content="人工智能工程师 第一周 机器学习简介与线性回归">
 <meta property="og:url" content="http://minhzou.top/2019/03/31/人工智能工程师 第一周 机器学习简介/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
 <meta property="og:description" content="1.1 一个Kaggle竞赛优胜解决方案 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-06T01:22:06.733Z">
+<meta property="og:updated_time" content="2019-04-06T03:57:46.334Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="人工智能工程师 第一周 机器学习简介">
+<meta name="twitter:title" content="人工智能工程师 第一周 机器学习简介与线性回归">
 <meta name="twitter:description" content="1.1 一个Kaggle竞赛优胜解决方案 一个Kaggle竞赛优胜解决方案 任务：Avazu点击率预估竞赛 Rank 2nd Owen Zhang的解法">
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <title>人工智能工程师 第一周 机器学习简介 | Minh's Blog</title>
+  <title>人工智能工程师 第一周 机器学习简介与线性回归 | Minh's Blog</title>
   
 
 
@@ -313,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">人工智能工程师 第一周 机器学习简介</h1>
+          <h1 class="post-title" itemprop="name headline">人工智能工程师 第一周 机器学习简介与线性回归</h1>
         
 
         <div class="post-meta">
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-06T09:22:06+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-06T11:57:46+08:00">
                 2019-04-06
               </time>
             
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  7.3k 字
+                  7.9k 字
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  30 min
+                  33 min
                 </span>
               
             </div>
@@ -622,7 +622,7 @@
 </ul>
 </li>
 <li>确定模型类别后，模型训练转化为求解模型参数<ul>
-<li>如对线性模型参数为!$\theta = \{w_j \mid j = 1,…, D\}$,其中D为特征维数</li>
+<li>如对线性模型参数为$\theta = \{w_j \mid j = 1,…, D\}$,其中D为特征维数</li>
 </ul>
 </li>
 <li>求解模型参数：目标函数最小化</li>
@@ -740,9 +740,9 @@
 <li>梯度下降（Gradient Descent）算法<ul>
 <li>梯度下降/最速下降算法：快速寻找函数局部极小值</li>
 <li>梯度下降算法：求函数J（θ）的最小值<ul>
-<li>给定初始值θ0</li>
-<li>跟新θ，使得J（θ）越来越小<ul>
-<li>$θ_t = θ ^{t-1} - \eta\nabla J(θ)$ ( $\eta$ : 学习率 )</li>
+<li>给定初始值$θ^0$</li>
+<li>更新θ，使得J（θ）越来越小<ul>
+<li>$θ^t = θ^{t-1} - \eta\nabla J(θ)$ ( $\eta$ : 学习率 )</li>
 </ul>
 </li>
 <li>直到收敛到 / 达到预先设定的最大迭代次数</li>
@@ -786,14 +786,16 @@
 </li>
 <li>模型选择<ul>
 <li>对多个不同模型，计算其对应的误差CV（M）， 最佳模型为CV（M）最小的模型</li>
-<li>模型复杂度和泛化误差的关系通常是U形曲线：<h5 id="1-5-学习环境简介"><a href="#1-5-学习环境简介" class="headerlink" title="1.5 学习环境简介"></a>1.5 学习环境简介</h5><ul>
+<li>模型复杂度和泛化误差的关系通常是U形曲线：</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-5-学习环境简介"><a href="#1-5-学习环境简介" class="headerlink" title="1.5 学习环境简介"></a>1.5 学习环境简介</h5><ul>
 <li>编程语言 Python</li>
-<li>数据处理工具包</li>
+<li>数据处理工具包<ul>
 <li>Numpy</li>
 <li>SciPy</li>
 <li>pandas</li>
-</ul>
-</li>
 </ul>
 </li>
 <li>数据可视化工具包<ul>
@@ -819,7 +821,7 @@
 <li>SciPy<ul>
 <li>SciPy是建立在NumPy的基础上、是科学和工程设计的Python工具包，提供统计、优化和数值微积分计算等功能</li>
 <li>NumPy 处理$10^6$级别的数据通常没有大问题，但当数据量达到$10^7$级别时速度开始发慢，内存受到限制（具体情况取决于实际内存的大小）</li>
-<li>当处理超大规模数据集，比如$10^10$级别，且数据中包含大量的0时，可采用稀疏矩阵可显著的提高速度和效率</li>
+<li>当处理超大规模数据集，比如$10^{10}$级别，且数据中包含大量的0时，可采用稀疏矩阵可显著的提高速度和效率</li>
 </ul>
 </li>
 <li>Pandas(<strong>Pan</strong>del <strong>da</strong>ta structures)<ul>
@@ -868,9 +870,9 @@
    &=&\sum_{i=1}^N(y_i - \bf w^T \bf x_i)^2
   \end{eqnarray}</script>  残差平方和（residual sum of squares, RSS）</li>
 <li>由于线性模型比较简单，实际应用中有时正则项为空，得到最小二乘线性回归（Ordinary Least Square, OLS）<script type="math/tex; mode=display">\begin{eqnarray}J(\theta) 
-   &=&\sum_{i=1}^NL(y_i,\hat y_i) 
-   &=&\sum_{i=1}^N(y_i - \hat y_i)^2\\
-   &=&\sum_{i=1}^N(y_i - \bf w^T \bf x_i)^2
+  &=&\sum_{i=1}^NL(y_i,\hat y_i) 
+  &=&\sum_{i=1}^N(y_i - \hat y_i)^2\\
+  &=&\sum_{i=1}^N(y_i - \bf w^T \bf x_i)^2
   \end{eqnarray}</script></li>
 <li>正则项可以为L2正则，得到岭回归（Ridge Regression）<script type="math/tex; mode=display">J(\bf w) = \sum_{i=1}^N(y_i - \bf w^Tx_i)^2 + \lambda ||w||^2_2</script></li>
 <li><p>正则项也可以选L1正则，得到Lasso模型：</p>
@@ -882,14 +884,14 @@
 </li>
 <li>线性回归模型的概率解释<ul>
 <li>最小二乘（线性）回归等价于极大似然估计<ul>
-<li>假设：$ y = f(\bf x) + \epsilon = w^T + \epsilon $<br>其中$\epsilon$为线性预测和真值之间的残差<br>我们通常假设残差的分布为$\epsilon \sim N(0,\sigma ^2)$,因此线性回归可写成：$p(y|x,\theta) \sim N(y| \bf w^T \bf x, \sigma^2)$,其中$ \bf \theta = (\bf w, \sigma ^2)$</li>
+<li>假设：$ y = f(\bf x) + \epsilon = w^Tx + \epsilon $<br>其中$\epsilon$为线性预测和真值之间的残差<br>我们通常假设残差的分布为$\epsilon \sim N(0,\sigma ^2)$,因此线性回归可写成：$p(y|x,\theta) \sim N(y| \bf w^T \bf x, \sigma^2)$,其中$ \bf \theta = (\bf w, \sigma ^2)$</li>
 </ul>
 </li>
 <li>正则（线性）回归等价于高斯先验（L2正则）或Laplace先验下（L1正则）的贝叶斯估计</li>
 </ul>
 </li>
 <li>Recall：极大似然估计<ul>
-<li>极大似然估计（Maximize Likelihood Estimator, MLE）定义为<script type="math/tex; mode=display">\hat \theta = \underset {\theta}  {arg\ max}\ log p(D\mid \theta)</script></li>
+<li>极大似然估计（Maximize Likelihood Estimator, MLE）定义为<script type="math/tex; mode=display">\hat \theta = \underset {\theta}  {arg\ max}\ log\ p(D\mid \theta)</script></li>
 <li>其中（log）似然函数为<script type="math/tex; mode=display">l(\bf \theta) = log\ p(D\mid \bf \theta) = \sum_{i=1}^N log\ p(y_i \mid x_i, \bf \theta)</script></li>
 <li>表示在参数为$\theta$的情况下，数据$D ={\bf x_i,y_i}^N_{i=1}$</li>
 <li>极大似然：选择数据出现概率最大的参数</li>
@@ -934,9 +936,9 @@
 </ul>
 <h5 id="1-7-线性回归模型-优化算法"><a href="#1-7-线性回归模型-优化算法" class="headerlink" title="1.7 线性回归模型-优化算法"></a>1.7 线性回归模型-优化算法</h5><ul>
 <li>线性回归的目标函数<ul>
-<li>无正则的最小二乘线性回归（Ordinary Least Square, OLS）：</li>
-<li>L2正则的岭回归（Ridge Regression）模型：</li>
-<li>L1正则的Lasso模型：</li>
+<li>无正则的最小二乘线性回归（Ordinary Least Square, OLS）：<script type="math/tex; mode=display">J(w) = \sum_{i=1}^N(y_i - w^Tx_i)^2</script></li>
+<li>L2正则的岭回归（Ridge Regression）模型：<script type="math/tex; mode=display">J(w; \lambda) = \sum_{i=1}^N(y_i - f(x_i))^2 + \lambda \sum_{j=1}^D w_j^2</script></li>
+<li>L1正则的Lasso模型：<script type="math/tex; mode=display">J(w; \lambda) = \sum_{i=1}^N(y_i - f(x_i))^2 + \lambda \sum_{j=1}^D |w_j|</script></li>
 </ul>
 </li>
 <li>模型训练：<br>  根据训练数据求目标函数取极小值的参数：<br>  $\hat w = \underset {w} {arg\ min} J(\bf w)$<ul>
@@ -962,13 +964,29 @@
 <li>Moore-Penrose广义逆可采用奇异值分解(Singular Value Decomposition)<br>实现：<br>奇异值分解：$X = U \Sigma V^T$<br>$X^{\dagger } = V \Sigma ^{\dagger} U^T$<br>其中 $\Sigma = \begin{pmatrix}<br>{\sigma_1}&amp;{0}&amp;{\cdots}&amp;{0}\\<br>{0}&amp;{\sigma_2}&amp;{\cdots}&amp;{0}\\<br>{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\<br>{0}&amp;{0}&amp;{\cdots}&amp;{0}\\<br>\end{pmatrix}$,$\Sigma ^{\dagger} = \begin{pmatrix}<br>{\frac {1}{\sigma_1}}&amp;{0}&amp;{\cdots}&amp;{0}\\<br>{0}&amp;{\frac{1}{\sigma_2}}&amp;{\cdots}&amp;{0}\\<br>{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\<br>{0}&amp;{0}&amp;{\cdots}&amp;{0}\\<br>\end{pmatrix}$</li>
 </ul>
 </li>
-<li>OLS的优化求解——梯度下降</li>
+<li>OLS的优化求解——梯度下降<ul>
+<li>OLS目标函数：<br>$J(w) = (y - Xw)^T(y - Xw)$<br>梯度：$\nabla_w = - 2X^T(y - Xw^t)$<br>参数更新：<br>$w^{t+1} = w^t - \eta\nabla_w = w^t + 2\eta X^T(y - Xw^t)$</li>
 </ul>
 </li>
-<li>岭回归的优化求解</li>
+</ul>
+</li>
+<li>岭回归的优化求解<ul>
+<li>岭回归的目标函数与OLS只相差一个正则项（也是w的二次函数）</li>
+<li>岭回归的优化求解——SVD</li>
+</ul>
+</li>
 <li>Lasso的优化条件<ul>
 <li>软&amp; 硬阈值</li>
-<li>Lasso的优化求解——坐标轴下降法</li>
+<li>Lasso的优化求解——坐标轴下降法<ul>
+<li>为了找到一个函数的局部极小值，在每次迭代中可以在当前点处沿一个坐标方向进行一维搜索。</li>
+</ul>
+</li>
+<li>整个过程中循环使用不同的坐标方向。一个周期的一维搜索迭代过程相当于一个梯度迭代。</li>
+<li>注意：<ul>
+<li>梯度下降方法是利用目标函数的导数（梯度）来确定搜索方向的，而该梯度方向可能不与任何坐标轴平行。</li>
+<li>而坐标轴下降法是利用当前坐标系统进行搜索，不需要求目标函数的导数，只按照某一坐标方向进行搜索最小值。（在稀疏矩阵上的计算速度非常快，同时也是Lasso回归最快的解法）</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>小结<ul>
@@ -991,8 +1009,8 @@
 <h5 id="1-8-线性回归模型-模型选择"><a href="#1-8-线性回归模型-模型选择" class="headerlink" title="1.8 线性回归模型-模型选择"></a>1.8 线性回归模型-模型选择</h5><ul>
 <li>模型评估与模型选择<ul>
 <li>模型训练好后，需要在校验集上采用一些度量准则检查模型预测的效果<ul>
-<li>校验集划分（）</li>
-<li>评价指标（）</li>
+<li>校验集划分（train_test_split、交叉验证）</li>
+<li>评价指标（sklearn.metrics）</li>
 </ul>
 </li>
 <li>模型选择：<ul>
@@ -1007,12 +1025,31 @@
 <li>Scikit learn将交叉验证与网格搜索合并为一个函数</li>
 </ul>
 </li>
-<li>评价准则</li>
+<li>评价准则<ul>
+<li>模型训练好后，可用一些度量准则检查模型拟合的效果<ul>
+<li>开方均方误差（rooted mean squared error，RMSE）:$RMSE = \sqrt{\frac 1N \sum_{i=1}^N(\hat y_i - y_i)^2}$`</li>
+<li>平均绝对误差（mean absolute error，MAE）：$MAE = \frac 1N \sum_{i=1}^N|\hat y_i - y_i|$</li>
+<li>R2 score：既考虑了预测值与真值之间的差异，也考虑了问题本身真值之<br>间的差异（ scikit learn 线性回归模型的缺省评价准则）$SS_{res} = \sum_{i=1}^N(\hat y_i - y_i)^2, SStot = \sum_{i=1}^N(y_i - \bar{y})^2, R^2 = 1 - \frac {SS_{res}}{SS_{tot}})$</li>
+</ul>
+</li>
+<li>也可以检查残差的分布</li>
+<li>还可以打印预测值与真值的散点图</li>
+</ul>
+</li>
 <li>线性回归中的模型选择<br>Scikit learn中的model selection模块提供模型选择功能<ul>
-<li>对于线性模型，留一交叉验证（N折交叉验证，亦称为leave-oneout<br>cross-validation，LOOCV）有更简便的计算方式，因此Scikit<br>learn提供了RidgeCV类和LassoCV类实现了这种方式</li>
+<li>对于线性模型，留一交叉验证（N折交叉验证，亦称为leave-oneout cross-validation，LOOCV）有更简便的计算方式，因此Scikit learn提供了RidgeCV类和LassoCV类实现了这种方式</li>
 <li>后续课程将讲述一般模型的交叉验证和参数调优GridSearchCV</li>
-<li>RidgeCV</li>
-<li>LassoCV</li>
+<li>RidgeCV<ul>
+<li>RidgeCV中超参数λ用alpha表示</li>
+<li>RidgeCV(alphas=(0.1, 1.0, 10.0), fit_intercept=True, normalize=False, scoring=None, cv=None, gcv_mode=None, store_c<br>v_values=False)</li>
+</ul>
+</li>
+<li>LassoCV<ul>
+<li>LassoCV的使用与RidgeCV类似</li>
+<li>Scikit learn还提供一个与Lasso类似的LARS（least angle regression，最小角回归），二者仅仅是优化方法不同，目<br>标函数相同。</li>
+<li>当数据集中特征维数很多且存在共线性时，LassoCV更合适。</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>小结：线性回归之模型选择<ul>
@@ -1108,6 +1145,8 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li>第二步：模型确定和模型训练<ul>
 <li>1、确定模型类型<ul>
 <li>目标函数（损失函数、正则）</li>
@@ -1130,8 +1169,6 @@
 <li>模型选择：选择预测性能最好的模型<ul>
 <li>模型中通常有一些超参数，需要通过模型选择来确定</li>
 <li>参数搜索范围：网格搜索（GridSearch）</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
