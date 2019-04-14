@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="基础,学习笔记,机器学习,">
 
 
 
@@ -88,16 +88,18 @@
 
 
 
-<meta name="description" content="既然相遇，不如同行">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Minh&#39;s Blog">
-<meta property="og:url" content="http://minhzou.top/tags/SVM/index.html">
+<meta name="description" content="预备了一下学习机器学习需要的数学基础知识，补充了一些不清楚的数学知识 概览    算法或理论 用到的数学知识     贝叶斯分类器 随机变量，贝叶斯公式，随机变量独立性，正太分布，最大似然估计   决策树 概率，熵，Gini系数   KNN算法 距离函数   主成分分析 协方差矩阵，散布矩阵，拉格朗日乘数法，特征值与特征向量   流形学习 流形，最优化，测地线，测地距离，图，特征值与特征向量">
+<meta name="keywords" content="基础,学习笔记,机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习的数学基础">
+<meta property="og:url" content="http://minhzou.top/2019/04/14/机器学习的数学基础/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
-<meta property="og:description" content="既然相遇，不如同行">
+<meta property="og:description" content="预备了一下学习机器学习需要的数学基础知识，补充了一些不清楚的数学知识 概览    算法或理论 用到的数学知识     贝叶斯分类器 随机变量，贝叶斯公式，随机变量独立性，正太分布，最大似然估计   决策树 概率，熵，Gini系数   KNN算法 距离函数   主成分分析 协方差矩阵，散布矩阵，拉格朗日乘数法，特征值与特征向量   流形学习 流形，最优化，测地线，测地距离，图，特征值与特征向量">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-14T09:29:43.825Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Minh&#39;s Blog">
-<meta name="twitter:description" content="既然相遇，不如同行">
+<meta name="twitter:title" content="机器学习的数学基础">
+<meta name="twitter:description" content="预备了一下学习机器学习需要的数学基础知识，补充了一些不清楚的数学知识 概览    算法或理论 用到的数学知识     贝叶斯分类器 随机变量，贝叶斯公式，随机变量独立性，正太分布，最大似然估计   决策树 概率，熵，Gini系数   KNN算法 距离函数   主成分分析 协方差矩阵，散布矩阵，拉格朗日乘数法，特征值与特征向量   流形学习 流形，最优化，测地线，测地距离，图，特征值与特征向量">
 
 
 
@@ -127,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://minhzou.top/tags/SVM/">
+  <link rel="canonical" href="http://minhzou.top/2019/04/14/机器学习的数学基础/">
 
 
 
 
 
-  <title>标签: SVM | Minh's Blog</title>
+  <title>机器学习的数学基础 | Minh's Blog</title>
   
 
 
@@ -152,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/minhzou" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -280,52 +282,422 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>SVM<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/04/14/机器学习的数学基础/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minh">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minh's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/04/06/第二周 Logistic回归、SVM/" itemprop="url">
-              
-                <span itemprop="name">第二周 Logistic回归、SVM</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">机器学习的数学基础</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-06T20:37:26+08:00" content="2019-04-06">
-          04-06
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-14T17:15:42+08:00">
+                2019-04-14
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-14T17:29:43+08:00">
+                2019-04-14
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/14/机器学习的数学基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/14/机器学习的数学基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>预备了一下学习机器学习需要的数学基础知识，补充了一些不清楚的数学知识</p>
+<h4 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>算法或理论</th>
+<th>用到的数学知识</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>贝叶斯分类器</td>
+<td>随机变量，贝叶斯公式，随机变量独立性，正太分布，最大似然估计</td>
+</tr>
+<tr>
+<td>决策树</td>
+<td>概率，熵，Gini系数</td>
+</tr>
+<tr>
+<td>KNN算法</td>
+<td>距离函数</td>
+</tr>
+<tr>
+<td>主成分分析</td>
+<td>协方差矩阵，散布矩阵，拉格朗日乘数法，特征值与特征向量</td>
+</tr>
+<tr>
+<td>流形学习</td>
+<td>流形，最优化，测地线，测地距离，图，特征值与特征向量</td>
+</tr>
+<tr>
+<td>线性判别分析</td>
+<td>散度矩阵，逆矩阵，拉格朗日乘数法，特征值与特征向量</td>
+</tr>
+<tr>
+<td>支持向量机</td>
+<td>点到平面的距离，Slater条件，强对偶，拉格朗日对偶，KKT条件，凸优化，核函数，Mercer条件</td>
+</tr>
+<tr>
+<td>logistics回归</td>
+<td>概率、随机变量，最大似然估计，梯度下降法，凸优化，牛顿法</td>
+</tr>
+<tr>
+<td>随机森林</td>
+<td>抽样，方差</td>
+</tr>
+<tr>
+<td>AdaBoost算法</td>
+<td>概率，随机变量，最大似然估计，梯度下降法，凸优化，牛顿法</td>
+</tr>
+<tr>
+<td>隐马尔科夫链</td>
+<td>概率，离散型随机变量，条件概率，随机变量独立性，拉格朗日乘数法，最大似然估计</td>
+</tr>
+<tr>
+<td>条件随机场</td>
+<td>条件概率，数学期望，最大似然估计</td>
+</tr>
+<tr>
+<td>高斯混合模型</td>
+<td>正态分布，最大似然估计，Jensen不等式</td>
+</tr>
+<tr>
+<td>人工神经网络</td>
+<td>梯度下降法，链式法则</td>
+</tr>
+<tr>
+<td>卷积神经网络</td>
+<td>梯度下降法，链式法则</td>
+</tr>
+<tr>
+<td>循环神经网络</td>
+<td>梯度下降法，链式法则</td>
+</tr>
+<tr>
+<td>生成对抗网络</td>
+<td>梯度下降法，链式法则，极值定理，Kullback-Leibler散度，Jensen-Shannon散度，测地距离，条件分布，互信息</td>
+</tr>
+<tr>
+<td>K-means算法</td>
+<td>距离函数</td>
+</tr>
+<tr>
+<td>强化学习</td>
+<td>数学期望，贝尔曼方程</td>
+</tr>
+<tr>
+<td>贝叶斯网络</td>
+<td>条件概率，贝叶斯公式，图</td>
+</tr>
+<tr>
+<td>VC维</td>
+<td>Hoeffding不等式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="微积分"><a href="#微积分" class="headerlink" title="微积分"></a>微积分</h4><ul>
+<li>导数与求导公式</li>
+<li>一阶导数与函数的单调性</li>
+<li>一元函数极值判定法则</li>
+<li>高阶导数</li>
+<li>二阶导数与函数的凹凸性</li>
+<li>一元函数泰勒展开</li>
+<li>偏导数</li>
+<li>梯度<br>$\nabla f(\mathrm{x})=\left(\frac{\partial f}{\partial x_{1}}, \ldots, \frac{\partial f}{\partial x_{n}}\right)^{\mathrm{T}}$</li>
+<li>雅可比矩阵<br>多元函数的一阶偏导数组成<br>$\left[ \begin{array}{cccc}{\frac{\partial y_{1}}{\partial x_{1}}} &amp; {\frac{\partial y_{1}}{\partial x_{2}}} &amp; {\dots} &amp; {\frac{\partial y_{1}}{\partial x_{n}}} \\ {\frac{\partial y_{2}}{\partial x_{1}}} &amp; {\frac{\partial y_{2}}{\partial x_{2}}} &amp; {\dots} &amp; {\frac{\partial y_{2}}{\partial x_{n}}} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {\frac{\partial y_{m}}{\partial x_{1}}} &amp; {\frac{\partial y_{m}}{\partial x_{2}}} &amp; {\ldots} &amp; {\frac{\partial y_{m}}{\partial x_{n}}}\end{array}\right]$</li>
+<li>Hessian矩阵<br>多元函数的二阶导数组成<br>$\left[ \begin{array}{cccc}{\frac{\partial^{2} f}{\partial x_{1}^{2}}} &amp; {\frac{\partial^{2} f}{\partial x_{1} \partial x_{2}}} &amp; {\dots} &amp; {\frac{\partial^{2} f}{\partial x_{1} \partial x_{n}}} \\ {\frac{\partial^{2} f}{\partial x_{2} \partial x_{1}}} &amp; {\frac{\partial^{2} f}{\partial x_{2}^{2}}} &amp; {\dots} &amp; {\frac{\partial^{2} f}{\partial x_{2} \partial x_{n}}}\\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots}\\ {\frac{\partial^{2} f}{\partial x_{n} \partial x_{1}}} &amp; {\frac{\partial^{2} f}{\partial x_{n} \partial x_{2}}} &amp; {\cdots} &amp; {\frac{\partial^{2} f}{\partial x_{n}^{2}}}\end{array}\right]$</li>
+<li><p>多元函数泰勒展开<br>$f(\mathrm{x})=f\left(\mathrm{x}_{0}\right)+\left(\nabla f\left(\mathrm{x}_{0}\right)\right)^{\mathrm{T}}\left(\mathrm{x}-\mathrm{x}_{0}\right)+\frac{1}{2}\left(\mathrm{x}-\mathrm{x}_{0}\right)^{\mathrm{T}} \mathrm{H}\left(\mathrm{x}-\mathrm{x}_{0}\right)+o\left(\left|\mathrm{x}-\mathrm{x}_{0}\right|^{2}\right)$</p>
+</li>
+<li><p>多元函数极值判断法则</p>
+<ul>
+<li>如果Hessian矩阵正定，函数在该点有极小值</li>
+<li>如果Hessian矩阵负定，函数在该点有极大值</li>
+<li>如果Hessian矩阵不定，还需要看更高阶的导数</li>
+</ul>
+</li>
+</ul>
+<h4 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h4><ul>
+<li>向量及其运算<ul>
+<li>向量的范数<br>$|\mathrm{x}|_{p}=\left(\sum_{i=1}^{n}\left|x_{i}\right|^{p}\right)^{\frac{1}{p}}$<br>$|\mathrm{x}|_{1}=\sum_{i=1}^{n}\left|x_{i}\right|$<br>$|\mathrm{x}|_{2}=\sqrt{\sum_{i=1}^{n}\left(x_{i}\right)^{2}}$</li>
+</ul>
+</li>
+<li>矩阵及其运算</li>
+<li>张量</li>
+<li>行列式<ul>
+<li>$|\mathrm{A}|=\sum_{\sigma \in S_{n}} \operatorname{sgn}(\sigma) \prod_{i=1}^{n} a_{i, \sigma(i)}$</li>
+<li>逆序数</li>
+</ul>
+</li>
+<li>二次型</li>
+<li>特征值与特征向量</li>
+<li>奇异值分解（SVD）<br>$\mathrm{A}=\mathrm{U} \Sigma \mathrm{V}^{\mathrm{T}}$<br>U：$AA^{T}$ 正交矩阵 mxm<br>V：$A^{T}A$ 正交矩阵 nxn<br>$\Sigma$ 对角阵 mxn</li>
+<li>常用的矩阵与向量求导公式<br>$\nabla \mathrm{w}^{\mathrm{T}} \mathrm{x}=\mathrm{w}$<br>$\nabla \mathrm{x}^{\mathrm{T}} \mathrm{Ax}=\left(\mathrm{A}+\mathrm{A}^{\mathrm{T}}\right) \mathrm{x}$<br>$\nabla^{2} \mathrm{x}^{\mathrm{T}} \mathrm{Ax}=\mathrm{A}+\mathrm{A}^{\mathrm{T}}$ （$\nabla^{2}$ 相当于H ）</li>
+</ul>
+<h4 id="概率论"><a href="#概率论" class="headerlink" title="概率论"></a>概率论</h4><ul>
+<li>随机事件与概率</li>
+<li>条件概率与贝叶斯公式</li>
+<li>随机变量</li>
+<li>数学期望与方差</li>
+<li>常用概率分布</li>
+<li>随机向量</li>
+<li>协方差与协方差矩阵<br>协方差反应随机变量线性相关的程度<ul>
+<li>$\operatorname{cov}\left(x_{1}, x_{2}\right)=\mathrm{E}\left(\left(x_{1}-\mathrm{E}\left(x_{1}\right)\right)\left(x_{2}-\mathrm{E}\left(x_{2}\right)\right)\right)$</li>
+<li>$\operatorname{cov}\left(x_{1}, x_{2}\right)=\mathrm{E}\left(x_{1} x_{2}\right)-\mathrm{E}\left(x_{1}\right) \mathrm{E}\left(x_{2}\right)$</li>
+</ul>
+</li>
+<li>最大似然估计（MLE）<br>用来估计概率密度的参数</li>
+</ul>
+<h4 id="最优化方法"><a href="#最优化方法" class="headerlink" title="最优化方法"></a>最优化方法</h4><ul>
+<li>最优化的基本概念<ul>
+<li>最优化问题</li>
+<li>目标函数</li>
+<li>优化变量</li>
+<li>可行域</li>
+<li>等式约束</li>
+<li>不等式约束</li>
+<li>局部最小值</li>
+<li>全局最小值</li>
+</ul>
+</li>
+<li>迭代法<ul>
+<li>$\lim _{k \rightarrow+\infty} \nabla f\left(\mathrm{x}_{k}\right)=0$</li>
+<li>$\mathrm{x}_{k+1}=h\left(\mathrm{x}_{k}\right)$</li>
+</ul>
+</li>
+<li>梯度下降法<br>$\mathrm{x}_{k+1}=\mathrm{x}_{k}-\gamma \nabla f\left(\mathrm{x}_{k}\right)$</li>
+<li>牛顿法<br>$\mathrm{x}_{k+1}=\mathrm{x}_{k}-\mathrm{H}_{k}^{-1} \mathrm{g}_{k}$</li>
+<li>坐标下降法<br>$\min f(x), x=\left(x_{1}, x_{2}, \ldots, x_{n}\right)$<br>$\min _{x_{i}} f(x)$</li>
+<li>优化算法面临的问题<ul>
+<li>局部极值点问题</li>
+<li>鞍点问题（H不定）</li>
+</ul>
+</li>
+<li>拉格朗日乘数法</li>
+<li>凸优化简介<ul>
+<li>凸集<br>$\theta \mathrm{x}+(1-\theta) \mathrm{y} \in C$</li>
+<li>凸函数<ul>
+<li>凸函数定义<br>$f(\theta \mathrm{x}+(1-\theta) \mathrm{y})&lt;\theta f(\mathrm{x})+(1-\theta) f(\mathrm{y})$</li>
+<li>一阶判别法</li>
+<li>二阶判别法（H半正定，正定严格凸函数）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>凸优化的性质<ul>
+<li>局部最优解一定是全局最优解<br>$\mathrm{z}=\theta \mathrm{y}+(1-\theta) \mathrm{x} \quad \theta=\frac{\delta}{2|\mathrm{x}-\mathrm{y}|_{2}}$<br>$\begin{aligned}|\mathrm{x}-\mathrm{z}|_{2} &amp;=| \mathrm{x}-\left(\frac{\delta}{2|\mathrm{x}-\mathrm{y}|_{2}} \mathrm{y}+\left(1-\frac{\delta}{2|\mathrm{x}-\mathrm{y}|_{2}}\right) \mathrm{x}\left|_{2}\right.\right.\\ &amp;=\left|\frac{\delta}{2|\mathrm{x}-\mathrm{y}|_{2}}(\mathrm{x}-\mathrm{y})\right|_{2} \\ &amp;=\frac{\delta}{2} \leq \delta \end{aligned}$<br>$f(z)=f(\theta y+(1-\theta) x) \leq \theta f(y)+(1-\theta) f(x)&lt;f(x)$</li>
+</ul>
+</li>
+<li>拉格朗日对偶<br>  $\min f(\mathrm{x})$<br>$\mathrm{g}_{i}(\mathrm{x}) \leq 0 \quad \mathrm{i}=1, \ldots, m$<br>$h_{i}(\mathrm{x})=0 \quad \mathrm{i}=1, \ldots, p$<br>  $L(\mathrm{x}, \lambda, v)=f(\mathrm{x})+\sum_{i=1}^{m} \lambda_{1} g_{i}(\mathrm{x})+\sum_{i=1}^{p} v_{i} h_{i}(\mathrm{x})$<ul>
+<li>原问题<br>$\begin{aligned} p^{ \ast } &amp;=\min _{x} \max _{\lambda, v, \lambda_{i} \geq 0} L(\mathrm{x}, \lambda, v) &amp; \min _{\mathrm{x}} \theta_{P}(\mathrm{x})=\min _{\mathrm{x}} \max _{\lambda, v, \lambda_{i} \geq 0} L(\mathrm{x}, \lambda, v) \\ &amp;=\min _{\mathrm{x}} \theta_{P}(x) \end{aligned}$</li>
+<li>对偶问题<br>$d^{ \ast }=\max _{\lambda, v, \lambda_{i} \geq 0} \min _{x} L(\mathrm{x}, \lambda, v)=\max _{\lambda, v, \lambda_{i} \geq 0} \theta_{D}(\lambda, v)$</li>
+<li>弱对偶问题<br>$d^{ \ast }=\max _{\lambda, v, \lambda_{i} \geq 0} \min _{x} L(\mathrm{x}, \lambda, v) \leq \min _{x} \max _{\lambda, v, \lambda_{i} \geq 0} L(\mathrm{x}, \lambda, v)=p^{ \ast }$</li>
+<li>强对偶<br>Slater条件<ul>
+<li>凸函数</li>
+<li>不等式严格成立（不取等号）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>KKT条件<br>$\min f(\mathrm{x})$<br>$g_{i}(\mathrm{x}) \leq 0 \quad \mathrm{i}=1, \ldots, q$<br>$h_{i}(\mathrm{x})=0 \quad \mathrm{i}=1, \ldots, p$<br>$L(\mathrm{x}, \lambda, \mu)=f(\mathrm{x})+\sum_{j=1}^{p} \lambda_{i} h_{j}(\mathrm{x})+\sum_{k=1}^{q} \mu_{i} g_{k}(\mathrm{x})$<ul>
+<li>条件<br>$\nabla_{\mathrm{x}} L\left(\mathrm{x}^{\ast}\right)=0$<br>$\mu_{k} \geq 0$<br>$\mu_{k} g_{k}\left(\mathrm{x}^{\ast}\right)=0$<br>$h_{j}\left(\mathrm{x}^{\ast}\right)=0$<br>$g_{k}\left(\mathrm{x}^{\ast}\right) \leq 0$</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
+    
+    
+    
+    <div>
+  		
+   		  <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+ 		
+	</div>
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础/" rel="tag"> <i class="fa fa-tag"></i> 基础</a>
+          
+            <a href="/tags/学习笔记/" rel="tag"> <i class="fa fa-tag"></i> 学习笔记</a>
+          
+            <a href="/tags/机器学习/" rel="tag"> <i class="fa fa-tag"></i> 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/06/第二周 Logistic回归、SVM/" rel="next" title="第二周 Logistic回归、SVM">
+                <i class="fa fa-chevron-left"></i> 第二周 Logistic回归、SVM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -333,6 +705,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -353,8 +732,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -433,6 +821,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微积分"><span class="nav-number">2.</span> <span class="nav-text">微积分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性代数"><span class="nav-number">3.</span> <span class="nav-text">线性代数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概率论"><span class="nav-number">4.</span> <span class="nav-text">概率论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优化方法"><span class="nav-number">5.</span> <span class="nav-text">最优化方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -589,6 +993,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
