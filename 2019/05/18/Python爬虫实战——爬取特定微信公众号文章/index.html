@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,基础,学习笔记,">
+  <meta name="keywords" content="python,爬虫实战,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="预备了一下学习机器学习需要的数学基础知识，补充了一些不清楚的数学知识 概览    算法或理论 用到的数学知识     贝叶斯分类器 随机变量，贝叶斯公式，随机变量独立性，正太分布，最大似然估计   决策树 概率，熵，Gini系数   KNN算法 距离函数   主成分分析 协方差矩阵，散布矩阵，拉格朗日乘数法，特征值与特征向量   流形学习 流形，最优化，测地线，测地距离，图，特征值与特征向量">
-<meta name="keywords" content="机器学习,基础,学习笔记">
+<meta name="description" content="前言学机器学习，学着学着就学偏了，就学着写爬虫了，目的主要是一熟悉下python，二解决自己某需求，这篇文章主要是解决需求写的代码中的主要部分——针对某一微信公众号的爬虫，当然除了学会了简单的爬虫，也运用了之前学习的很多知识，学有所用真的是一件非常开心的事情。 本篇目标  根据微信公众号在Sogou微信搜索，提取微信公众号链接  进入微信公众号界面，获取最近十篇微信文章链接 根据微信文章链接，解析">
+<meta name="keywords" content="python,爬虫实战">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习的数学基础">
-<meta property="og:url" content="http://www.minhzou.top/机器学习的数学基础.html">
+<meta property="og:title" content="Python爬虫实战——爬取特定微信公众号文章">
+<meta property="og:url" content="http://minhzou.top/2019/05/18/Python爬虫实战——爬取特定微信公众号文章/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
-<meta property="og:description" content="预备了一下学习机器学习需要的数学基础知识，补充了一些不清楚的数学知识 概览    算法或理论 用到的数学知识     贝叶斯分类器 随机变量，贝叶斯公式，随机变量独立性，正太分布，最大似然估计   决策树 概率，熵，Gini系数   KNN算法 距离函数   主成分分析 协方差矩阵，散布矩阵，拉格朗日乘数法，特征值与特征向量   流形学习 流形，最优化，测地线，测地距离，图，特征值与特征向量">
+<meta property="og:description" content="前言学机器学习，学着学着就学偏了，就学着写爬虫了，目的主要是一熟悉下python，二解决自己某需求，这篇文章主要是解决需求写的代码中的主要部分——针对某一微信公众号的爬虫，当然除了学会了简单的爬虫，也运用了之前学习的很多知识，学有所用真的是一件非常开心的事情。 本篇目标  根据微信公众号在Sogou微信搜索，提取微信公众号链接  进入微信公众号界面，获取最近十篇微信文章链接 根据微信文章链接，解析">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-14T15:27:17.668Z">
+<meta property="og:updated_time" content="2019-05-18T15:42:12.793Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习的数学基础">
-<meta name="twitter:description" content="预备了一下学习机器学习需要的数学基础知识，补充了一些不清楚的数学知识 概览    算法或理论 用到的数学知识     贝叶斯分类器 随机变量，贝叶斯公式，随机变量独立性，正太分布，最大似然估计   决策树 概率，熵，Gini系数   KNN算法 距离函数   主成分分析 协方差矩阵，散布矩阵，拉格朗日乘数法，特征值与特征向量   流形学习 流形，最优化，测地线，测地距离，图，特征值与特征向量">
+<meta name="twitter:title" content="Python爬虫实战——爬取特定微信公众号文章">
+<meta name="twitter:description" content="前言学机器学习，学着学着就学偏了，就学着写爬虫了，目的主要是一熟悉下python，二解决自己某需求，这篇文章主要是解决需求写的代码中的主要部分——针对某一微信公众号的爬虫，当然除了学会了简单的爬虫，也运用了之前学习的很多知识，学有所用真的是一件非常开心的事情。 本篇目标  根据微信公众号在Sogou微信搜索，提取微信公众号链接  进入微信公众号界面，获取最近十篇微信文章链接 根据微信文章链接，解析">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://www.minhzou.top/机器学习的数学基础.html">
+  <link rel="canonical" href="http://minhzou.top/2019/05/18/Python爬虫实战——爬取特定微信公众号文章/">
 
 
 
 
 
-  <title>机器学习的数学基础 | Minh's Blog</title>
+  <title>Python爬虫实战——爬取特定微信公众号文章 | Minh's Blog</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.minhzou.top/机器学习的数学基础.html">
+    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/05/18/Python爬虫实战——爬取特定微信公众号文章/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minh">
@@ -313,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">机器学习的数学基础</h1>
+          <h1 class="post-title" itemprop="name headline">Python爬虫实战——爬取特定微信公众号文章</h1>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-14T17:15:42+08:00">
-                2019-04-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-18T20:19:19+08:00">
+                2019-05-18
               </time>
             
 
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-14T23:27:17+08:00">
-                2019-04-14
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-18T23:42:12+08:00">
+                2019-05-18
               </time>
             
           </span>
@@ -360,8 +360,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/categories/实战/" itemprop="url" rel="index">
+                    <span itemprop="name">实战</span>
                   </a>
                 </span>
 
@@ -378,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/机器学习的数学基础.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/机器学习的数学基础.html" itemprop="commentCount"></span>
+                <a href="/2019/05/18/Python爬虫实战——爬取特定微信公众号文章/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/18/Python爬虫实战——爬取特定微信公众号文章/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k 字
+                  1.4k 字
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9 min
+                  5 min
                 </span>
               
             </div>
@@ -443,211 +443,22 @@
       
 
       
-        <p>预备了一下学习机器学习需要的数学基础知识，补充了一些不清楚的数学知识</p>
-<h5 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h5><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>算法或理论</th>
-<th>用到的数学知识</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>贝叶斯分类器</td>
-<td>随机变量，贝叶斯公式，随机变量独立性，正太分布，最大似然估计</td>
-</tr>
-<tr>
-<td>决策树</td>
-<td>概率，熵，Gini系数</td>
-</tr>
-<tr>
-<td>KNN算法</td>
-<td>距离函数</td>
-</tr>
-<tr>
-<td>主成分分析</td>
-<td>协方差矩阵，散布矩阵，拉格朗日乘数法，特征值与特征向量</td>
-</tr>
-<tr>
-<td>流形学习</td>
-<td>流形，最优化，测地线，测地距离，图，特征值与特征向量</td>
-</tr>
-<tr>
-<td>线性判别分析</td>
-<td>散度矩阵，逆矩阵，拉格朗日乘数法，特征值与特征向量</td>
-</tr>
-<tr>
-<td>支持向量机</td>
-<td>点到平面的距离，Slater条件，强对偶，拉格朗日对偶，KKT条件，凸优化，核函数，Mercer条件</td>
-</tr>
-<tr>
-<td>]logistics回归</td>
-<td>概率、随机变量，最大似然估计，梯度下降法，凸优化，牛顿法</td>
-</tr>
-<tr>
-<td>随机森林</td>
-<td>抽样，方差</td>
-</tr>
-<tr>
-<td>AdaBoost算法</td>
-<td>概率，随机变量，最大似然估计，梯度下降法，凸优化，牛顿法</td>
-</tr>
-<tr>
-<td>隐马尔科夫链</td>
-<td>概率，离散型随机变量，条件概率，随机变量独立性，拉格朗日乘数法，最大似然估计</td>
-</tr>
-<tr>
-<td>条件随机场</td>
-<td>条件概率，数学期望，最大似然估计</td>
-</tr>
-<tr>
-<td>高斯混合模型</td>
-<td>正态分布，最大似然估计，Jensen不等式</td>
-</tr>
-<tr>
-<td>人工神经网络</td>
-<td>梯度下降法，链式法则</td>
-</tr>
-<tr>
-<td>卷积神经网络</td>
-<td>梯度下降法，链式法则</td>
-</tr>
-<tr>
-<td>循环神经网络</td>
-<td>梯度下降法，链式法则</td>
-</tr>
-<tr>
-<td>生成对抗网络</td>
-<td>梯度下降法，链式法则，极值定理，Kullback-Leibler散度，Jensen-Shannon散度，测地距离，条件分布，互信息</td>
-</tr>
-<tr>
-<td>K-means算法</td>
-<td>距离函数</td>
-</tr>
-<tr>
-<td>强化学习</td>
-<td>数学期望，贝尔曼方程</td>
-</tr>
-<tr>
-<td>贝叶斯网络</td>
-<td>条件概率，贝叶斯公式，图</td>
-</tr>
-<tr>
-<td>VC维</td>
-<td>Hoeffding不等式</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h5 id="微积分"><a href="#微积分" class="headerlink" title="微积分"></a>微积分</h5><ul>
-<li>导数与求导公式</li>
-<li>一阶导数与函数的单调性</li>
-<li>一元函数极值判定法则</li>
-<li>高阶导数</li>
-<li>二阶导数与函数的凹凸性</li>
-<li>一元函数泰勒展开</li>
-<li>偏导数</li>
-<li>梯度<br>$\nabla f(\mathrm{x})=\left(\frac{\partial f}{\partial x_{1}}, \ldots, \frac{\partial f}{\partial x_{n}}\right)^{\mathrm{T}}$</li>
-<li>雅可比矩阵<br>多元函数的一阶偏导数组成<br>$\left[ \begin{array}{cccc}{\frac{\partial y_{1}}{\partial x_{1}}} &amp; {\frac{\partial y_{1}}{\partial x_{2}}} &amp; {\dots} &amp; {\frac{\partial y_{1}}{\partial x_{n}}} \\ {\frac{\partial y_{2}}{\partial x_{1}}} &amp; {\frac{\partial y_{2}}{\partial x_{2}}} &amp; {\dots} &amp; {\frac{\partial y_{2}}{\partial x_{n}}} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \\ {\frac{\partial y_{m}}{\partial x_{1}}} &amp; {\frac{\partial y_{m}}{\partial x_{2}}} &amp; {\ldots} &amp; {\frac{\partial y_{m}}{\partial x_{n}}}\end{array}\right]$</li>
-<li>Hessian矩阵<br>多元函数的二阶导数组成<br>$\left[ \begin{array}{cccc}{\frac{\partial^{2} f}{\partial x_{1}^{2}}} &amp; {\frac{\partial^{2} f}{\partial x_{1} \partial x_{2}}} &amp; {\dots} &amp; {\frac{\partial^{2} f}{\partial x_{1} \partial x_{n}}} \\ {\frac{\partial^{2} f}{\partial x_{2} \partial x_{1}}} &amp; {\frac{\partial^{2} f}{\partial x_{2}^{2}}} &amp; {\dots} &amp; {\frac{\partial^{2} f}{\partial x_{2} \partial x_{n}}}\\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots}\\ {\frac{\partial^{2} f}{\partial x_{n} \partial x_{1}}} &amp; {\frac{\partial^{2} f}{\partial x_{n} \partial x_{2}}} &amp; {\cdots} &amp; {\frac{\partial^{2} f}{\partial x_{n}^{2}}}\end{array}\right]$</li>
-<li><p>多元函数泰勒展开<br>$f(\mathrm{x})=f\left(\mathrm{x}_{0}\right)+\left(\nabla f\left(\mathrm{x}_{0}\right)\right)^{\mathrm{T}}\left(\mathrm{x}-\mathrm{x}_{0}\right)+\frac{1}{2}\left(\mathrm{x}-\mathrm{x}_{0}\right)^{\mathrm{T}} \mathrm{H}\left(\mathrm{x}-\mathrm{x}_{0}\right)+o\left(\left\Vert \mathrm{x}-\mathrm{x}_{0}\right\Vert^{2}\right)$</p>
-</li>
-<li><p>多元函数极值判断法则</p>
-<ul>
-<li>如果Hessian矩阵正定，函数在该点有极小值</li>
-<li>如果Hessian矩阵负定，函数在该点有极大值</li>
-<li>如果Hessian矩阵不定，还需要看更高阶的导数</li>
-</ul>
-</li>
-</ul>
-<h5 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h5><ul>
-<li>向量及其运算<ul>
-<li>向量的范数<br>$\Vert\mathrm{x}\Vert_{p}=\left(\sum_{i=1}^{n}\left|x_{i}\right|^{p}\right)^{\frac{1}{p}}$<br>$\Vert\mathrm{x}\Vert_{1}=\sum_{i=1}^{n}\left|x_{i}\right|$<br>$\Vert\mathrm{x}\Vert_{2}=\sqrt{\sum_{i=1}^{n}\left(x_{i}\right)^{2}}$</li>
-</ul>
-</li>
-<li>矩阵及其运算</li>
-<li>张量</li>
-<li>行列式<ul>
-<li>$|\mathrm{A}|=\sum_{\sigma \in S_{n}} \operatorname{sgn}(\sigma) \prod_{i=1}^{n} a_{i, \sigma(i)}$</li>
-<li>逆序数</li>
-</ul>
-</li>
-<li>二次型</li>
-<li>特征值与特征向量</li>
-<li>奇异值分解（SVD）<br>$\mathrm{A}=\mathrm{U} \Sigma \mathrm{V}^{\mathrm{T}}$<br>U：$AA^{T}$ 正交矩阵 mxm<br>V：$A^{T}A$ 正交矩阵 nxn<br>$\Sigma$ 对角阵 mxn</li>
-<li>常用的矩阵与向量求导公式<br>$\nabla \mathrm{w}^{\mathrm{T}} \mathrm{x}=\mathrm{w}$<br>$\nabla \mathrm{x}^{\mathrm{T}} \mathrm{Ax}=\left(\mathrm{A}+\mathrm{A}^{\mathrm{T}}\right) \mathrm{x}$<br>$\nabla^{2} \mathrm{x}^{\mathrm{T}} \mathrm{Ax}=\mathrm{A}+\mathrm{A}^{\mathrm{T}}$ （$\nabla^{2}$ 相当于H ）</li>
-</ul>
-<h5 id="概率论"><a href="#概率论" class="headerlink" title="概率论"></a>概率论</h5><ul>
-<li>随机事件与概率</li>
-<li>条件概率与贝叶斯公式</li>
-<li>随机变量</li>
-<li>数学期望与方差</li>
-<li>常用概率分布</li>
-<li>随机向量</li>
-<li>协方差与协方差矩阵<br>协方差反应随机变量线性相关的程度<ul>
-<li>$\operatorname{cov}\left(x_{1}, x_{2}\right)=\mathrm{E}\left(\left(x_{1}-\mathrm{E}\left(x_{1}\right)\right)\left(x_{2}-\mathrm{E}\left(x_{2}\right)\right)\right)$</li>
-<li>$\operatorname{cov}\left(x_{1}, x_{2}\right)=\mathrm{E}\left(x_{1} x_{2}\right)-\mathrm{E}\left(x_{1}\right) \mathrm{E}\left(x_{2}\right)$</li>
-</ul>
-</li>
-<li>最大似然估计（MLE）<br>用来估计概率密度的参数</li>
-</ul>
-<h5 id="最优化方法"><a href="#最优化方法" class="headerlink" title="最优化方法"></a>最优化方法</h5><ul>
-<li>最优化的基本概念<ul>
-<li>最优化问题</li>
-<li>目标函数</li>
-<li>优化变量</li>
-<li>可行域</li>
-<li>等式约束</li>
-<li>不等式约束</li>
-<li>局部最小值</li>
-<li>全局最小值</li>
-</ul>
-</li>
-<li>迭代法<ul>
-<li>$\lim _{k \rightarrow+\infty} \nabla f\left(\mathrm{x}_{k}\right)=0$</li>
-<li>$\mathrm{x}_{k+1}=h\left(\mathrm{x}_{k}\right)$</li>
-</ul>
-</li>
-<li>梯度下降法<br>$\mathrm{x}_{k+1}=\mathrm{x}_{k}-\gamma \nabla f\left(\mathrm{x}_{k}\right)$</li>
-<li>牛顿法<br>$\mathrm{x}_{k+1}=\mathrm{x}_{k}-\mathrm{H}_{k}^{-1} \mathrm{g}_{k}$</li>
-<li>坐标下降法<br>$\min f(x), x=\left(x_{1}, x_{2}, \ldots, x_{n}\right)$<br>$\min _{x_{i}} f(x)$</li>
-<li>优化算法面临的问题<ul>
-<li>局部极值点问题</li>
-<li>鞍点问题（H不定）</li>
-</ul>
-</li>
-<li>拉格朗日乘数法</li>
-<li>凸优化简介<ul>
-<li>凸集<br>$\theta \mathrm{x}+(1-\theta) \mathrm{y} \in C$</li>
-<li>凸函数<ul>
-<li>凸函数定义<br>$f(\theta \mathrm{x}+(1-\theta) \mathrm{y})&lt;\theta f(\mathrm{x})+(1-\theta) f(\mathrm{y})$</li>
-<li>一阶判别法</li>
-<li>二阶判别法（H半正定，正定严格凸函数）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>凸优化的性质<ul>
-<li>局部最优解一定是全局最优解<br>$\mathrm{z}=\theta \mathrm{y}+(1-\theta) \mathrm{x} \quad \theta=\frac{\delta}{2\Vert\mathrm{x}-\mathrm{y}\Vert_{2}}$<br>$\begin{aligned}\Vert\mathrm{x}-\mathrm{z}\Vert_{2} &amp;=\Vert \mathrm{x}-\left(\frac{\delta}{2\Vert\mathrm{x}-\mathrm{y}\Vert_{2}} \mathrm{y}+\left(1-\frac{\delta}{2\Vert\mathrm{x}-\mathrm{y}\Vert_{2}}\right) \mathrm{x}\left\Vert_{2}\right.\right.\\ &amp;=\left\Vert\frac{\delta}{2\Vert\mathrm{x}-\mathrm{y}\Vert_{2}}(\mathrm{x}-\mathrm{y})\right\Vert_{2} \\ &amp;=\frac{\delta}{2} \leq \delta \end{aligned}$<br>$f(z)=f(\theta y+(1-\theta) x) \leq \theta f(y)+(1-\theta) f(x)&lt;f(x)$</li>
-</ul>
-</li>
-<li>拉格朗日对偶<br>  $\min f(\mathrm{x})$<br>$\mathrm{g}_{i}(\mathrm{x}) \leq 0 \quad \mathrm{i}=1, \ldots, m$<br>$h_{i}(\mathrm{x})=0 \quad \mathrm{i}=1, \ldots, p$<br>  $L(\mathrm{x}, \lambda, v)=f(\mathrm{x})+\sum_{i=1}^{m} \lambda_{1} g_{i}(\mathrm{x})+\sum_{i=1}^{p} v_{i} h_{i}(\mathrm{x})$<ul>
-<li>原问题<br>$\begin{aligned} p^{ \ast } &amp;=\min _{x} \max _{\lambda, v, \lambda_{i} \geq 0} L(\mathrm{x}, \lambda, v) &amp; \min _{\mathrm{x}} \theta_{P}(\mathrm{x})=\min _{\mathrm{x}} \max _{\lambda, v, \lambda_{i} \geq 0} L(\mathrm{x}, \lambda, v) \\ &amp;=\min _{\mathrm{x}} \theta_{P}(x) \end{aligned}$</li>
-<li>对偶问题<br>$d^{ \ast }=\max _{\lambda, v, \lambda_{i} \geq 0} \min _{x} L(\mathrm{x}, \lambda, v)=\max _{\lambda, v, \lambda_{i} \geq 0} \theta_{D}(\lambda, v)$</li>
-<li>弱对偶问题<br>$d^{ \ast }=\max _{\lambda, v, \lambda_{i} \geq 0} \min _{x} L(\mathrm{x}, \lambda, v) \leq \min _{x} \max _{\lambda, v, \lambda_{i} \geq 0} L(\mathrm{x}, \lambda, v)=p^{ \ast }$</li>
-<li>强对偶<br>Slater条件<ul>
-<li>凸函数</li>
-<li>不等式严格成立（不取等号）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>KKT条件<br>$\min f(\mathrm{x})$<br>$g_{i}(\mathrm{x}) \leq 0 \quad \mathrm{i}=1, \ldots, q$<br>$h_{i}(\mathrm{x})=0 \quad \mathrm{i}=1, \ldots, p$</li>
-</ul>
-<p>$L(\mathrm{x}, \lambda, \mu)=f(\mathrm{x})+\sum_{j=1}^{p} \lambda_{i} h_{j}(\mathrm{x})+\sum_{k=1}^{q} \mu_{i} g_{k}(\mathrm{x})$</p>
-<p>$\nabla_{\mathrm{x}} L\left(\mathrm{x}^{\ast}\right)=0$<br>$\mu_{k} \geq 0$<br>$\mu_{k} g_{k}\left(\mathrm{x}^{\ast}\right)=0$<br>$h_{j}\left(\mathrm{x}^{\ast}\right)=0$<br>$g_{k}\left(\mathrm{x}^{\ast}\right) \leq 0$</p>
-
+        <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>学机器学习，学着学着就学偏了，就学着写爬虫了，目的主要是一熟悉下python，二解决自己某需求，这篇文章主要是解决需求写的代码中的主要部分——针对某一微信公众号的爬虫，当然除了学会了简单的爬虫，也运用了之前学习的很多知识，学有所用真的是一件非常开心的事情。</p>
+<h5 id="本篇目标"><a href="#本篇目标" class="headerlink" title="本篇目标"></a>本篇目标</h5><blockquote>
+<ol>
+<li>根据微信公众号在Sogou微信搜索，提取微信公众号链接 </li>
+<li>进入微信公众号界面，获取最近十篇微信文章链接</li>
+<li>根据微信文章链接，解析网页，爬取所需文章内容</li>
+</ol>
+</blockquote>
+<p>因为微信的反爬虫措施很多，每篇文章以及微信公众号的链接都是临时链接（从链接中包含timestamp字段可知）所以要另想办法，其中一种方法就是从Sogou微信搜索界面开始进行。</p>
+<h5 id="1-确定URL"><a href="#1-确定URL" class="headerlink" title="1. 确定URL"></a>1. 确定URL</h5><p>直接在Sogou微信界面输入要搜索的微信公众号的具体名称，展示的第一条应该就是需要寻找的微信公众号，选取此时的url，例如：（已经输入搜索关键词）<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://weixin.sogou.com/weixin?type=1&amp;s_from=input&amp;query=%E5%B8%96%E6%9C%A8%E8%AE%B0&amp;ie=utf8&amp;_sug_=n&amp;_sug_type_=</span><br></pre></td></tr></table></figure></p>
+<h5 id="2-提取微信公众号的链接"><a href="#2-提取微信公众号的链接" class="headerlink" title="2. 提取微信公众号的链接"></a>2. 提取微信公众号的链接</h5><p>搜狗微信搜索出来的文章链接均为微信的临时链接，通过客户端查看的文章链接均为永久链接，所以只能从搜狗微信搜索界面进入。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 网页有反爬虫机制，这里需要换上浏览器的headers</span></span><br><span class="line">headers = &#123; </span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">begin_url = <span class="string">'https://weixin.sogou.com/weixin?type=1&amp;s_from=input&amp;query=%E5%B8%96%E6%9C%A8%E8%AE%B0&amp;ie=utf8&amp;_sug_=n&amp;_sug_type_='</span></span><br><span class="line">chrome_driver = <span class="string">'E:\chromedriver_win32\chromedriver.exe'</span><span class="comment"># 需要下载浏览器合适版本的driver</span></span><br><span class="line">browser = webdriver.Chrome(executable_path=chrome_driver)</span><br><span class="line">browser.get(begin_url)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过selenium用chrome模拟点击链接</span></span><br><span class="line">element = browser.find_element_by_link_text(<span class="string">"帖木记"</span>)</span><br><span class="line">element.click()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前窗口的url，即微信公众号的链接</span></span><br><span class="line">browser.switch_to.window(browser.window_handles[<span class="number">1</span>])</span><br><span class="line">now_url = browser.current_url</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-获取微信文章的链接"><a href="#3-获取微信文章的链接" class="headerlink" title="3. 获取微信文章的链接"></a>3. 获取微信文章的链接</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取文章id, 比如最近一天发的文章id为WXAPPMSG1000000013</span></span><br><span class="line"><span class="comment"># 这里网页动态加载需要用selenium获取链接信息</span></span><br><span class="line"><span class="comment"># 需要获取十篇只需要加个for循环对id_inc递减即可</span></span><br><span class="line">id_inc = <span class="number">0</span></span><br><span class="line">start_id = <span class="number">1000000013</span> + id_inc</span><br><span class="line">true_id = <span class="string">"WXAPPMSG"</span> + str(start_id)</span><br><span class="line">element = browser.find_element_by_id(true_id)</span><br><span class="line">content = element.get_attribute(<span class="string">'innerHTML'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 无法直接获取链接，通过字符串切片获取文章的临时链接</span></span><br><span class="line"><span class="comment"># 这种切片方式只获取了每天的第一条图文消息的链接</span></span><br><span class="line">str1 = <span class="string">'hrefs="'</span></span><br><span class="line">right_url = content.partition(str1)[<span class="number">2</span>]</span><br><span class="line">str2 = <span class="string">'"&gt;&lt;/span&gt;'</span></span><br><span class="line">right_url = right_url.partition(str2)[<span class="number">0</span>]</span><br><span class="line">right_url = right_url.replace(<span class="string">'amp;'</span>, <span class="string">''</span>) <span class="comment"># 去除多余字符</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 前后合并形成一个完整的url</span></span><br><span class="line">left_url = <span class="string">'https://mp.weixin.qq.com'</span></span><br><span class="line">url = left_url + right_url</span><br><span class="line">print(url)</span><br></pre></td></tr></table></figure>
+<h5 id="4-爬取微信文章的内容"><a href="#4-爬取微信文章的内容" class="headerlink" title="4. 爬取微信文章的内容"></a>4. 爬取微信文章的内容</h5><p>临时链接直接在浏览器中浏览不显示阅读数以及点赞数，所以只能获取文章的内容，数据需要想其他办法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用requests获取网页</span></span><br><span class="line">req = requests.get(url=url, headers=headers)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用BeautifulSoup解析网页</span></span><br><span class="line">soup = BeautifulSoup(req.text, <span class="string">"html.parser"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取文章标题</span></span><br><span class="line">title = soup.h2.string.strip()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取文章内容</span></span><br><span class="line">contents = soup.find_all(<span class="string">'p'</span>) <span class="comment"># 等价于soup('p')</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'data.txt'</span>, <span class="string">"w+"</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(title)</span><br><span class="line">    <span class="keyword">for</span> content <span class="keyword">in</span> contents:</span><br><span class="line">        fp.write(content.text + <span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="5-小结"><a href="#5-小结" class="headerlink" title="5. 小结"></a>5. 小结</h5><p>显然上面的代码显然可以优化的，主要是通过爬取微信文章用到了很多python库及技巧，比如：requests库，bs4库，selenium库和re正则表达式，字符串的处理，也包括验证码的识别，因为pytesseract识别率太低，自己又懒得去训练，也没必要花费选择现成的打码平台，所以就选择绕过验证码识别。当然最开心的是自己的小需求目前可以正常运行。</p>
+<h5 id="6-完整代码"><a href="#6-完整代码" class="headerlink" title="6. 完整代码"></a>6. 完整代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 网页有反爬虫机制，这里需要换上浏览器的headers</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">begin_url = <span class="string">'https://weixin.sogou.com/weixin?type=1&amp;s_from=input&amp;query=%E5%B8%96%E6%9C%A8%E8%AE%B0&amp;ie=utf8&amp;_sug_=n&amp;_sug_type_='</span></span><br><span class="line">chrome_driver = <span class="string">'E:\chromedriver_win32\chromedriver.exe'</span> <span class="comment"># 需要下载浏览器合适版本的driver</span></span><br><span class="line">browser = webdriver.Chrome(executable_path=chrome_driver)</span><br><span class="line">browser.get(begin_url)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用selenium用chrome模拟点击链接</span></span><br><span class="line">element = browser.find_element_by_link_text(<span class="string">"帖木记"</span>)</span><br><span class="line">element.click()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前窗口的url，即微信公众号的临时链接</span></span><br><span class="line">browser.switch_to.window(browser.window_handles[<span class="number">1</span>])</span><br><span class="line">now_url = browser.current_url</span><br><span class="line"></span><br><span class="line">sleep(<span class="number">1</span>) <span class="comment"># 停一秒</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取文章id, 比如最近一天发的文章id为WXAPPMSG1000000013</span></span><br><span class="line"><span class="comment"># 这里网页动态加载需要用selenium获取链接信息</span></span><br><span class="line">id_inc = <span class="number">0</span></span><br><span class="line">start_id = <span class="number">1000000013</span> + id_inc</span><br><span class="line">true_id = <span class="string">"WXAPPMSG"</span> + str(start_id)</span><br><span class="line">element = browser.find_element_by_id(true_id)</span><br><span class="line">content = element.get_attribute(<span class="string">'innerHTML'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 无法直接获取链接，通过字符串切片获取文章的临时链接</span></span><br><span class="line"><span class="comment"># 这种切片方式只获取了每天的第一条图文消息的链接</span></span><br><span class="line">str1 = <span class="string">'hrefs="'</span></span><br><span class="line">right_url = content.partition(str1)[<span class="number">2</span>]</span><br><span class="line">str2 = <span class="string">'"&gt;&lt;/span&gt;'</span></span><br><span class="line">right_url = right_url.partition(str2)[<span class="number">0</span>]</span><br><span class="line">right_url = right_url.replace(<span class="string">'amp;'</span>, <span class="string">''</span>) <span class="comment"># 去除多余字符</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 前后合并形成一个完整的url</span></span><br><span class="line">left_url = <span class="string">'https://mp.weixin.qq.com'</span></span><br><span class="line">url = left_url + right_url</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用requests获取网页</span></span><br><span class="line">req = requests.get(url=url, headers=headers)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用BeautifulSoup解析网页</span></span><br><span class="line">soup = BeautifulSoup(req.text, <span class="string">"html.parser"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文章标题获取</span></span><br><span class="line">title = soup.h2.string.strip()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文章内容获取</span></span><br><span class="line">contents = soup.find_all(<span class="string">'p'</span>) <span class="comment"># 等价于soup('p')</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'data.txt'</span>, <span class="string">"w+"</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    fp.write(title)</span><br><span class="line">    <span class="keyword">for</span> content <span class="keyword">in</span> contents:</span><br><span class="line">        fp.write(content.text + <span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -673,11 +484,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"> <i class="fa fa-tag"></i> 机器学习</a>
+            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
           
-            <a href="/tags/基础/" rel="tag"> <i class="fa fa-tag"></i> 基础</a>
-          
-            <a href="/tags/学习笔记/" rel="tag"> <i class="fa fa-tag"></i> 学习笔记</a>
+            <a href="/tags/爬虫实战/" rel="tag"> <i class="fa fa-tag"></i> 爬虫实战</a>
           
         </div>
       
@@ -690,8 +499,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/第二周 Logistic回归、SVM.html" rel="next" title="第二周 Logistic回归、SVM">
-                <i class="fa fa-chevron-left"></i> 第二周 Logistic回归、SVM
+              <a href="/2019/05/16/向量，矩阵求导/" rel="next" title="向量，矩阵求导">
+                <i class="fa fa-chevron-left"></i> 向量，矩阵求导
               </a>
             
           </div>
@@ -700,8 +509,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/C&C++梳理补缺.html" rel="prev" title="C/C++梳理补缺">
-                C/C++梳理补缺 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/20/卡特兰大数（Catalan大数）/" rel="prev" title="卡特兰大数（Catalan大数）">
+                卡特兰大数（Catalan大数） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -856,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#微积分"><span class="nav-number">2.</span> <span class="nav-text">微积分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线性代数"><span class="nav-number">3.</span> <span class="nav-text">线性代数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#概率论"><span class="nav-number">4.</span> <span class="nav-text">概率论</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#最优化方法"><span class="nav-number">5.</span> <span class="nav-text">最优化方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#本篇目标"><span class="nav-number">2.</span> <span class="nav-text">本篇目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-确定URL"><span class="nav-number">3.</span> <span class="nav-text">1. 确定URL</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-提取微信公众号的链接"><span class="nav-number">4.</span> <span class="nav-text">2. 提取微信公众号的链接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-获取微信文章的链接"><span class="nav-number">5.</span> <span class="nav-text">3. 获取微信文章的链接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-爬取微信文章的内容"><span class="nav-number">6.</span> <span class="nav-text">4. 爬取微信文章的内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-小结"><span class="nav-number">7.</span> <span class="nav-text">5. 小结</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-完整代码"><span class="nav-number">8.</span> <span class="nav-text">6. 完整代码</span></a></li></ol></div>
             
 
           </div>

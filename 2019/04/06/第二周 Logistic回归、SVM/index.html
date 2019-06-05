@@ -92,17 +92,17 @@
 <meta name="keywords" content="学习笔记,人工智能,Logistic回归,SVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第二周 Logistic回归、SVM">
-<meta property="og:url" content="http://www.minhzou.top/第二周 Logistic回归、SVM.html">
+<meta property="og:url" content="http://minhzou.top/2019/04/06/第二周 Logistic回归、SVM/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
 <meta property="og:description" content="1、Logistic回归基本原理 分类 给定训练数据$D =\{\mathbf x_i, y_i\}^N_{i=1}$，分类任务学习一个从输入x到输出y的映射f ：$\hat y = f(\mathbf x) = \underset{c}{arg\ max}\ p(y = c \mid \mathbf x, D)$ 其中y为离散值，其取值范围称为标签空间:$Y =\{1,2,…,C\}$ 当C=2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.minhzou.top/第二周%20Logistic回归、SVM/ROC曲线.png">
-<meta property="og:image" content="http://www.minhzou.top/第二周%20Logistic回归、SVM/PR曲线.png">
+<meta property="og:image" content="http://minhzou.top/2019/04/06/第二周%20Logistic回归、SVM/ROC曲线.png">
+<meta property="og:image" content="http://minhzou.top/2019/04/06/第二周%20Logistic回归、SVM/PR曲线.png">
 <meta property="og:updated_time" content="2019-04-13T09:12:47.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第二周 Logistic回归、SVM">
 <meta name="twitter:description" content="1、Logistic回归基本原理 分类 给定训练数据$D =\{\mathbf x_i, y_i\}^N_{i=1}$，分类任务学习一个从输入x到输出y的映射f ：$\hat y = f(\mathbf x) = \underset{c}{arg\ max}\ p(y = c \mid \mathbf x, D)$ 其中y为离散值，其取值范围称为标签空间:$Y =\{1,2,…,C\}$ 当C=2">
-<meta name="twitter:image" content="http://www.minhzou.top/第二周%20Logistic回归、SVM/ROC曲线.png">
+<meta name="twitter:image" content="http://minhzou.top/2019/04/06/第二周%20Logistic回归、SVM/ROC曲线.png">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://www.minhzou.top/第二周 Logistic回归、SVM.html">
+  <link rel="canonical" href="http://minhzou.top/2019/04/06/第二周 Logistic回归、SVM/">
 
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.minhzou.top/第二周 Logistic回归、SVM.html">
+    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/04/06/第二周 Logistic回归、SVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minh">
@@ -381,8 +381,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/第二周 Logistic回归、SVM.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/第二周 Logistic回归、SVM.html" itemprop="commentCount"></span>
+                <a href="/2019/04/06/第二周 Logistic回归、SVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/06/第二周 Logistic回归、SVM/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1010,7 +1010,7 @@
 <li>TPR - true positive rate, sensitivity, recall, hit rate 预测结果召回了多少真正的真样本</li>
 <li>FPR – False positive rate, false alarm, fallout 预测结果将多少假的样本预测预测成了真</li>
 <li>下面我们讨论给定阈值τ的TPR和FPR</li>
-<li>如果不是只考虑一个阈值，而是在一些列阈值上运行检测器，并画出TPR和FPR为阈值τ的隐式函数，得到ROC曲线。<br><img src="/第二周 Logistic回归、SVM/ROC曲线.png" alt="ROC曲线"><ul>
+<li>如果不是只考虑一个阈值，而是在一些列阈值上运行检测器，并画出TPR和FPR为阈值τ的隐式函数，得到ROC曲线。<br><img src="/2019/04/06/第二周 Logistic回归、SVM/ROC曲线.png" alt="ROC曲线"><ul>
 <li>$T P R=\frac{T P}{N_{+}}$</li>
 <li>$F P R=\frac{F P}{N_{-}}$</li>
 </ul>
@@ -1095,7 +1095,7 @@
 <li>Precision and Recall (PR曲线)<ul>
 <li>阈值变化时的P和R</li>
 <li>Precsion $=T P / \hat{N}_{+}$ ：检测结果真正为正的比例</li>
-<li>$\mathrm{Recall}=T P / N_{+}$：被正确检测到的正样本的比例<br><img src="/第二周 Logistic回归、SVM/PR曲线.png" alt="PR曲线"></li>
+<li>$\mathrm{Recall}=T P / N_{+}$：被正确检测到的正样本的比例<br><img src="/2019/04/06/第二周 Logistic回归、SVM/PR曲线.png" alt="PR曲线"></li>
 </ul>
 </li>
 </ul>
@@ -1405,7 +1405,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Hexo搭建博客.html" rel="next" title="Hexo + GitHub Pages + Next在windows下搭建个人博客">
+              <a href="/2019/04/01/Hexo搭建博客/" rel="next" title="Hexo + GitHub Pages + Next在windows下搭建个人博客">
                 <i class="fa fa-chevron-left"></i> Hexo + GitHub Pages + Next在windows下搭建个人博客
               </a>
             
@@ -1415,7 +1415,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/机器学习的数学基础.html" rel="prev" title="机器学习的数学基础">
+              <a href="/2019/04/14/机器学习的数学基础/" rel="prev" title="机器学习的数学基础">
                 机器学习的数学基础 <i class="fa fa-chevron-right"></i>
               </a>
             
