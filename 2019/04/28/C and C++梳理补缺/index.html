@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C/C++,学习笔记,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Minh's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="1. 标准名字空间 &amp;amp; C++标准输入输出流 标准名字空间  cout是标准名字空间std的一个名字。必须加上名字空间限定 std::  std::cout 例如不同班级都可能有同名的学生，如“张伟”计科::张伟    机械::张伟 也可以用：using std::cout using namespace std   C++标准输入输出流  cout 是一个标准输出流变量（对象），代表控制">
+<meta name="keywords" content="C&#x2F;C++,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&#x2F;C++梳理补缺">
+<meta property="og:url" content="http://minhzou.top/2019/04/28/C and C++梳理补缺/index.html">
+<meta property="og:site_name" content="Minh&#39;s Blog">
+<meta property="og:description" content="1. 标准名字空间 &amp;amp; C++标准输入输出流 标准名字空间  cout是标准名字空间std的一个名字。必须加上名字空间限定 std::  std::cout 例如不同班级都可能有同名的学生，如“张伟”计科::张伟    机械::张伟 也可以用：using std::cout using namespace std   C++标准输入输出流  cout 是一个标准输出流变量（对象），代表控制">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-14T15:36:11.123Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C&#x2F;C++梳理补缺">
+<meta name="twitter:description" content="1. 标准名字空间 &amp;amp; C++标准输入输出流 标准名字空间  cout是标准名字空间std的一个名字。必须加上名字空间限定 std::  std::cout 例如不同班级都可能有同名的学生，如“张伟”计科::张伟    机械::张伟 也可以用：using std::cout using namespace std   C++标准输入输出流  cout 是一个标准输出流变量（对象），代表控制">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://minhzou.top/2019/04/28/C and C++梳理补缺/">
+
+
+
+
+
+  <title>C/C++梳理补缺 | Minh's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/minhzou" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Minh's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">成长的路上每一步都算数</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/04/28/C and C++梳理补缺/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minh">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minh's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C/C++梳理补缺</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-28T17:33:55+08:00">
+                2019-04-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-14T23:36:11+08:00">
+                2019-05-14
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/28/C and C++梳理补缺/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/28/C and C++梳理补缺/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.9k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  24 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="1-标准名字空间-amp-C-标准输入输出流"><a href="#1-标准名字空间-amp-C-标准输入输出流" class="headerlink" title="1. 标准名字空间 &amp; C++标准输入输出流"></a>1. 标准名字空间 &amp; C++标准输入输出流</h5><ul>
+<li><p>标准名字空间</p>
+<ul>
+<li>cout是标准名字空间std的一个名字。必须加上<strong>名字空间限定</strong> std::<br>  std::cout</li>
+<li>例如不同班级都可能有同名的学生，如“张伟”<br>计科::张伟    机械::张伟</li>
+<li>也可以用：using std::cout</li>
+<li>using namespace std</li>
+</ul>
+</li>
+<li><p>C++标准输入输出流</p>
+<ul>
+<li>cout 是一个标准输出流变量（对象），代表控制台窗口</li>
+<li>&lt;&lt;是一个运算符，假如o是一个输出流对象，x是一个数据， o&lt;&lt; x  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt; //文件输入输出 </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="function">ofstream <span class="title">oF</span><span class="params">(<span class="string">"1.txt"</span>)</span></span>;</span><br><span class="line">	oF &lt;&lt; <span class="number">3.14</span> &lt;&lt;<span class="string">" "</span>&lt;&lt; <span class="string">"hello world\n"</span>;</span><br><span class="line">	oF.close();</span><br><span class="line">	<span class="function">ifstream <span class="title">iF</span><span class="params">(<span class="string">"1.txt"</span>)</span></span>;</span><br><span class="line">	<span class="keyword">double</span> d;</span><br><span class="line">	<span class="built_in">string</span> str;</span><br><span class="line">	iF &gt;&gt; d &gt;&gt; str;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;d&lt;&lt;<span class="string">" "</span>&lt;&lt; str&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-引用变量和引用参数"><a href="#2-引用变量和引用参数" class="headerlink" title="2. 引用变量和引用参数"></a>2. 引用变量和引用参数</h5><ul>
+<li><p>引用变量</p>
+<ul>
+<li>引用变量是其他变量的别名。如同一个人的外号或小名</li>
+<li>既然是引用，定义引用变量时就必须指明其引用的是哪个变量<br>int a = 3;<br>int &amp;r = a;</li>
+<li>引用变量“从一而终”， 一旦定义就不能再引用其他变量<br>int &amp;r=a;<br>int &amp;r = b; //错</li>
+<li>引用变量和被引用的变量类型必须匹配<br>double d;<br>int &amp;r = d;</li>
+<li>对引用变量的操作就是对它引用的变量的操作  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">3</span>, &amp;r = a;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">'\t'</span> &lt;&lt; r&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	r = <span class="number">5</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">'\t'</span> &lt;&lt; r &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>函数的值形参</p>
+<ul>
+<li><p>C函数的形参都是值参数，形参作为函数的局部变量有自己单独的内存块，当函数调用时，实参将值拷贝（赋值给）形参。对形参的修改不会影响实参</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">'\t'</span> &lt;&lt; y&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">int</span> t = x;</span><br><span class="line">	x = y;</span><br><span class="line">	y = t;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">'\t'</span> &lt;&lt; y&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">3</span>, b = <span class="number">4</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">'\t'</span> &lt;&lt; b&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	swap(a,b);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">'\t'</span> &lt;&lt; b &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数的值形参：传递指针</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *x, <span class="keyword">int</span> *y)</span></span>&#123; <span class="comment">//指针 x, y </span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">'\t'</span> &lt;&lt; y&lt;&lt; <span class="built_in">endl</span>; <span class="comment">//输出的是a，b的地址 </span></span><br><span class="line">	<span class="keyword">int</span> t = *x; <span class="comment">// 取x指针指向的值赋值给t </span></span><br><span class="line">	*x = *y; <span class="comment">// 同理 </span></span><br><span class="line">	*y = t; <span class="comment">// 同理 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">3</span>, b = <span class="number">4</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">'\t'</span> &lt;&lt; b&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	swap(&amp;a,&amp;b); <span class="comment">// &amp;取地址 a, b地址 传给x，y </span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">'\t'</span> &lt;&lt; b &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数的引用形参：引用实参</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span></span>&#123;  <span class="comment">// &amp;引用变量 </span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">'\t'</span> &lt;&lt; y&lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">	<span class="keyword">int</span> t = x; </span><br><span class="line">	x = y; </span><br><span class="line">	y = t; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">3</span>, b = <span class="number">4</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">'\t'</span> &lt;&lt; b&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	swap(a,b); </span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">'\t'</span> &lt;&lt; b &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-函数的默认形参、函数重载"><a href="#3-函数的默认形参、函数重载" class="headerlink" title="3. 函数的默认形参、函数重载"></a>3. 函数的默认形参、函数重载</h5><ul>
+<li>函数的形参可以有默认值<br>void print(char ch, int n = 1)</li>
+<li><p>默认形参必须在非默认形参右边，即一律靠右<br>add(x = 1, y, z = 3); // 错<br>add(y, x = 1, z = 3); // OK</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">char</span> ch, <span class="keyword">int</span> n = <span class="number">1</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ch;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	print(<span class="string">'*'</span>); <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	print(<span class="string">'*'</span>,<span class="number">3</span>); <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	print(<span class="string">'*'</span>,<span class="number">5</span>); <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y=<span class="number">2</span>,<span class="keyword">int</span> z=<span class="number">3</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y + z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add(<span class="number">5</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add(<span class="number">5</span>,<span class="number">7</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add(<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数重载</p>
+<ul>
+<li>C++允许同一作用域里有同名的函数，只要他们的形参不同。如：<br>int add(int x, int y);<br>double add(double x, double y);</li>
+<li>函数名和形参列表构造了<strong>函数的签名</strong></li>
+<li><p>函数重载不能根据返回类型区分函数。如<br>int add(int x, int y);<br>double add(int x, int y);</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y = <span class="number">2</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y = <span class="number">2.0</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add(<span class="number">5</span>,<span class="number">3</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add(<span class="number">5.3</span>, <span class="number">7.8</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add((<span class="keyword">double</span>)<span class="number">5</span>, <span class="number">7.8</span>) &lt;&lt; <span class="built_in">endl</span>;<span class="comment">//歧义性加double强制转换 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-函数模板"><a href="#4-函数模板" class="headerlink" title="4. 函数模板"></a>4. 函数模板</h5><ul>
+<li><p>函数模板</p>
+<ul>
+<li>通用算法：函数模板。也称为泛型算法</li>
+<li><p>用template关键字增加一个模板头，将数据类型变成<strong>类型模板参数</strong></p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">	<span class="function">T <span class="title">add</span><span class="params">(T x, T y)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x + y;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给模板参数传递实际的模板参数</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; add&lt;<span class="keyword">int</span>&gt;(<span class="number">5</span>, <span class="number">3</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; add&lt;<span class="keyword">double</span>&gt;(<span class="number">5.3</span>, <span class="number">7.8</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>函数模板实例化</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">	<span class="function">T <span class="title">add</span><span class="params">(T x, T y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 1</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add&lt;<span class="keyword">int</span>&gt;(<span class="number">5</span>, <span class="number">3</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add&lt;<span class="keyword">double</span>&gt;(<span class="number">5.3</span>, <span class="number">7.8</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add&lt;<span class="keyword">int</span>&gt;(<span class="number">4</span>, <span class="number">6</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add&lt;<span class="built_in">string</span>&gt;(<span class="string">"hello"</span>, <span class="string">"world"</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add(<span class="number">5</span>, <span class="number">3</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; add(<span class="number">5.3</span>, <span class="number">7.8</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模板参数自动推断</p>
+</li>
+</ul>
+<h5 id="5-用户自定义类型string和vector"><a href="#5-用户自定义类型string和vector" class="headerlink" title="5. 用户自定义类型string和vector"></a>5. 用户自定义类型string和vector</h5><ul>
+<li><p>string</p>
+<ul>
+<li>是一个用户定义类型，表示的是符串。<br>string s = “hello”, s2(“world”);</li>
+<li>用成员访问运算符.访问string类的成员<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; s.size() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">string</span> s3 = s.substr(<span class="number">1</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>内在的数组（静态数组）</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> arr[] = &#123; <span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span> &#125;; <span class="comment">//大小固定，以后不能添加更多int值</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="string">'\t'</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>vector</p>
+<ul>
+<li>向量，类似于数组，但可以动态增长。头文件  &lt;vector&gt; </li>
+<li>是一个类模板，实例化产生一个类，如vector&lt;int&gt; 产生一个数据元素是int的vector&lt;int&gt; 类（向量）。</li>
+<li>同样，可以通过vector&lt;int&gt; 类对象去访问其他成员，如成员函数。</li>
+<li>同样可以用运算符进行一些运算。</li>
+</ul>
+</li>
+</ul>
+<h5 id="6-指针和动态内存分配"><a href="#6-指针和动态内存分配" class="headerlink" title="6. 指针和动态内存分配"></a>6. 指针和动态内存分配</h5><ul>
+<li><p>指针</p>
+<ul>
+<li>指针就是地址，变量的指针就是变量的地址。可以用 <strong>取值地址符&amp;</strong> 获得一个变量的地址。如： &amp;var</li>
+<li>指针变量就是存储指针（地址）的变量。如：<br>T *p; //p是存储 “T类型变量的地址”的变量</li>
+<li><p>通过<strong>取内容运算符</strong> *可以得到一个指针变量指向的变量。<br>*p就是p指向的那个变量</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">指针就是地址，变量的指针就是变量的地址</span></span><br><span class="line"><span class="comment">指针变量就是存储指针（地址）的变量</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">3</span>;</span><br><span class="line">	<span class="keyword">int</span> *p = &amp;a; <span class="comment">//取地址运算符&amp;用于获得a的地址：&amp;a</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="string">'\t'</span> &lt;&lt; &amp;a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">//取内容运算符*用于获得指针指向的变量(内存块)</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="string">'\t'</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//*p就是a</span></span><br><span class="line">	*p = <span class="number">5</span>; <span class="comment">//即a = 5;</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="string">'\t'</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line">	<span class="keyword">int</span> *q = p; <span class="comment">//q和p值相同，都是a的地址(指针)</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="string">'\t'</span> &lt;&lt; *q &lt;&lt; <span class="string">'\t'</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">char</span> *s = &amp;a; <span class="comment">//int *</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">用指针访问数组元素</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> arr[] = &#123; <span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span> &#125;;</span><br><span class="line">	<span class="keyword">int</span> *p = arr;<span class="comment">//数组名就是数组第一个元素的地址，即arr等于&amp;(arr[0])</span></span><br><span class="line">	<span class="comment">// p[i]就是*(p+i)</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; *(p + <span class="number">2</span>) &lt;&lt; <span class="string">'\t'</span> &lt;&lt; p[<span class="number">2</span>] &lt;&lt; <span class="string">'\t'</span> &lt;&lt; arr[<span class="number">2</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> *q = p + <span class="number">4</span>; p &lt; q; p++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="string">'\t'</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>动态内存分配</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> *s =  (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">10</span>*<span class="keyword">sizeof</span>(s)); <span class="comment">// char *s 指针， （char *）指针类型， sizeof s用内存大小</span></span><br><span class="line">	s = <span class="string">"hello"</span>; </span><br><span class="line">	<span class="built_in">puts</span>(s); </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">malloc free realloc</span></span><br><span class="line"><span class="comment">	动态内存分配：new用于申请内存块、delete用于释放内存块</span></span><br><span class="line"><span class="comment">	T *p = new T;</span></span><br><span class="line"><span class="comment">	delete p;</span></span><br><span class="line"><span class="comment">	T *q = new T[5];</span></span><br><span class="line"><span class="comment">	delete[] q;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 1 </span></span><br><span class="line"><span class="comment">// 堆存储区</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>; <span class="comment">//malloc</span></span><br><span class="line">	*p = <span class="number">3</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="string">'\t'</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">delete</span> p; <span class="comment">//如果没有这行，内存泄漏</span></span><br><span class="line">	p = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">	*p = <span class="number">5</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="string">'\t'</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">delete</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		p[i] = <span class="number">2</span> * i + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> *q = p + n; p &lt; q; p++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="string">'\t'</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">	<span class="keyword">char</span> *s = (<span class="keyword">char</span> *)p;</span><br><span class="line">	<span class="keyword">char</span> ch = <span class="string">'A'</span>;</span><br><span class="line">	<span class="keyword">int</span> n2 = n * <span class="keyword">sizeof</span>(<span class="keyword">int</span>) / <span class="keyword">sizeof</span>(<span class="keyword">char</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n2; i++)</span><br><span class="line">		s[i] = ch + i;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">char</span> *r = s+n2; s &lt; r; s++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; *s;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">	<span class="keyword">delete</span>[] p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h5 id="7-类和对象"><a href="#7-类和对象" class="headerlink" title="7. 类和对象"></a>7. 类和对象</h5><ul>
+<li>面向对象编程<ul>
+<li>传统的过程式编程：变量（对象）就是一些存储数据的内存块，而过程（函数）对这些数据进行处理。</li>
+<li>面向对象编程：程序是由不同种类的许多对象相互协作完成的。对象之间通过发送/接收消息来协作完成各种任务。由这些对象构成的程序也称为“对象式系统”。</li>
+<li>面向对象设计<ul>
+<li>人驾驶车：设计对象“人”和“车”</li>
+<li>从具有共同特征的许多抽象出某种概念，如“人”，“车”</li>
+<li>某些概念之间可能存在某种关系<ul>
+<li>组合（包含）关系</li>
+<li>继承和派生关系</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>不同思考方式：面向对象编程 vs 过程式编程<ul>
+<li>过程式编程：用内在类型（概念）如int、double表示数据，用面向这些机器类型的概念去解决复杂问题，不易于思考问题</li>
+<li>面向对象编程：用现实世界中的概念（人、车、地图）来思考问题。更自然、更易于理解、易于查错、易于组装（组件式开发） </li>
+</ul>
+</li>
+<li>C++的面向对象特性：用户定义类型<ul>
+<li>程序员定义自己的“用户定义类型” 如类类型，来表示各种应用问题中的各种概念</li>
+<li>C++ 标准库已经提供了很多实用的“用户定义类型”， 是C++标准库的程序员实现的<ul>
+<li>cout是一个ostream类的对象（变量），cin是一个istream的对象（变量）。可以向它们发送消息：<br>cout &lt;&lt; “hello world”;</li>
+<li>string是一个表示字符串的类。向一个string对象发送一个size()消息，查询该对象包含的字符数目<br>string str = “hello world”; cout &lt;&lt; str.size();</li>
+</ul>
+</li>
+<li>一个用户定义类型包括：<ul>
+<li>有哪些属性？</li>
+<li>有哪些操作（运算）？</li>
+<li>不同属性或操作的访问权限？哪些是（类）外部可以访问？哪些是仅仅内部才能访问的？</li>
+</ul>
+</li>
+<li>面向对象设计要考虑多个用户定义类型的关系<ul>
+<li>不同类型的对象之间是继承还是包含关系？</li>
+</ul>
+</li>
+<li>程序：哪些具体对象如何进行交互协作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>类和对象<ul>
+<li>用struct或class关键字定义一个类。定义的类就是一个数据类型。<br>struct student{<br>  string name;<br>  double score;<br>} ;</li>
+<li>类类型的变量通常称为对象。如：<br>student stu;  对象就是类的一个实例</li>
+<li>成员访问运算符<ul>
+<li>访问类对象的成员<br>stu.name = “LiPing”;<br>stu.score = 78.5;</li>
+</ul>
+</li>
+<li>对象数组<ul>
+<li>和内在一样，可以定义类类型的数组。存储一组类对象。</li>
+</ul>
+</li>
+<li>类类型的指针变量<ul>
+<li>T是一个类类型，则T *就是T指针类型。如int *是int指针类型。</li>
+<li>T *变量可以指向一个类对象。<br>student stu;<br>student *p = &stu;<br>student students[3];<br>p = students + 2;</li>
+</ul>
+</li>
+<li>间接访问运算符-&gt;、取内容运算符*<br>student stu;<br>student <em>p = &stu;<br>(\</em>p).name = “LiPing”; //*p就是p指向的变量stu<br>p-&gt;score = 78; // p指向的类对象的成员score</li>
+<li>指向可以指向动态分配的对象</li>
+<li>类的成员函数</li>
+<li>类体外定义成员函数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">输入一组学生成绩(姓名和分数)，输出：平均成绩、最高分和最低分。</span></span><br><span class="line"><span class="comment">当然，也要能输出所有学生信息</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span>&#123;</span></span><br><span class="line">	<span class="built_in">string</span> name;</span><br><span class="line">	<span class="keyword">double</span> score;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">void</span> student::print() &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; name &lt;&lt; <span class="string">" "</span> &lt;&lt; score &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0 </span></span><br><span class="line">	student stu;</span><br><span class="line">	stu.name = <span class="string">"Li Ping"</span>;</span><br><span class="line">	stu.score = <span class="number">78.5</span>;</span><br><span class="line">	stu.print();</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">	<span class="built_in">vector</span>&lt;student&gt; students;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">		student stu;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入姓名 分数:\n"</span>;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; stu.name &gt;&gt; stu.score;</span><br><span class="line">		<span class="keyword">if</span> (stu.score &lt; <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">		students.push_back(stu);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; students.size(); i++)</span><br><span class="line">		students[i].print();</span><br><span class="line">	<span class="keyword">double</span> min = <span class="number">100</span>, max=<span class="number">0</span>, average = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; students.size(); i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (students[i].score &lt; min) min = students[i].score;</span><br><span class="line">		<span class="keyword">if</span> (students[i].score &gt; max) max = students[i].score;</span><br><span class="line">		average += students[i].score;</span><br><span class="line">	&#125;</span><br><span class="line">	average /= students.size();</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"平均分、最高分、最低分："</span>&lt;&lt; average &lt;&lt; <span class="string">" "</span> &lt;&lt; max &lt;&lt; <span class="string">" "</span> &lt;&lt; min &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="8-this指针，-访问控制，构造函数"><a href="#8-this指针，-访问控制，构造函数" class="headerlink" title="8. this指针， 访问控制，构造函数"></a>8. this指针， 访问控制，构造函数</h5><ul>
+<li><p>this指针</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">this指针: 成员函数实际上隐含一个this指针。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> &#123;</span></span><br><span class="line">	<span class="built_in">string</span> name;</span><br><span class="line">	<span class="keyword">double</span> score;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="string">" "</span> &lt;&lt; <span class="keyword">this</span>-&gt;score &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	student stu;</span><br><span class="line">	stu.name = <span class="string">"Li Ping"</span>;</span><br><span class="line">	stu.score = <span class="number">78.5</span>;</span><br><span class="line">	stu.print(); <span class="comment">// print(&amp;stu);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问控制</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct和class区别：</span></span><br><span class="line"><span class="comment">struct里的成员默认是public(公开的)</span></span><br><span class="line"><span class="comment">class里的成员默认是private(私有的)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">student</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>: <span class="comment">//接口</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="string">" "</span> &lt;&lt; <span class="keyword">this</span>-&gt;score &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line">	<span class="function"><span class="built_in">string</span> <span class="title">get_name</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> name; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">double</span> <span class="title">get_score</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> score; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">set_name</span><span class="params">(<span class="built_in">string</span> n)</span> </span>&#123; name = n; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">set_score</span><span class="params">(<span class="keyword">double</span> s)</span> </span>&#123; score = s; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="built_in">string</span> name;</span><br><span class="line">	<span class="keyword">double</span> score;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	student stu;</span><br><span class="line"></span><br><span class="line"><span class="comment">// stu.name = "Li Ping";</span></span><br><span class="line"><span class="comment">// stu.score = 78.5;</span></span><br><span class="line">	stu.set_name(<span class="string">"Li Ping"</span>);</span><br><span class="line">	stu.set_score(<span class="number">78.5</span>);</span><br><span class="line">	stu.print(); <span class="comment">// print(&amp;stu);</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; stu.get_name() &lt;&lt; <span class="string">" "</span> &lt;&lt; stu.get_score() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">构造函数： 函数名和类名相同且无返回类型的成员函数。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">student</span>&#123;</span></span><br><span class="line">	<span class="built_in">string</span> name;</span><br><span class="line">	<span class="keyword">double</span> score;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">// student()&#123;&#125; // 默认构造函数 </span></span><br><span class="line">	student()&#123;</span><br><span class="line">		name = <span class="string">"NO"</span>;</span><br><span class="line">		score = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"构造函数\n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	student(<span class="built_in">string</span> n,<span class="keyword">double</span> s)&#123; <span class="comment">//不是默认构造函数</span></span><br><span class="line">		name = n; score = s;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"构造函数\n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="keyword">this</span>-&gt;name &lt;&lt; <span class="string">" "</span> &lt;&lt; <span class="keyword">this</span>-&gt;score &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//student stu;//在创建一个类对象时会自动调用称为“构造函数”的成员函数</span></span><br><span class="line">	<span class="function">student <span class="title">stu</span><span class="params">(<span class="string">"LiPing"</span>,<span class="number">80.5</span>)</span></span>; </span><br><span class="line">	stu.print();</span><br><span class="line">	<span class="comment">//student students[3]; 数组必须有默认构造函数 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="9-运算重载符"><a href="#9-运算重载符" class="headerlink" title="9. 运算重载符"></a>9. 运算重载符</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">运算符重载：针对用户定义类型重新定义运算符函数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">student</span> &#123;</span></span><br><span class="line">	<span class="built_in">string</span> name;</span><br><span class="line">	<span class="keyword">double</span> score;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	student(<span class="built_in">string</span> n, <span class="keyword">double</span> s) &#123;</span><br><span class="line">		name = n; score = s;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//友元函数</span></span><br><span class="line">	<span class="keyword">friend</span> ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream &amp;o, student s);</span><br><span class="line">	<span class="keyword">friend</span> istream&amp; <span class="keyword">operator</span>&gt;&gt;(istream &amp;in, student &amp;s);</span><br><span class="line">&#125;;</span><br><span class="line">ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream &amp;o, student s) &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; s.name &lt;&lt; <span class="string">","</span> &lt;&lt; s.score &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> o;</span><br><span class="line">	&#125;</span><br><span class="line">istream&amp; <span class="keyword">operator</span>&gt;&gt;(istream &amp;in, student &amp;s) &#123;</span><br><span class="line">	in &gt;&gt; s.name &gt;&gt; s.score;</span><br><span class="line">	<span class="keyword">return</span> in;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="function">student <span class="title">stu</span><span class="params">(<span class="string">"LiPing"</span>, <span class="number">80.5</span>)</span></span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; stu; <span class="comment">//operator&gt;&gt;(cin,stu)</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; stu; <span class="comment">//operator&lt;&lt;(cout,stu)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x, y;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">double</span> <span class="keyword">operator</span>[](<span class="keyword">int</span> i) <span class="keyword">const</span>&#123; <span class="comment">//const函数</span></span><br><span class="line">		<span class="keyword">if</span> (i == <span class="number">0</span>) <span class="keyword">return</span> x;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">1</span>) <span class="keyword">return</span> y;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">throw</span> <span class="string">"下标非法!"</span>; <span class="comment">//抛出异常</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">double</span>&amp; <span class="keyword">operator</span>[](<span class="keyword">int</span> i) &#123;</span><br><span class="line">		<span class="keyword">if</span> (i == <span class="number">0</span>) <span class="keyword">return</span> x;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">1</span>) <span class="keyword">return</span> y;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">throw</span> <span class="string">"下标非法!"</span>; <span class="comment">//抛出异常</span></span><br><span class="line">	&#125;</span><br><span class="line">	Point(<span class="keyword">double</span> x_,<span class="keyword">double</span> y_) &#123;</span><br><span class="line">	x = x_; y = y_;</span><br><span class="line">	&#125;</span><br><span class="line">	Point <span class="keyword">operator</span>+(<span class="keyword">const</span> Point q) &#123;</span><br><span class="line">		<span class="keyword">return</span> Point(<span class="keyword">this</span>-&gt;x+q[<span class="number">0</span>],<span class="keyword">this</span>-&gt;y + q[<span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//友元函数</span></span><br><span class="line">	<span class="keyword">friend</span> ostream &amp; <span class="keyword">operator</span>&lt;&lt;(ostream &amp;o, Point p);</span><br><span class="line">	<span class="keyword">friend</span> istream &amp; <span class="keyword">operator</span>&gt;&gt;(istream &amp;i, Point &amp;p);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ostream &amp; <span class="keyword">operator</span>&lt;&lt;(ostream &amp;o, Point p) &#123;</span><br><span class="line">	o &lt;&lt;p.x &lt;&lt; <span class="string">" "</span> &lt;&lt; p.y&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">istream &amp; <span class="keyword">operator</span>&gt;&gt;(istream &amp;i, Point &amp;p) &#123;</span><br><span class="line">	i &gt;&gt; p.x &gt;&gt; p.y;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line">Point <span class="keyword">operator</span>+(<span class="keyword">const</span> Point p,<span class="keyword">const</span> Point q) &#123;</span><br><span class="line">	<span class="keyword">return</span> Point(p[<span class="number">0</span>] + q[<span class="number">0</span>], p[<span class="number">1</span>] + q[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Point p(3.5, 4.8),q(2.0,3.0);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line"><span class="comment">// cin &gt;&gt; p;</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; p;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; p[<span class="number">0</span>] &lt;&lt; <span class="string">"-"</span> &lt;&lt; p[<span class="number">1</span>] &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//p.operator[](0)</span></span><br><span class="line">	p[<span class="number">0</span>] = <span class="number">3.45</span>; p[<span class="number">1</span>] = <span class="number">5.67</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; p;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; p&lt;&lt;q;</span><br><span class="line">	Point s = p + q; <span class="comment">//p.operator+(q) vs operator+(p,q)</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="10-String类、拷贝构造函数、析构函数"><a href="#10-String类、拷贝构造函数、析构函数" class="headerlink" title="10. String类、拷贝构造函数、析构函数"></a>10. String类、拷贝构造函数、析构函数</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span> &#123;</span></span><br><span class="line">	<span class="keyword">char</span> *data; <span class="comment">//C风格的字符串</span></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	~String() &#123; <span class="comment">//析构函数，析构的顺序与创建的相反顺序 </span></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt;n&lt;&lt; <span class="string">" 析构函数\n"</span>;</span><br><span class="line">		<span class="keyword">if</span>(data)</span><br><span class="line">			<span class="keyword">delete</span>[] data;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 1</span></span><br><span class="line">	String(<span class="keyword">const</span> String &amp;s) &#123; <span class="comment">//硬拷贝</span></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"拷贝构造函数\n"</span>;</span><br><span class="line">		data = <span class="keyword">new</span> <span class="keyword">char</span>[s.n + <span class="number">1</span>];</span><br><span class="line">		n = s.n;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">			data[i] = s.data[i];</span><br><span class="line">		data[n] = <span class="string">'\0'</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">	String(<span class="keyword">const</span> <span class="keyword">char</span> *s=<span class="number">0</span>) &#123; <span class="comment">//构造函数 </span></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"构造函数\n"</span>;</span><br><span class="line">		<span class="keyword">if</span> (s == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"s==0\n"</span>;</span><br><span class="line">			data = <span class="number">0</span>; n = <span class="number">0</span>; <span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">char</span> *p = s;</span><br><span class="line">		<span class="keyword">while</span> (*p) p++;</span><br><span class="line">		n = p - s; <span class="comment">//String长 </span></span><br><span class="line">		data = <span class="keyword">new</span> <span class="keyword">char</span>[n + <span class="number">1</span>]; <span class="comment">//分配内存空间 </span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)<span class="comment">//存储String </span></span><br><span class="line">			data[i] = s[i];</span><br><span class="line">		data[n] = <span class="string">'\0'</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> n; &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">char</span> <span class="keyword">operator</span>[](<span class="keyword">int</span> i)<span class="keyword">const</span> &#123; <span class="comment">//下标运算符，不可以修改 </span></span><br><span class="line">		<span class="keyword">if</span> (i&lt;<span class="number">0</span> || i&gt;=n ) <span class="keyword">throw</span> <span class="string">"下标非法"</span>;</span><br><span class="line">		<span class="keyword">return</span> data[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">char</span>&amp; <span class="keyword">operator</span>[](<span class="keyword">int</span> i) &#123; <span class="comment">//下标运算符，可以修改 </span></span><br><span class="line">		<span class="keyword">if</span> (i &lt; <span class="number">0</span> || i &gt;= n) <span class="keyword">throw</span> <span class="string">"下标非法"</span>;</span><br><span class="line">		<span class="keyword">return</span> data[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ostream &amp; <span class="keyword">operator</span>&lt;&lt;(ostream &amp;o, String s) &#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; s[i];</span><br><span class="line">	<span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	String str,str2(<span class="string">"hello world"</span>);</span><br><span class="line">	str2[<span class="number">1</span>] = <span class="string">'E'</span>;</span><br><span class="line"><span class="comment">// cout &lt;&lt; str2 &lt;&lt; endl;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 1</span></span><br><span class="line">	String s3 = str2; <span class="comment">//拷贝构造函数</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; s3 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	s3[<span class="number">3</span>] = <span class="string">'L'</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; s3 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; str2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="11-类模板"><a href="#11-类模板" class="headerlink" title="11. 类模板"></a>11. 类模板</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*类</span></span><br><span class="line"><span class="comment">模拟vector&lt;int&gt;的类Vector</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">student</span> &#123;</span></span><br><span class="line">	<span class="built_in">string</span> name;</span><br><span class="line">	<span class="keyword">double</span> score;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	student(<span class="built_in">string</span> n=<span class="string">"no"</span>, <span class="keyword">double</span> s=<span class="number">0</span>) &#123; <span class="comment">//申请了空间必须要默认 </span></span><br><span class="line">		name = n; score = s;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">friend</span> ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream &amp;o, student s);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream &amp;o, student s) &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; s.name &lt;&lt; <span class="string">","</span> &lt;&lt; s.score &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//类模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="comment">//加这一句，改数据类型 </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector</span> &#123;</span></span><br><span class="line">	T *data;</span><br><span class="line">	<span class="keyword">int</span> capacity;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Vector(<span class="keyword">int</span> cap=<span class="number">3</span>) &#123;</span><br><span class="line">		data = <span class="keyword">new</span> T[cap];</span><br><span class="line">		<span class="keyword">if</span> (data == <span class="number">0</span>) &#123;</span><br><span class="line">			cap = <span class="number">0</span>; n = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		capacity = cap;</span><br><span class="line">		n = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push_back</span><span class="params">(T e)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n == capacity) &#123;<span class="comment">//空间已经满</span></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"增加容量！\n"</span>;</span><br><span class="line">			T *p = <span class="keyword">new</span> T[<span class="number">2</span> * capacity];</span><br><span class="line">			<span class="keyword">if</span> (p) &#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">					p[i] = data[i];</span><br><span class="line">				<span class="keyword">delete</span>[] data;</span><br><span class="line">				data = p;</span><br><span class="line">				capacity = <span class="number">2</span>*capacity;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		data[n] = e;</span><br><span class="line">		n++;</span><br><span class="line">	&#125;</span><br><span class="line">	T <span class="keyword">operator</span>[](<span class="keyword">int</span> i) <span class="keyword">const</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (i &lt; <span class="number">0</span> || i &gt;= n) <span class="keyword">throw</span> <span class="string">"下标非法!"</span>;</span><br><span class="line">		<span class="keyword">return</span> data[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> n;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Vector&lt;student&gt; v;</span><br><span class="line">	v.push_back(student(<span class="string">"Li"</span>,<span class="number">45.7</span>));</span><br><span class="line">	v.push_back(student(<span class="string">"Wang"</span>, <span class="number">45.7</span>));</span><br><span class="line">	v.push_back(student(<span class="string">"zhao"</span>, <span class="number">45.7</span>));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.size(); i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; v[i] ;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	v.push_back(student(<span class="string">"zhang"</span>, <span class="number">45.7</span>));</span><br><span class="line">	v.push_back(student(<span class="string">"Liu"</span>, <span class="number">45.7</span>));</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.size(); i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; v[i];</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 1</span></span><br><span class="line">	Vector&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">	v.push_back(<span class="number">3</span>);</span><br><span class="line">	v.push_back(<span class="number">4</span>);</span><br><span class="line">	v.push_back(<span class="number">5</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i&lt;v.size();i++)</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;v[i]&lt;&lt;<span class="string">'\t'</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	v.push_back(<span class="number">6</span>);</span><br><span class="line">	v.push_back(<span class="number">7</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.size(); i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">'\t'</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">	Vector&lt;<span class="built_in">string</span>&gt; v;</span><br><span class="line">	v.push_back(<span class="string">"hello"</span>);</span><br><span class="line">	v.push_back(<span class="string">"world"</span>);</span><br><span class="line">	v.push_back(<span class="string">"sdfasdf"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.size(); i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">'\t'</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	v.push_back(<span class="string">"ggg"</span>);</span><br><span class="line">	v.push_back(<span class="string">"hhh"</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.size(); i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">'\t'</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>学习来源：b站：从C到C++快速入门(2019版)</p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+  		
+   		  <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+ 		
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-C/" rel="tag"> <i class="fa fa-tag"></i> C/C++</a>
+          
+            <a href="/tags/学习笔记/" rel="tag"> <i class="fa fa-tag"></i> 学习笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/14/机器学习的数学基础/" rel="next" title="机器学习的数学基础">
+                <i class="fa fa-chevron-left"></i> 机器学习的数学基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/16/向量，矩阵求导/" rel="prev" title="向量，矩阵求导">
+                向量，矩阵求导 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Minh">
+            
+              <p class="site-author-name" itemprop="name">Minh</p>
+              <p class="site-description motion-element" itemprop="description">既然相遇，不如同行</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/minhzou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-标准名字空间-amp-C-标准输入输出流"><span class="nav-number">1.</span> <span class="nav-text">1. 标准名字空间 &amp; C++标准输入输出流</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-引用变量和引用参数"><span class="nav-number">2.</span> <span class="nav-text">2. 引用变量和引用参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-函数的默认形参、函数重载"><span class="nav-number">3.</span> <span class="nav-text">3. 函数的默认形参、函数重载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-函数模板"><span class="nav-number">4.</span> <span class="nav-text">4. 函数模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-用户自定义类型string和vector"><span class="nav-number">5.</span> <span class="nav-text">5. 用户自定义类型string和vector</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-指针和动态内存分配"><span class="nav-number">6.</span> <span class="nav-text">6. 指针和动态内存分配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-类和对象"><span class="nav-number">7.</span> <span class="nav-text">7. 类和对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-this指针，-访问控制，构造函数"><span class="nav-number">8.</span> <span class="nav-text">8. this指针， 访问控制，构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-运算重载符"><span class="nav-number">9.</span> <span class="nav-text">9. 运算重载符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-String类、拷贝构造函数、析构函数"><span class="nav-number">10.</span> <span class="nav-text">10. String类、拷贝构造函数、析构函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-类模板"><span class="nav-number">11.</span> <span class="nav-text">11. 类模板</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minh</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 总访客
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '6EPnyXCThXwcbw7bdMdV8mEW-gzGzoHsz',
+        appKey: 'pLe1UvLJvlysvxS7vy8aJgqz',
+        placeholder: '来~~ 快活呀',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'manual') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

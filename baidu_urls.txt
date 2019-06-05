@@ -1,0 +1,10 @@
+http://minhzou.top/2019/06/02/Python爬虫基础知识整理/
+http://minhzou.top/2019/05/20/卡特兰大数（Catalan大数）/
+http://minhzou.top/2019/05/18/Python爬虫实战——爬取特定微信公众号文章/
+http://minhzou.top/2019/05/16/向量，矩阵求导/
+http://minhzou.top/2019/04/28/C and C++梳理补缺/
+http://minhzou.top/2019/04/14/机器学习的数学基础/
+http://minhzou.top/2019/04/06/第二周 Logistic回归、SVM/
+http://minhzou.top/2019/04/01/Hexo搭建博客/
+http://minhzou.top/2019/03/31/第一周 机器学习简介和线性回归/
+http://minhzou.top/2019/03/30/计算机视觉基础入门/
