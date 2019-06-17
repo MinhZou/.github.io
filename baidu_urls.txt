@@ -1,3 +1,4 @@
+http://minhzou.top/2019/06/17/数字图像处理（Digital Image Processing）/
 http://minhzou.top/2019/06/02/Python爬虫基础知识整理/
 http://minhzou.top/2019/05/20/卡特兰大数（Catalan大数）/
 http://minhzou.top/2019/05/18/Python爬虫实战——爬取特定微信公众号文章/
