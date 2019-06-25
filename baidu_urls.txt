@@ -1,3 +1,6 @@
+http://minhzou.top/2019/06/25/范数分类/
+http://minhzou.top/2019/06/25/距离，范数，向量空间，欧几里得空间（欧式空间），希尔伯特空间，巴拿赫空间/
+http://minhzou.top/2019/06/24/《机器学习》周志华 公式推导/
 http://minhzou.top/2019/06/17/数字图像处理（Digital Image Processing）/
 http://minhzou.top/2019/06/02/Python爬虫基础知识整理/
 http://minhzou.top/2019/05/20/卡特兰大数（Catalan大数）/

@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Minh's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第3章 线性模型一元线性回归公式推导1. 求解偏置b推导思路：①由最小二乘法导出损失函数$E(w, b)$ \begin{aligned} E_{(w, b)} &amp;=\sum_{i=1}^{m}\left(y_{i}-f\left(x_{i}\right)\right)^{2} \\ &amp;=\sum_{i=1}^{m}\left(y_{i}-\left(w x_{i}+b\right)\right)">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《机器学习》周志华 公式推导">
+<meta property="og:url" content="http://minhzou.top/2019/06/24/《机器学习》周志华 公式推导/index.html">
+<meta property="og:site_name" content="Minh&#39;s Blog">
+<meta property="og:description" content="第3章 线性模型一元线性回归公式推导1. 求解偏置b推导思路：①由最小二乘法导出损失函数$E(w, b)$ \begin{aligned} E_{(w, b)} &amp;=\sum_{i=1}^{m}\left(y_{i}-f\left(x_{i}\right)\right)^{2} \\ &amp;=\sum_{i=1}^{m}\left(y_{i}-\left(w x_{i}+b\right)\right)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-25T01:51:25.837Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《机器学习》周志华 公式推导">
+<meta name="twitter:description" content="第3章 线性模型一元线性回归公式推导1. 求解偏置b推导思路：①由最小二乘法导出损失函数$E(w, b)$ \begin{aligned} E_{(w, b)} &amp;=\sum_{i=1}^{m}\left(y_{i}-f\left(x_{i}\right)\right)^{2} \\ &amp;=\sum_{i=1}^{m}\left(y_{i}-\left(w x_{i}+b\right)\right)">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://minhzou.top/2019/06/24/《机器学习》周志华 公式推导/">
+
+
+
+
+
+  <title>《机器学习》周志华 公式推导 | Minh's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/minhzou" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Minh's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">成长的路上每一步都算数</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/06/24/《机器学习》周志华 公式推导/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minh">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minh's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《机器学习》周志华 公式推导</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T18:08:03+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-25T09:51:25+08:00">
+                2019-06-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/24/《机器学习》周志华 公式推导/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/24/《机器学习》周志华 公式推导/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7.1k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  39 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第3章-线性模型"><a href="#第3章-线性模型" class="headerlink" title="第3章 线性模型"></a>第3章 线性模型</h3><h4 id="一元线性回归公式推导"><a href="#一元线性回归公式推导" class="headerlink" title="一元线性回归公式推导"></a>一元线性回归公式推导</h4><h5 id="1-求解偏置b"><a href="#1-求解偏置b" class="headerlink" title="1. 求解偏置b"></a>1. 求解偏置b</h5><p>推导思路：<br>①由最小二乘法导出损失函数$E(w, b)$</p>
+<script type="math/tex; mode=display">\begin{aligned} E_{(w, b)} &=\sum_{i=1}^{m}\left(y_{i}-f\left(x_{i}\right)\right)^{2} \\ &=\sum_{i=1}^{m}\left(y_{i}-\left(w x_{i}+b\right)\right)^{2} \\ &=\sum_{i=1}^{m}\left(y_{i}-w x_{i}-b\right)^{2} \end{aligned}</script><p>②证明损失函数$E(w, b)$是关于w和b的凸函数</p>
+<ul>
+<li>求$A=f_{x x}^{\prime \prime}(x, y)$ ：<script type="math/tex; mode=display">\begin{aligned} \frac{\partial E_{(w, b)}}{\partial w} &=\frac{\partial}{\partial w}\left[\sum_{i=1}^{m}\left(y_{i}-w x_{i}-b\right)^{2}\right] \\ &=\sum_{i=1}^{m} \frac{\partial}{\partial w}\left(y_{i}-w x_{i}-b\right)^{2} \\ &=\sum_{i=1}^{m} 2 \cdot\left(y_{i}-w x_{i}-b\right) \cdot\left(-x_{i}\right) \\ &=2\left(w \sum_{i=1}^{m} x_{i}^{2}-\sum_{i=1}^{m}\left(y_{i}-b\right) x_{i}\right) \end{aligned}</script><script type="math/tex; mode=display">\begin{aligned} \frac{\partial^{2} E_{(w, b)}}{\partial w^{2}} &=\frac{\partial}{\partial w}\left(\frac{\partial E_{(w, b)}}{\partial w}\right) \\ &=\frac{\partial}{\partial w}\left[2\left(w \sum_{i=1}^{m} x_{i}^{2}-\sum_{i=1}^{m}\left(y_{i}-b\right) x_{i}\right)\right] \\ &=\frac{\partial}{\partial w}\left[2 w \sum_{i=1}^{m} x_{i}^{2}\right] \\ & = 2 \sum_{i=1}^{m} x_{i}^{2} \end{aligned}</script></li>
+<li>求$B=f_{x y}^{\prime \prime}(x, y)$：<script type="math/tex; mode=display">\begin{aligned} \frac{\partial^{2} E_{(w, b)}}{\partial w \partial b} &=\frac{\partial}{\partial b}\left(\frac{\partial E_{(w, b)}}{\partial w}\right) \\ &=\frac{\partial}{\partial b}\left[2\left(w \sum_{i=1}^{m} x_{i}^{2}-\sum_{i=1}^{m}\left(y_{i}-b\right) x_{i}\right)\right] \\ &=\frac{\partial}{\partial b}\left(-2 \sum_{i=1}^{m}\left(y_{i}-b\right) x_{i}\right] \\ &=\frac{\partial}{\partial b}\left(-2 \sum_{i=1}^{m} y_{i} x_{i}+2 \sum_{i=1}^{m} b x_{i}\right) \\ &=\frac{\partial}{\partial b}\left(2 \sum_{i=1}^{m} b x_{i}\right)=2 \sum_{i=1}^{m} x_{i} \end{aligned}</script></li>
+<li>求$C=f_{y y}^{\prime \prime}(x, y)$：<script type="math/tex; mode=display">\begin{aligned} \frac{\partial E_{(w, b)}}{\partial b} &=\frac{\partial}{\partial b}\left[\sum_{i=1}^{m}\left(y_{i}-w x_{i}-b\right)^{2}\right] \\ &=\sum_{i=1}^{m} \frac{\partial}{\partial b}\left(y_{i}-w x_{i}-b\right)^{2} \\ &=\sum_{i=1}^{m} 2 \cdot\left(y_{i}-w x_{i}-b\right) \cdot(-1) \\ &=2\left(m b-\sum_{i=1}^{m}\left(y_{i}-w x_{i}\right)\right) \end{aligned}</script><script type="math/tex; mode=display">\begin{aligned} \frac{\partial^{2} E_{(w, b)}}{\partial b^{2}} &=\frac{\partial}{\partial b}\left(\frac{\partial E_{(w, b)}}{\partial b}\right) \\ &=\frac{\partial}{\partial b}\left[2\left(m b-\sum_{i=1}^{m}\left(y_{i}-w x_{i}\right)\right)\right] \\ &=\frac{\partial}{\partial b}(2 m b) \\ &=2m  \end{aligned}</script></li>
+<li>证明<script type="math/tex; mode=display">A=2 \sum_{i=1}^{m} x_{i}^{2} \qquad B=2 \sum_{i=1}^{m} x_{i} \qquad C=2 m</script><script type="math/tex; mode=display">\begin{aligned} A C-B^{2} &=2 m \cdot 2 \sum_{i=1}^{m} x_{i}^{2}-\left(2 \sum_{i=1}^{m} x_{i}\right)^{2}=4 m \sum_{i=1}^{m} x_{i}^{2}-4\left(\sum_{i=1}^{m} x_{i}\right)^{2}=4 m \sum_{i=1}^{m} x_{i}^{2}-4 \cdot m \cdot \frac{1}{m} \cdot\left(\sum_{i=1}^{m} x_{i}\right)^{2} \\ &=4 m \sum_{i=1}^{m} x_{i}^{2}-4 m \cdot \overline{x} \cdot \sum_{i=1}^{m} x_{i}=4 m\left(\sum_{i=1}^{m} x_{i}^{2}-\sum_{i=1}^{m} x_{i} \overline{x}\right)=4 m \sum_{i=1}^{m}\left(x_{i}^{2}-x_{i} \overline{x}\right) \end{aligned}</script>又因为：$\sum_{i=1}^{m} x_{i} \overline{x}=\overline{x} \sum_{i=1}^{m} x_{i}=\overline{x} \cdot m \cdot \frac{1}{m} \cdot \sum_{i=1}^{m} x_{i}=m \overline{x}^{2}=\sum_{i=1}^{m} \overline{x}^{2}$<script type="math/tex; mode=display">=4 m \sum_{i=1}^{m}\left(x_{i}^{2}-x_{i} \overline{x}-x_{i} \overline{x}+x_{i} \overline{x}\right)=4 m \sum_{i=1}^{m}\left(x_{i}^{2}-x_{i} \overline{x}-x_{i} \overline{x}+\overline{x}^{2}\right)=4 m \sum_{i=1}^{m}\left(x_{i}-\overline{x}\right)^{2}</script>所以：$A C-B^{2}=4 m \sum_{i=1}^{m}\left(x_{i}-\overline{x}\right)^{2} \geq 0$<br>也即损失函数$E(w, b)$是关于w和b的凸函数得证<br>③对损失函数$E(w, b)$关于b求一阶偏导数<script type="math/tex; mode=display">\frac{\partial E_{(w, b)}}{\partial b}=2\left(m b-\sum_{i=1}^{m}\left(y_{i}-w x_{i}\right)\right)</script>④令一阶偏导数等于0解出b<script type="math/tex; mode=display">\begin{aligned} \frac{\partial E_{(w, b)}}{\partial b} &=2\left(m b-\sum_{i=1}^{m}\left(y_{i}-w x_{i}\right)\right)=0 \\ & m b-\sum_{i=1}^{m}\left(y_{i}-w x_{i}\right)=0 \\ b &=\frac{1}{m} \sum_{i=1}^{m}\left(y_{i}-w x_{i}\right) \end{aligned}</script><script type="math/tex; mode=display">b=\frac{1}{m} \sum_{i=1}^{m} y_{i}-w \cdot \frac{1}{m} \sum_{i=1}^{m} x_{i}=\overline{y}-w \overline{x}</script></li>
+</ul>
+<h5 id="2-求解权重w"><a href="#2-求解权重w" class="headerlink" title="2. 求解权重w"></a>2. 求解权重w</h5><p>推导思路：<br>①由最小二乘法导出损失函数$E(w, b)$<br>②证明损失函数$E(w, b)$是关于w和b的凸函数<br>③对损失函数$E(w, b)$关于w求一阶偏导数<br>④令一阶偏导数等于0解出w</p>
+<script type="math/tex; mode=display">\begin{aligned} \frac{\partial E_{(w, b)}}{\partial w}= 2\left(w \sum_{i=1}^{m} x_{i}^{2}-\sum_{i=1}^{m}\left(y_{i}-b\right) x_{i}\right)=0 \\ w  \sum_{i=1}^{m} x_{i}^{2}-\sum_{i=1}^{m}\left(y_{i}-b\right) x_{i}=0 \\ w \sum_{i=1}^{m} x_{i}^{2} =\sum_{i=1}^{m} y_{i} x_{i}-\sum_{i=1}^{m} b x_{i} \end{aligned}</script><p>将$b=\overline{y}-w \overline{x}$代入$w \sum_{i=1}^{m} x_{i}^{2}=\sum_{i=1}^{m} y_{i} x_{i}-\sum_{i=1}^{m} b x_{i}$得</p>
+<script type="math/tex; mode=display">w \sum_{i=1}^{m} x_{i}^{2}=\sum_{i=1}^{m} y_{i} x_{i}-\sum_{i=1}^{m}(\overline{y}-w \overline{x}) x_{i}</script><script type="math/tex; mode=display">w \sum_{i=1}^{m} x_{i}^{2}=\sum_{i=1}^{m} y_{i} x_{i}-\overline{y} \sum_{i=1}^{m} x_{i}+w \overline{x} \sum_{i=1}^{m} x_{i}</script><script type="math/tex; mode=display">w \sum_{i=1}^{m} x_{i}^{2}-w \overline{x} \sum_{i=1}^{m} x_{i}=\sum_{i=1}^{m} y_{i} x_{i}-\overline{y} \sum_{i=1}^{m} x_{i}</script><script type="math/tex; mode=display">w\left(\sum_{i=1}^{m} x_{i}^{2}-\overline{x} \sum_{i=1}^{m} x_{i}\right)=\sum_{i=1}^{m} y_{i} x_{i}-\overline{y} \sum_{i=1}^{m} x_{i}</script><script type="math/tex; mode=display">w=\frac{\sum_{i=1}^{m} y_{i} x_{i}-\overline{y} \sum_{i=1}^{m} x_{i}}{\sum_{i=1}^{m} x_{i}^{2}-\overline{x} \sum_{i=1}^{m} x_{i}}</script><p>根据</p>
+<script type="math/tex; mode=display">\overline{y} \sum_{i=1}^{m} x_{i}=\frac{1}{m} \sum_{i=1}^{m} y_{i} \sum_{i=1}^{m} x_{i}=\overline{x} \sum_{i=1}^{m} y_{i}</script><script type="math/tex; mode=display">\overline{x} \sum_{i=1}^{m} x_{i}=\frac{1}{m} \sum_{i=1}^{m} x_{i} \sum_{i=1}^{m} x_{i}=\frac{1}{m}\left(\sum_{i=1}^{m} x_{i}\right)^{2}</script><p>得</p>
+<script type="math/tex; mode=display">w=\frac{\sum_{i=1}^{m} y_{i} x_{i}-\overline{x} \sum_{i=1}^{m} y_{i}}{\sum_{i=1}^{m} x_{i}^{2}-\frac{1}{m}\left(\sum_{i=1}^{m} x_{i}\right)^{2}}=\frac{\sum_{i=1}^{m} y_{i}\left(x_{i}-\overline{x}\right)}{\sum_{i=1}^{m} x_{i}^{2}-\frac{1}{m}\left(\sum_{i=1}^{m} x_{i}\right)^{2}}</script><h5 id="3-将w向量化"><a href="#3-将w向量化" class="headerlink" title="3. 将w向量化"></a>3. 将w向量化</h5><script type="math/tex; mode=display">w=\frac{\sum_{i=1}^{m} y_{i}\left(x_{i}-\overline{x}\right)}{\sum_{i=1}^{m} x_{i}^{2}-\frac{1}{m}\left(\sum_{i=1}^{m} x_{i}\right)^{2}}</script><p>将$\frac{1}{m}\left(\sum_{i=1}^{m} x_{i}\right)^{2}=\overline{x} \sum_{i=1}^{m} x_{i}=\sum_{i=1}^{m} x_{i} \overline{x}$代入分母可得</p>
+<script type="math/tex; mode=display">\begin{aligned} w &=\frac{\sum_{i=1}^{m} y_{i}\left(x_{i}-\overline{x}\right)}{\sum_{i=1}^{m} x_{i}^{2}-\sum_{i=1}^{m} x_{i} \overline{x}} \\ &=\frac{\sum_{i=1}^{m}\left(y_{i} x_{i}-y_{i} \overline{x}\right)}{\sum_{i=1}^{m}\left(x_{i}^{2}-x_{i} \overline{x}\right)} \end{aligned}</script><p>由于</p>
+<script type="math/tex; mode=display">\sum_{i=1}^{m} y_{i} \overline{x}=\overline{x} \sum_{i=1}^{m} y_{i}=\frac{1}{m} \sum_{i=1}^{m} x_{i} \sum_{i=1}^{m} y_{i}=\sum_{i=1}^{m} x_{i} \cdot \frac{1}{m} \cdot \sum_{i=1}^{m} y_{i}=\sum_{i=1}^{m} x_{i} \overline{y}</script><script type="math/tex; mode=display">\sum_{i=1}^{m} y_{i} \overline{x}=\overline{x} \sum_{i=1}^{m} y_{i}=\overline{x} \cdot m \cdot \frac{1}{m} \cdot \sum_{i=1}^{m} y_{i}=m \overline{x} \overline{y}=\sum_{i=1}^{m} \overline{x} \overline{y}</script><script type="math/tex; mode=display">\sum_{i=1}^{m} x_{i} \overline{x}=\overline{x} \sum_{i=1}^{m} x_{i}=\overline{x} \cdot m \cdot \frac{1}{m} \cdot \sum_{i=1}^{m} x_{i}=m \overline{x}^{2}=\sum_{i=1}^{m} \overline{x}^{2}</script><p>所以</p>
+<script type="math/tex; mode=display">\begin{aligned} w &=\frac{\sum_{i=1}^{m}\left(y_{i} x_{i}-y_{i} \overline{x}\right)}{\sum_{i=1}^{m}\left(x_{i}^{2}-x_{i} \overline{x}\right)}=\frac{\sum_{i=1}^{m}\left(y_{i} x_{i}-y_{i} \overline{x}-y_{i} \overline{x}+y_{i} \overline{x}\right)}{\sum_{i=1}^{m}\left(x_{i}^{2}-x_{i} \overline{x}-x_{i} \overline{x}+x_{i} \overline{x}\right)} \\ &=\frac{\sum_{i=1}^{m}\left(y_{i} x_{i}-y_{i} \overline{x}-x_{i} \overline{y}+\overline{x} \overline{y}\right)}{\sum_{i=1}^{m}\left(x_{i}^{2}-x_{i} \overline{x}-x_{i} \overline{x}+\overline{x}^{2}\right)}=\frac{\sum_{i=1}^{m}\left(x_{i}-\overline{x}\right)\left(y_{i}-\overline{y}\right)}{\sum_{i=1}^{m}\left(x_{i}-\overline{x}\right)^{2}} \end{aligned}</script><p>令</p>
+<script type="math/tex; mode=display">\boldsymbol{x}=\left(x_{1}, x_{2}, \ldots, x_{m}\right)^{T} \quad \boldsymbol{y}=\left(y_{1}, y_{2}, \ldots, y_{m}\right)^{T}</script><script type="math/tex; mode=display">\boldsymbol{x}_{d}=\left(x_{1}-\overline{x}, x_{2}-\overline{x}, \ldots, x_{m}-\overline{x}\right)^{T} \quad \boldsymbol{y}_{d}=\left(y_{1}-\overline{y}, y_{2}-\overline{y}, \ldots, y_{m}-\overline{y}\right)^{T}</script><p>则</p>
+<script type="math/tex; mode=display">\begin{aligned} w &=\frac{\sum_{i=1}^{m}\left(x_{i}-\overline{x}\right)\left(y_{i}-\overline{y}\right)}{\sum_{i=1}^{m}\left(x_{i}-\overline{x}\right)^{2}} \\ &=\frac{\boldsymbol{x}_{d}^{T} \boldsymbol{y}_{d}}{\boldsymbol{x}_{d}^{T} \boldsymbol{x}_{d}} \end{aligned}</script><h4 id="多元线性回归公式推导"><a href="#多元线性回归公式推导" class="headerlink" title="多元线性回归公式推导"></a>多元线性回归公式推导</h4><h5 id="求解权重-hat-w-的公示推导"><a href="#求解权重-hat-w-的公示推导" class="headerlink" title="求解权重$\hat{w}$的公示推导"></a>求解权重$\hat{w}$的公示推导</h5><p>推导思路：<br>将w和b组合成$\hat{\boldsymbol{w}}$：</p>
+<script type="math/tex; mode=display">f\left(\boldsymbol{x}_{i}\right)=\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b</script><script type="math/tex; mode=display">f\left(\boldsymbol{x}_{i}\right)=\left(\begin{array}{llll}{w_{1}} & {w_{2}} & {\cdots} & {w_{d}}\end{array}\right)\left(\begin{array}{c}{x_{i 1}} \\ {x_{i 2}} \\ {\vdots} \\ {x_{i d}}\end{array}\right)+b</script><script type="math/tex; mode=display">f\left(\boldsymbol{x}_{i}\right)=w_{1} x_{i 1}+w_{2} x_{i 2}+\ldots+w_{d} x_{i d}+b</script><script type="math/tex; mode=display">f\left(\boldsymbol{x}_{i}\right)=w_{1} x_{i 1}+w_{2} x_{i 2}+\ldots+w_{d} x_{i d}+w_{d+1} \cdot 1</script><script type="math/tex; mode=display">f\left(\boldsymbol{x}_{i}\right)=\left(\begin{array}{llllll}{w_{1}} & {w_{2}} & {\cdots} & {w_{d}} & {w_{d+1}}\end{array}\right)\left(\begin{array}{c}{x_{i 1}} \\ {x_{i 2}} \\ {\vdots} \\ {x_{i d}} \\ {1}\end{array}\right)</script><script type="math/tex; mode=display">f\left(\hat{\boldsymbol{x}}_{i}\right)=\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{i}</script><p>①由最小二乘法导出损失函数$E_{\hat{\boldsymbol{w}}}$</p>
+<script type="math/tex; mode=display">\begin{aligned} E_{\hat{\boldsymbol{w}}} &=\sum_{i=1}^{m}\left(y_{i}-f\left(\hat{\boldsymbol{x}}_{i}\right)\right)^{2} \\ &=\sum_{i=1}^{m}\left(y_{i}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{i}\right)^{2} \end{aligned}</script><script type="math/tex; mode=display">\mathbf{X}=\left(\begin{array}{ccccc}{x_{11}} & {x_{12}} & {\dots} & {x_{1 d}} & {1} \\ {x_{21}} & {x_{22}} & {\dots} & {x_{2 d}} & {1} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} & {\vdots} \\ {x_{m 1}} & {x_{m 2}} & {\dots} & {x_{m d}} & {1}\end{array}\right)=\left(\begin{array}{cc}{\boldsymbol{x}_{1}^{\mathrm{T}}} & {1} \\ {\boldsymbol{x}_{2}^{\mathrm{T}}} & {1} \\ {\vdots} & {\vdots} \\ {\boldsymbol{x}_{m}^{\mathrm{T}}} & {1}\end{array}\right)=\left(\begin{array}{c}{\hat{\boldsymbol{x}}_{1}^{T}} \\ {\hat{\boldsymbol{x}}_{2}^{T}} \\ {\vdots} \\ {\hat{\boldsymbol{x}}_{m}^{T}}\end{array}\right)</script><script type="math/tex; mode=display">\boldsymbol{y}=\left(y_{1}, y_{2}, \dots, y_{m}\right)^{T}</script><script type="math/tex; mode=display">\begin{aligned} E_{\hat{\boldsymbol{w}}} &=\sum_{i=1}^{m}\left(y_{i}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{i}\right)^{2} \\ &=\left(y_{1}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{1}\right)^{2}+\left(y_{2}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{2}\right)^{2}+\ldots+\left(y_{m}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{m}\right)^{2} \end{aligned}</script><p>抽象成向量的内积：</p>
+<script type="math/tex; mode=display">E_{\hat{\boldsymbol{w}}}=\left(y_{1}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{1} \quad y_{2}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{2} \quad \cdots \quad y_{d}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{d}\right)\left(\begin{array}{c}{y_{1}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{1}} \\ {y_{2}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{2}} \\ {\vdots} \\ {y_{d}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{d}}\end{array}\right)</script><p>又因为：</p>
+<script type="math/tex; mode=display">\left(\begin{array}{c}{y_{1}-\hat{w}^{T} \hat{x}_{1}} \\ {y_{2}-\hat{w}^{T} \hat{x}_{2}} \\ {\vdots} \\ {y_{d}-\hat{w}^{T} \hat{x}_{d}}\end{array}\right)=\left(\begin{array}{c}{y_{1}} \\ {y_{2}} \\ {\vdots} \\ {y_{d}}\end{array}\right)-\left(\begin{array}{c}{\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{1}} \\ {\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{2}} \\ {\vdots} \\ {\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{d}}\end{array}\right)=\left(\begin{array}{c}{y_{1}} \\ {y_{2}} \\ {\vdots} \\ {y_{d}}\end{array}\right)-\left(\begin{array}{c}{\hat{\boldsymbol{x}}_{1}^{T} \hat{\boldsymbol{w}}} \\ {\hat{\boldsymbol{x}}_{2}^{T} \hat{\boldsymbol{w}}} \\ {\vdots} \\ {\hat{\boldsymbol{x}}_{d}^{T} \hat{\boldsymbol{w}}}\end{array}\right)</script><script type="math/tex; mode=display">\left(\begin{array}{c}{\hat{\boldsymbol{x}}_{1}^{T} \hat{\boldsymbol{w}}} \\ {\hat{\boldsymbol{x}}_{2}^{T} \hat{\boldsymbol{w}}} \\ {\vdots} \\ {\hat{\boldsymbol{x}}_{d}^{T} \hat{\boldsymbol{w}}}\end{array}\right)=\left(\begin{array}{c}{\hat{\boldsymbol{x}}_{1}^{T}} \\ {\hat{\boldsymbol{x}}_{2}^{T}} \\ {\vdots} \\ {\hat{\boldsymbol{x}}_{m}^{T}}\end{array}\right) \cdot \boldsymbol{\hat { w }}=\mathbf{X} \cdot \hat{\boldsymbol{w}}</script><p>所以</p>
+<script type="math/tex; mode=display">\left(\begin{array}{c}{y_{1}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{1}} \\ {y_{2}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{2}} \\ {\vdots} \\ {y_{d}-\hat{\boldsymbol{w}}^{T} \hat{\boldsymbol{x}}_{d}}\end{array}\right)=\left(\begin{array}{c}{y_{1}} \\ {y_{2}} \\ {\vdots} \\ {y_{d}}\end{array}\right)-\left(\begin{array}{c}{\hat{\boldsymbol{x}}_{1}^{T} \hat{\boldsymbol{w}}} \\ {\hat{\boldsymbol{x}}_{2}^{T} \hat{\boldsymbol{w}}} \\ {\vdots} \\ {\hat{\boldsymbol{x}}_{d}^{T} \hat{\boldsymbol{w}}}\end{array}\right)=\boldsymbol{y}-\mathbf{X} \hat{\boldsymbol{w}}</script><script type="math/tex; mode=display">E_{\hat{w}}=\left(\begin{array}{cccc}{y_{1}-\hat{w}^{T} \hat{x}_{1}} & {y_{2}-\hat{w}^{T} \hat{x}_{2}} & {\cdots} & {y_{d}-\hat{w}^{T} \hat{x}_{d}}\end{array}\right)\left(\begin{array}{c}{y_{1}-\hat{w}^{T} \hat{x}_{1}} \\ {y_{2}-\hat{w}^{T} \hat{x}_{2}} \\ {\vdots} \\ {y_{d}-\hat{w}^{T} \hat{x}_{d}}\end{array}\right)$
+$=(\boldsymbol{y}-\mathbf{X} \hat{\boldsymbol{w}})^{T}(\boldsymbol{y}-\mathbf{X} \hat{\boldsymbol{w}})</script><p>②证明损失函数$E_{\hat{\boldsymbol{w}}}$是关于$\hat{w}$的凸函数</p>
+<ul>
+<li>凸集定义：设集合$D \in R^{n}$，如果对任意的$x, y \in D$与E意的$a \in[0,1]$，有$a \boldsymbol{x}+(1-a) \boldsymbol{y} \in D$，则称集$D$凸集。</li>
+<li><p>凸集的几何意义是：若两个点属于此集合，则这两点连线上的任意一点均属于此集合。</p>
+</li>
+<li><p>梯度定义：设n元函数$f(\boldsymbol{x})$对自变量$\boldsymbol{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)^{T}$的各分量$x_{i}$的偏导数$\frac{\partial f(\boldsymbol{x})}{\partial x_{i}}(i=1,2, \dots, n)$都存在，则称函数$f(\boldsymbol{x})$在$\mathcal{x}$处一阶可导，并称向量</p>
+<script type="math/tex; mode=display">\nabla f(\boldsymbol{x})=\left(\begin{array}{c}{\frac{\partial f(\boldsymbol{x})}{\partial x_{1}}} \\ {\frac{\partial f(\boldsymbol{x})}{\partial x_{2}}} \\ {\vdots} \\ {\frac{\partial f(\boldsymbol{x})}{\partial x_{n}}}\end{array}\right)</script><p>为函数$f(\boldsymbol{x})$在$\boldsymbol{x}$处的一阶导数或梯度，记为$\nabla f(\boldsymbol{x})$（列向量）</p>
+</li>
+<li><p>Hessian（海塞）矩阵定义：设n元函数$f(\boldsymbol{x})$对自变量$\boldsymbol{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)^{T}$的各分量$\mathcal{x}_{i}$的二阶偏导数$\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{i} \partial x_{j}} \quad(i=1,2, \ldots, n ; j=1,2, \dots, n)$都存在，则称函数$f(\boldsymbol{x})$在点$\mathcal{x}$处二阶可导，并称矩阵</p>
+<script type="math/tex; mode=display">\nabla^{2} f(\boldsymbol{x})=\left[\begin{array}{cccc}{\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{1}^{2}}} & {\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{1} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{1} \partial x_{n}}} \\ {\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{2} \partial x_{1}}} & {\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{2}^{2}}} & {\cdots} & {\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{2} \partial x_{n}}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{n} \partial x_{1}}} & {\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{n} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{n}^{2}}}\end{array}\right]</script><p>为$f(\boldsymbol{x})$在$\mathcal{x}$处的二阶导数或Hessian矩阵，记为$\nabla^{2} f(\boldsymbol{x})$，若$f(\boldsymbol{x})$对$\mathcal{x}$各变元的所有二阶偏导数都连续，则$\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{i} \partial x_{j}}=\frac{\partial^{2} f(\boldsymbol{x})}{\partial x_{j} \partial x_{i}}$此时$\nabla^{2} f(\boldsymbol{x})$为对称矩阵。</p>
+</li>
+<li><p>多元实值函数凹凸性判定定理：<br>设$D \subset R^{n}$是非空开凸集，$f : D \subset R^{n} \rightarrow R$，且$f(\boldsymbol{x})$在D上二阶连续可微，如果$f(\boldsymbol{x})$的Hessian矩阵$\nabla^{2} f(\boldsymbol{x})$在D上是正定的，则$f(\boldsymbol{x})$是D上的严格凸函数。</p>
+</li>
+<li>凸充分性定理：<br>若$f : R^{n} \rightarrow R$是凸函数，且$f(\boldsymbol{x})$一阶连续可微，则$\boldsymbol{x}^{ \ast }$是全局解的充分必要条件是$\nabla f\left(\boldsymbol{x}^{ \ast }\right)=\mathbf{0}$，其中$\nabla f(\boldsymbol{x})$为$f(\boldsymbol{x})$关于$\mathcal{x}$的一阶导数（也称梯度）<br>参考文献：王燕军，梁治安，最优化基础理论与方法.复旦大学出版社，2011</li>
+</ul>
+<script type="math/tex; mode=display">\begin{aligned} \frac{\partial E_{\hat{\boldsymbol{w}}}}{\partial \hat{\boldsymbol{w}}} &=\frac{\partial}{\partial \hat{\boldsymbol{w}}}\left[(\boldsymbol{y}-\mathbf{X} \hat{\boldsymbol{w}})^{T}(\boldsymbol{y}-\mathbf{X} \hat{\boldsymbol{w}})\right] \\ &=\frac{\partial}{\partial \hat{\boldsymbol{w}}}\left[\left(\boldsymbol{y}^{T}-\hat{\boldsymbol{w}}^{T} \mathbf{X}^{T}\right)(\boldsymbol{y}-\mathbf{X} \hat{\boldsymbol{w}})\right] \\ &=\frac{\partial}{\partial \hat{\boldsymbol{w}}}\left[\boldsymbol{y}^{T} \boldsymbol{y}-\boldsymbol{y}^{T} \mathbf{X} \hat{\boldsymbol{w}}-\hat{\boldsymbol{w}}^{T} \mathbf{X}^{T} \boldsymbol{y}+\hat{\boldsymbol{w}}^{T} \mathbf{X}^{T} \mathbf{X} \hat{\boldsymbol{w}}\right] \\ &=\frac{\partial}{\partial \hat{\boldsymbol{w}}}\left[-\boldsymbol{y}^{T} \mathbf{X} \hat{\boldsymbol{w}}-\hat{\boldsymbol{w}}^{T} \mathbf{X}^{T} \boldsymbol{y}+\hat{\boldsymbol{w}}^{T} \mathbf{X}^{T} \mathbf{X} \hat{\boldsymbol{w}}\right] \end{aligned}</script><p>【标量-向量】的矩阵微分公式为：<br>（分母布局）默认采用：</p>
+<script type="math/tex; mode=display">\frac{\partial y}{\partial x}=\left(\begin{array}{c}{\frac{\partial y}{\partial x_{1}}} \\ {\frac{\partial y}{\partial x_{2}}} \\ {\vdots} \\ {\frac{\partial y}{\partial x_{n}}}\end{array}\right)</script><p>（分子布局）：</p>
+<script type="math/tex; mode=display">\frac{\partial y}{\partial \boldsymbol{x}}=\left(\begin{array}{ccc}{\frac{\partial y}{\partial x_{1}}} & {\frac{\partial y}{\partial x_{2}}} & {\cdots} & {\frac{\partial y}{\partial x_{n}}}\end{array}\right)</script><p>其中，$\boldsymbol{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)^{T}$为n维列向量$y$为$\mathcal{x}$的n元标量函数</p>
+<p>由【标量-向量】的矩阵微分公式可推得：</p>
+<script type="math/tex; mode=display">\frac{\partial \boldsymbol{x}^{T} \boldsymbol{a}}{\partial \boldsymbol{x}}=\frac{\partial \boldsymbol{a}^{T} \boldsymbol{x}}{\partial \boldsymbol{x}}=\left(\begin{array}{c}{\frac{\partial\left(a_{1} x_{1}+a_{2} x_{2}+\ldots+a_{n} x_{n}\right)}{\partial x_{1}}} \\ {\frac{\partial\left(a_{1} x_{1}+a_{2} x_{2}+\ldots+a_{n} x_{n}\right)}{\partial x_{2}}} \\ {\vdots} \\ {\frac{\partial\left(a_{1} x_{1}+a_{2} x_{2}+\ldots+a_{n} x_{n}\right)}{\partial x_{n}}}\end{array}\right)=\left(\begin{array}{c}{a_{1}} \\ {a_{2}} \\ {\vdots} \\ {a_{n}}\end{array}\right)=a</script><p>同理可推得：$\frac{\partial \boldsymbol{x}^{T} \mathbf{B} \boldsymbol{x}}{\partial \boldsymbol{x}}=\left(\mathbf{B}+\mathbf{B}^{T}\right) \boldsymbol{x}$</p>
+<script type="math/tex; mode=display">\begin{aligned} \frac{\partial E_{\hat{\boldsymbol{w}}}}{\partial \hat{\boldsymbol{w}}} &=\frac{\partial}{\partial \hat{\boldsymbol{w}}}\left[-\boldsymbol{y}^{T} \mathbf{X} \boldsymbol{w}-\hat{\boldsymbol{w}}^{T} \mathbf{X}^{T} \boldsymbol{y}+\hat{\boldsymbol{w}}^{T} \mathbf{X}^{T} \mathbf{X} \hat{\boldsymbol{w}}\right] \\ &=-\frac{\partial \boldsymbol{y}^{T} \mathbf{X} \hat{w}}{\partial \hat{\boldsymbol{w}}}-\frac{\partial \hat{\boldsymbol{w}}^{T} \mathbf{X}^{T} \boldsymbol{y}}{\partial \hat{\boldsymbol{w}}}+\frac{\partial \hat{\boldsymbol{w}}^{T} \mathbf{X}^{T} \mathbf{X} \hat{\boldsymbol{w}}}{\partial \hat{\boldsymbol{w}}} \end{aligned}</script><p>由矩阵微分公式$\frac{\partial \boldsymbol{x}^{T} \boldsymbol{a}}{\partial \boldsymbol{x}}=\frac{\partial \boldsymbol{a}^{T} \boldsymbol{x}}{\partial \boldsymbol{x}}=\boldsymbol{a}, \frac{\partial \boldsymbol{x}^{T} \mathbf{B} \boldsymbol{x}}{\partial \boldsymbol{x}}=\left(\mathbf{B}+\mathbf{B}^{T}\right) \boldsymbol{x}$可得：</p>
+<script type="math/tex; mode=display">\begin{aligned} \frac{\partial E_{\hat{w}}}{\partial \hat{w}} &=-\mathbf{X}^{T} y-\mathbf{X}^{T} \boldsymbol{y}+\left(\mathbf{X}^{T} \mathbf{X}+\mathbf{X}^{T} \mathbf{X}\right) \hat{w} \\ &=2 \mathbf{X}^{T}(\mathbf{X} \hat{w}-\boldsymbol{y}) \end{aligned}</script><script type="math/tex; mode=display">\begin{aligned} \frac{\partial^{2} E_{\hat{w}}}{\partial \hat{w} \partial \hat{w}^{T}} &=\frac{\partial}{\partial \hat{w}}\left(\frac{\partial E_{\hat{w}}}{\partial \hat{w}}\right) \\ &=\frac{\partial}{\partial \hat{w}}\left[2 \mathbf{X}^{T}(\mathbf{X} \hat{w}-y)\right] \\ &=\frac{\partial}{\partial \hat{w}}\left(2 \mathbf{X}^{T} \mathbf{X} \hat{w}-2 \mathbf{X}^{T} \boldsymbol{y}\right) \\ &=2 \mathbf{X}^{T} \mathbf{X} \end{aligned}</script><p>此即为Hessian矩阵<br>③对损失函数$E_{\hat{\boldsymbol{w}}}$关于$\hat{w}$求一阶导数</p>
+<script type="math/tex; mode=display">\frac{\partial E_{\hat{w}}}{\partial \hat{w}}=2 \mathbf{X}^{T}(\mathbf{X} \hat{w}-\boldsymbol{y})</script><p>④令一阶导数等于0解出$\hat{\boldsymbol{w}}^{ \ast }$</p>
+<script type="math/tex; mode=display">\frac{\partial E_{\hat{w}}}{\partial \hat{w}}=2 \mathbf{X}^{T}(\mathbf{X} \hat{w}-\boldsymbol{y})=0</script><script type="math/tex; mode=display">2 \mathbf{X}^{T} \mathbf{X} \hat{w}-2 \mathbf{X}^{T} \boldsymbol{y}=0</script><script type="math/tex; mode=display">2 \mathbf{X}^{T} \mathbf{X} \hat{w}=2 \mathbf{X}^{T} \boldsymbol{y}</script><script type="math/tex; mode=display">\hat{w}=\left(\mathbf{X}^{T} \mathbf{X}\right)^{-1} \mathbf{X}^{T} \boldsymbol{y}</script><h4 id="对数几率回归公式"><a href="#对数几率回归公式" class="headerlink" title="对数几率回归公式"></a>对数几率回归公式</h4><h5 id="广义线性模型"><a href="#广义线性模型" class="headerlink" title="广义线性模型"></a>广义线性模型</h5><ul>
+<li>指数族分布<br>指数族（Exponential family）分布是一类分布的总称，该类分布的分布律（或者概率密度函数）的一般形式如下：<script type="math/tex; mode=display">
+p(y ; \eta)=b(y) \exp \left(\eta^{T} T(y)-a(\eta)\right)</script>其中，$\eta$称为该分布的自然参数；$T(y)$为充分统计量，视具体的分布而定，通常是等于随机变量y本身；$a(\eta)$为配分函数；$b(y)$为关于随机变量y的函数，常见的伯努利分布和正态分布均属于指数族分布。</li>
+</ul>
+<p>证明伯努利分布属于指数族分布：<br>已知伯努利分布的分布律为：</p>
+<script type="math/tex; mode=display">
+p(y)=\phi^{y}(1-\phi)^{1-y}</script><p>其中$y \in\{0,1\}, \phi$中为y=1的概率，即$p(y=1)=\phi$，对上式恒等变形可得：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} p(y) &=\phi^{y}(1-\phi)^{1-y} \\ &=\exp \left(\ln \left(\phi^{y}(1-\phi)^{1-y}\right)\right) \\ &=\exp \left(\ln \phi^{y}+\ln (1-\phi)^{1-y}\right) \end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned} p(y) &=\exp (y \ln \phi+(1-y) \ln (1-\phi)) \\ &=\exp (y \ln \phi+\ln (1-\phi)-y \ln (1-\phi)) \\ &=\exp (y(\ln \phi-\ln (1-\phi))+\ln (1-\phi)) \\ &=\exp \left(y \ln \left(\frac{\phi}{1-\phi}\right)+\ln (1-\phi)\right) \end{aligned}</script><p>对比指数族分布的一般形式$p(y ; \eta)=b(y) \exp \left(\eta^{T} T(y)-a(\eta)\right)$可知：<br>伯努利分布的指数族分布对应参数为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} b(y) &=1 \\ \eta &=\ln \left(\frac{\phi}{1-\phi}\right) \\ T(y) &=y \\ a(\eta) &=-\ln (1-\phi)=\ln \left(1+e^{\eta}\right) \end{aligned}</script><ul>
+<li>广义线性模型的三条假设</li>
+</ul>
+<ol>
+<li>在给$\mathcal{x}$ 的条件下，假设随机变量$y$服从某个指数族分布</li>
+<li>在给定$\mathcal{x}$的条件下，我们的目标是得到一个模型$h(\boldsymbol{x})$能预估出$T(y)$的期望值；</li>
+<li>假设该指数族分布中的自然参数$\eta$和$\mathcal{x}$呈线性关系，即$\eta=\boldsymbol{w}^{T} \boldsymbol{x}$<br>参考文献：Andrew Ng.cs229-notes1</li>
+</ol>
+<h5 id="对数几率回归"><a href="#对数几率回归" class="headerlink" title="对数几率回归"></a>对数几率回归</h5><p>对数几率回归是在对一个二分类问题进行建模，并且假设被建模的随机变量y取值为0或1，因此我们可以很自然得假设y服从伯努利分布。此时，如果我们想要构建一个线性模型来预测在给定$\mathcal{x}$的条件下y的取值的话，可以考虑使用广义线性模型来进行建模。</p>
+<h6 id="对数几率回归的广义线性模型推导"><a href="#对数几率回归的广义线性模型推导" class="headerlink" title="对数几率回归的广义线性模型推导"></a>对数几率回归的广义线性模型推导</h6><p>已知y是服从伯努利分布，而伯努利分布属于指数族分布，所以满足广义线性模型的第一条假设，接着根据广义线性模型的第二条假设我们可以推得模型$h(\boldsymbol{x})$的表达式为：</p>
+<script type="math/tex; mode=display">
+h(\boldsymbol{x})=E[T(y | \boldsymbol{x})]</script><p>由于伯努利分布的$T(y | \boldsymbol{x})=y | \boldsymbol{x}$所以：</p>
+<script type="math/tex; mode=display">
+h(\boldsymbol{x})=E[y | \boldsymbol{x}]</script><p>又因为$E[y | \boldsymbol{x}]=1 \times p(y=1 | \boldsymbol{x})+0 \times p(y=0 | \boldsymbol{x})=p(y=1 | \boldsymbol{x})=\phi$，所以</p>
+<script type="math/tex; mode=display">
+h(\boldsymbol{x})=\phi</script><p>在前面证明伯努利分布属于指数族分布时我们知道：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\begin{array}{l}{\eta=\ln \left(\frac{\phi}{1-\phi}\right)} \\ {e^{\eta}=\frac{\phi}{1-\phi}} \\ {e^{-\eta}=\frac{1-\phi}{\phi}} \\ {e^{-\eta}=\frac{1}{\phi}-1} \\ {1+e^{-\eta}=\frac{1}{\phi}} \\ {\frac{1}{1+e^{-\eta}}=\phi}\end{array}}\end{array}</script><p>将$\phi=\frac{1}{1+e^{-\eta}}$代入$h(\boldsymbol{x})$的表达式可得：</p>
+<script type="math/tex; mode=display">
+h(\boldsymbol{x})=\phi=\frac{1}{1+e^{-\eta}}</script><p>根据广义模型的第三条假设$\eta=\boldsymbol{w}^{T} \boldsymbol{x}, h(\boldsymbol{x})$最终可化为：</p>
+<script type="math/tex; mode=display">
+h(\boldsymbol{x})=\phi=\frac{1}{1+e^{-\boldsymbol{w}^{T} \boldsymbol{x}}}=p(y=1 | \boldsymbol{x})</script><p>此即为对数几率回归模型。</p>
+<h6 id="3、-对数几率回归的参数估计"><a href="#3、-对数几率回归的参数估计" class="headerlink" title="3、 对数几率回归的参数估计"></a>3、 对数几率回归的参数估计</h6><h6 id="极大似然估计法"><a href="#极大似然估计法" class="headerlink" title="极大似然估计法"></a>极大似然估计法</h6><p>极大似然估计法：设总体的概率密度函数（或分布律）为$f\left(y, w_{1}, w_{2}, \dots, w_{k}\right), y_{1}, y_{2}, \dots, y_{m}$为从该总体中抽出的样本。因为$y_{1}, y_{2}, \dots, y_{m}$相互独立且同分布，于是，它们的联合概率密度函数（或联合概率）为：</p>
+<script type="math/tex; mode=display">
+L\left(y_{1}, y_{2}, \ldots, y_{m} ; w_{1}, w_{2}, \dots, w_{k}\right)=\prod_{i=1}^{m} f\left(y_{i}, w_{1}, w_{2}, \dots, w_{k}\right)</script><p>其中，$w_{1}, w_{2}, \dots, w_{k}$被看作固定但是未知的参数。当我们已经观测到一组样本观测值$y_{1}, y_{2}, \dots, y_{m}$时，要去估计未知参数，一种直观的想法就是，哪一组参数值使得现在的样本观测值出现的概率最大，哪一组参数可能就是真正的参数，我们就用它作为参数的估计值，这就是所谓的极大似然估计。<br>极大似然估计的具体方法：通常记$L\left(y_{1}, y_{2}, \ldots, y_{m} ; w_{1}, w_{2}, \dots, w_{k}\right)=L(\boldsymbol{w})$，称其为似然函数。于是求$\boldsymbol{w}$的极大似然估计就归结为求$L(\boldsymbol{w})$的最大值点。由于对数函数是单调递增函数，所以</p>
+<script type="math/tex; mode=display">
+\ln L(\boldsymbol{w})=\ln \left(\prod_{i=1}^{m} f\left(y_{i}, w_{1}, w_{2}, \ldots, w_{k}\right)\right)=\sum_{i=1}^{m} \ln f\left(y_{i}, w_{1}, w_{2}, \ldots, w_{k}\right)</script><p>与$L(\boldsymbol{w})$有相同的最大值点，，而在许多情况下，求$\ln L(\boldsymbol{w})$的最大值点比较简单，于是，我们就将求$L(\boldsymbol{w})$的最大值点转化为了求$\ln L(\boldsymbol{w})$的最大值点，通常称$\ln L(\boldsymbol{w})$为对数似然函数。<br>对数几率回归的极大似然估计：<br>已知随机变量y取1和0的概率分别为</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{p(y=1 | \boldsymbol{x})=\frac{e^{\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}+b}}{1+e^{\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}+b}}} \\ {p(y=0 | \boldsymbol{x})=\frac{1}{1+e^{\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}+b}}}\end{array}</script><p>令$\boldsymbol{\beta}=(\boldsymbol{w} ; b), \hat{\boldsymbol{x}}=(\boldsymbol{x} ; 1)$，则$\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}+b$可简写为$\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}$，于是上式可化简为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} p(y=1 | \boldsymbol{x}) &=\frac{e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}}}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}}} \\ p(y=0 | \boldsymbol{x}) &=\frac{1}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}}} \end{aligned}</script><p>记</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{p(y=1 | \boldsymbol{x})=\frac{e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}}}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}}}=p_{1}(\hat{\boldsymbol{x}} ; \boldsymbol{\beta})} \\ {p(y=0 | \boldsymbol{x})=\frac{1}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}}}=p_{0}(\hat{\boldsymbol{x}} ; \boldsymbol{\beta})}\end{array}</script><p>于是，使用一个小技巧即可得到随机变量y的分布律表达式</p>
+<script type="math/tex; mode=display">
+p(y | \boldsymbol{x} ; \boldsymbol{w}, b)=y \cdot p_{1}(\hat{\boldsymbol{x}} ; \boldsymbol{\beta})+(1-y) \cdot p_{0}(\hat{\boldsymbol{x}} ; \boldsymbol{\beta})</script><p>或者</p>
+<script type="math/tex; mode=display">
+p(y | \boldsymbol{x} ; \boldsymbol{w}, b)=\left[p_{1}(\hat{\boldsymbol{x}} ; \boldsymbol{\beta})\right]^{y}\left[p_{0}(\hat{\boldsymbol{x}} ; \boldsymbol{\beta})\right]^{1-y}</script><p>根据对数似然函数的定义可知</p>
+<script type="math/tex; mode=display">
+\ln L(\boldsymbol{w})=\sum_{i=1}^{m} \ln f\left(y_{i}, w_{1}, w_{2}, \dots, w_{k}\right)</script><p>由于此时的y为离散型，所以将对数似然函数中的概率密度函数换成分布律即可</p>
+<script type="math/tex; mode=display">
+\ell(\boldsymbol{w}, b) :=\ln L(\boldsymbol{w}, b)=\sum_{i=1}^{m} \ln p\left(y_{i} | \boldsymbol{x}_{i} ; \boldsymbol{w}, b\right)</script><p>将$p(y | \boldsymbol{x} ; \boldsymbol{w}, b)=y \cdot p_{1}(\hat{\boldsymbol{x}} ; \boldsymbol{\beta})+(1-y) \cdot p_{0}(\hat{\boldsymbol{x}} ; \boldsymbol{\beta})$代入对数似然函数可得</p>
+<script type="math/tex; mode=display">
+\ell(\boldsymbol{\beta})=\sum_{i=1}^{m} \ln \left(y_{i} p_{1}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)+\left(1-y_{i}\right) p_{0}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)\right)</script><p>由于$p_{1}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)=\frac{e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}, \quad p_{0}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)=\frac{1}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}$所以上式可化为</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \ell(\boldsymbol{\beta}) &=\sum_{i=1}^{m} \ln \left(\frac{y_{i} e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}+\frac{1-y_{i}}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}\right) \\ &=\sum_{i=1}^{m} \ln \left(\frac{y_{i} e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}+1-y_{i}}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}\right) \\ &=\sum_{i=1}^{m}\left(\ln \left(y_{i} e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}+1-y_{i}\right)-\ln \left(1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}\right)\right) \end{aligned}</script><p>由于 $y_{i} \in\{0,1\}$，所以<br>当$y_{i}=0$时：</p>
+<script type="math/tex; mode=display">
+\ell(\boldsymbol{\beta})=\sum_{i=1}^{m}\left(\ln \left(0 \cdot e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}+1-0\right)-\ln \left(1+e^{\boldsymbol{\beta}^{T} \boldsymbol{x}_{i}}\right)\right)=\sum_{i=1}^{m}\left(\ln 1-\ln \left(1+e^{\boldsymbol{\beta}^{T} \hat{x}_{i}}\right)\right)=\sum_{i=1}^{m}\left(-\ln \left(1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}\right)\right)</script><p>当$y_{i}=1$时：</p>
+<script type="math/tex; mode=display">
+\ell(\boldsymbol{\beta})=\sum_{i=1}^{m}\left(\ln \left(1 \cdot e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}+1-1\right)-\ln \left(1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}\right)\right)=\sum_{i=1}^{m}\left(\ln e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}-\ln \left(1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}\right)\right)=\sum_{i=1}^{m}\left(\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}-\ln \left(1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}\right)\right)</script><p>综合可得</p>
+<script type="math/tex; mode=display">
+\ell(\boldsymbol{\beta})=\sum_{i=1}^{m}\left(y_{i} \boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}-\ln \left(1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}\right)\right)</script><p>若$p(y | \boldsymbol{x} ; \boldsymbol{w}, b)=\left[p_{1}(\hat{\boldsymbol{x}} ; \boldsymbol{\beta})\right]^{y}\left[p_{0}(\hat{\boldsymbol{x}} ; \boldsymbol{\beta})\right]^{1-y}$，将其代入对数似然函数可得</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \ell(\boldsymbol{\beta}) &=\sum_{i=1}^{m} \ln \left(\left[p_{1}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)\right]^{y_{i}}\left[p_{0}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)\right]^{1-y_{i}}\right) \\ &=\sum_{i=1}^{m}\left[\ln \left(\left[p_{1} ; \boldsymbol{\beta}\right)\right]^{y_{i}}\right)+\ln \left(\left[p_{0}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)\right]^{1-y_{i}}\right) ] \\ &=\sum_{i=1}^{m}\left[y_{i} \ln \left(p_{1}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)\right)+\left(1-y_{i}\right) \ln \left(p_{0}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)\right)\right] \\ &=\sum_{i=1}^{m}\left\{y_{i}\left[\ln \left(p_{1}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)\right)-\ln \left(p_{0}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)\right)\right]+\ln \left(p_{0}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)\right)\right\} \end{aligned}</script><script type="math/tex; mode=display">
+\ell(\boldsymbol{\beta})=\sum_{i=1}^{m}\left[y_{i} \ln \left(\frac{p_{1}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)}{p_{0}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)}\right)+\ln \left(p_{0}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)\right)\right]</script><p>由于$p_{1}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)=\frac{e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}, \quad p_{0}\left(\hat{\boldsymbol{x}}_{i} ; \boldsymbol{\beta}\right)=\frac{1}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}$，上式可以化为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \ell(\boldsymbol{\beta}) &=\sum_{i=1}^{m}\left[y_{i} \ln \left(e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}\right)+\ln \left(\frac{1}{1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}}\right)\right] \\ &=\sum_{i=1}^{m}\left(y_{i} \boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}-\ln \left(1+e^{\boldsymbol{\beta}^{T} \hat{\boldsymbol{x}}_{i}}\right)\right) \end{aligned}</script>
+      
+    </div>
+    
+    
+    
+    <div>
+  		
+   		  <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+ 		
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"> <i class="fa fa-tag"></i> 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/17/数字图像处理（Digital Image Processing）/" rel="next" title="数字图像处理（Digital Image Processing, DIP）">
+                <i class="fa fa-chevron-left"></i> 数字图像处理（Digital Image Processing, DIP）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/25/距离，范数，向量空间，欧几里得空间（欧式空间），希尔伯特空间，巴拿赫空间/" rel="prev" title="距离，范数，向量空间，欧几里得空间（欧式空间），希尔伯特空间，巴拿赫空间">
+                距离，范数，向量空间，欧几里得空间（欧式空间），希尔伯特空间，巴拿赫空间 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Minh">
+            
+              <p class="site-author-name" itemprop="name">Minh</p>
+              <p class="site-description motion-element" itemprop="description">既然相遇，不如同行</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/minhzou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第3章-线性模型"><span class="nav-number">1.</span> <span class="nav-text">第3章 线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一元线性回归公式推导"><span class="nav-number">1.1.</span> <span class="nav-text">一元线性回归公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-求解偏置b"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 求解偏置b</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-求解权重w"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 求解权重w</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-将w向量化"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 将w向量化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多元线性回归公式推导"><span class="nav-number">1.2.</span> <span class="nav-text">多元线性回归公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#求解权重-hat-w-的公示推导"><span class="nav-number">1.2.1.</span> <span class="nav-text">求解权重$\hat{w}$的公示推导</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对数几率回归公式"><span class="nav-number">1.3.</span> <span class="nav-text">对数几率回归公式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#广义线性模型"><span class="nav-number">1.3.1.</span> <span class="nav-text">广义线性模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对数几率回归"><span class="nav-number">1.3.2.</span> <span class="nav-text">对数几率回归</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#对数几率回归的广义线性模型推导"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">对数几率回归的广义线性模型推导</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3、-对数几率回归的参数估计"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">3、 对数几率回归的参数估计</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#极大似然估计法"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">极大似然估计法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minh</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 总访客
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '6EPnyXCThXwcbw7bdMdV8mEW-gzGzoHsz',
+        appKey: 'pLe1UvLJvlysvxS7vy8aJgqz',
+        placeholder: '来~~ 快活呀',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'manual') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
