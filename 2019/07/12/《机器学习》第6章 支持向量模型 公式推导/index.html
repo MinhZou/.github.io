@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next1.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next1.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Minh's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第6章 支持向量模型支持向量机公式推导SVM问题的原始形式推导1. 常见的几何性质（欧氏空间） \left\{\begin{array}{l}{w^{T} x_{1}+b=0} \\ {w^{T} x_{2}+b=0} \\ {w^{T}\left(x_{1}-x_{2}\right)=0}\end{array}\right.$w$是法向量  \left\{\begin{array}{l}{w^{">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《机器学习》第6章 支持向量模型 公式推导">
+<meta property="og:url" content="http://minhzou.top/2019/07/12/《机器学习》第6章 支持向量模型 公式推导/index.html">
+<meta property="og:site_name" content="Minh&#39;s Blog">
+<meta property="og:description" content="第6章 支持向量模型支持向量机公式推导SVM问题的原始形式推导1. 常见的几何性质（欧氏空间） \left\{\begin{array}{l}{w^{T} x_{1}+b=0} \\ {w^{T} x_{2}+b=0} \\ {w^{T}\left(x_{1}-x_{2}\right)=0}\end{array}\right.$w$是法向量  \left\{\begin{array}{l}{w^{">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-17T08:20:40.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《机器学习》第6章 支持向量模型 公式推导">
+<meta name="twitter:description" content="第6章 支持向量模型支持向量机公式推导SVM问题的原始形式推导1. 常见的几何性质（欧氏空间） \left\{\begin{array}{l}{w^{T} x_{1}+b=0} \\ {w^{T} x_{2}+b=0} \\ {w^{T}\left(x_{1}-x_{2}\right)=0}\end{array}\right.$w$是法向量  \left\{\begin{array}{l}{w^{">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://minhzou.top/2019/07/12/《机器学习》第6章 支持向量模型 公式推导/">
+
+
+
+
+
+  <title>《机器学习》第6章 支持向量模型 公式推导 | Minh's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/minhzou" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Minh's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">成长的路上每一步都算数</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/07/12/《机器学习》第6章 支持向量模型 公式推导/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minh">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Minh's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《机器学习》第6章 支持向量模型 公式推导</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-12T23:15:11+08:00">
+                2019-07-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-17T16:20:40+08:00">
+                2019-07-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/12/《机器学习》第6章 支持向量模型 公式推导/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/12/《机器学习》第6章 支持向量模型 公式推导/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.4k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  18 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第6章-支持向量模型"><a href="#第6章-支持向量模型" class="headerlink" title="第6章 支持向量模型"></a>第6章 支持向量模型</h3><h4 id="支持向量机公式推导"><a href="#支持向量机公式推导" class="headerlink" title="支持向量机公式推导"></a>支持向量机公式推导</h4><h5 id="SVM问题的原始形式推导"><a href="#SVM问题的原始形式推导" class="headerlink" title="SVM问题的原始形式推导"></a>SVM问题的原始形式推导</h5><h6 id="1-常见的几何性质（欧氏空间）"><a href="#1-常见的几何性质（欧氏空间）" class="headerlink" title="1. 常见的几何性质（欧氏空间）"></a>1. 常见的几何性质（欧氏空间）</h6><script type="math/tex; mode=display">
+\left\{\begin{array}{l}{w^{T} x_{1}+b=0} \\ {w^{T} x_{2}+b=0} \\ {w^{T}\left(x_{1}-x_{2}\right)=0}\end{array}\right.</script><p>$w$是法向量</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}{w^{T} x_{1}+b=0} \\ {\lambda w^{T} \frac{w}{\|w\|}+b=0} \\ {\text { offset }} =\frac{-b}{\|w\|}\end{array}\right.</script><p>$\frac{-b}{|\boldsymbol{w}|}$是原点到平面的”距离”</p>
+<script type="math/tex; mode=display">
+r=\frac{\left|\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}+b\right|}{\|\boldsymbol{w}\|}</script><p>r是点到平面的距离</p>
+<script type="math/tex; mode=display">
+\begin{aligned} r &=\left\|\frac{\boldsymbol{w}^{T} \boldsymbol{x}}{\|\boldsymbol{w}\|^{2}} \boldsymbol{w}-\frac{-b}{\|\boldsymbol{w}\|^{2}} \boldsymbol{w}\right\| \\ &=\left\|\frac{\boldsymbol{w}^{T} \boldsymbol{x}}{\|\boldsymbol{w}\|^{2}}+\frac{b}{\|\boldsymbol{w}\|^{2}}\right\|\|\boldsymbol{w}\| \\ &=\frac{\left\|\boldsymbol{w}^{T} \boldsymbol{x}+b\right\|}{\|\boldsymbol{w}\|} \\ &=\frac{\left|\boldsymbol{w}^{T} \boldsymbol{x}+b\right|}{\|\boldsymbol{w}\|} \end{aligned}</script><h6 id="SVM原始公式的导出-核心是最大化间隔"><a href="#SVM原始公式的导出-核心是最大化间隔" class="headerlink" title="SVM原始公式的导出(核心是最大化间隔)"></a>SVM原始公式的导出(核心是最大化间隔)</h6><p>（1）任一数据点到平面距离（假设w可以分开数据集）:</p>
+<script type="math/tex; mode=display">
+r_{i}=\frac{y_{i}\left(\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}_{i}+b\right)}{\|\boldsymbol{w}\|}</script><p>（2）最接近平面的距离</p>
+<script type="math/tex; mode=display">
+d=\min _{i} y_{i}\left(\frac{\boldsymbol{w}^{T}}{\|\boldsymbol{w}\|} \boldsymbol{x}_{i}+\frac{b}{\|\boldsymbol{w}\|}\right)</script><p>（3）所有可能距离中，最大的距离。是间隔的一半</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}{d^{\star}=\max _{w, b} \min _{i} y_{i}\left(\frac{\boldsymbol{w}^{T}}{\|\boldsymbol{w}\|} \boldsymbol{x}_{i}+\frac{b}{\|\boldsymbol{w}\|}\right)} \\ {\gamma=2 d^{\star}=\max _{\boldsymbol{w}, b} \min _{i} 2 \times \boldsymbol{y}_{i}\left(\frac{\boldsymbol{w}^{T}}{\|\boldsymbol{w}\|} \boldsymbol{x}_{i}+\frac{b}{\|\boldsymbol{w}\|}\right)}\end{array}\right.</script><script type="math/tex; mode=display">
+\begin{array}{l}{\max _{w, b} 2 d} \\ {\text { s.t. } y_{i}\left(\frac{w^{T}}{\|w\|} x_{i}+\frac{b}{\|\boldsymbol{w}\|}\right) \geq d \text { for } i=1, \ldots, m} \\ {d>0}\end{array}</script><p>引入新的定义：函数间隔$\hat{d}=|\boldsymbol{w}| d$</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\max _{\boldsymbol{w}, b} \frac{2 \hat{d}}{\|\boldsymbol{w}\|}} \\ {\text { s.t. } \boldsymbol{y}_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right) \geq \hat{d} \text { for } i=1, \ldots, N} \\ {\hat{d}>0}\end{array}</script><p>实际上，$\hat{d}$取值并不影响最优化问题的解！<br>所以我们可以始终取$\hat{d}$=1</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}{\max _{w, b}} & {\frac{2}{\|w\|}} \\ {\text { s.t. }} & {y_{i}\left(w^{T} x_{i}+b\right) \geq 1, \quad i=1,2, \dots, m}\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{ll}{\min _{w, b}} & {\frac{1}{2}\|w\|^{2}} \\ {\text { s.t. }} & {y_{i}\left(w^{T} x_{i}+b\right) \geq 1, \quad i=1,2, \ldots, m}\end{array}</script><h6 id="SVM的性质"><a href="#SVM的性质" class="headerlink" title="SVM的性质"></a>SVM的性质</h6><p>① 最大间隔超平面的存在唯一性<br>② 支持向量和间隔边界</p>
+<p>存在性易得，现证唯一性：<br>假设有两个最优解$\left(\boldsymbol{w}_{1}^{\star}, b_{1}^{\star}\right),\left(\boldsymbol{w}_{2}^{\star}, b_{2}^{\star}\right)$<br>1）证$\boldsymbol{w}_{1}^{\star}=\boldsymbol{w}_{2}^{\star}$<br>根据假设，有$\left|\boldsymbol{w}_{1}^{\star}\right|=\left|\boldsymbol{w}_{2}^{\star}\right|=c \neq 0$,假设$w=\frac{w_{1}^{\star}+w_{2}^{\star}}{2}, b=\frac{b_{1}^{\star}+b_{2}^{\star}}{2}$<br>$c \leq| | w| |=\frac{\left|w_{i}^{\star}+w_{2}^{\star}\right|}{2} \leq \frac{ | w_{i}^{\star}|+| w_{2}^{\star} |}{2}=c \Rightarrow | w |\frac{\left|w_{1}^{\star}+w_{2}^{\star}\right|}{2}=\frac{\left|w_{1}^{\star}\right|+\left|w_{2}^{\star}\right|}{2}\Rightarrow \quad w_{1}^{\star}=k w_{2}^{\star}$<br>$\Rightarrow k=\left\{\begin{array}{l}{1} \\ {-1}\end{array} \Rightarrow w=\left\{\begin{array}{ll}{w_{i}^{\star}=w_{i}^{\star}} &amp; {\text { if } k=1} \\ {0} &amp; {\text { if } k=-1}\end{array} \Rightarrow w_{1}^{\star}=w_{2}^{\star}\right.\right.$<br>2）证$b_{1}^{\star}=b_{2}^{\star}$，设$x_{1}^{\prime}, x_{2}^{\prime} \in\left\{x_{i} | y_{i}=+1\right\} \quad x_{1}^{\prime \prime}, x_{2}^{\prime \prime} \in\left\{x_{i} | y_{i}=-1\right\}$，且有$\left\{\begin{array}{l}{\left(w^{T} x_{1}^{\prime}+b_{1}^{\star}\right)=1} \\ {\left(w^{T} x_{2}^{\prime}+b_{2}^{\star}\right)=1} \\ {\left(w^{T} x_{1}^{\prime \prime}+b_{1}^{\star}\right)=-1} \\ {\left(w^{T} x_{2}^{\prime \prime}+b_{2}^{\star}\right)=-1}\end{array}\right.$</p>
+<p>$\left\{\begin{array}{l}{b_{1}^{\star}=-\frac{1}{2} w^{T}\left(\boldsymbol{x}_{1}^{\prime}+\boldsymbol{x}_{1}^{\prime \prime}\right)} \\ {b_{2}^{\star}=-\frac{1}{2} \boldsymbol{w}^{T}\left(\boldsymbol{x}_{2}^{\prime}+\boldsymbol{x}_{2}^{\prime \prime}\right)}\end{array} \Rightarrow b_{1}^{\star}-b_{2}^{\star}=-\frac{1}{2}\left[\boldsymbol{w}^{T}\left(\boldsymbol{x}_{1}^{\prime}-\boldsymbol{x}_{2}^{\prime}\right)+\boldsymbol{w}^{T}\left(\boldsymbol{x}_{1}^{\prime \prime}-\boldsymbol{x}_{2}^{\prime \prime}\right)\right]\right.$</p>
+<p>$\left\{\begin{array}{1}{\left(w^{T} x_{2}^{\prime}+b_{1}^{\star}\right)\geq 1=w^{T} x_{1}^{\prime}+b_{1}^{\star}} \\ {\left(w^{T} x_{1}^{\prime}+b_{2}^{\star}\right)\geq 1=w^{T} x_{2}^{\prime}+b_{2}^{\star}} \\ {\left(w^{T} x_{2}^{\prime \prime}+b_{1}^{\star}\right)\geq 1=w^{T} x_{1}^{\prime \prime}+b_{1}^{\star}} \\ {\left(w^{T} x_{1}^{\prime \prime}+b_{2}^{\star}\right)\geq 1=w^{T} x_{2}^{\prime \prime}+b_{2}^{\star}}\end{array}\right.\Rightarrow\left\{\begin{array}{l}{\boldsymbol{w}^{T}\left(\boldsymbol{x}_{1}^{\prime}-\boldsymbol{x}_{2}^{\prime}\right)=0} \\ {\boldsymbol{w}^{T}\left(\boldsymbol{x}_{1}^{\prime \prime}-\boldsymbol{x}_{2}^{\prime \prime}\right)=0}\end{array} \Rightarrow b_{1}^{\star}=b_{2}^{\star}\right.$</p>
+<h5 id="SVM问题的对偶形式推导"><a href="#SVM问题的对偶形式推导" class="headerlink" title="SVM问题的对偶形式推导"></a>SVM问题的对偶形式推导</h5><h6 id="1-拉格朗日函数的介绍"><a href="#1-拉格朗日函数的介绍" class="headerlink" title="1. 拉格朗日函数的介绍"></a>1. 拉格朗日函数的介绍</h6><p>优化问题的一般形式</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}{\min _{x}} & {f_{0}(x)} \\ {\text { s.t. }} & {f_{i}(x) \leq 0, \quad i=1, \ldots, m} \\ {} & {h_{i}(x)=0, \quad i=1, \ldots, p}\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{cl}{\min _{x}} & {f_{0}(x)} \\ {\text { s.t. }} & {f_{i}(x) \geq 0, \quad i=1, \ldots, m} \\ {} & {h_{i}(x)=0, \quad i=1, \ldots, p}\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{ll}{\max _{x}} & {f_{0}(x)} \\ {\text { s.t. }} & {f_{i}(x) \leq 0, \quad i=1, \ldots, m} \\ {} & {h_{i}(x)=0, \quad i=1, \ldots, p}\end{array}</script><p>概念：拉格朗日函数是拉格朗日乘子法的核心部分，所以当我们看到拉格朗日函数时，不假思素地将其对应到拉格朗日乘子法上<br>核心：拉格朗日乘子法，其思想就是把有约束优化问题转变为等价的无约束优化问题（形式上）</p>
+<p>拉格朗日函数与原始问题的关系：</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}{\min _{x}} & {f_{0}(x)} \\ {\text { s.t. }} & {f_{i}(x) \leq 0, \quad i=1, \ldots, m} \\ {} & {h_{i}(x)=0, \quad i=1, \ldots, p}\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{c}{\mathcal{L}(x, \lambda, \nu)=f_{0}(x)+\sum_{i=1}^{m} \lambda_{i} f_{i}(x)+\sum_{i=1}^{p} \nu_{i} h_{i}(x)} \\ {\text { s.t. } \quad \lambda_{i} \geq 0, \quad i=1, \ldots, m}\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{rl}{\min _{x} \max _{\lambda, v}} & {\mathcal{L}(x, \lambda, \nu)} \\ {\text { s.t. }} & {\lambda_{i} \geq 0, \quad i=1, \ldots, m}\end{array}</script><p>证明：<br>$\begin{array}{ll}{\min _{x}} &amp; {f_{0}(x)} \\ {\text { s.t. }} &amp; {f_{i}(x) \leq 0, \quad i=1, \ldots, m} \\ {} &amp; {h_{i}(x)=0, \quad i=1, \ldots, p}\end{array}\Leftrightarrow\begin{array}{rl}{\min _{x} \max _{\lambda, v}} &amp; {\mathcal{L}(x, \lambda, \nu)} \\ {\text { s.t. }} &amp; {\lambda_{i} \geq 0, \quad i=1, \ldots, m}\end{array}$<br>记：$\theta_{p}(x)=\max _{\lambda, v} \mathcal{L}(x, \lambda, \nu)$<br>s.t. $\quad \lambda_{i} \geq 0, \quad i=1, \ldots, m$<br>则：$\theta_{P}(x)=\left\{\begin{array}{ll}{f_{0}(x)} &amp; {\text { for } x \text { that satisfied the origin constraint }} \\ {+\infty} &amp; {\text { otherwise }}\end{array}\right.$<br>验证上述性质：<br>①若存在$\boldsymbol{x}$使得某个$f_{i}(x)&gt;0$则我们可令$0 \leq \lambda_{i} \rightarrow+\infty$，进而有$\theta_{p}(x)=+\infty$<br>②若存在$\boldsymbol{x}$使得某个$h_{i}(x) \neq 0$则我们可令$v_{i} h_{i}(x) \rightarrow+\infty$，进而有$\theta_{p}(x)=+\infty$<br>③若$x \in\left\{x | \forall i, v_{i}, \lambda_{i} \geq 0, \lambda_{i} f_{i}(x) \leq 0, v_{i} h_{i}(x)=0\right\}$，则有$\max _{\lambda, v} \mathcal{L}(x, \lambda, \nu)=f_{0}(x)$</p>
+<p>拉格朗日乘子法在SVM问题上的应用<br>原始形式：<br>$\begin{array}{ll}{\min _{\boldsymbol{w}, b}} &amp; {\frac{1}{2}|\boldsymbol{w}|^{2}} \\ {\text { s.t. }} &amp; {\boldsymbol{y}_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right) \geq 1, \quad i=1,2, \ldots, m}\end{array}\leftrightarrow\begin{array}{ll}{\min _{\boldsymbol{w}, b}} &amp; {\frac{1}{2}|\boldsymbol{w}|^{2}} \\ {\text { s.t. }} &amp; {1-\boldsymbol{y}_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right) \leq 0, \quad i=1,2, \ldots, m}\end{array}$</p>
+<p>拉格朗日函数：<br>$\mathcal{L}(\boldsymbol{w}, b, \alpha)=\frac{1}{2}|\boldsymbol{w}|^{2}+\sum_{i=1}^{m} \alpha_{i}\left(1-\boldsymbol{y}_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right)\right)$<br>s.t. $\quad \alpha_{i} \geq 0 \quad$ for $i=1, \ldots, m$</p>
+<p>等价问题：<br>$\begin{array}{cl}{\min _{\boldsymbol{w}, b} \max _{\alpha}} &amp; {\mathcal{L}(\boldsymbol{w}, b, \alpha)} \\ {\text { s.t. }} &amp; {\alpha_{i} \geq 0 \text { for } i=1, \ldots, m}\end{array}$</p>
+<h6 id="2-“对偶”概念的介绍"><a href="#2-“对偶”概念的介绍" class="headerlink" title="2. “对偶”概念的介绍"></a>2. “对偶”概念的介绍</h6><p>进一步求解SVM的拉格朗日对偶问题<br>$\begin{array}{cl}{\max _{\alpha} \min _{\alpha}} &amp; {\frac{1}{2}|\boldsymbol{w}|^{2}+\sum_{i=1}^{m} \alpha_{i}\left(1-\boldsymbol{y}_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right)\right)} \\ {\text { s.t. }} &amp; {\alpha_{i} \geq 0 \quad \text { for } i=1, \ldots, m}\end{array}$</p>
+<p>①必要条件<br>$\frac{\partial \mathcal{L}}{\partial w}=0 \Rightarrow w=\sum_{i=1}^{m} \alpha_{i} y_{i} x_{i}$<br>$\frac{\partial \mathcal{L}}{\partial b}=0 \Rightarrow \sum_{i=1}^{m} \alpha_{i} y_{i}=0$<br>②回代得式<br>$\max _{a} \sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i=1}^{m} \sum_{j=1}^{m} \alpha_{i} \alpha_{j} y_{i} y_{j} x_{i}^{T} x_{j}$<br>s.t. $\sum_{i=1}^{m} \alpha_{i} y_{i}=0$</p>
+<p>$\begin{aligned} \frac{\partial \mathcal{L}}{\partial \boldsymbol {w}}=0 &amp;=\frac{\partial}{\partial \boldsymbol{w}}\left(\frac{1}{2} \boldsymbol{w}^{T} \boldsymbol{w}+\sum_{i=1}^{m} \alpha_{i}-\sum_{i=1}^{m} \alpha_{i} y_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right)\right) \\ &amp;=\frac{\partial}{\partial \boldsymbol{w}}\left(\frac{1}{2} \boldsymbol{w}^{T} \boldsymbol{w}+\sum_{i=1}^{m} \alpha_{i}-\sum_{i=1}^{m} \alpha_{i} {y}_{i} \boldsymbol{w}^{T} \boldsymbol{x}_{i}-\sum_{i=1}^{m} \alpha_{i} {y}_{i} \boldsymbol{x}_{i} b\right) \\&amp;=\frac{\partial}{\partial \boldsymbol{w}}\left(\frac{1}{2} \boldsymbol{w}^{T} \boldsymbol{w}-\sum_{i=1}^{m} \alpha_{i} y_{i} \boldsymbol{w}^{T} x_{i}\right)\\&amp;=\frac{\partial}{\partial \boldsymbol{w}}\left(\frac{1}{2} \boldsymbol{w}^{T} \boldsymbol{w}-\boldsymbol{w}^{T} \sum_{i=1}^{m} \alpha_{i} {y}_{i} \boldsymbol{x}_{i}\right)\\&amp;=\boldsymbol{w}-\sum_{i=1}^{m} a_{i} y_{i} \boldsymbol{x}_{i}\end{aligned}$</p>
+<p>$\begin{aligned} \frac{\partial \mathcal{L}}{\partial b}=0&amp;=\frac{\partial}{\partial b}\left(\frac{1}{2} \boldsymbol{w}^{T} \boldsymbol{w}+\sum_{i=1}^{m} \alpha_{i}-\sum_{i=1}^{m} \alpha_{i} y_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right)\right)\\&amp;=\frac{\partial}{\partial b}\left(\frac{1}{2} \boldsymbol{w}^{T} \boldsymbol{w}+\sum_{i=1}^{m} \alpha_{i}-\sum_{k=1}^{m} \alpha_{i} y_{i} \boldsymbol{w}^{T} \boldsymbol{x}_{i}-\sum_{i=1}^{m} \alpha_{i} y_{i} b\right)\\&amp;=\frac{\partial}{\partial b}\left(-\sum_{i=1}^{m} \alpha_{i} y_{i} b\right)\\&amp;=\frac{\partial}{\partial b}\left(-b \sum_{i=1}^{m} \alpha_{i}{y}_{i}\right)\\&amp;=-\sum_{i=1}^{m} \alpha_{i} y_{i}\end{aligned}$</p>
+<p>$\begin{aligned} \boldsymbol{w} &amp;=\sum_{i=1}^{m} \alpha_{i} \boldsymbol{y}_{i} \boldsymbol{x}_{i} \\ 0 &amp;=\sum_{i=1}^{m} \alpha_{i} \boldsymbol{y}_{i} \end{aligned}$</p>
+<p>$\begin{aligned} \min _{w, b} \mathcal{L}(\boldsymbol{w}, b, \alpha) &amp;=\frac{1}{2}|\boldsymbol{w}|^{2}+\sum_{i=1}^{m} \alpha_{i}\left(1-{y}_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right)\right) \\ &amp;=\frac{1}{2} \boldsymbol{w}^{T} \boldsymbol{w}-\boldsymbol{w}^{T}\left(\sum_{i=1}^{m} \alpha_{i} {y}_{i} \boldsymbol{x}_{i}\right)-b\left(\sum_{i=1}^{m} \alpha_{i} {y}_{i}\right)+\left(\sum_{i=1}^{m} \alpha_{i}\right)\\&amp;=\frac{1}{2} \boldsymbol{w}^{T}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} \boldsymbol{x}_{i}\right)-\boldsymbol{w}^{T}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} \boldsymbol{x}_{i}\right)-b \cdot 0+\left(\sum_{i=1}^{m} \alpha_{i}\right) \\&amp;=\left(\sum_{i=1}^{m} \alpha_{i}\right)+\left(\frac{1}{2} \boldsymbol{w}^{T}-\boldsymbol{w}^{T}\right)\left(\sum_{i=1}^{m} \alpha_{i} {y}_{i} \boldsymbol{x}_{i}\right)\\&amp;=\left(\sum_{i=1}^{m} \alpha_{i}\right)-\frac{1}{2}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} \boldsymbol{x}_{i}\right)^{T}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} \boldsymbol{x}_{i}\right)\\&amp;=\left(\sum_{i=1}^{m} \alpha_{i}\right)-\frac{1}{2}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} \boldsymbol{x}_{i}^{T}\right)\left(\sum_{j=1}^{m} \alpha_{j} y_{j} \boldsymbol{x}_{j}\right)\\&amp;=\left(\sum_{i=1}^{m} \alpha_{i}\right)-\frac{1}{2}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} \boldsymbol{x}_{i}^{T}\left(\sum_{j=1}^{m} \alpha_{j} y_{j} \boldsymbol{x}_{j}\right)\right)\\&amp;=\sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i=1}^{m} \sum_{j=1}^{m} \alpha_{i} \alpha_{j} y_{i} y_{j} \boldsymbol{x}_{i}^{T} \boldsymbol{x}_{j}\\&amp;=\mathcal{L}(\alpha)\end{aligned}$</p>
+<h6 id="3-KKT条件的介绍"><a href="#3-KKT条件的介绍" class="headerlink" title="3. KKT条件的介绍"></a>3. KKT条件的介绍</h6><p>用途：KKT条件就是一组方程，用于部分最优化问题的求解。<br>优化问题：$\left\{\begin{aligned} \text { optimize } &amp; f(x) \\ \text { s.t. } &amp; g_{i}(x) \leq 0 \\ &amp; h_{j}(x)=0 \end{aligned}\right.$ $\Rightarrow$ KKT条件 $\left\{\begin{aligned} \nabla_{x} \mathcal{L} &amp;=0 &amp;\text{(stationary equation)}\\ g_{j}(\boldsymbol{x}) &amp;=0, \quad j=1, \ldots, m &amp;\text{(primal feasibility)}\\ h_{k}(x) &amp; \leq 0 &amp;\text{(primal feasibility)}\\ \lambda_{k} &amp; \geq 0 &amp;\text{(dual feasibility)}\\ \lambda_{k} h_{k}(\boldsymbol{x}) &amp;=0, \quad k=1, \ldots, p &amp;\text{(complementary slackness)}\end{aligned}\right.$</p>
+<p>使用方法：<br>①假设待优化的的函数为$f : \mathbb{R}^{n} \rightarrow \mathbb{R}$，约束为$y_{i} : \mathbb{R}^{n} \rightarrow \mathbb{R}, h_{i} : \mathbb{R}^{n} \rightarrow \mathbb{R}$，并且优化问题满足regularity condition，那么，若$\mathcal{x}^{\star}$是局部最优值，其必然满足KKT条件必要性）<br>②假设待优化的的函数$f(x)$和不等式约束$g_{i}(x)$是凸函数，等式约束$h_{i}(x)$是仿射函数，且不等式约束等号能够成立（严格可行）。那么满足KKT条件的x点就是全局最优（充要条件）。</p>
+<p>理解KKT条件：<br>考虑不等式约束：<br>①解在边界上<br>②解在非边界上<br>考虑等式+不等式约束：<br>①等式约束<br>②不等式约束（解在边界上）<br>③不等式约束（解非边界上）</p>
+<h5 id="SVM问题的求解算法（SMO）"><a href="#SVM问题的求解算法（SMO）" class="headerlink" title="SVM问题的求解算法（SMO）"></a>SVM问题的求解算法（SMO）</h5><h6 id="1-SMO算法的思路讲解"><a href="#1-SMO算法的思路讲解" class="headerlink" title="1. SMO算法的思路讲解"></a>1. SMO算法的思路讲解</h6><p>重点：<br>①每次迭代过程仅优化两个参数，有闭式解<br>②启发式寻找每次优化的两个参数，有效减少迭代次数<br>思路：<br>①设置$\alpha$列表，并设其初值为0（每个数据点对应一个$\alpha_{i}$）<br>②选取两个待优化变量（为了方便，记为$\alpha_{1}, \alpha_{2} $）<br>③解释地求解两个变量的最优解$\alpha_{1}^{\star}, \alpha_{2}^{\star}$，并更新至$\alpha$的列表<br>④检查更新后的$\alpha$列表是否在某个精度范围内满足KKT条件，若不满足，返回②</p>
+<h6 id="2-SMO算法的简单实现"><a href="#2-SMO算法的简单实现" class="headerlink" title="2. SMO算法的简单实现"></a>2. SMO算法的简单实现</h6><h5 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h5><h5 id="软间隔与支持向量回归公式推导"><a href="#软间隔与支持向量回归公式推导" class="headerlink" title="软间隔与支持向量回归公式推导"></a>软间隔与支持向量回归公式推导</h5><h6 id="Soft-Margin-SVM公式推导"><a href="#Soft-Margin-SVM公式推导" class="headerlink" title="Soft-Margin SVM公式推导"></a>Soft-Margin SVM公式推导</h6><ol>
+<li>Soft-Margin SVM的原始形式导出<br>Hard-Margin<script type="math/tex; mode=display">
+\begin{array}{ll}{\min _{w, b}} & {\frac{1}{2}\|w\|^{2}} \\ {\text { s.t. }} & {y_{i}\left(w^{T} x_{i}+b\right) \geq 1, \quad i=1,2, \ldots, m}\end{array}</script>Naive-Soft-Margin<script type="math/tex; mode=display">
+\begin{array}{l}{\min _{w, b} \frac{1}{2}\|\boldsymbol{w}\|^{2}+C \sum_{i=1}^{m} \ell_{0 / 1}\left(y_{i}\left(\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}_{i}+b\right)-1\right)} \\ {\ell_{0 / 1}(z)=\left\{\begin{array}{l}{1, \text { if } z<0} \\ {0, \text { otherwise }}\end{array}\right.}\end{array}</script>Soft-Margin<script type="math/tex; mode=display">
+\begin{array}{cl}{\min _{w, b, \xi_{i}}} & {\frac{1}{2}\|\boldsymbol{w}\|^{2}+C \sum_{i=1}^{m} \xi_{i}} \\ {\text { s.t. }} & {y_{i}\left(\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}_{i}+b\right) \geqslant 1-\xi_{i}} \\ {} & {\xi_{i} \geqslant 0, i=1,2, \ldots, m}\end{array}</script>Soft-Margin(equivalent)<script type="math/tex; mode=display">
+\min _{w, b} \frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{m} \underbrace{\max \left(0,1-y_{i}\left(w^{\mathrm{T}} x_{i}+b\right)\right)}_{\varepsilon_{i}}</script>proof<script type="math/tex; mode=display">
+\xi_{i}=\max \left(0,1-y_{i}\left(w^{\mathrm{T}} x_{i}+b\right)\right)\left\{\begin{array}{l}{ \geq 0} \\ { \geq 1-y_{i}\left(\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}_ {i}+b\right)}\end{array}\right.</script></li>
+<li>Soft-Margin SVM的对偶形式导出<br>求偏导数<script type="math/tex; mode=display">
+\begin{aligned} \frac{\partial \mathcal{L}}{\partial w} &=0 \Rightarrow \boldsymbol{w}=\sum_{i=1}^{m} \alpha_{i} y_{i} \boldsymbol{x}_{i} \\ \frac{\partial \mathcal{L}}{\partial \boldsymbol{b}} &=0 \Rightarrow 0=\sum_{i=1}^{m} \alpha_{i} y_{i} \\ \frac{\partial \mathcal{L}}{\partial \boldsymbol{\xi}_{i}} &=0 \Rightarrow C=\alpha_{i}+\mu_{i} \end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned} \frac{\partial \mathcal{L}}{\partial w}=0 &=\frac{\partial}{\partial w}\left(\frac{1}{2}\|\boldsymbol{w}\|^{2}+C \sum_{i=1}^{m} \xi_{i}+\sum_{i=1}^{m} \alpha_{i}\left(1-\xi_{i}-y_{i}\left(\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}_{i}+b\right)\right)-\sum_{i=1}^{m} \mu_{i} \xi_{i}\right) \\ &=\frac{\partial}{\partial \boldsymbol{w}}\left(\frac{1}{2} w^{T} w-\sum_{i=1}^{m} \alpha_{i} \boldsymbol{y}_{i} \boldsymbol{w}^{T} \boldsymbol{x}_{i}\right) \\ &= \frac{\partial}{\partial w}\left(\frac{1}{2} w^{T} w-\sum_{i=1}^{m} \alpha_{i} y_{i} w^{T} x_{i}\right) \\ &= \frac{\partial}{\partial w}\left(\frac{1}{2} w^{T} w-w^{T} \sum_{i=1}^{m} \alpha_{i} y_{i} x_{i}\right)\\ &= w-\sum_{i=1}^{m} n_{i} y_{i} x_{i}\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned} \frac{\partial \mathcal{L}}{\partial b}=0 &=\frac{\partial}{\partial b}\left(\frac{1}{2}\|\boldsymbol{w}\|^{2}+C \sum_{i=1}^{m} \xi_{i}+\sum_{i=1}^{m} \alpha_{i}\left(1-\xi_{i}-y_{i}\left(\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}_{i}+b\right)\right)-\sum_{i=1}^{m} \mu_{i} \xi_{i}\right) \\ &=\frac{\partial}{\partial b}\left(\frac{1}{2} w^{T} w-\sum_{i=1}^{m} \alpha_{i} \boldsymbol{y}_{i} \boldsymbol{w}^{T} \boldsymbol{x}_{i}\right) \\ &= \frac{\partial}{\partial b}\left(-b \sum_{i=1}^{m} \alpha_{i} y_{i}\right)\\ &= -\sum_{i=1}^{m} \alpha_{i} y_{i}\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned} \frac{\partial \mathcal{L}}{\partial \xi_{i}}=0 &=\frac{\partial}{\partial \xi_{i}}\left(\frac{1}{2}\|\boldsymbol{w}\|^{2}+C \sum_{i=1}^{m} \xi_{i}+\sum_{i=1}^{m} \alpha_{i}\left(1-\xi_{i}-y_{i}\left(\boldsymbol{w}^{\mathrm{T}} \boldsymbol{x}_{i}+b\right)\right)-\sum_{i=1}^{m} \mu_{i} \xi_{i}\right) \\ &=\frac{\partial}{\partial \xi_{i}}\left(C \sum_{i=1}^{m} \xi_{i}+\sum_{i=1}^{m} \alpha_{i}\left(-\xi_{i}\right)-\sum_{i=1}^{m} \mu_{i} \xi_{i}\right) \\ &=\frac{\partial}{\partial \xi_{i}}\left(C \xi_{i}-\alpha_{i} \xi_{i}-\mu_{i} \xi_{i}\right) \\ &=C-\alpha_{i}-\mu_{i} \end{aligned}</script>代入获得对偶形式：<script type="math/tex; mode=display">
+\begin{array}{l}{\max _{\alpha} \sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i=1}^{m} \sum_{j=1}^{m} \alpha_{i} \alpha_{j} y_{i} y_{j} \boldsymbol{x}_{i}^{\mathrm{T}} \boldsymbol{x}_{j}} \\ {\text { s.t. } \sum_{i=1}^{m} \alpha_{i} y_{i}=0} \\ {\quad 0 \leqslant \alpha_{i} \leqslant C, \quad i=1,2, \ldots, m}\end{array}</script><script type="math/tex; mode=display">
+\begin{aligned} \min _{w, b, \xi} \mathcal{L}(\boldsymbol{w}, b, \xi, \alpha) &=\left(\frac{1}{2}\|\boldsymbol{w}\|^{2}+C \sum_{i=1}^{m} \xi_{i}+\sum_{i=1}^{m} \alpha_{i}\left(1-\xi_{i}-y_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right)\right)-\sum_{i=1}^{m} \mu_{i} \xi_{i}\right) \\ &=\frac{1}{2} w^{T} w-w^{T}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} x_{i}\right)+\left(\sum_{i=1}^{m} \alpha_{i}\right)-b\left(\sum_{i=1}^{m} \alpha_{i} y_{i}\right)+C \sum_{i=1}^{m} \xi_{i}-\sum_{i=1}^{m} \alpha_{i} \xi_{i}-\sum_{i=1}^{m} \mu_{i} \xi_{i}\\ &= \frac{1}{2} w^{T}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} x_{i}\right)-w^{T}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} x_{i}\right)+\left(\sum_{i=1}^{m} \alpha_{i}\right)-b \cdot 0+\left(C-\alpha_{i}-\mu_{i}\right) \sum_{i=1}^{m} \xi_{i} \\ &= \left(\sum_{i=1}^{m} \alpha_{i}\right)+\left(\frac{1}{2} w^{T}-w^{T}\right)\left(\sum_{i=1}^{m} \alpha_{i} y_{i} x_{i}\right) \\ &= \left(\sum_{i=1}^{m} \alpha_{i}\right)-\frac{1}{2}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} x_{i}\right)^{T}\left(\sum_{j=1}^{m} \alpha_{i} y_{j} x_{j}\right) \\ &= \left(\sum_{i=1}^{m} \alpha_{i}\right)-\frac{1}{2}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} x_{i}^{T}\right)\left(\sum_{j=1}^{m} \alpha_{j} y_{j} x_{j}\right)\\ &= \left(\sum_{i=1}^{m} \alpha_{i}\right)-\frac{1}{2}\left(\sum_{i=1}^{m} \alpha_{i} y_{i} x_{i}^{T}\left(\sum_{j=1}^{m} \alpha_{j} y_{j} x_{j}\right)\right) \\ &= \sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i=1}^{m} \sum_{j=1}^{m} \alpha_{i} \alpha_{j} y_{i} y_{j} x_{i}^{T} x_{j}\\&= \mathcal{L}(\alpha)\end{aligned}</script>约束：<script type="math/tex; mode=display">
+\left\{\begin{array}{l}{\alpha_{i} \geq 0} \\ {\mu_{i} \geq 0} \\ {\sum_{i=1}^{m} \alpha_{i} y_{i}=0}\end{array} \quad \Rightarrow \quad\left\{\begin{array}{l}{\alpha_{i} \geq 0} \\ {C-\alpha_{i} \geq 0} \\ {\sum_{i=1}^{m} \alpha_{i} y_{i}=0}\end{array} \quad \Rightarrow\left\{\begin{array}{l}{0 \leq \alpha_{i} \leq C} \\ {\sum_{i=1}^{m} \alpha_{i} y_{i}=0} \\ {\sum_{i=1}^{m} \alpha_{i} y_{i}=0}\end{array} \quad \Rightarrow\left\{\sum_{i=1}^{m} \alpha_{i} y_{i}=0\right.\right.\right.\right.</script>稀疏性分析：<br>KKT条件<script type="math/tex; mode=display">
+\left\{\begin{array}{l}{\alpha_{i} \geqslant 0, \quad \mu_{i} \geqslant 0} \\ {y_{i} f\left(x_{i}\right)-1+\xi_{i} \geqslant 0} \\ {\alpha_{i}\left(y_{i} f\left(x_{i}\right)-1+\xi_{i}\right)=0} \\ {\xi_{i} \geqslant 0, \mu_{i} \xi_{i}=0}\end{array}\right.</script></li>
+</ol>
+<h6 id="Support-Vector-Regression（SVR）公式推导"><a href="#Support-Vector-Regression（SVR）公式推导" class="headerlink" title="Support Vector Regression（SVR）公式推导"></a>Support Vector Regression（SVR）公式推导</h6><p>1.SVR原始形式的导出<br>SVR（一般形式）：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\min _{w, b} \frac{1}{2}\|\boldsymbol{w}\|^{2}+C \sum_{i=1}^{m} \ell_{c}\left(f\left(\boldsymbol{x}_{i}\right)-y_{i}\right)} \\ {\ell_{\epsilon}(z)=\left\{\begin{array}{ll}{0,} & {\text { if }|z| \leqslant \epsilon} \\ {|z|-\epsilon, \text { otherwise }}\end{array}\right.}\end{array}</script><p>SVR（原始形式）：</p>
+<script type="math/tex; mode=display">
+\begin{array}{cl}{\min _{w, b, \xi_{i}, \hat{\xi}_{i}}} & {\frac{1}{2}\|\boldsymbol{w}\|^{2}+C \sum_{i=1}^{m}\left(\xi_{i}+\hat{\xi}_{i}\right)} \\ {\text { s.t. }} & {f\left(x_{i}\right)-y_{i} \leqslant \epsilon+\xi_{i}} \\ {} & {y_{i}-f\left(x_{i}\right) \leqslant \epsilon+\hat{\xi}_{i}} \\ {} & {\xi_{i} \geq 0, \hat{\xi}_ {i} \geq 0, i=1,2, \ldots, m}\end{array}</script><p>2.SVR对偶形式的导出<br>求偏导数:</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\frac{\partial \mathcal{L}}{\partial w}=0 \Rightarrow w=\sum_{i=1}^{m}\left(\hat{\alpha}_{i}-\alpha_{i}\right) x_{i}} \\ {\frac{\partial \mathcal{L}}{\partial b}=0 \Rightarrow 0=\sum_{i=1}^{m}\left(\hat{\alpha}_{i}-\alpha_{i}\right)} \\ {\frac{\partial \mathcal{L}}{\partial \xi_{i}}=0 \Rightarrow C=\alpha_{i}+\mu_{i}} \\ {\frac{\partial \mathcal{L}}{\partial \hat{\xi}_{i}}=0 \Rightarrow C=\dot{\alpha}_{i}+\hat{\mu}_{i}}\end{array}</script><script type="math/tex; mode=display">
+\begin{aligned}\frac{\partial \mathcal{L}}{\partial w}=0&=\frac{\partial}{\partial w}\left(\frac{1}{2}\|u\|^{2}+C \sum_{i=1}^{m}\left(\xi_{i}+\overline{\xi}_{i}\right)-\sum_{i=1}^{m} \mu_{i} \xi_{i}-\sum_{i=1}^{m} \mu_{i} \xi_{i}-\sum_{i=1}^{m} \mu_{i} \dot{\xi}_{i}+\sum_{i=1}^{m} \alpha_{i}\left(f\left(x_{i}\right)-y_{i}-\epsilon-\xi_{i}\right)+\sum_{i=1}^{m} \hat{\alpha}_{i}\left(y_{i}-f\left(x_{i}\right)-\epsilon-\overline{\xi}_{i}\right) \right)\\&= \frac{\partial}{\partial w}\left(\frac{1}{2} | w \|^{2}+\sum_{i=1}^{m} \alpha_{i} f\left(x_{i}\right)-\sum_{i=1}^{m} \delta_{i} f\left(x_{i}\right)\right)\\ &=\frac{\partial}{\partial w}\left(\frac{1}{2}\|w\|^{2}+\sum_{i=1}^{m} \alpha_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right)-\sum_{i=1}^{m} \hat{a}_{i}\left(\boldsymbol{w}^{T} \boldsymbol{x}_{i}+b\right)\right)\\&=\boldsymbol{w}+\sum_{i=1}^{m}\left(\alpha_{i}-\hat{\alpha}_{i}\right) \boldsymbol{x}_{i} \end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}\frac{\partial \mathcal{L}}{\partial b}=0&=\frac{\partial}{\partial b}\left(\frac{1}{2} \|\left.w\right|^{2}+C \sum_{i=1}^{m}\left(\xi_{i}+\hat{\xi}_{i}\right)-\sum_{i=1}^{m} \mu_{i} \xi_{i}-\sum_{i=1}^{m} \hat{\mu}_{i} \hat{\xi}_{i}+\sum_{i=1}^{m} \alpha_{i}\left(f\left(x_{i}\right)-y_{i}-\epsilon-\xi_{i}\right)+\sum_{i=1}^{m} a_{i}\left(y_{i}-f\left(x_{i}\right)-c-\tilde{\xi}_{i}\right)\right)\\&=\frac{\partial}{\partial b}\left(\sum_{i=1}^{m} a_{i} f\left(x_{i}\right)-\sum_{i=1}^{m} a_{i} f\left(x_{i}\right)\right)\\&=\frac{\partial}{\partial b}\left(\sum_{i=1}^{m} \alpha_{i}\left(w^{T} x_{i}+b\right)-\sum_{i=1}^{m} \delta_{i}\left(w^{T} x_{i}+b\right)\right)\\&=\sum_{i=1}^{m}\left(a_{i}-\hat{a}_{i}\right)\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}\frac{\partial \mathcal{L}}{\partial \xi_{i}}=0&=\frac{\partial}{\partial \xi_{i}}\left(\frac{1}{2} \|\left.w\right|^{2}+C \sum_{i=1}^{m}\left(\xi_{i}+\hat{\xi}_{i}\right)-\sum_{i=1}^{m} \mu_{i} \xi_{i}-\sum_{i=1}^{m} \hat{\mu}_{i} \hat{\xi}_{i}+\sum_{i=1}^{m} \alpha_{i}\left(f\left(x_{i}\right)-y_{i}-\epsilon-\xi_{i}\right)+\sum_{i=1}^{m} a_{i}\left(y_{i}-f\left(x_{i}\right)-c-\tilde{\xi}_{i}\right)\right)\\&=\frac{\partial}{\partial \xi_{i}}\left(C \sum_{i=1}^{m}\left(\xi_{i}\right)-\sum_{i=1}^{m} \mu_{i} \xi_{i}+\sum_{i=1}^{m} a_{i}\left(-\xi_{i}\right)\right)\\&=\frac{\partial}{\partial \xi_{i}}\left(C \xi_{i}-\mu_{i} \xi_{i}-a_{i} \xi_{i}\right)\\& =C-\mu_{i}-\alpha_{i}\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}\frac{\partial \mathcal{L}}{\partial \hat{\xi}_{i}}=0&=\frac{\partial}{\partial \hat{\xi}_{i}}\left(\frac{1}{2} \|\left.w\right|^{2}+C \sum_{i=1}^{m}\left(\xi_{i}+\hat{\xi}_{i}\right)-\sum_{i=1}^{m} \mu_{i} \xi_{i}-\sum_{i=1}^{m} \hat{\mu}_{i} \hat{\xi}_{i}+\sum_{i=1}^{m} \alpha_{i}\left(f\left(x_{i}\right)-y_{i}-\epsilon-\xi_{i}\right)+\sum_{i=1}^{m} a_{i}\left(y_{i}-f\left(x_{i}\right)-c-\tilde{\xi}_{i}\right)\right)\\&=\frac{\partial}{\partial \hat{\xi}_{i}}\left(C \sum_{i=1}^{m}\left(\hat{\xi}_{i}\right)-\sum_{i=1}^{m} \hat{\mu_{i}} \hat{\xi}_{i}+\sum_{i=1}^{m} \hat{a_{i}}\left(-\xi_{i}\right)\right)\\&=\frac{\partial}{\partial \xi_{i}}\left(C \xi_{i}-\hat{\mu_{i}} \xi_{i}-\hat{\alpha}_{i} \xi_{i}\right)\\& =C-\hat{\mu_{i}}-\hat{\alpha_{i}}\end{aligned}</script><p>代入获得对偶形式：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \max _{\boldsymbol{\alpha}, \hat{\alpha}} & \sum_{i=1}^{m} y_{i}\left(\hat{\alpha}_{i}-\alpha_{i}\right)-\epsilon\left(\hat{\alpha}_{i}+\alpha_{i}\right) \\ &-\frac{1}{2} \sum_{i=1}^{m} \sum_{j=1}^{m}\left(\hat{\alpha}_{i}-\alpha_{i}\right)\left(\hat{\alpha}_{j}-\alpha_{j}\right) \boldsymbol{x}_{i}^{\mathrm{T}} \boldsymbol{x}_{j} \\ \text { s.t. } & \sum_{i=1}^{m}\left(\hat{\alpha}_{i}-\alpha_{i}\right)=0 \\ & 0 \leqslant \alpha_{i}, \hat{\alpha}_{i} \leqslant C \end{aligned}</script><p>为什么SVM要引入核函数？<br>现实任务中训练样本可能是线性不可分的，可将样本从原始空间映射到一个更高维的特征空间，使得样本在这个特征空间内线性可分。由于特征空间维数可能很高，甚至可能是无穷维，直接计算通常比较困难，因此引入核函数用于简化计算。</p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+  		
+   		  <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+ 		
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"> <i class="fa fa-tag"></i> 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/03/《机器学习》第4章 决策树模型 公式推导/" rel="next" title="《机器学习》第4章 决策树模型 公式推导">
+                <i class="fa fa-chevron-left"></i> 《机器学习》第4章 决策树模型 公式推导
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/15/《机器学习》第7章 朴素贝叶斯 公式推导/" rel="prev" title="《机器学习》第7章 朴素贝叶斯 公式推导">
+                《机器学习》第7章 朴素贝叶斯 公式推导 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Minh">
+            
+              <p class="site-author-name" itemprop="name">Minh</p>
+              <p class="site-description motion-element" itemprop="description">既然相遇，不如同行</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/minhzou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第6章-支持向量模型"><span class="nav-number">1.</span> <span class="nav-text">第6章 支持向量模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#支持向量机公式推导"><span class="nav-number">1.1.</span> <span class="nav-text">支持向量机公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#SVM问题的原始形式推导"><span class="nav-number">1.1.1.</span> <span class="nav-text">SVM问题的原始形式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-常见的几何性质（欧氏空间）"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1. 常见的几何性质（欧氏空间）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SVM原始公式的导出-核心是最大化间隔"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">SVM原始公式的导出(核心是最大化间隔)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SVM的性质"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">SVM的性质</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SVM问题的对偶形式推导"><span class="nav-number">1.1.2.</span> <span class="nav-text">SVM问题的对偶形式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-拉格朗日函数的介绍"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1. 拉格朗日函数的介绍</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-“对偶”概念的介绍"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2. “对偶”概念的介绍</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-KKT条件的介绍"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">3. KKT条件的介绍</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SVM问题的求解算法（SMO）"><span class="nav-number">1.1.3.</span> <span class="nav-text">SVM问题的求解算法（SMO）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-SMO算法的思路讲解"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">1. SMO算法的思路讲解</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-SMO算法的简单实现"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">2. SMO算法的简单实现</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#核函数"><span class="nav-number">1.1.4.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#软间隔与支持向量回归公式推导"><span class="nav-number">1.1.5.</span> <span class="nav-text">软间隔与支持向量回归公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Soft-Margin-SVM公式推导"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">Soft-Margin SVM公式推导</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Support-Vector-Regression（SVR）公式推导"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">Support Vector Regression（SVR）公式推导</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minh</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 总访客
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '6EPnyXCThXwcbw7bdMdV8mEW-gzGzoHsz',
+        appKey: 'pLe1UvLJvlysvxS7vy8aJgqz',
+        placeholder: '来~~ 快活呀',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'manual') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

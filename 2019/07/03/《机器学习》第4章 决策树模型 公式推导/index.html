@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="基础,计算机视觉,学习笔记,">
+  <meta name="keywords" content="机器学习,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="一、 计算机视觉和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性">
-<meta name="keywords" content="基础,计算机视觉,学习笔记">
+<meta name="description" content="第4章 决策树模型ID3算法公式推导1. 信息熵与信息增益信息熵：熵是度量样本集合纯度最常用的一种指标，代表一个系统中蕴含多少信息量，信息量越大表明一个系统不确定性就越大，就存在越多的可能性，即信息熵越大。假定当前样本集合D中第类样本所占的比$p_{k}(k=1,2, \ldots,|y|)$，则D的信息熵为：  \operatorname{Ent}(D)=-\sum_{k=1}^{ | \mat">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机视觉基础入门 学习笔记">
-<meta property="og:url" content="http://minhzou.top/2019/03/30/计算机视觉基础入门/index.html">
+<meta property="og:title" content="《机器学习》第4章 决策树模型 公式推导">
+<meta property="og:url" content="http://minhzou.top/2019/07/03/《机器学习》第4章 决策树模型 公式推导/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
-<meta property="og:description" content="一、 计算机视觉和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性">
+<meta property="og:description" content="第4章 决策树模型ID3算法公式推导1. 信息熵与信息增益信息熵：熵是度量样本集合纯度最常用的一种指标，代表一个系统中蕴含多少信息量，信息量越大表明一个系统不确定性就越大，就存在越多的可能性，即信息熵越大。假定当前样本集合D中第类样本所占的比$p_{k}(k=1,2, \ldots,|y|)$，则D的信息熵为：  \operatorname{Ent}(D)=-\sum_{k=1}^{ | \mat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-04T15:45:41.583Z">
+<meta property="og:updated_time" content="2019-07-16T08:29:12.559Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算机视觉基础入门 学习笔记">
-<meta name="twitter:description" content="一、 计算机视觉和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性">
+<meta name="twitter:title" content="《机器学习》第4章 决策树模型 公式推导">
+<meta name="twitter:description" content="第4章 决策树模型ID3算法公式推导1. 信息熵与信息增益信息熵：熵是度量样本集合纯度最常用的一种指标，代表一个系统中蕴含多少信息量，信息量越大表明一个系统不确定性就越大，就存在越多的可能性，即信息熵越大。假定当前样本集合D中第类样本所占的比$p_{k}(k=1,2, \ldots,|y|)$，则D的信息熵为：  \operatorname{Ent}(D)=-\sum_{k=1}^{ | \mat">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://minhzou.top/2019/03/30/计算机视觉基础入门/">
+  <link rel="canonical" href="http://minhzou.top/2019/07/03/《机器学习》第4章 决策树模型 公式推导/">
 
 
 
 
 
-  <title>计算机视觉基础入门 学习笔记 | Minh's Blog</title>
+  <title>《机器学习》第4章 决策树模型 公式推导 | Minh's Blog</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/03/30/计算机视觉基础入门/">
+    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/07/03/《机器学习》第4章 决策树模型 公式推导/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minh">
@@ -313,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">计算机视觉基础入门 学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">《机器学习》第4章 决策树模型 公式推导</h1>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T19:22:46+08:00">
-                2019-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-03T19:41:10+08:00">
+                2019-07-03
               </time>
             
 
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T23:45:41+08:00">
-                2019-04-04
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-16T16:29:12+08:00">
+                2019-07-16
               </time>
             
           </span>
@@ -378,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/30/计算机视觉基础入门/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/30/计算机视觉基础入门/" itemprop="commentCount"></span>
+                <a href="/2019/07/03/《机器学习》第4章 决策树模型 公式推导/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/03/《机器学习》第4章 决策树模型 公式推导/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  694 字
+                  3.9k 字
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 min
+                  17 min
                 </span>
               
             </div>
@@ -443,83 +443,92 @@
       
 
       
-        <h5 id="一、-计算机视觉和深度学习概述"><a href="#一、-计算机视觉和深度学习概述" class="headerlink" title="一、 计算机视觉和深度学习概述"></a>一、 计算机视觉和深度学习概述</h5><ol>
-<li>计算机视觉回顾<ol>
-<li>计算机视觉（computer vision）定义<ul>
-<li>数据（静态图片，视频）</li>
-<li>算法（机器学习算法，神经网络）本质上是一个回归+分类</li>
-</ul>
-</li>
-<li>计算机视觉的重要性<a id="more"></a>
-<ul>
-<li>三大任务：图像识别（image classification）<br>车牌识别，人脸识别</li>
-<li>三大任务：目标检测（object detection = classification + localization）<br>行人检测和车辆检测</li>
-<li>三大任务：图像分割<br>图像语义分割<br>个体分割 = 检测 + 分割</li>
-<li>视觉目标跟踪（tracking）</li>
-<li>视频分割</li>
-<li>图像风格迁移</li>
-<li>生成对抗网络（GAN）</li>
-<li>视频生成</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>深度学习介绍<br> 2006 Hinton bp(反向传播)<br> 2012 Krizhevsky A 深度学习 深度卷积<br> RNN<br> LSTM 持续信息<br> 视觉识别，语音识别，DeepMind, AlphaGo<br> 人脸识别：LFW 错误率5% -&gt; 0.5%<br> 图像分割<br> VGGNet, GoogleNet, ResNet, DenseNet<ul>
-<li>常见的深度学习开发平台<br>  Torch, TensorFlow, MatConvNetTheano, Caffe</li>
-</ul>
-</li>
-<li>课程介绍<ul>
-<li>图像识别：<br>Alexnet, VGGnet, GoogleNet, ResNet, DenseNet</li>
-<li>目标检测<br>Fast-rcnn, faster-rcnn, Yolo, Retina-Net</li>
-<li>图像分割<br>FCN, Mask-Rcnn</li>
-<li>目标跟踪<br>GORURN， ECO</li>
-<li>图像生成<br>GAN， WGAN</li>
-<li>光流<br>FlowNet</li>
-<li>视频分割<br>Segnet <h5 id="二、-图像分类与深度卷积网络的模型"><a href="#二、-图像分类与深度卷积网络的模型" class="headerlink" title="二、 图像分类与深度卷积网络的模型"></a>二、 图像分类与深度卷积网络的模型</h5></li>
-</ul>
-</li>
-<li>图像分类<ul>
-<li>图像分类的挑战<br>光照变化<br>形变<br>类内变化</li>
-<li>图像分类定义</li>
-<li>目标分类框架</li>
-<li>泛化能力<br>如何提高泛化能力？ 需要用图像特征来描述图像</li>
-<li>训练和测试的流程</li>
-<li>图像特征<br>  color: Qutantize RGB values<br>  global shape: PCA space<br>  local shape: shape context<br>  texture: Filter banks<br>  SIFT, Hog, LBP, Harr</li>
-<li>支持向量机（SVM）<br>   超平面与支持向量<br>   最大化间隔<br>   svm分类（python）以lris兰花分类为例<br>   程序实现</li>
-<li>更好的特征<br>  CNN特征<br>  学习出来的<br>  如何学习？ 构造神经网络</li>
-</ul>
-</li>
-<li>神经网络原理<ul>
-<li>神经网络做图像分类</li>
-<li>神经网络搭建</li>
-<li>神经网络的基本单元：神经元</li>
-<li>激励函数<br>  Sigmoid、tanh、ReLU、Leaky ReLU、Maxout、ELU</li>
-<li>卷积层</li>
-<li>卷积滤波的计算</li>
-<li>卷积层可视化</li>
-<li>池化层（pooling layer）<br>  特征表达更加紧凑，同时具有位移不变性</li>
-<li>全连接层</li>
-<li>损失函数<br>  交叉熵损失函数（SIGMOID_CROSS_ENTROPY_LOSS) 应用于二分类问题<br>  Softmax 损失函数（SOFTMAX_LOSS)  多分类问题<br>  欧式距离损失函数（EUCLIDEAN_LOSS）回归问题<br>  对比损失函数（Contrastive loss）用来计算两个图像之间的相似度<br>  Triplet loss</li>
-<li>训练网络</li>
-<li>网络训练和测试</li>
-</ul>
-</li>
-<li>卷积神经网络介绍<br> Alexnet, VGGnet, GoogleNet, ResNet, DenseNet<ul>
-<li>训练技巧， 防止过拟合（泛化能力不强）<ul>
-<li>数据增强（Data augmentation）<br>  水平翻转， 随机裁剪和平移变换，颜色、光照变换</li>
-<li>Dropout</li>
-</ul>
-</li>
-<li>其他有助于训练的手段<ul>
-<li>L1， L2正则化</li>
-<li>Batch Normalization</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>利用caffe搭建深度网络做图像分类</li>
-</ol>
-
+        <h3 id="第4章-决策树模型"><a href="#第4章-决策树模型" class="headerlink" title="第4章 决策树模型"></a>第4章 决策树模型</h3><h4 id="ID3算法公式推导"><a href="#ID3算法公式推导" class="headerlink" title="ID3算法公式推导"></a>ID3算法公式推导</h4><h5 id="1-信息熵与信息增益"><a href="#1-信息熵与信息增益" class="headerlink" title="1. 信息熵与信息增益"></a>1. 信息熵与信息增益</h5><p>信息熵：熵是度量样本集合纯度最常用的一种指标，代表一个系统中蕴含多少信息量，信息量越大表明一个系统不确定性就越大，就存在越多的可能性，即信息熵越大。<br>假定当前样本集合D中第类样本所占的比$p_{k}(k=1,2, \ldots,|y|)$，则D的信息熵为：</p>
+<script type="math/tex; mode=display">
+\operatorname{Ent}(D)=-\sum_{k=1}^{ | \mathcal{Y |}} p_{k} \log _{2} p_{k}</script><p>信息熵满足下列不等式：</p>
+<script type="math/tex; mode=display">
+0 \leq \operatorname{Ent}(D) \leq \log _ {2}|\mathcal{Y}|</script><p>y表示样本D中的类别数</p>
+<p>已知集合D的信息熵的定义为：</p>
+<script type="math/tex; mode=display">
+\operatorname{Ent}(D)=-\sum_{k=1}^{|\mathcal{Y}|} p_{k} \log _{2} p_{k}</script><p>其中，$|\mathcal{Y}|$表示样本类别总数，$p_{k}$表示第k类样本所占的比例，且$0 \leq p_{k} \leq 1, \sum_{k=1}^{n} p_{k}=1$</p>
+<p>若令$|\mathcal{Y}|=n, p_{k}=x_{k}$，那么信息熵Ent（D）就可以看作一个n元实值函数，即</p>
+<script type="math/tex; mode=display">
+\operatorname{Ent}(D)=f\left(x_{1}, \ldots, x_{n}\right)=-\sum_{k=1}^{n} x_{k} \log _{2} x_{k}</script><p>其中：$0 \leq x_{k} \leq 1, \sum_{k=1}^{n} x_{k}=1$<br>引入拉格朗日乘子$\lambda$：<br>$L\left(x_{1}, \ldots, x_{n}, \lambda\right)=-\sum_{k=1}^{n} x_{k} \log _{2} x_{k}+\lambda\left(\sum_{k=1}^{n} x_{k}-1\right)$</p>
+<p>对L分别关于$x, \lambda$求一阶偏导，并令偏导等于0：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \frac{\partial L\left(x_{1}, \ldots, x_{n}, \lambda\right)}{\partial x_{1}} &=\frac{\partial}{\partial x_{1}}\left[-\sum_{k=1}^{n} x_{k} \log _{2} x_{k}+\lambda\left(\sum_{k=1}^{n} x_{k}-1\right)\right]=0 \\ &=-\log _{2} x_{1}-x_{1} \cdot \frac{1}{x_{1} \ln 2}+\lambda=0 \\ &=-\log _{2} x_{1}-\frac{1}{\ln 2}+\lambda=0 \\ & \Rightarrow \lambda=\log _{2} x_{1}+\frac{1}{\ln 2} \end{aligned}</script><p>同理推得：</p>
+<script type="math/tex; mode=display">
+\lambda=\log _{2} x_{1}+\frac{1}{\ln 2}=\log _{2} x_{2}+\frac{1}{\ln 2}=\ldots=\log _{2} x_{n}+\frac{1}{\ln 2}</script><p>对于任意的x，满足约束条件：</p>
+<script type="math/tex; mode=display">
+\sum_{k=1}^{n} x_{k}=1</script><p>因此：</p>
+<script type="math/tex; mode=display">
+x_{1}=x_{2}=\ldots=x_{n}=\frac{1}{n}</script><p>最大值点还是最小值点需要做个简单的验证：<br>$x_{1}=x_{2}=\ldots=x_{n}=\frac{1}{n}$时：</p>
+<script type="math/tex; mode=display">
+f\left(\frac{1}{n}, \ldots, \frac{1}{n}\right)=-\sum_{k=1}^{n} \frac{1}{n} \log _{2} \frac{1}{n}=-n \cdot \frac{1}{n} \log _{2} \frac{1}{n}=\log _{2} n</script><p>$x_{1}=1, x_{2}=x_{3}=\ldots=x_{n}=0$时：</p>
+<script type="math/tex; mode=display">
+f(1,0, \ldots, 0)=-1 \cdot \log _{2} 1-0 \cdot \log _{2} 0 \ldots-0 \cdot \log _{2} 0=0</script><p>显然$\log _{2} n \geq 0$，所以$x_{1}=x_{2}=\ldots=x_{n}=\frac{1}{n}$为最大值点，最大值为$\log _{2} n$。</p>
+<p>下面考虑求$f\left(x_{1}, \ldots, x_{2}\right)$的最小值，仅考虑$0 \leq x_{k} \leq 1, f\left(x_{1}, \ldots, x_{n}\right)$可以看作是n个互不相关一元函数的加和，即：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}{f\left(x_{1}, \ldots, x_{n}\right)=\sum_{k=1}^{n} g\left(x_{k}\right)} \\ {g\left(x_{k}\right)=-x_{k} \log _{2} x_{k}, 0 \leq x_{k} \leq 1}\end{array}</script><p>求$g\left(x_{1}\right)$的最小值，首先对$g\left(x_{1}\right)$关于$x_{1}$，求一阶和二阶导数：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{g^{\prime}\left(x_{1}\right)=\frac{d\left(-x_{1} \log _{2} x_{1}\right)}{d x_{1}}=-\log _{2} x_{1}-x_{1} \cdot \frac{1}{x_{1} \ln 2}=-\log _{2} x_{1}-\frac{1}{\ln 2}} \\ {g^{\prime \prime}\left(x_{1}\right)=\frac{d\left(-\log _{2} x_{1}-\frac{1}{\ln 2}\right)}{d x_{1}}=-\frac{1}{x_{1} \ln 2}}\end{array}</script><p>在定义域$0 \leq x_{k} \leq 1$上，始终有$g^{\prime \prime}\left(x_{1}\right)=-\frac{1}{x_{1} \ln 2}&lt;0$，即$g\left(x_{1}\right)$为开口向下的凹函数，最小值在边界$x_{1}=0$或$x_{1}=1$处取得：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{g(0)=-0 \log _{2} 0=0} \\ {g(1)=-1 \log _{2} 1=0}\end{array}</script><p>$g\left(x_{1}\right)$的最小值即为0，同理可得$g\left(x_{2}\right), \ldots, g\left(x_{n}\right)$的最小值也为0，那么$f\left(x_{1}, \ldots, x_{n}\right)$的最小值此时也为0<br>如果令某个$x_{k}=1$，那么根据约束条件$\sum_{k=1}^{n} x_{k}=1$可知：</p>
+<script type="math/tex; mode=display">
+x_{1}=x_{2}=\ldots=x_{k-1}=x_{k+1}=\ldots=x_{n}=0</script><p>将其代入$f\left(x_{1}, \ldots, x_{n}\right)$，得</p>
+<script type="math/tex; mode=display">
+f(0,0, \ldots, 0,1,0, \ldots, 0)=-0 \log _{2} 0-0 \log _{2} 0 \ldots-0 \log _{2} 0-1 \log _{2} 1-0 \log _{2} 0 \ldots-0 \log _{2} 0=0</script><p>所以$x_{k}=1, x_{1}=x_{2}=\ldots=x_{k-1}=x_{k+1}=\ldots=x_{n}=0$，一定是$f\left(x_{1}, \ldots, x_{n}\right)$在满足约束条件下的最小值点，其最小值为0.<br>所以：</p>
+<script type="math/tex; mode=display">
+0 \leq \operatorname{Ent}(D) \leq \log _{2} n</script><p>证明：$0 \leq \operatorname{Ent}(D) \leq \log_{2}|y|$<br>其中：$p_{1}+\ldots+p_{|y|}=1$<br>$-p_{|y|} \log _{2} p_{|y|} \geq 0$<br>两个概率变量x,y满足$x+y=p, 0&lt;p \leq 1$，p为一定值，当x越靠近$\frac{p}{2}$时，下面的z越大</p>
+<script type="math/tex; mode=display">
+z=-\left(x \log _{2} x+(p-x) \log_{2}(p-x)\right)</script><p>对x求导：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} z^{\prime} &=-\left(\log_{2} x+x \frac{1}{x}-\log_{2}(p-x)-(p-x) \frac{1}{p-x}\right) \\ &=-\log_{2} \frac{x}{p-x} \end{aligned}</script><p>当 $x=\frac{p}{2}$时，$z^{\prime}=0$；<br>当$x&lt;\frac{p}{2}$时，$z^{\prime}&gt;0$；z单调递增<br>当$x&gt;\frac{p}{2}$时，$z^{\prime}&lt;0$；z单调递减</p>
+<p>证明命题： 假设$p=\frac{1}{n}$，定义</p>
+<script type="math/tex; mode=display">
+x_{1}=\min \left(p_{i}\right)<\max \left(p_{i}\right)=x_{2}</script><p>则必有$x_{1}&lt;p&lt;x_{2}$，可推出</p>
+<script type="math/tex; mode=display">
+-\left(p \log _{2} p+\left(x_{1}+x_{2}-p\right) \log _{2}\left(x_{1}+x_{2}-p\right)\right)>-\left(x_{1} \log _{2} x_{1}+x_{2} \log _{2} x_{2}\right)</script><p>所以当$p=\frac{1}{|y|}$时，信息熵取得最大值$\log_{2}|y|$</p>
+<p>样本D中只有一类样本，此时信息熵最小，其值为：</p>
+<script type="math/tex; mode=display">
+\operatorname{Ent}(D)=-1 \log_{2} 1-0 \log_{2} 0-\ldots-0 \log_{2} 0=0</script><p>当只有一类样本时，表征系统就是确定的，因此，系统的信息量最小。</p>
+<p>信息增益：<br>假定离散属性a有V个可能的取值$\left\{a^{1}, a^{2}, \ldots a^{v}\right\}$，如果使用特征a来对数据集D进行划分，则会产生V个分支结点，其中第个结点包含了数据集D中所有在特征a上取值为$a^{V}$的样本总数，记为$D^{\nu}$，再考虑到不同的分支结点所包含的样本数量不同，给分支节点赋予不同的权重，这样对样本数越多的分支节点的影响就会越大，因此，就能够计算出特征对样本集D进行划分所获得的“信息增益”：</p>
+<script type="math/tex; mode=display">
+\operatorname{Gain}(D, a)=\operatorname{Ent}(D)-\sum_{v=1}^{V} \frac{\left|D^{v}\right|}{|D|} \operatorname{Ent}\left(D^{v}\right)</script><h5 id="2-ID3算法流程"><a href="#2-ID3算法流程" class="headerlink" title="2. ID3算法流程"></a>2. ID3算法流程</h5><p>ID3算法流程<br>1）初始化信息增益的阈值$\varepsilon$；<br>2）判断样本是否为同一类输出$D^{v}$，如果是，则返回单节点树T。标记类别为$D^{v}$；<br>3）判断属性是否为空，如果是，则返回单节点树T，标记类别为样本中输出类别D实例数最多的类别。<br>4）计算所有属性A中的各个属性（一共个）对输出D的信息增益，选择信息增益最大的属性a。<br>5）如果属性a的信息增益小于阈值$\varepsilon$，则返回单节点树T，标记类别为样本中输出类别D实例数最多的类别。<br>6）否则，按属性a的不同属性值$\left\{a^{1}, a^{2}, \ldots, a^{v}\right\}$.，将对应的样本输出D分成不同的类别$D^{v}$，每个类别产生一个子节点。对应属性值为$a^{v}$。返回增加了节点的树T。<br>7）对于所有的子节点，令$D=D^{v}, A=A-a$递归调用2-6步，得到子树并返回。</p>
+<p>ID3算法虽然提出了新思路，但是还是有很多值得改进的地方。<br>a）ID3没有考虑连续特征，比如长度，密度都是连续值，无法在ID3运用。这大大限制了ID3的用途。<br>b）ID3采用信息增益大的特征优先建立决策树的节点。很快就被人发现，在相同条件下，取值比较多的特征比取值少的特征信息增益大。比如一个变量有2个值，各为1/2，另一个变量为3个值，各为1/3，其实他们都是完全不确定的变量，但是取3个值的比取2个值的信息增益大。如果校正这个问题呢？<br>c）ID3算法对于缺失值的情况没有做考虑<br>d）没有考虑过拟合的问题</p>
+<h4 id="C4-5算法公式推导"><a href="#C4-5算法公式推导" class="headerlink" title="C4.5算法公式推导"></a>C4.5算法公式推导</h4><h5 id="1-增益率"><a href="#1-增益率" class="headerlink" title="1. 增益率"></a>1. 增益率</h5><p>增益率：信息增益偏向于选择取值较多的属性，容易过拟合基于信息增益的缺点，C4.5算法不直接使用信息增益，而是使用一种叫增益率的方法来选择最优属性进行划分，对于样本集D中的离散属性a，增益率为：</p>
+<script type="math/tex; mode=display">
+\operatorname{Gain}_{-} \operatorname{ratio}(D, a)=\frac{\operatorname{Gain}(D, a)}{I V(a)}</script><p>IV值：</p>
+<script type="math/tex; mode=display">
+I V(a)=-\sum_{v=1}^{V} \frac{\left|D^{v}\right|}{|D|} \log_{2} \frac{\left|D^{v}\right|}{|D|}</script><p>IV（a）是属性a的固有值。</p>
+<p>增益率可能产生一个问题就是，对可取数值数目较少的属性有所偏好。因此C4.5算法并不是直接选择使用增益率最大的候选划分属性，而是使用了一个启发式算法：先从候选划分属性中找出信息增益高于平均水平的属性，再从中选择信息增益率最高的。</p>
+<h5 id="2-C4-5算法的不足："><a href="#2-C4-5算法的不足：" class="headerlink" title="2. C4.5算法的不足："></a>2. C4.5算法的不足：</h5><p>C4.5虽然改进或者改善了ID3算法的几个主要的问题，仍然有优化的空间。<br>1）由于决策树算法非常容易过拟合，因此对于生成的决策树必须要进行剪枝。剪枝的算法有非常多，C4.5的剪枝方法有优化的空间。思路主要是两种，一种是预剪枝，即在生成决策树的时候就决定是否剪枝。另一个是后剪枝，即先生成决策树，再通过交叉验证来剪枝。<br>2）C4.5生成的是多叉树，即一个父节点可以有多个节点。很多时候，在计算机中二叉树模型会比多叉树运算效率高。如果采用二叉树，可以提高效率。<br>3）C4.5只能用于分类，如果能将决策树用于回归的话可以扩大它的使用范围。<br>4）C4.5由于使用了熵模型，里面有大量的耗时的对数运算，如果是连续值还有大量的排序运算。如果能够加以模型简化可以减少运算强度但又不牺牲太多准确性的话，那就更好了。</p>
+<h4 id="CART算法公式推导"><a href="#CART算法公式推导" class="headerlink" title="CART算法公式推导"></a>CART算法公式推导</h4><h5 id="1-基尼值与基尼指数"><a href="#1-基尼值与基尼指数" class="headerlink" title="1. 基尼值与基尼指数"></a>1. 基尼值与基尼指数</h5><p>基尼值：用于度量数据集的纯度，Gimi（D）反映了从数据集中随机抽取两个样本，其类别标记不一致的概率，因此，Gimi（D）越小，则数据集的纯度越高.<br>假定当前样本集合D中第k类样本所占的比例为$p_{k}(k=1,2, \dots,|y|)$，则D的基尼值为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \operatorname{Gini}(D) &=\sum_{k=1}^{|y|} \sum_{k^{\prime} \neq k} p_{k} p_{k^{\prime}} \\ &=p_{1} \cdot\left(p_{2}+p_{3}+\ldots+p_{k}\right)+\ldots+p_{k} \cdot\left(p_{1}+p_{2}+p_{3}+\ldots+p_{k-1}\right) \\ &=\left(p_{1}+p_{2}+\ldots+p_{k}\right)-\left(p_{1}^{2}+p_{2}^{2}+\ldots+p_{k}^{2}\right) \\ &=1-\sum_{k=1}^{|y|} p_{k}^{2} \end{aligned}</script><p>基尼指数：表示在样本集合中一个随机选中的样本被分错的概率。基尼指数越大，样本的不确定性也就越大。</p>
+<script type="math/tex; mode=display">
+\operatorname{Gini}_{-} \operatorname{index}(D, a)=\sum_{v=1}^{V} \frac{\left|D^{v}\right|}{|D|} \operatorname{Gini}\left(D^{v}\right)</script><p>$D^{v}$表示第v个类别的样本集。</p>
+<h5 id="2-CART算法流程"><a href="#2-CART算法流程" class="headerlink" title="2.CART算法流程"></a>2.CART算法流程</h5><p>CART和ID3的思路区别不大。</p>
+<h4 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h4><h5 id="预剪枝（pre-pruning）"><a href="#预剪枝（pre-pruning）" class="headerlink" title="预剪枝（pre-pruning）"></a>预剪枝（pre-pruning）</h5><p>预剪枝（pre-pruning）：预剪枝就是在构造决策树的过程中，先对每个结点在划分前进行估计，如果当前结点的划分不能带来决策树模型泛化性增加。则不对当前结点进行划分并且将当前结点标记为叶结点。</p>
+<h5 id="后剪枝（post-purning）"><a href="#后剪枝（post-purning）" class="headerlink" title="后剪枝（post-purning）"></a>后剪枝（post-purning）</h5><p>后剪枝就是先把整颗决策树构造完毕，然后自底向上的对非叶结点进行考察，若将该结点对应的子树换为叶结点能够带来泛化性能的提升，则把该子树替换为叶结点。</p>
+<p>对比预剪枝和后剪枝，能够发现，后剪枝决策树通常比预剪枝决策树保留了更多的分支，一般情形下，后剪枝决策树的欠拟合风险小，泛华性能往往也要优于预剪枝决策树。但后剪枝过程是在构建完全决策树之后进行的，并且要自底向上的对树中的所有非叶结点进行逐一考察，因此其训练时间开销要比未剪枝决策树和预剪枝决策树都大得多。</p>
+<h4 id="连续值与缺失值的处理"><a href="#连续值与缺失值的处理" class="headerlink" title="连续值与缺失值的处理"></a>连续值与缺失值的处理</h4><h5 id="连续值的处理："><a href="#连续值的处理：" class="headerlink" title="连续值的处理："></a>连续值的处理：</h5><p>样本集D中的连续属性a，假设属性a有n个不同的取值，对其进行大小排序，记为$\left\{a^{1}, a^{2}, \ldots, a^{n}\right\}$，根据属性可得到n-1个划分点t，划分点t的集合为：</p>
+<script type="math/tex; mode=display">
+T_{a}=\left\{\frac{a^{i}+a^{i+1}}{2} | 1 \leqslant i \leqslant n-1\right\}</script><p>对于取值集合$T_{a}$中的每个t值会将属性a离散为一个属性值只有两个值，分别是$\{a&gt;t\}$和$\{a \leq t\}$的属性，计算新属性的信息增益，找到信息增益最大的，值即为该属性的最优划分点。</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \operatorname{Gain}(D, a) &=\max _{t \in T_{o}} \operatorname{Gain}(D, a, t) \\ &=\max _{t \in I_{a}} \operatorname{Ent}(D)-\sum_{\lambda \in[-,+\}} \frac{\left|D_{t}^{\lambda}\right|}{|D|} \operatorname{Ent}\left(D_{t}^{\lambda}\right) \end{aligned}</script><h5 id="缺失值的处理："><a href="#缺失值的处理：" class="headerlink" title="缺失值的处理："></a>缺失值的处理：</h5><p>在决策树中处理含有缺失值的样木的时候，需要解决两个问题：<br>1、如何在属性值缺失的情况下进行划分属性的选择？<br>2、给定划分属性，若样本在该属性上的值是缺失的，那么该如何对这个样本进行划分？</p>
+<p>对于第一个问题：我们可以根据$\widetilde{D}$（即在该属性上没有缺失的样本集）来计算属性a的信息增益或者其它指标。我们只要再给根据计算出来的值一个权重，就可以表示训练集D中属性a的优劣。</p>
+<p>假定属性a有V个可取值$\left\{a^{1}, a^{2} \ldots, a^{v}\right\}$令$\tilde{D}^{v}$表示D中在属性a上取值为$a^{v}$的样本予集，$\tilde{D}_ {k}$表示$\tilde{D}$中属于第k类$(k=1,2, \dots,|y|)$）样本子集，则显然有$\tilde{D}=\cup_{k=1}^{v_{1}} \tilde{D}_{k}, \tilde{D}=\cup_{v=1}^{V} \tilde{D}^{v}$，假定我们为每个样本 赋予一个权重$w_{x}$<br>（在决策树的初始阶段，根节点中个样本的权重初始化为1），并定义：</p>
+<script type="math/tex; mode=display">
+\rho=\frac{\sum_{x \in \tilde{D}} w_{x}}{\sum_{x \in D} w_{x}}</script><p>表示无缺失值样本作占的比例</p>
+<script type="math/tex; mode=display">
+\tilde{p}_{k}=\frac{\sum_{x \in \tilde{D}_{k}} w_{x}}{\sum_{x \in \tilde{D}} w_{x}} \quad(1 \leqslant k \leqslant|y|)</script><p>表示无缺失值样本中第k类所占的比例</p>
+<script type="math/tex; mode=display">
+\tilde{r}_{v}=\frac{\sum_{x \in \tilde{D}^{v}} w_{x}}{\sum_{x \in \tilde{D}} w_{x}}(1 \leqslant v \leqslant V)</script><p>表示无缺失值样本中在属性a上取值$a^{v}$的样本所占的比例</p>
+<p>信息增益推广为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \operatorname{Gain}(D, a) &=\rho \times \operatorname{Gain}(\tilde{D}, a) \\ &=\rho \times\left(\operatorname{Ent}(\tilde{D})-\sum_{v=1}^{V} \tilde{r}_{v} \operatorname{Ent}\left(\tilde{D}^{v}\right)\right) \end{aligned}</script><script type="math/tex; mode=display">
+\operatorname{Ent}(\tilde{D})=-\sum_{k=1}^{|y|} \tilde{p}_{k} \log _{2} \tilde{p}_{k}</script>
       
     </div>
     
@@ -545,11 +554,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基础/" rel="tag"> <i class="fa fa-tag"></i> 基础</a>
-          
-            <a href="/tags/计算机视觉/" rel="tag"> <i class="fa fa-tag"></i> 计算机视觉</a>
-          
-            <a href="/tags/学习笔记/" rel="tag"> <i class="fa fa-tag"></i> 学习笔记</a>
+            <a href="/tags/机器学习/" rel="tag"> <i class="fa fa-tag"></i> 机器学习</a>
           
         </div>
       
@@ -562,14 +567,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/06/25/范数分类/" rel="next" title="范数分类">
+                <i class="fa fa-chevron-left"></i> 范数分类
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/31/第一周 机器学习简介和线性回归/" rel="prev" title="第一周 机器学习简介与线性回归">
-                第一周 机器学习简介与线性回归 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/12/《机器学习》第6章 支持向量模型 公式推导/" rel="prev" title="《机器学习》第6章 支持向量模型 公式推导">
+                《机器学习》第6章 支持向量模型 公式推导 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -724,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、-计算机视觉和深度学习概述"><span class="nav-number">1.</span> <span class="nav-text">一、 计算机视觉和深度学习概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、-图像分类与深度卷积网络的模型"><span class="nav-number">2.</span> <span class="nav-text">二、 图像分类与深度卷积网络的模型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第4章-决策树模型"><span class="nav-number">1.</span> <span class="nav-text">第4章 决策树模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ID3算法公式推导"><span class="nav-number">1.1.</span> <span class="nav-text">ID3算法公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-信息熵与信息增益"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 信息熵与信息增益</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-ID3算法流程"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. ID3算法流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C4-5算法公式推导"><span class="nav-number">1.2.</span> <span class="nav-text">C4.5算法公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-增益率"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 增益率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-C4-5算法的不足："><span class="nav-number">1.2.2.</span> <span class="nav-text">2. C4.5算法的不足：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CART算法公式推导"><span class="nav-number">1.3.</span> <span class="nav-text">CART算法公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-基尼值与基尼指数"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 基尼值与基尼指数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-CART算法流程"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.CART算法流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#剪枝"><span class="nav-number">1.4.</span> <span class="nav-text">剪枝</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#预剪枝（pre-pruning）"><span class="nav-number">1.4.1.</span> <span class="nav-text">预剪枝（pre-pruning）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#后剪枝（post-purning）"><span class="nav-number">1.4.2.</span> <span class="nav-text">后剪枝（post-purning）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连续值与缺失值的处理"><span class="nav-number">1.5.</span> <span class="nav-text">连续值与缺失值的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#连续值的处理："><span class="nav-number">1.5.1.</span> <span class="nav-text">连续值的处理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#缺失值的处理："><span class="nav-number">1.5.2.</span> <span class="nav-text">缺失值的处理：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1301,6 +1310,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

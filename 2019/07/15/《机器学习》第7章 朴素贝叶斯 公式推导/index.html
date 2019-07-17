@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="基础,计算机视觉,学习笔记,">
+  <meta name="keywords" content="机器学习,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="一、 计算机视觉和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性">
-<meta name="keywords" content="基础,计算机视觉,学习笔记">
+<meta name="description" content="第7章 朴素贝叶斯贝叶斯判定准则贝叶斯判定准则：为最小化总体风险，只需在每个样本上选择那个能使条件风险$R(c | \boldsymbol{x})$最小的类别标记，即  h^{\star}(\boldsymbol{x})=\underset{c \in \mathcal{Y}}{\arg \min } R(c | \boldsymbol{x})此时，$h^{\star}$称为贝叶斯最优分类器。 已">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机视觉基础入门 学习笔记">
-<meta property="og:url" content="http://minhzou.top/2019/03/30/计算机视觉基础入门/index.html">
+<meta property="og:title" content="《机器学习》第7章 朴素贝叶斯 公式推导">
+<meta property="og:url" content="http://minhzou.top/2019/07/15/《机器学习》第7章 朴素贝叶斯 公式推导/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
-<meta property="og:description" content="一、 计算机视觉和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性">
+<meta property="og:description" content="第7章 朴素贝叶斯贝叶斯判定准则贝叶斯判定准则：为最小化总体风险，只需在每个样本上选择那个能使条件风险$R(c | \boldsymbol{x})$最小的类别标记，即  h^{\star}(\boldsymbol{x})=\underset{c \in \mathcal{Y}}{\arg \min } R(c | \boldsymbol{x})此时，$h^{\star}$称为贝叶斯最优分类器。 已">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-04T15:45:41.583Z">
+<meta property="og:updated_time" content="2019-07-15T14:19:03.380Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算机视觉基础入门 学习笔记">
-<meta name="twitter:description" content="一、 计算机视觉和深度学习概述 计算机视觉回顾 计算机视觉（computer vision）定义 数据（静态图片，视频） 算法（机器学习算法，神经网络）本质上是一个回归+分类   计算机视觉的重要性">
+<meta name="twitter:title" content="《机器学习》第7章 朴素贝叶斯 公式推导">
+<meta name="twitter:description" content="第7章 朴素贝叶斯贝叶斯判定准则贝叶斯判定准则：为最小化总体风险，只需在每个样本上选择那个能使条件风险$R(c | \boldsymbol{x})$最小的类别标记，即  h^{\star}(\boldsymbol{x})=\underset{c \in \mathcal{Y}}{\arg \min } R(c | \boldsymbol{x})此时，$h^{\star}$称为贝叶斯最优分类器。 已">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://minhzou.top/2019/03/30/计算机视觉基础入门/">
+  <link rel="canonical" href="http://minhzou.top/2019/07/15/《机器学习》第7章 朴素贝叶斯 公式推导/">
 
 
 
 
 
-  <title>计算机视觉基础入门 学习笔记 | Minh's Blog</title>
+  <title>《机器学习》第7章 朴素贝叶斯 公式推导 | Minh's Blog</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/03/30/计算机视觉基础入门/">
+    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/07/15/《机器学习》第7章 朴素贝叶斯 公式推导/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minh">
@@ -313,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">计算机视觉基础入门 学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">《机器学习》第7章 朴素贝叶斯 公式推导</h1>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T19:22:46+08:00">
-                2019-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T22:21:12+08:00">
+                2019-07-15
               </time>
             
 
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-04T23:45:41+08:00">
-                2019-04-04
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-15T22:19:03+08:00">
+                2019-07-15
               </time>
             
           </span>
@@ -378,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/30/计算机视觉基础入门/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/30/计算机视觉基础入门/" itemprop="commentCount"></span>
+                <a href="/2019/07/15/《机器学习》第7章 朴素贝叶斯 公式推导/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/《机器学习》第7章 朴素贝叶斯 公式推导/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  694 字
+                  3.8k 字
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 min
+                  21 min
                 </span>
               
             </div>
@@ -443,82 +443,89 @@
       
 
       
-        <h5 id="一、-计算机视觉和深度学习概述"><a href="#一、-计算机视觉和深度学习概述" class="headerlink" title="一、 计算机视觉和深度学习概述"></a>一、 计算机视觉和深度学习概述</h5><ol>
-<li>计算机视觉回顾<ol>
-<li>计算机视觉（computer vision）定义<ul>
-<li>数据（静态图片，视频）</li>
-<li>算法（机器学习算法，神经网络）本质上是一个回归+分类</li>
-</ul>
-</li>
-<li>计算机视觉的重要性<a id="more"></a>
-<ul>
-<li>三大任务：图像识别（image classification）<br>车牌识别，人脸识别</li>
-<li>三大任务：目标检测（object detection = classification + localization）<br>行人检测和车辆检测</li>
-<li>三大任务：图像分割<br>图像语义分割<br>个体分割 = 检测 + 分割</li>
-<li>视觉目标跟踪（tracking）</li>
-<li>视频分割</li>
-<li>图像风格迁移</li>
-<li>生成对抗网络（GAN）</li>
-<li>视频生成</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>深度学习介绍<br> 2006 Hinton bp(反向传播)<br> 2012 Krizhevsky A 深度学习 深度卷积<br> RNN<br> LSTM 持续信息<br> 视觉识别，语音识别，DeepMind, AlphaGo<br> 人脸识别：LFW 错误率5% -&gt; 0.5%<br> 图像分割<br> VGGNet, GoogleNet, ResNet, DenseNet<ul>
-<li>常见的深度学习开发平台<br>  Torch, TensorFlow, MatConvNetTheano, Caffe</li>
-</ul>
-</li>
-<li>课程介绍<ul>
-<li>图像识别：<br>Alexnet, VGGnet, GoogleNet, ResNet, DenseNet</li>
-<li>目标检测<br>Fast-rcnn, faster-rcnn, Yolo, Retina-Net</li>
-<li>图像分割<br>FCN, Mask-Rcnn</li>
-<li>目标跟踪<br>GORURN， ECO</li>
-<li>图像生成<br>GAN， WGAN</li>
-<li>光流<br>FlowNet</li>
-<li>视频分割<br>Segnet <h5 id="二、-图像分类与深度卷积网络的模型"><a href="#二、-图像分类与深度卷积网络的模型" class="headerlink" title="二、 图像分类与深度卷积网络的模型"></a>二、 图像分类与深度卷积网络的模型</h5></li>
-</ul>
-</li>
-<li>图像分类<ul>
-<li>图像分类的挑战<br>光照变化<br>形变<br>类内变化</li>
-<li>图像分类定义</li>
-<li>目标分类框架</li>
-<li>泛化能力<br>如何提高泛化能力？ 需要用图像特征来描述图像</li>
-<li>训练和测试的流程</li>
-<li>图像特征<br>  color: Qutantize RGB values<br>  global shape: PCA space<br>  local shape: shape context<br>  texture: Filter banks<br>  SIFT, Hog, LBP, Harr</li>
-<li>支持向量机（SVM）<br>   超平面与支持向量<br>   最大化间隔<br>   svm分类（python）以lris兰花分类为例<br>   程序实现</li>
-<li>更好的特征<br>  CNN特征<br>  学习出来的<br>  如何学习？ 构造神经网络</li>
-</ul>
-</li>
-<li>神经网络原理<ul>
-<li>神经网络做图像分类</li>
-<li>神经网络搭建</li>
-<li>神经网络的基本单元：神经元</li>
-<li>激励函数<br>  Sigmoid、tanh、ReLU、Leaky ReLU、Maxout、ELU</li>
-<li>卷积层</li>
-<li>卷积滤波的计算</li>
-<li>卷积层可视化</li>
-<li>池化层（pooling layer）<br>  特征表达更加紧凑，同时具有位移不变性</li>
-<li>全连接层</li>
-<li>损失函数<br>  交叉熵损失函数（SIGMOID_CROSS_ENTROPY_LOSS) 应用于二分类问题<br>  Softmax 损失函数（SOFTMAX_LOSS)  多分类问题<br>  欧式距离损失函数（EUCLIDEAN_LOSS）回归问题<br>  对比损失函数（Contrastive loss）用来计算两个图像之间的相似度<br>  Triplet loss</li>
-<li>训练网络</li>
-<li>网络训练和测试</li>
-</ul>
-</li>
-<li>卷积神经网络介绍<br> Alexnet, VGGnet, GoogleNet, ResNet, DenseNet<ul>
-<li>训练技巧， 防止过拟合（泛化能力不强）<ul>
-<li>数据增强（Data augmentation）<br>  水平翻转， 随机裁剪和平移变换，颜色、光照变换</li>
-<li>Dropout</li>
-</ul>
-</li>
-<li>其他有助于训练的手段<ul>
-<li>L1， L2正则化</li>
-<li>Batch Normalization</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>利用caffe搭建深度网络做图像分类</li>
-</ol>
+        <h3 id="第7章-朴素贝叶斯"><a href="#第7章-朴素贝叶斯" class="headerlink" title="第7章 朴素贝叶斯"></a>第7章 朴素贝叶斯</h3><h4 id="贝叶斯判定准则"><a href="#贝叶斯判定准则" class="headerlink" title="贝叶斯判定准则"></a>贝叶斯判定准则</h4><p>贝叶斯判定准则：<br>为最小化总体风险，只需在每个样本上选择那个能使条件风险$R(c | \boldsymbol{x})$最小的类别标记，即</p>
+<script type="math/tex; mode=display">
+h^{\star}(\boldsymbol{x})=\underset{c \in \mathcal{Y}}{\arg \min } R(c | \boldsymbol{x})</script><p>此时，$h^{\star}$称为贝叶斯最优分类器。</p>
+<p>已知条件风险$R(c | \boldsymbol{x})$的计算公式为</p>
+<script type="math/tex; mode=display">
+R\left(c_{i} | \boldsymbol{x}\right)=\sum_{j=1}^{N} \lambda_{i j} P\left(c_{j} | \boldsymbol{x}\right)</script><p>若目标是最小化分类错误率，则误判损失$\lambda_{i j}$对应为0/1损失，也即</p>
+<script type="math/tex; mode=display">
+\lambda_{i j}=\left\{\begin{array}{l}{0, \text { if } i=j} \\ {1, \text { otherwise }}\end{array}\right.</script><p>那么条件风险$R(c | \boldsymbol{x})$的计算公式可以进一步展开为</p>
+<script type="math/tex; mode=display">
+\begin{aligned} R\left(c_{i} | \boldsymbol{x}\right) &=1 \times P\left(c_{1} | \boldsymbol{x}\right)+\ldots+1 \times P\left(c_{i-1} | \boldsymbol{x}\right)+0 \times P\left(c_{0} | \boldsymbol{x}\right)+1 \times P\left(c_{i+1} | \boldsymbol{x}\right)+\ldots+1 \times P\left(c_{N} | \boldsymbol{x}\right) \\ &=P\left(c_{1} | \boldsymbol{x}\right)+\ldots+P\left(c_{i-1} | \boldsymbol{x}\right)+P\left(c_{i+1} | \boldsymbol{x}\right)+\ldots+P\left(c_{N} | \boldsymbol{x}\right) \end{aligned}</script><p>由于$\sum_{j=1}^{N} P\left(c_{j} | \boldsymbol{x}\right)=1$，所以</p>
+<script type="math/tex; mode=display">
+R\left(c_{i} | \boldsymbol{x}\right)=1-P\left(c_{i} | \boldsymbol{x}\right)</script><p>于是，最小化错误率的贝叶斯最优分类器为</p>
+<script type="math/tex; mode=display">
+h^{\star}(x)=\underset{c \in \mathcal{Y}}{\arg \min } R(c | \boldsymbol{x})=\underset{c \in \mathcal{Y}}{\arg \min }(1-P(c | \boldsymbol{x}))=\underset{c \in \mathcal{Y}}{\arg \max } P(c | \boldsymbol{x})</script><h4 id="多元正态分布参数的极大似然估计"><a href="#多元正态分布参数的极大似然估计" class="headerlink" title="多元正态分布参数的极大似然估计"></a>多元正态分布参数的极大似然估计</h4><p>已知对数似然函数为</p>
+<script type="math/tex; mode=display">
+L L\left(\boldsymbol{\theta}_{c}\right)=\sum_{\boldsymbol{x} \in D_{e}} \log P\left(\boldsymbol{x} | \boldsymbol{\theta}_ {c}\right)</script><p>为了便于后续计算，我们令1og的底数为e，则对数似然函数可化为</p>
+<script type="math/tex; mode=display">
+L L\left(\boldsymbol{\theta}_{c}\right)=\sum_{\boldsymbol{x} \in D_{c}} \ln P\left(\boldsymbol{x} | \boldsymbol{\theta}_ {c}\right)</script><p>由于$P\left(\boldsymbol{x} | \boldsymbol{\theta}_ {c}\right)=P(\boldsymbol{x} | c) \sim \mathcal{N}\left(\boldsymbol{\mu}_{c}, \boldsymbol{\sigma}_{c}^{2}\right)$，所以</p>
+<script type="math/tex; mode=display">
+P\left(\boldsymbol{x} | \boldsymbol{\theta}_{c}\right)=\frac{1}{\sqrt{(2 \pi)^{d}\left|\boldsymbol{\Sigma}_{c}\right|}} \exp \left(-\frac{1}{2}\left(\boldsymbol{x}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}-\boldsymbol{\mu}_ {c}\right)\right)</script><p>其中，d表示$\boldsymbol{x}$的维数，$\boldsymbol{\Sigma}_{c}=\boldsymbol{\sigma}_{c}^{2}$为对称正定协方差矩阵，$\left|\boldsymbol{\Sigma}_ {c}\right|$表示$\sum_{c}$的行列式，将上式代入对数似然函数可得</p>
+<script type="math/tex; mode=display">
+L L\left(\boldsymbol{\theta}_{c}\right)=\sum_{\boldsymbol{x} \in D_{e}} \ln \left[\frac{1}{\sqrt{(2 \pi)^{d}\left|\boldsymbol{\Sigma}_{c}\right|}} \exp \left(-\frac{1}{2}\left(\boldsymbol{x}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}-\boldsymbol{\mu}_{c}\right)\right)\right]</script><p>令$\left|D_{c}\right|=N$，则对数似然函数可化为</p>
+<script type="math/tex; mode=display">
+\begin{aligned} L L\left(\boldsymbol{\theta}_{c}\right) &=\sum_{i=1}^{N} \ln \left[\frac{1}{\sqrt{(2 \pi)^{d}\left|\boldsymbol{\Sigma}_{c}\right|}} \exp \left(-\frac{1}{2}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right)\right] \\ &=\sum_{i=1}^{N} \ln \left[\frac{1}{\sqrt{(2 \pi)^{d}}} \cdot \frac{1}{\sqrt{\left|\boldsymbol{\Sigma}_{c}\right|}} \cdot \exp \left(-\frac{1}{2}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right)\right] \\&=\sum_{i=1}^{N}\left\{\ln \frac{1}{\sqrt{(2 \pi)^{d}}}+\ln \frac{1}{\sqrt{\left|\Sigma_{c}\right|}}+\ln \left[\exp \left(-\frac{1}{2}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right)\right]\right\}\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned} L L\left(\boldsymbol{\theta}_{c}\right) &=\sum_{i=1}^{N}\left\{-\frac{d}{2} \ln (2 \pi)-\frac{1}{2} \ln \left|\boldsymbol{\Sigma}_{c}\right|-\frac{1}{2}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right.\\ &=-\frac{N d}{2} \ln (2 \pi)-\frac{N}{2} \ln \left|\mathbf{\Sigma}_{c}\right|-\frac{1}{2} \sum_{i=1}^{N}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right) \end{aligned}</script><p>由于参数$\boldsymbol{\theta}_ {c}$的极大似然估$\hat{\boldsymbol{\theta}}_ {c}$为</p>
+<script type="math/tex; mode=display">
+\hat{\boldsymbol{\theta}}_{c}=\underset{\boldsymbol{\theta}_{c}}{\arg \max } L L\left(\boldsymbol{\theta}_ {c}\right)</script><p>所以接来下只需要求出使得对数似然函数$L L\left(\boldsymbol{\theta}_ {c}\right)$取到最大值的$\hat{\boldsymbol{\mu}}_ {c}$和$\hat{\mathbf{\Sigma}}_ {c}$，也就求出了$\hat{\boldsymbol{\theta}}_{c}$</p>
+<p>对$L L\left(\boldsymbol{\theta}_ {c}\right)$关于$\boldsymbol{\mu}_ {c}$，求偏导</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \frac{\partial L L\left(\boldsymbol{\theta}_{c}\right)}{\partial \boldsymbol{\mu}_{c}} &=\frac{\partial}{\partial \boldsymbol{\mu}_{c}}\left[-\frac{N d}{2}-\ln (2 \pi)-\frac{N}{2} \ln \left|\mathbf{\Sigma}_{c}\right|-\frac{1}{2} \sum_{i=1}^{N}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right] \\ &=\frac{\partial}{\partial \boldsymbol{\mu}_{c}}\left[-\frac{1}{2} \sum_{i=1}^{N}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right] \\&=-\frac{1}{2} \sum_{i=1}^{N} \frac{\partial}{\partial \boldsymbol \mu_{c}}\left[\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right] \\&=-\frac{1}{2} \sum_{i=1}^{N} \frac{\partial}{\partial \boldsymbol{\mu}_{c}}\left[\left(\boldsymbol{x}_{i}^{T}-\boldsymbol{\mu}_{c}^{T} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right]\right. \\&=-\frac{1}{2} \sum_{i=1}^{N} \frac{\partial}{\partial \boldsymbol\mu_{c}}\left[\left(\boldsymbol{x}_{i}^{T}-\boldsymbol{\mu}_{c}^{T}\right)\left(\boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{x}_{i}-\boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}\right)\right] \\&=-\frac{1}{2} \sum_{i=1}^{N} \frac{\partial}{\partial \boldsymbol{\mu}_{c}}\left[\boldsymbol{x}_{i}^{T} \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{x}_{i}-\boldsymbol{x}_{i}^{T} \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}-\boldsymbol{\mu}_{c}^{T} \mathbf{\Sigma}_{c}^{-1} \boldsymbol{x}_{i}+\boldsymbol{\mu}_{c}^{T} \mathbf{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}\right]\end{aligned}</script><p>由于$\boldsymbol{x}_{i}^{T} \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_ {c}$的计算结果为标量，所以</p>
+<script type="math/tex; mode=display">
+\boldsymbol{x}_{i}^{T} \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}=\left(\boldsymbol{x}_{i}^{T} \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}\right)^{T}=\boldsymbol{\mu}_{c}^{T}\left(\boldsymbol{\Sigma}_{c}^{-1}\right)^{T} \boldsymbol{x}_{i}=\boldsymbol{\mu}_{c}^{T}\left(\boldsymbol{\Sigma}_{c}^{T}\right)^{-1} \boldsymbol{x}_{i}=\boldsymbol{\mu}_{c}^{T} \mathbf{\Sigma}_{c}^{-1} \boldsymbol{x}_{i}</script><p>于是上式可以进一步化为</p>
+<script type="math/tex; mode=display">
+\frac{\partial L L\left(\boldsymbol{\theta}_{c}\right)}{\partial \boldsymbol{\mu}_{c}}=-\frac{1}{2} \sum_{i=1}^{N} \frac{\partial}{\partial \boldsymbol{\mu}_{c}}\left[\boldsymbol{x}_{i}^{T} \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{x}_{i}-2 \boldsymbol{x}_{i}^{T} \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}+\boldsymbol{\mu}_{c}^{T} \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}\right]</script><p>由矩阵微分公式$\frac{\partial \boldsymbol{a}^{T} \boldsymbol{x}}{\partial \boldsymbol{x}}=\boldsymbol{a}, \frac{\partial \boldsymbol{x}^{T} \boldsymbol{B} \boldsymbol{x}}{\partial \boldsymbol{x}}=\left(\boldsymbol{B}+\boldsymbol{B}^{T}\right) \boldsymbol{x}$可得</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \frac{\partial L L\left(\boldsymbol{\theta}_{c}\right)}{\partial \boldsymbol{\mu}_{c}} &=-\frac{1}{2} \sum_{i=1}^{N}\left[0-\left(2 \boldsymbol{x}_{i}^{T} \boldsymbol{\Sigma}_{c}^{-1}\right)^{T}+\left(\boldsymbol{\Sigma}_{c}^{-1}+\left(\boldsymbol{\Sigma}_{c}^{-1}\right)^{T}\right) \boldsymbol{\mu}_{c}\right] \\ &=-\frac{1}{2} \sum_{i=1}^{N}\left[-\left(2\left(\boldsymbol{\Sigma}_{c}^{-1}\right)^{T} \boldsymbol{x}_{i}\right)+\left(\boldsymbol{\Sigma}_{c}^{-1}+\left(\boldsymbol{\Sigma}_{c}^{-1}\right)^{T}\right) \boldsymbol{\mu}_{c}\right] \\ &=-\frac{1}{2} \sum_{i=1}^{N}\left[-\left(2 \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{x}_{i}\right)+2 \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}\right] \\ &=\sum_{i=1}^{N} \Sigma_{c}^{-1} \boldsymbol{x}_{i}-N \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c} \end{aligned}</script><p>令偏导数等于0可得</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}{\frac{\partial L L\left(\boldsymbol{\theta}_{c}\right)}{\partial \boldsymbol{\mu}_{c}}=\sum_{i=1}^{N} \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{x}_{i}-N \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}=0} \\ {N \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}=\sum_{i=1}^{N} \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{x}_{i}} \\ {N \boldsymbol{\Sigma}_{c}^{-1} \boldsymbol{\mu}_{c}=\boldsymbol{\Sigma}_{c}^{-1} \sum_{i=1}^{N} \boldsymbol{x}_{i}} \\ {N \boldsymbol{\mu}_{c}=\sum_{i=1}^{N} \boldsymbol{x}_{i}} \\ \boldsymbol{\mu}_{c}=\frac{1}{N} \sum_{i=1}^{N} \boldsymbol{x}_{i} \Rightarrow \hat{\boldsymbol{\mu}}_{c}=\frac{1}{N} \sum_{i=1}^{N} \boldsymbol{x}_{i} \end{array}</script><p>对$L L\left(\boldsymbol{\theta}_{c}\right)$关于$\Sigma_{c}$求偏导</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \frac{\partial L L\left(\boldsymbol{\theta}_{c}\right)}{\partial \boldsymbol{\Sigma}_{c}} &=\frac{\partial}{\partial \boldsymbol{\Sigma}_{c}}\left[-\frac{N d}{2} \ln (2 \pi)-\frac{N}{2} \ln \left|\boldsymbol{\Sigma}_{c}\right|-\frac{1}{2} \sum_{i=1}^{N}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right] \\ &=\frac{\partial}{\partial \boldsymbol{\Sigma}_{c}}\left[-\frac{N}{2} \ln \left|\boldsymbol{\Sigma}_{c}\right|-\frac{1}{2} \sum_{i=1}^{N}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right] \\&=-\frac{N}{2} \cdot \frac{\partial}{\partial \boldsymbol{\Sigma}_{c}}\left[\ln \left|\boldsymbol{\Sigma}_{c}\right|\right]-\frac{1}{2} \sum_{i=1}^{N} \frac{\partial}{\partial \boldsymbol{\Sigma}_{c}}\left[\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{\mathrm{T}} \boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\right]\end{aligned}</script><p>由矩阵微分公式$\frac{\partial|\mathbf{X}|}{\partial \mathbf{X}}=|\mathbf{X}| \cdot\left(\mathbf{X}^{-1}\right)^{T}, \frac{\partial \boldsymbol{a}^{T} \mathbf{X}^{-1} \boldsymbol{b}}{\partial \mathbf{X}}=-\mathbf{X}^{-T} \boldsymbol{a} \boldsymbol{b}^{T} \mathbf{X}^{-T}$可得</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \frac{\partial L L\left(\boldsymbol{\theta}_{c}\right)}{\partial \boldsymbol{\Sigma}_{c}} &=-\frac{N}{2} \cdot \frac{1}{\left|\boldsymbol{\Sigma}_{c}\right|} \cdot\left|\boldsymbol{\Sigma}_{c}\right| \cdot\left(\boldsymbol{\Sigma}_{c}^{-1}\right)^{T}-\frac{1}{2} \sum_{i=1}^{N}\left[-\boldsymbol{\Sigma}_{c}^{-T}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T} \boldsymbol{\Sigma}_{c}^{-T}\right] \\ &=-\frac{N}{2} \cdot\left(\boldsymbol{\Sigma}_{c}^{-1}\right)^{T}-\frac{1}{2} \sum_{i=1}^{N}\left[-\boldsymbol{\Sigma}_{c}^{-T}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T} \boldsymbol{\Sigma}_{c}^{-T}\right] \\ &=-\frac{N}{2} \boldsymbol{\Sigma}_{c}^{-1}+\frac{1}{2} \sum_{i=1}^{N}\left[\boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T} \boldsymbol{\Sigma}_{c}^{-1}\right] \end{aligned}</script><p>令偏导数等于0可得</p>
+<script type="math/tex; mode=display">
+\frac{\partial L L\left(\boldsymbol{\theta}_{c}\right)}{\partial \boldsymbol{\Sigma}_{c}}=-\frac{N}{2} \boldsymbol{\Sigma}_{c}^{-1}+\frac{1}{2} \sum_{i=1}^{N}\left[\boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T} \boldsymbol{\Sigma}_{c}^{-1}\right]=0</script><p>$-\frac{N}{2} \boldsymbol{\Sigma}_{c}^{-1}=-\frac{1}{2} \sum_{i=1}^{N}\left[\boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T} \boldsymbol{\Sigma}_{c}^{-1}\right]$<br>$N \boldsymbol{\Sigma}_{c}^{-1}=\sum_{i=1}^{N}\left[\boldsymbol{\Sigma}_{c}^{-1}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T} \boldsymbol{\Sigma}_{c}^{-1}\right]$<br>$N \boldsymbol{\Sigma}_{c}^{-1}=\boldsymbol{\Sigma}_{c}^{-1}\left[\sum_{i=1}^{N}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T}\right] \boldsymbol{\Sigma}_{c}^{-1}$<br>$N=\mathbf{\Sigma}_{c}^{-1}\left[\sum_{i=1}^{N}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T}\right]$<br>$\boldsymbol{\Sigma}_{c} N=\sum_{i=1}^{N}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T}$<br>$\mathbf{\Sigma}_{c}=\frac{1}{N} \sum_{i=1}^{N}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T} \Rightarrow \hat{\boldsymbol{\Sigma}}_{c}=\frac{1}{N} \sum_{i=1}^{N}\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)\left(\boldsymbol{x}_{i}-\boldsymbol{\mu}_{c}\right)^{T}$</p>
+<h4 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h4><p>已知最小化分类错误率的贝叶斯最优分类器为</p>
+<script type="math/tex; mode=display">
+h^{*}(\boldsymbol{x})=\underset{c \in \mathcal{Y}}{\arg \max } P(c | \boldsymbol{x})</script><p>又由贝叶斯定理可知</p>
+<script type="math/tex; mode=display">
+P(c | \boldsymbol{x})=\frac{P(\boldsymbol{x}, c)}{P(\boldsymbol{x})}=\frac{P(c) P(\boldsymbol{x} | c)}{P(\boldsymbol{x})}</script><p>所以</p>
+<script type="math/tex; mode=display">
+h^{*}(\boldsymbol{x})=\underset{c \in \mathcal{Y}}{\arg \max } \frac{P(c) P(\boldsymbol{x} | c)}{P(\boldsymbol{x})}=\underset{c \in \mathcal{Y}}{\arg \max } P(c) P(\boldsymbol{x} | c)</script><p>已知属性条件独立性假设为</p>
+<script type="math/tex; mode=display">
+P(\boldsymbol{x} | c)=P\left(x_{1}, x_{2}, \ldots, x_{d} | c\right)=\prod_{i=1}^{d} P\left(x_{i} | c\right)</script><p>所以</p>
+<script type="math/tex; mode=display">
+h^{*}(\boldsymbol{x})=\underset{c \in \mathcal{Y}}{\arg \max } P(c) \prod_{i=1}^{d} P\left(x_{i} | c\right)</script><p>此即为朴素贝叶斯分类器的表达式</p>
+<p>对于P（c）：它表示的是样本空间中各类样本所占的比例，根据大数定律，当训练集包含充足的独立同分布样本时，P（c）可通过各类样本出现的频率来进行估计，也即</p>
+<script type="math/tex; mode=display">
+P(c)=\frac{\left|D_{c}\right|}{|D|}</script><p>其中，D表示训练集，$|D|$表示D中的样本个数，$D_{c}$表示训练集D中第c类样本组成的集合，$\left|D_{c}\right|$表示集合$D_{c}$中的样本个数。</p>
+<p>对于$P\left(x_{i} | c\right) :$<br>若样本的第i个属性$x_{i}$取值为连续值<br>我们假设该属性的取值服从正态分布，也即</p>
+<script type="math/tex; mode=display">
+P\left(x_{i} | c\right) \sim \mathcal{N}\left(\mu_{c, i}, \sigma_{c, i}^{2}\right) \Rightarrow P\left(x_{i} | c\right)=\frac{1}{\sqrt{2 \pi} \sigma_{c, i}} \exp \left(-\frac{\left(x_{i}-\mu_{c, i}\right)^{2}}{2 \sigma_{c, i}^{2}}\right)</script><p>其中正态分布的参数可以用极大似然估计法推得：$\mu_{C, i}$和$\sigma_{c, i}^{2}$即为第c类样本在第i个属性上取值的均值和方差</p>
+<p>对于$P\left(x_{i} | c\right) :$<br>若样本的第i个属性$x_{i}$取值为离散值：<br>同样根据极大似然估计法，我们用其频率值作为其概率值的估计值，也即</p>
+<script type="math/tex; mode=display">
+P\left(x_{i} | c\right)=\frac{\left|D_{c, x_{i}}\right|}{\left|D_{c}\right|}</script><p>其中，$D_{c, x_{i}}$表示$D_{c}$中在第个属性上取值为$x_{i}$的样本组成的集合。</p>
+<p>例：现将一枚6面骰子抛掷10次，抛掷出的点数分别为2、3、2、5、4、.6、1、3、4、2，试基于此抛掷结果估计这枚骰子抛掷出各个点数的概率。<br>解：设这枚骰子抛掷出点数的概率为$P_{i}$，根据极大似然估计法可以写出似然函数为</p>
+<script type="math/tex; mode=display">
+L(\theta)=P_{1} \times P_{2}^{3} \times P_{3}^{2} \times P_{4}^{2} \times P_{5} \times P_{6}</script><p>其对数似然函数即为</p>
+<script type="math/tex; mode=display">
+\begin{aligned} L(\theta) & :=\ln L(\theta)=\ln \left(P_{1} \times P_{2}^{3} \times P_{3}^{2} \times P_{4}^{2} \times P_{5} \times P_{6}\right) \\ &=\ln P_{1}+3 \ln P_{2}+2 \ln P_{3}+2 \ln P_{4}+\ln P_{5}+\ln P_{6} \end{aligned}</script><p>由于$P_{i}$之间满足如下约束</p>
+<script type="math/tex; mode=display">
+P_{1}+P_{2}+P_{3}+P_{4}+P_{5}+P_{6}=1</script><p>所以此时最大化对数似然函数属于带约束的最优化问题，也即</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}{\underset{\theta}{max}} & {L(\theta)=\ln P_{1}+3 \ln P_{2}+2 \ln P_{3}+2 \ln P_{4}+\ln P_{5}+\ln P_{6}} \\ {\text {s.t.}} & {P_{1}+P_{2}+P_{3}+P_{4}+P_{5}+P_{6}=1}\end{array}</script><p>由拉格朗日乘子法可得拉格拉格朗日函数为</p>
+<script type="math/tex; mode=display">
+\mathcal{L}(\theta)=\ln P_{1}+3 \ln P_{2}+2 \ln P_{3}+2 \ln P_{4}+\ln P_{5}+\ln P_{6}+\lambda\left(P_{1}+P_{2}+P_{3}+P_{4}+P_{5}+P_{6}-1\right)</script><p>对拉格朗日函数$\mathcal{L}(\theta)$分别关于$P_{i}$求偏导，然后令其等于0可得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}\frac{\partial \mathcal{L}(\theta)}{\partial P_{1}}&=\frac{\partial}{\partial P_{1}}\left[\ln P_{1}+3 \ln P_{2}+2 \ln P_{3}+2 \ln P_{4}+\ln P_{5}+\ln P_{6}+\lambda\left(P_{1}+P_{2}+P_{3}+P_{4}+P_{5}+P_{6}-1\right)\right]=0\\&=\frac{\partial}{\partial P_{1}}\left(\ln P_{1}+\lambda P_{1}\right)=0\\&=\frac{1}{P_{1}}+\lambda=0\\&\Rightarrow \lambda=-\frac{1}{P_{1}}\end{aligned}</script><p>同理可求得：</p>
+<script type="math/tex; mode=display">
+\lambda=-\frac{1}{P_{1}}=-\frac{3}{P_{2}}=-\frac{2}{P_{3}}=-\frac{2}{P_{4}}=-\frac{1}{P_{5}}=-\frac{1}{P_{6}}</script><p>又因为</p>
+<script type="math/tex; mode=display">
+P_{1}+P_{2}+P_{3}+P_{4}+P_{5}+P_{6}=1</script><p>所以最终解得</p>
+<script type="math/tex; mode=display">
+P_{1}=\frac{1}{10}, P_{2}=\frac{3}{10}, P_{3}=\frac{2}{10}, P_{4}=\frac{2}{10}, P_{5}=\frac{1}{10}, P_{6}=\frac{1}{10}</script><p>此时抛掷出各个点数的概率值与其频率值相等</p>
 
       
     </div>
@@ -545,11 +552,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基础/" rel="tag"> <i class="fa fa-tag"></i> 基础</a>
-          
-            <a href="/tags/计算机视觉/" rel="tag"> <i class="fa fa-tag"></i> 计算机视觉</a>
-          
-            <a href="/tags/学习笔记/" rel="tag"> <i class="fa fa-tag"></i> 学习笔记</a>
+            <a href="/tags/机器学习/" rel="tag"> <i class="fa fa-tag"></i> 机器学习</a>
           
         </div>
       
@@ -562,15 +565,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/12/《机器学习》第6章 支持向量模型 公式推导/" rel="next" title="《机器学习》第6章 支持向量模型 公式推导">
+                <i class="fa fa-chevron-left"></i> 《机器学习》第6章 支持向量模型 公式推导
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/31/第一周 机器学习简介和线性回归/" rel="prev" title="第一周 机器学习简介与线性回归">
-                第一周 机器学习简介与线性回归 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -724,7 +727,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、-计算机视觉和深度学习概述"><span class="nav-number">1.</span> <span class="nav-text">一、 计算机视觉和深度学习概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、-图像分类与深度卷积网络的模型"><span class="nav-number">2.</span> <span class="nav-text">二、 图像分类与深度卷积网络的模型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第7章-朴素贝叶斯"><span class="nav-number">1.</span> <span class="nav-text">第7章 朴素贝叶斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贝叶斯判定准则"><span class="nav-number">1.1.</span> <span class="nav-text">贝叶斯判定准则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多元正态分布参数的极大似然估计"><span class="nav-number">1.2.</span> <span class="nav-text">多元正态分布参数的极大似然估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯分类器"><span class="nav-number">1.3.</span> <span class="nav-text">朴素贝叶斯分类器</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1301,6 +1304,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
