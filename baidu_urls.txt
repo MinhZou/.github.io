@@ -1,8 +1,8 @@
 http://minhzou.top/2019/07/15/《机器学习》第7章 朴素贝叶斯 公式推导/
 http://minhzou.top/2019/07/12/《机器学习》第6章 支持向量模型 公式推导/
 http://minhzou.top/2019/07/03/《机器学习》第4章 决策树模型 公式推导/
-http://minhzou.top/2019/06/25/范数分类/
 http://minhzou.top/2019/06/25/距离，范数，向量空间，欧几里得空间（欧式空间），希尔伯特空间，巴拿赫空间/
+http://minhzou.top/2019/06/25/范数分类/
 http://minhzou.top/2019/06/24/《机器学习》第3章 线性回归模型 公式推导/
 http://minhzou.top/2019/06/17/数字图像处理（Digital Image Processing）/
 http://minhzou.top/2019/06/02/Python爬虫基础知识整理/

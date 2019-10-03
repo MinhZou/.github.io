@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Minh&#39;s Blog">
 <meta property="og:description" content="第7章 朴素贝叶斯贝叶斯判定准则贝叶斯判定准则：为最小化总体风险，只需在每个样本上选择那个能使条件风险$R(c | \boldsymbol{x})$最小的类别标记，即  h^{\star}(\boldsymbol{x})=\underset{c \in \mathcal{Y}}{\arg \min } R(c | \boldsymbol{x})此时，$h^{\star}$称为贝叶斯最优分类器。 已">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-15T14:19:03.380Z">
+<meta property="og:updated_time" content="2019-07-19T14:25:16.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《机器学习》第7章 朴素贝叶斯 公式推导">
 <meta name="twitter:description" content="第7章 朴素贝叶斯贝叶斯判定准则贝叶斯判定准则：为最小化总体风险，只需在每个样本上选择那个能使条件风险$R(c | \boldsymbol{x})$最小的类别标记，即  h^{\star}(\boldsymbol{x})=\underset{c \in \mathcal{Y}}{\arg \min } R(c | \boldsymbol{x})此时，$h^{\star}$称为贝叶斯最优分类器。 已">
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-15T22:19:03+08:00">
-                2019-07-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-19T22:25:16+08:00">
+                2019-07-19
               </time>
             
           </span>
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.8k 字
+                  6.4k 字
                 </span>
               
 
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  21 min
+                  34 min
                 </span>
               
             </div>
@@ -526,7 +526,53 @@ P_{1}+P_{2}+P_{3}+P_{4}+P_{5}+P_{6}=1</script><p>所以此时最大化对数似�
 P_{1}+P_{2}+P_{3}+P_{4}+P_{5}+P_{6}=1</script><p>所以最终解得</p>
 <script type="math/tex; mode=display">
 P_{1}=\frac{1}{10}, P_{2}=\frac{3}{10}, P_{3}=\frac{2}{10}, P_{4}=\frac{2}{10}, P_{5}=\frac{1}{10}, P_{6}=\frac{1}{10}</script><p>此时抛掷出各个点数的概率值与其频率值相等</p>
-
+<h4 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h4><h5 id="1-EM算法的引入"><a href="#1-EM算法的引入" class="headerlink" title="1.EM算法的引入"></a>1.EM算法的引入</h5><h6 id="为什么需要EM算法"><a href="#为什么需要EM算法" class="headerlink" title="为什么需要EM算法"></a>为什么需要EM算法</h6><p>概率模型有时既含有观测变量，又含有隐变量或者潜在变量。如果概率模型的变量都是观测变量，那么给定数据，可以直接用极大似然估计法，或者贝叶斯估计法估计模型参数。但是，当模型含有隐变量时，就不能简单地使用这些估计方法。<br>EM算法就是含有隐变量的概率模型参数的极大似然估计法。</p>
+<h5 id="2-EM算法的例子"><a href="#2-EM算法的例子" class="headerlink" title="2.EM算法的例子"></a>2.EM算法的例子</h5><h6 id="三硬币模型"><a href="#三硬币模型" class="headerlink" title="三硬币模型"></a>三硬币模型</h6><p>《统计学习方法》例9.1（三硬币模型）：<br>假设有3枚硬币，分别记作A，B，c.这些硬币正面出现的概率分别 T，р和q。进行如下掷硬币试验：先掷硬币A，根据其结果选出硬币B或硬币C，正面选硬币B，反面选硬币C；然后掷选出的硬币，掷硬币的结果，出现E面记作1，出现反面记作0；独立地重复n此实验（这里，n=10），观测结果如下：<br>1，1，0，1，0，0，1，0，1，1<br>假设只能观测到掷硬币的结果，不能观测掷硬币的过程。问如何估计三硬币正面出现的概率，即三硬币模型的参数。</p>
+<p>解：对每一次试验可以进行如下建模</p>
+<script type="math/tex; mode=display">
+\begin{aligned} P(y | \theta) &=\sum_{z} P(y, z | \theta)=\sum_{z} P(z | \theta) P(y | z, \theta) \\ &=P(z=1 | \theta) P(y | z=1, \theta)+P(z=0 | \theta) P(y | z=0, \theta) \\ &=\left\{\begin{array}{ll}{\pi p+(1-\pi) q,} & {\text { if } y=1} \\ {\pi(1-p)+(1-\pi)(1-q),} & {\text { if } y=0} \end{array}\right.\\ &=\pi p^{y}(1-p)^{1-y}+(1-\pi) q^{y}(1-q)^{1-y}\end{aligned}</script><p>其中，随机变量y是观测变量，表示一次试验观测的结果是1或0；随机变量z是隐变量，表示未观测到的掷硬币A的结果；<br>$\theta=(\pi, p, q)$是模型参数。将观测数据表示为$Y=\left(Y_{1}, Y_{2}, \ldots, Y_{n}\right)^{T}$，未观测数据表示为$Z=\left(Z_{1}, Z_{2}, \ldots, Z_{n}\right)^{T}$则观测数据的似然函数为：</p>
+<script type="math/tex; mode=display">
+P(Y | \theta)=\sum_{Z} P(Z | \theta) P(Y | Z, \theta)=\prod_{j=1}^{n} P\left(y_{j} | \theta\right)=\prod_{j=1}^{n}\left[\pi p_{j}^{y_{j}}(1-p)^{1-y_{j}}+(1-\pi) q^{y_{j}}(1-q)^{1-y_{j}}\right]</script><p>考虑求模型参数$\theta=(\pi, p, q)$的极大似然估计，即使用对数似然函数来进行参数估计可得：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \hat{\theta} &=\arg \max _{\theta} \ln P(Y | \theta) \\ &=\arg \max _{\theta} \ln \prod_{j=1}^{n}\left[\pi p^{y_{j}}(1-p)^{1-y_{j}}+(1-\pi) q^{y_{j}}(1-q)^{1-y_{j}}\right] \\ &=\arg \max _{\theta} \sum_{j=1}^{n} \ln \left[\pi p^{y_{j}}(1-p)^{1-y_{j}}+(1-\pi) q^{y_{j}}(1-q)^{i-y_{j}}\right] \end{aligned}</script><p>上式没有解析解，也就是没办法直接解出$\pi, p, q$恰好等于某个常数，只能用送代的方法来进行求解。</p>
+<h5 id="3-EM算法的导出"><a href="#3-EM算法的导出" class="headerlink" title="3.EM算法的导出"></a>3.EM算法的导出</h5><h6 id="Jensen（琴生）不等式"><a href="#Jensen（琴生）不等式" class="headerlink" title="Jensen（琴生）不等式"></a>Jensen（琴生）不等式</h6><p>若f是凸函数，则：</p>
+<script type="math/tex; mode=display">
+f\left(t x_{1}+(1-t) x_{2}\right) \leq t f\left(x_{1}\right)+(1-t) f\left(x_{2}\right)</script><p>ps:$t x_{1}+(1-t) x_{2}$ 代表取遍$x_{1}$和$x_{2}$之间所有的点<br>其中，$t \in[0,1]$。同理，若f是凹函数，则只需将上式中的$\leq$换成$\geq$即可。<br>将上式中的t推广到n个同样成立，也即：</p>
+<script type="math/tex; mode=display">
+f\left(t_{1} x_{1}+t_{2} x_{2}+\ldots+t_{n} x_{n}\right) \leq t_{1} f\left(x_{1}\right)+t_{2} f\left(x_{2}\right)+\ldots+t_{n} f\left(x_{n}\right)</script><p>其中，$t_{1}, t_{2}, \dots, t_{n} \in[0,1], t_{1}+t_{2}+\ldots+t_{n}=1$。在概率论中常以以下形式出现：</p>
+<script type="math/tex; mode=display">
+\varphi(E[X]) \leq E[\varphi(X)]</script><p>其中，$X$是随机变量，$\varphi$是凸函数，$E[X]$表示X的期望。</p>
+<h6 id="EM算法的推导"><a href="#EM算法的推导" class="headerlink" title="EM算法的推导"></a>EM算法的推导</h6><p>我们面对一个含有隐变量的概率模型，目标是极大化观测数据Y关于参数日的对数似然函数，即极大化：</p>
+<script type="math/tex; mode=display">
+L(\theta)=\ln P(Y | \theta)=\ln \sum_{Z} P(Y, Z | \theta)=\ln \left(\sum_{Z} P(Y | Z, \theta) P(Z | \theta)\right)</script><p>注意到这一极大化的主要困难是上式中有未观测数据Z并有包含和（Z为离散型时）或者积分（Z为连续型时）的对数。EM算法采用的是通过迭代逐步近似极大化$L(\theta)$：假设在第次迭代后$\theta$的估计值$\theta^{(i)}$，我们希望新的估计值$\theta$能使 $L(\theta)$增加，即$L(\theta)&gt;L\left(\theta^{(i)}\right)$，并逐步达到极大值。为此，我们考虑两者的差：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} L(\theta)-L\left(\theta^{(i)}\right) &=\ln \left(\sum_{Z} P(Y | Z, \theta) P(Z | \theta)\right)-\ln P\left(Y | \theta^{(i)}\right) \\ &=\ln \left(\sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \frac{P(Y | Z, \theta) P(Z | \theta)}{P\left(Z | Y, \theta^{(i)}\right)}\right)-\ln P\left(Y | \theta^{(i)}\right) \end{aligned}</script><p>套用琴生不等式可得：</p>
+<script type="math/tex; mode=display">
+\geq \sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \ln \frac{P(Y | Z, \theta) P(Z | \theta)}{P\left(Z | Y, \theta^{(i)}\right)}-\ln P\left(Y | \theta^{(i)}\right)</script><script type="math/tex; mode=display">
+\begin{aligned} L(\theta)-L\left(\theta^{(i)}\right) & \geq \sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \ln \frac{P(Y | Z, \theta) P(Z | \theta)}{P\left(Z | Y, \theta^{(i)}\right)}-\sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \cdot \ln P\left(Y | \theta^{(i)}\right) \\ &=\sum_{Z} P\left(Z | Y, \theta^{(i)}\right)\left(\ln \frac{P(Y | Z, \theta) P(Z | \theta)}{P\left(Z | Y, \theta^{(i)}\right)}-\ln P\left(Y | \theta^{(i)}\right)\right) \\ &=\sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \ln \frac{P(Y | Z, \theta) P(Z | \theta)}{P\left(Z | Y, \theta^{(i)}\right) P\left(Y | \theta^{(i)}\right)} \end{aligned}</script><script type="math/tex; mode=display">
+L(\theta) \geq L\left(\theta^{(i)}\right)+\sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \ln \frac{P(Y | Z, \theta) P(Z | \theta)}{P\left(Z | Y, \theta^{(i)}\right) P\left(Y | \theta^{(i)}\right)}</script><p>令：</p>
+<script type="math/tex; mode=display">
+B\left(\theta, \theta^{(i)}\right)=L\left(\theta^{(i)}\right)+\sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \ln \frac{P(Y | Z, \theta) P(Z | \theta)}{P\left(Z | Y, \theta^{(i)}\right) P\left(Y | \theta^{(i)}\right)}</script><p>则：</p>
+<script type="math/tex; mode=display">
+L(\theta) \geq B\left(\theta, \theta^{(i)}\right)</script><p>即函数$B\left(\theta, \theta^{(i)}\right)$是$L(\theta)$的一个下界，此时若设$\theta^{(i+1)}$使得$B\left(\theta, \theta^{(i)}\right)$达到极大也即</p>
+<script type="math/tex; mode=display">
+B\left(\theta^{(i+1)}, \theta^{(i)}\right) \geq B\left(\theta^{(i)}, \theta^{(i)}\right)</script><p>由于$B\left(\theta^{(i)}, \theta^{(i)}\right)=L\left(\theta^{(i)}\right)$，所以可以进一步推得：</p>
+<script type="math/tex; mode=display">
+L\left(\theta^{(i+1)}\right) \geq B\left(\theta^{(i+1)}, \theta^{(i)}\right) \geq B\left(\theta^{(i)}, \theta^{(i)}\right)=L\left(\theta^{(i)}\right)</script><script type="math/tex; mode=display">
+L\left(\theta^{(i+1)}\right) \geq L\left(\theta^{(i)}\right)</script><p>因此，任何可以使$B\left(\theta, \theta^{(i)}\right)$增大的$\theta$，也可以使$L(\theta)$增大，于是问题就转化为了求解能使得$B\left(\theta, \theta^{(i)}\right)$达到极大的$\theta^{(i+1)}$，即</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \theta^{(i+1)} &=\underset{\theta}{\arg \max } B\left(\theta, \theta^{(i)}\right) \\ &=\underset{\theta}{\arg \max }\left(L\left(\partial^{(i)}\right)+\sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \ln \frac{P(Y | Z, \theta) P(Z | \theta)}{P\left(Z | Y, \theta^{(i)}\right) P\left(Y | \theta^{(i)}\right)}\right) \\ &=\arg \max _{\theta}\left(\sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \ln (P(Y | Z, \theta) P(Z | \theta))\right) \\ &=\underset{\theta}{\arg \max }\left(\sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \ln P(Y, Z | \theta)\right) \\ &=\underset{\theta}{\arg \max } Q\left(\theta, \theta^{(i)}\right) \end{aligned}</script><p>到此即完成了EM算法的一次迭代，求出的$\theta^{(i+1)}$作为下一次迭代的初始$\theta(i)$。综上可以总结出EM算法的”E步”和”M步”分别为：<br>E步：计算完全数据的对数似然函数$\ln P(Y, Z | \theta)$关于在给定观测数据Y和当前参数$\theta$下对未观测数据Z的条件概率分布$P\left(Z | Y, \theta^{(i)}\right)$期望，即Q函数：</p>
+<script type="math/tex; mode=display">
+Q\left(\theta, \theta^{(i)}\right)=E_{Z}\left[\ln P(Y, Z | \theta) | Y, \theta^{(i)}\right]=\sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \ln P(Y, Z | \theta)</script><p>M步：求使得Q函数到达极大的$\theta^{(i+1)}$。</p>
+<h5 id="4-EM算法求解例子"><a href="#4-EM算法求解例子" class="headerlink" title="4.EM算法求解例子"></a>4.EM算法求解例子</h5><h6 id="用EM算法求解三硬币模型"><a href="#用EM算法求解三硬币模型" class="headerlink" title="用EM算法求解三硬币模型"></a>用EM算法求解三硬币模型</h6><p>《统计学习方法》例9.1（三硬币模型）：<br>假设有3枚硬币，分别记作A，B，c.这些硬币正面出现的概率分别 T，р和q。进行如下掷硬币试验：先掷硬币A，根据其结果选出硬币B或硬币C，正面选硬币B，反面选硬币C；然后掷选出的硬币，掷硬币的结果，出现E面记作1，出现反面记作0；独立地重复n此实验（这里，n=10），观测结果如下：<br>1，1，0，1，0，0，1，0，1，1<br>假设只能观测到掷硬币的结果，不能观测掷硬币的过程。问如何估计三硬币正面出现的概率，即三硬币模型的参数。</p>
+<p>解：对每一次试验可以进行如下建模</p>
+<script type="math/tex; mode=display">
+\begin{aligned} P(y | \theta) &=\sum_{z} P(y, z | \theta)=\sum_{z} P(z | \theta) P(y | z, \theta) \\ &=P(z=1 | \theta) P(y | z=1, \theta)+P(z=0 | \theta) P(y | z=0, \theta) \\ &=\left\{\begin{array}{ll}{\pi p+(1-\pi) q,} & {\text { if } y=1} \\ {\pi(1-p)+(1-\pi)(1-q),} & {\text { if } y=0} \end{array}\right.\\ &=\pi p^{y}(1-p)^{1-y}+(1-\pi) q^{y}(1-q)^{1-y}\end{aligned}</script><p>其中，随机变量y是观测变量，表示一次试验观测的结果是1或0；随机变量z是隐变量，表示未观测到的掷硬币A的结果；$\theta=(\pi, p, q)$是模型参数。</p>
+<p>求解思路：<br>E步：导出Q函数<br>M步：求使得Q函数达到极大的$\theta^{(i+1)}=\left(\pi^{(i+1)}, p^{(i+1)}, q^{(i+1)}\right)$</p>
+<p>E步：导出Q函数</p>
+<script type="math/tex; mode=display">
+\begin{aligned} Q\left(\theta | \theta^{(i)}\right) &=\sum_{Z} P\left(Z | Y, \theta^{(i)}\right) \ln P(Y, Z | \theta) \\ &=\sum_{z_{1}, z_{2}, \ldots, z_{N}}\left\{\prod_{i=1}^{N} P\left(z_{j} | y_{j}, \theta^{(i)}\right) \ln \left[\prod_{j=1}^{N} P\left(y_{j}, z_{j} | \theta\right)\right]\right\} \\ &=\sum_{z_{1}, z_{2}, \ldots, z_{N}}\left\{\prod_{j=1}^{N} P\left(z_{j} | y_{j}, \theta^{(i)}\right)\left[\sum_{j=1}^{N} \ln P\left(y_{j}, z_{j} | \theta\right)\right]\right\} \\ &=\sum_{z_{1}, z_{2}, \ldots, z_{N}}\left\{\prod_{j=1}^{N} P\left(z_{j} | y_{j}, \theta^{(i)}\right)\left[\ln P\left(y_{1}, z_{1} | \theta\right)+\sum_{j=2}^{N} \ln P\left(y_{j}, z_{j} | \theta\right)\right]\right\} \end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned} Q\left(\theta | \theta^{(i)}\right) &=\sum_{z_{i}, z_{2}, \ldots, z_{N}}\left\{\prod_{j=1}^{N} P\left(z_{j} | y_{j}, \theta^{(i)}\right) \cdot \ln P\left(y_{1}, z_{1} | \theta\right)+\prod_{j=1}^{N} P\left(z_{j} | y_{j}, \theta^{(i)}\right)\left[\sum_{j=2}^{N} \ln P\left(y_{j}, z_{j} | \theta\right)\right]\right\} \\ &=\sum_{z_{1}, z_{2}, \ldots, z_{N}}\left\{\prod_{j=1}^{N} P\left(z_{j} | y_{j}, \theta^{(i)}\right) \cdot \ln P\left(y_{1}, z_{1} | \theta\right)\right\}+\sum_{z_{i}, z_{2}, \ldots, z_{N}}^{N}\left\{\prod_{j=1}^{N} P\left(z_{j} | y_{j}, \theta^{(i)}\right)\left[\sum_{j=2}^{N} \ln P\left(y_{j}, z_{j} | \theta\right)\right]\right\} \end{aligned}</script>
       
     </div>
     
@@ -711,6 +757,20 @@ P_{1}=\frac{1}{10}, P_{2}=\frac{3}{10}, P_{3}=\frac{2}{10}, P_{4}=\frac{2}{10}, 
 
           
           
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="www.miraclewk.top" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
 
           
 
@@ -727,7 +787,7 @@ P_{1}=\frac{1}{10}, P_{2}=\frac{3}{10}, P_{3}=\frac{2}{10}, P_{4}=\frac{2}{10}, 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第7章-朴素贝叶斯"><span class="nav-number">1.</span> <span class="nav-text">第7章 朴素贝叶斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贝叶斯判定准则"><span class="nav-number">1.1.</span> <span class="nav-text">贝叶斯判定准则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多元正态分布参数的极大似然估计"><span class="nav-number">1.2.</span> <span class="nav-text">多元正态分布参数的极大似然估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯分类器"><span class="nav-number">1.3.</span> <span class="nav-text">朴素贝叶斯分类器</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第7章-朴素贝叶斯"><span class="nav-number">1.</span> <span class="nav-text">第7章 朴素贝叶斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贝叶斯判定准则"><span class="nav-number">1.1.</span> <span class="nav-text">贝叶斯判定准则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多元正态分布参数的极大似然估计"><span class="nav-number">1.2.</span> <span class="nav-text">多元正态分布参数的极大似然估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯分类器"><span class="nav-number">1.3.</span> <span class="nav-text">朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EM算法"><span class="nav-number">1.4.</span> <span class="nav-text">EM算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-EM算法的引入"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.EM算法的引入</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#为什么需要EM算法"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">为什么需要EM算法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-EM算法的例子"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.EM算法的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#三硬币模型"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">三硬币模型</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-EM算法的导出"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.EM算法的导出</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Jensen（琴生）不等式"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">Jensen（琴生）不等式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#EM算法的推导"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">EM算法的推导</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-EM算法求解例子"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.EM算法求解例子</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#用EM算法求解三硬币模型"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">用EM算法求解三硬币模型</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
