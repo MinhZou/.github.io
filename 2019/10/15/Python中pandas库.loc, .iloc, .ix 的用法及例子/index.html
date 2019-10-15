@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,基础,">
+  <meta name="keywords" content="python,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="向量求导有两种布局方式，分子布局和分母布局。分子布局和分母布局的操作结果可以通过转置来切换。分母布局：标量对向量求导，得到的结果跟分母上的向量保持一致。即，如果标量是对列向量求导，得到的导数也是列向量。分子布局：标量对向量求导，得到的结果是分母上的向量的转置。即，如果标量对列向量求导，得到的导数将是行向量。以下以分母布局为例：  A=\left[ \begin{array}{cccc}{a_{11">
-<meta name="keywords" content="机器学习,基础">
+<meta name="description" content="一　.loc.loc：根据DataFrame的具体标签选取列，当每列已有column name时，用 df [ ‘a’ ] 就能选取出一整列数据。如果你知道column names 和index，且两者都很好输入，可以选择 .loc  123import numpy as npimport pandas as pddf = pd.DataFrame(np.arange(0,200,2).resh">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="向量，矩阵求导">
-<meta property="og:url" content="http://minhzou.top/2019/05/16/向量，矩阵求导/index.html">
+<meta property="og:title" content="Python中pandas库.loc, .iloc, .ix 的用法及例子">
+<meta property="og:url" content="http://minhzou.top/2019/10/15/Python中pandas库.loc, .iloc, .ix 的用法及例子/index.html">
 <meta property="og:site_name" content="Minh&#39;s Blog">
-<meta property="og:description" content="向量求导有两种布局方式，分子布局和分母布局。分子布局和分母布局的操作结果可以通过转置来切换。分母布局：标量对向量求导，得到的结果跟分母上的向量保持一致。即，如果标量是对列向量求导，得到的导数也是列向量。分子布局：标量对向量求导，得到的结果是分母上的向量的转置。即，如果标量对列向量求导，得到的导数将是行向量。以下以分母布局为例：  A=\left[ \begin{array}{cccc}{a_{11">
+<meta property="og:description" content="一　.loc.loc：根据DataFrame的具体标签选取列，当每列已有column name时，用 df [ ‘a’ ] 就能选取出一整列数据。如果你知道column names 和index，且两者都很好输入，可以选择 .loc  123import numpy as npimport pandas as pddf = pd.DataFrame(np.arange(0,200,2).resh">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-16T13:16:06.334Z">
+<meta property="og:updated_time" content="2019-10-15T12:08:20.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="向量，矩阵求导">
-<meta name="twitter:description" content="向量求导有两种布局方式，分子布局和分母布局。分子布局和分母布局的操作结果可以通过转置来切换。分母布局：标量对向量求导，得到的结果跟分母上的向量保持一致。即，如果标量是对列向量求导，得到的导数也是列向量。分子布局：标量对向量求导，得到的结果是分母上的向量的转置。即，如果标量对列向量求导，得到的导数将是行向量。以下以分母布局为例：  A=\left[ \begin{array}{cccc}{a_{11">
+<meta name="twitter:title" content="Python中pandas库.loc, .iloc, .ix 的用法及例子">
+<meta name="twitter:description" content="一　.loc.loc：根据DataFrame的具体标签选取列，当每列已有column name时，用 df [ ‘a’ ] 就能选取出一整列数据。如果你知道column names 和index，且两者都很好输入，可以选择 .loc  123import numpy as npimport pandas as pddf = pd.DataFrame(np.arange(0,200,2).resh">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://minhzou.top/2019/05/16/向量，矩阵求导/">
+  <link rel="canonical" href="http://minhzou.top/2019/10/15/Python中pandas库.loc, .iloc, .ix 的用法及例子/">
 
 
 
 
 
-  <title>向量，矩阵求导 | Minh's Blog</title>
+  <title>Python中pandas库.loc, .iloc, .ix 的用法及例子 | Minh's Blog</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/05/16/向量，矩阵求导/">
+    <link itemprop="mainEntityOfPage" href="http://minhzou.top/2019/10/15/Python中pandas库.loc, .iloc, .ix 的用法及例子/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Minh">
@@ -313,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">向量，矩阵求导</h1>
+          <h1 class="post-title" itemprop="name headline">Python中pandas库.loc, .iloc, .ix 的用法及例子</h1>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-16T20:33:48+08:00">
-                2019-05-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T20:07:10+08:00">
+                2019-10-15
               </time>
             
 
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-16T21:16:06+08:00">
-                2019-05-16
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-15T20:08:20+08:00">
+                2019-10-15
               </time>
             
           </span>
@@ -360,8 +360,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
                   </a>
                 </span>
 
@@ -378,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/05/16/向量，矩阵求导/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/16/向量，矩阵求导/" itemprop="commentCount"></span>
+                <a href="/2019/10/15/Python中pandas库.loc, .iloc, .ix 的用法及例子/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/15/Python中pandas库.loc, .iloc, .ix 的用法及例子/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  623 字
+                  558 字
                 </span>
               
 
@@ -443,26 +443,20 @@
       
 
       
-        <p>向量求导有两种布局方式，分子布局和分母布局。分子布局和分母布局的操作结果可以通过转置来切换。<br>分母布局：标量对向量求导，得到的结果跟分母上的向量保持一致。即，如果标量是对列向量求导，得到的导数也是列向量。<br>分子布局：标量对向量求导，得到的结果是分母上的向量的转置。即，如果标量对列向量求导，得到的导数将是行向量。<br>以下以分母布局为例：</p>
-<script type="math/tex; mode=display">
-A=\left[ \begin{array}{cccc}{a_{11}} & {a_{12}} & {\cdots} & {a_{1 n}} \\ {a_{21}} & {a_{22}} & {\cdots} & {a_{2 n}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots}\\ {a_{m 1}} & {a_{m 2}} & {\cdots} & {a_{m n}}\end{array}\right]，x=\left[ \begin{array}{c}{x_{1}} \\ {x_{2}} \\ {\vdots} \\ {x_{n}}\end{array}\right]</script><script type="math/tex; mode=display">
-A x=\left[ \begin{array}{c}{a_{11} x_{1}+a_{12} x_{2}+\cdots+a_{1 n} x_{n}} \\ {a_{21} x_{1}+a_{22} x_{2}+\cdots+a_{2 n} x_{n}} \\ {\vdots} \\ {a_{m 1} x_{1}+a_{m 2} x_{2}+\cdots+a_{m n} x_{n}}\end{array}\right]_{m×1}</script><script type="math/tex; mode=display">
-\frac{\partial A x}{\partial x}=\left[ \begin{array}{cccc}{a_{11}} & {a_{21}} & {\ldots} & {a_{m 1}} \\ {a_{12}} & {a_{22}} & {\ldots} & {a_{m 2}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {a_{1 n}} & {a_{2 n}} & {\ldots} & {a_{m n}}\end{array}\right]=A^{T}</script><p>以分母作为主序，x是列向量，Ax关于x求导数，那么对Ax的分量(每行)分别对x的分量求偏导数，然后整理排成一列，对每个分量都如此操作。</p>
-<p>可以得到如下结论：</p>
-<p><1></1></p>
-<script type="math/tex; mode=display">
-\frac{\partial A x}{x}=A^{T}</script><p><2> </2></p>
-<script type="math/tex; mode=display">
-\frac{\partial A x}{x^{T}}=A</script><p><3></3></p>
-<script type="math/tex; mode=display">
-\frac{\partial x^{T} A x}{x}=\left(A^{T}+A\right) x</script><p><4></4></p>
-<script type="math/tex; mode=display">
-\frac{\partial x^{T} y}{x}=y</script><p>元素对向量，矩阵求导：</p>
-<ol>
-<li>元素对行向量求导<br>设y是元素，$\mathbf{x}^{T}=\left[ \begin{array}{lll}{x_{1}} &amp; {\cdots} &amp; {x_{q}}\end{array}\right]$是q维行向量，则$\frac{\partial y}{\partial \mathbf{x}^{r}}=\left[\frac{\partial y}{\partial x_{1}} \ldots \frac{\partial y}{\partial x_{q}}\right]$</li>
-<li>元素对列向量求导<br>设y是元素，$\mathbf{x}=\left[ \begin{array}{c}{x_{1}} \\ {\vdots} \\ {x_{p}}\end{array}\right]$是p维列向量，则$\frac{\partial y}{\partial \mathbf{x}}=\left[ \begin{array}{c}{\frac{\partial y}{\partial x_{1}}} \\ {\vdots} \\ {\frac{\dot{\partial} y}{\partial x_{p}}}\end{array}\right]$</li>
-<li>元素对矩阵求导<br>设y是元素，$X=\left[ \begin{array}{ccc}{x_{11}} &amp; {\cdots} &amp; {x_{1 q}} \\ {\vdots} &amp;  &amp; {\vdots} \\ {x_{p 1}} &amp; {\cdots} &amp; {y_{p q}}\end{array}\right]$是p×q矩阵，则$\frac{\partial y}{\partial X}=\left[ \begin{array}{ccc}{\frac{\partial y}{\partial x_{11}}} &amp; {\cdots} &amp; {\frac{\partial y}{\partial x_{1 q}}} \\ {\vdots} \\ {\frac{\partial y}{\partial x_{p 1}}} &amp; {\cdots} &amp; {\frac{\partial y}{\partial x_{p q}}}\end{array}\right]$<br>```</li>
-</ol>
+        <h3 id="一-loc"><a href="#一-loc" class="headerlink" title="　一　.loc"></a>　一　.loc</h3><p>.loc：根据DataFrame的具体标签选取列，当每列已有column name时，用 df [ ‘a’ ] 就能选取出一整列数据。如果你知道column names 和index，且两者都很好输入，可以选择 .loc </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(np.arange(<span class="number">0</span>,<span class="number">200</span>,<span class="number">2</span>).reshape(<span class="number">10</span>,<span class="number">10</span>), columns = list(<span class="string">'abcdefghij'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df)</span><br><span class="line">     a    b    c    d    e    f    g    h    i    j</span><br><span class="line"><span class="number">0</span>    <span class="number">0</span>    <span class="number">2</span>    <span class="number">4</span>    <span class="number">6</span>    <span class="number">8</span>   <span class="number">10</span>   <span class="number">12</span>   <span class="number">14</span>   <span class="number">16</span>   <span class="number">18</span></span><br><span class="line"><span class="number">1</span>   <span class="number">20</span>   <span class="number">22</span>   <span class="number">24</span>   <span class="number">26</span>   <span class="number">28</span>   <span class="number">30</span>   <span class="number">32</span>   <span class="number">34</span>   <span class="number">36</span>   <span class="number">38</span></span><br><span class="line"><span class="number">2</span>   <span class="number">40</span>   <span class="number">42</span>   <span class="number">44</span>   <span class="number">46</span>   <span class="number">48</span>   <span class="number">50</span>   <span class="number">52</span>   <span class="number">54</span>   <span class="number">56</span>   <span class="number">58</span></span><br><span class="line"><span class="number">3</span>   <span class="number">60</span>   <span class="number">62</span>   <span class="number">64</span>   <span class="number">66</span>   <span class="number">68</span>   <span class="number">70</span>   <span class="number">72</span>   <span class="number">74</span>   <span class="number">76</span>   <span class="number">78</span></span><br><span class="line"><span class="number">4</span>   <span class="number">80</span>   <span class="number">82</span>   <span class="number">84</span>   <span class="number">86</span>   <span class="number">88</span>   <span class="number">90</span>   <span class="number">92</span>   <span class="number">94</span>   <span class="number">96</span>   <span class="number">98</span></span><br><span class="line"><span class="number">5</span>  <span class="number">100</span>  <span class="number">102</span>  <span class="number">104</span>  <span class="number">106</span>  <span class="number">108</span>  <span class="number">110</span>  <span class="number">112</span>  <span class="number">114</span>  <span class="number">116</span>  <span class="number">118</span></span><br><span class="line"><span class="number">6</span>  <span class="number">120</span>  <span class="number">122</span>  <span class="number">124</span>  <span class="number">126</span>  <span class="number">128</span>  <span class="number">130</span>  <span class="number">132</span>  <span class="number">134</span>  <span class="number">136</span>  <span class="number">138</span></span><br><span class="line"><span class="number">7</span>  <span class="number">140</span>  <span class="number">142</span>  <span class="number">144</span>  <span class="number">146</span>  <span class="number">148</span>  <span class="number">150</span>  <span class="number">152</span>  <span class="number">154</span>  <span class="number">156</span>  <span class="number">158</span></span><br><span class="line"><span class="number">8</span>  <span class="number">160</span>  <span class="number">162</span>  <span class="number">164</span>  <span class="number">166</span>  <span class="number">168</span>  <span class="number">170</span>  <span class="number">172</span>  <span class="number">174</span>  <span class="number">176</span>  <span class="number">178</span></span><br><span class="line"><span class="number">9</span>  <span class="number">180</span>  <span class="number">182</span>  <span class="number">184</span>  <span class="number">186</span>  <span class="number">188</span>  <span class="number">190</span>  <span class="number">192</span>  <span class="number">194</span>  <span class="number">196</span>  <span class="number">198</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.loc[[<span class="number">1</span>,<span class="number">5</span>],[<span class="string">'a'</span>,<span class="string">'b'</span>]])</span><br><span class="line"></span><br><span class="line">     a    b</span><br><span class="line"><span class="number">1</span>   <span class="number">20</span>   <span class="number">22</span></span><br><span class="line"><span class="number">5</span>  <span class="number">100</span>  <span class="number">102</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.loc[:,[<span class="string">'a'</span>]])</span><br><span class="line">     a</span><br><span class="line"><span class="number">0</span>    <span class="number">0</span></span><br><span class="line"><span class="number">1</span>   <span class="number">20</span></span><br><span class="line"><span class="number">2</span>   <span class="number">40</span></span><br><span class="line"><span class="number">3</span>   <span class="number">60</span></span><br><span class="line"><span class="number">4</span>   <span class="number">80</span></span><br><span class="line"><span class="number">5</span>  <span class="number">100</span></span><br><span class="line"><span class="number">6</span>  <span class="number">120</span></span><br><span class="line"><span class="number">7</span>  <span class="number">140</span></span><br><span class="line"><span class="number">8</span>  <span class="number">160</span></span><br><span class="line"><span class="number">9</span>  <span class="number">180</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.loc[<span class="number">0</span>,[<span class="string">'a'</span>]])</span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">Name: <span class="number">0</span>, dtype: int32</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.loc[<span class="number">0</span>,:])</span><br><span class="line">a     <span class="number">0</span></span><br><span class="line">b     <span class="number">2</span></span><br><span class="line">c     <span class="number">4</span></span><br><span class="line">d     <span class="number">6</span></span><br><span class="line">e     <span class="number">8</span></span><br><span class="line">f    <span class="number">10</span></span><br><span class="line">g    <span class="number">12</span></span><br><span class="line">h    <span class="number">14</span></span><br><span class="line">i    <span class="number">16</span></span><br><span class="line">j    <span class="number">18</span></span><br><span class="line">Name: <span class="number">0</span>, dtype: int32</span><br></pre></td></tr></table></figure>
+<h3 id="二-iloc"><a href="#二-iloc" class="headerlink" title="二     .iloc"></a>二     .iloc</h3><p> .iloc：根据标签的所在位置，从0开始计数，选取列，如果索引是数字，就使用.iloc</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.iloc[<span class="number">2</span>,<span class="number">1</span>])</span><br><span class="line"><span class="number">42</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.iloc[:<span class="number">5</span>, <span class="number">5</span>])</span><br><span class="line"><span class="number">0</span>    <span class="number">10</span></span><br><span class="line"><span class="number">1</span>    <span class="number">30</span></span><br><span class="line"><span class="number">2</span>    <span class="number">50</span></span><br><span class="line"><span class="number">3</span>    <span class="number">70</span></span><br><span class="line"><span class="number">4</span>    <span class="number">90</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.iloc[:<span class="number">-1</span>,<span class="number">5</span>])</span><br><span class="line"><span class="number">0</span>     <span class="number">10</span></span><br><span class="line"><span class="number">1</span>     <span class="number">30</span></span><br><span class="line"><span class="number">2</span>     <span class="number">50</span></span><br><span class="line"><span class="number">3</span>     <span class="number">70</span></span><br><span class="line"><span class="number">4</span>     <span class="number">90</span></span><br><span class="line"><span class="number">5</span>    <span class="number">110</span></span><br><span class="line"><span class="number">6</span>    <span class="number">130</span></span><br><span class="line"><span class="number">7</span>    <span class="number">150</span></span><br><span class="line"><span class="number">8</span>    <span class="number">170</span></span><br><span class="line">Name: f, dtype: int32</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.iloc[:,<span class="number">5</span>])</span><br><span class="line"><span class="number">0</span>     <span class="number">10</span></span><br><span class="line"><span class="number">1</span>     <span class="number">30</span></span><br><span class="line"><span class="number">2</span>     <span class="number">50</span></span><br><span class="line"><span class="number">3</span>     <span class="number">70</span></span><br><span class="line"><span class="number">4</span>     <span class="number">90</span></span><br><span class="line"><span class="number">5</span>    <span class="number">110</span></span><br><span class="line"><span class="number">6</span>    <span class="number">130</span></span><br><span class="line"><span class="number">7</span>    <span class="number">150</span></span><br><span class="line"><span class="number">8</span>    <span class="number">170</span></span><br><span class="line"><span class="number">9</span>    <span class="number">190</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.iloc[:,:])</span><br><span class="line">     a    b    c    d    e    f    g    h    i    j</span><br><span class="line"><span class="number">0</span>    <span class="number">0</span>    <span class="number">2</span>    <span class="number">4</span>    <span class="number">6</span>    <span class="number">8</span>   <span class="number">10</span>   <span class="number">12</span>   <span class="number">14</span>   <span class="number">16</span>   <span class="number">18</span></span><br><span class="line"><span class="number">1</span>   <span class="number">20</span>   <span class="number">22</span>   <span class="number">24</span>   <span class="number">26</span>   <span class="number">28</span>   <span class="number">30</span>   <span class="number">32</span>   <span class="number">34</span>   <span class="number">36</span>   <span class="number">38</span></span><br><span class="line"><span class="number">2</span>   <span class="number">40</span>   <span class="number">42</span>   <span class="number">44</span>   <span class="number">46</span>   <span class="number">48</span>   <span class="number">50</span>   <span class="number">52</span>   <span class="number">54</span>   <span class="number">56</span>   <span class="number">58</span></span><br><span class="line"><span class="number">3</span>   <span class="number">60</span>   <span class="number">62</span>   <span class="number">64</span>   <span class="number">66</span>   <span class="number">68</span>   <span class="number">70</span>   <span class="number">72</span>   <span class="number">74</span>   <span class="number">76</span>   <span class="number">78</span></span><br><span class="line"><span class="number">4</span>   <span class="number">80</span>   <span class="number">82</span>   <span class="number">84</span>   <span class="number">86</span>   <span class="number">88</span>   <span class="number">90</span>   <span class="number">92</span>   <span class="number">94</span>   <span class="number">96</span>   <span class="number">98</span></span><br><span class="line"><span class="number">5</span>  <span class="number">100</span>  <span class="number">102</span>  <span class="number">104</span>  <span class="number">106</span>  <span class="number">108</span>  <span class="number">110</span>  <span class="number">112</span>  <span class="number">114</span>  <span class="number">116</span>  <span class="number">118</span></span><br><span class="line"><span class="number">6</span>  <span class="number">120</span>  <span class="number">122</span>  <span class="number">124</span>  <span class="number">126</span>  <span class="number">128</span>  <span class="number">130</span>  <span class="number">132</span>  <span class="number">134</span>  <span class="number">136</span>  <span class="number">138</span></span><br><span class="line"><span class="number">7</span>  <span class="number">140</span>  <span class="number">142</span>  <span class="number">144</span>  <span class="number">146</span>  <span class="number">148</span>  <span class="number">150</span>  <span class="number">152</span>  <span class="number">154</span>  <span class="number">156</span>  <span class="number">158</span></span><br><span class="line"><span class="number">8</span>  <span class="number">160</span>  <span class="number">162</span>  <span class="number">164</span>  <span class="number">166</span>  <span class="number">168</span>  <span class="number">170</span>  <span class="number">172</span>  <span class="number">174</span>  <span class="number">176</span>  <span class="number">178</span></span><br><span class="line"><span class="number">9</span>  <span class="number">180</span>  <span class="number">182</span>  <span class="number">184</span>  <span class="number">186</span>  <span class="number">188</span>  <span class="number">190</span>  <span class="number">192</span>  <span class="number">194</span>  <span class="number">196</span>  <span class="number">198</span></span><br></pre></td></tr></table></figure>
+<h3 id="三-ix"><a href="#三-ix" class="headerlink" title="三    .ix"></a>三    .ix</h3><p> .ix 混合使用下标和名称进行选取</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.ix[[<span class="number">1</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">3</span>]])</span><br><span class="line">    b   d</span><br><span class="line"><span class="number">1</span>  <span class="number">22</span>  <span class="number">26</span></span><br><span class="line"><span class="number">3</span>  <span class="number">62</span>  <span class="number">66</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.ix[<span class="number">1</span>:<span class="number">3</span>, [<span class="number">1</span>,<span class="number">2</span>]])</span><br><span class="line">    b   c</span><br><span class="line"><span class="number">1</span>  <span class="number">22</span>  <span class="number">24</span></span><br><span class="line"><span class="number">2</span>  <span class="number">42</span>  <span class="number">44</span></span><br><span class="line"><span class="number">3</span>  <span class="number">62</span>  <span class="number">64</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.loc[:,[<span class="string">'a'</span>]])</span><br><span class="line">     a</span><br><span class="line"><span class="number">0</span>    <span class="number">0</span></span><br><span class="line"><span class="number">1</span>   <span class="number">20</span></span><br><span class="line"><span class="number">2</span>   <span class="number">40</span></span><br><span class="line"><span class="number">3</span>   <span class="number">60</span></span><br><span class="line"><span class="number">4</span>   <span class="number">80</span></span><br><span class="line"><span class="number">5</span>  <span class="number">100</span></span><br><span class="line"><span class="number">6</span>  <span class="number">120</span></span><br><span class="line"><span class="number">7</span>  <span class="number">140</span></span><br><span class="line"><span class="number">8</span>  <span class="number">160</span></span><br><span class="line"><span class="number">9</span>  <span class="number">180</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(df.loc[<span class="number">0</span>,[<span class="string">'a'</span>]])</span><br><span class="line">a    <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -489,9 +483,7 @@ A x=\left[ \begin{array}{c}{a_{11} x_{1}+a_{12} x_{2}+\cdots+a_{1 n} x_{n}} \\ {
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"> <i class="fa fa-tag"></i> 机器学习</a>
-          
-            <a href="/tags/基础/" rel="tag"> <i class="fa fa-tag"></i> 基础</a>
+            <a href="/tags/python/" rel="tag"> <i class="fa fa-tag"></i> python</a>
           
         </div>
       
@@ -504,8 +496,8 @@ A x=\left[ \begin{array}{c}{a_{11} x_{1}+a_{12} x_{2}+\cdots+a_{1 n} x_{n}} \\ {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/28/C and C++梳理补缺/" rel="next" title="C/C++梳理补缺">
-                <i class="fa fa-chevron-left"></i> C/C++梳理补缺
+              <a href="/2019/07/15/《机器学习》第7章 朴素贝叶斯 公式推导/" rel="next" title="《机器学习》第7章 朴素贝叶斯 公式推导">
+                <i class="fa fa-chevron-left"></i> 《机器学习》第7章 朴素贝叶斯 公式推导
               </a>
             
           </div>
@@ -513,10 +505,6 @@ A x=\left[ \begin{array}{c}{a_{11} x_{1}+a_{12} x_{2}+\cdots+a_{1 n} x_{n}} \\ {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/18/Python爬虫实战——爬取特定微信公众号文章/" rel="prev" title="Python爬虫实战——爬取特定微信公众号文章">
-                Python爬虫实战——爬取特定微信公众号文章 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -571,8 +559,17 @@ A x=\left[ \begin{array}{c}{a_{11} x_{1}+a_{12} x_{2}+\cdots+a_{1 n} x_{n}} \\ {
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -665,6 +662,22 @@ A x=\left[ \begin{array}{c}{a_{11} x_{1}+a_{12} x_{2}+\cdots+a_{1 n} x_{n}} \\ {
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-loc"><span class="nav-number">1.</span> <span class="nav-text">　一　.loc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-iloc"><span class="nav-number">2.</span> <span class="nav-text">二     .iloc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-ix"><span class="nav-number">3.</span> <span class="nav-text">三    .ix</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

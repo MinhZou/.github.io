@@ -1,3 +1,4 @@
+http://minhzou.top/2019/10/15/Python中pandas库.loc, .iloc, .ix 的用法及例子/
 http://minhzou.top/2019/07/15/《机器学习》第7章 朴素贝叶斯 公式推导/
 http://minhzou.top/2019/07/12/《机器学习》第6章 支持向量模型 公式推导/
 http://minhzou.top/2019/07/03/《机器学习》第4章 决策树模型 公式推导/
