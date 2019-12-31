@@ -117,6 +117,31 @@
   </entry>
   
   <entry>
+    <title>距离，范数，向量空间，欧几里得空间（欧式空间），希尔伯特空间，巴拿赫空间</title>
+    <link href="http://minhzou.top/2019/06/25/%E8%B7%9D%E7%A6%BB%EF%BC%8C%E8%8C%83%E6%95%B0%EF%BC%8C%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4%EF%BC%8C%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%A9%BA%E9%97%B4%EF%BC%88%E6%AC%A7%E5%BC%8F%E7%A9%BA%E9%97%B4%EF%BC%89%EF%BC%8C%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E7%A9%BA%E9%97%B4%EF%BC%8C%E5%B7%B4%E6%8B%BF%E8%B5%AB%E7%A9%BA%E9%97%B4/"/>
+    <id>http://minhzou.top/2019/06/25/距离，范数，向量空间，欧几里得空间（欧式空间），希尔伯特空间，巴拿赫空间/</id>
+    <published>2019-06-25T01:54:16.471Z</published>
+    <updated>2019-06-25T01:53:15.011Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="距离"><a href="#距离" class="headerlink" title="距离"></a>距离</h4><p>直线距离、向量距离、折线距离等等都是具体的距离，这里谈的距离是一个抽象的概念，需要满足非负、自反、三角不等式三个条件。<br>设X是任一非空集，对X中任意两点x，y，有一实数d（x，y）与之对应且满足：<br>1.d（x，y）≥ 0，且d（x，y）= 0 当且仅当 x=y；<br>2.d（x， y） = d（y，x）；<br>3.d（x，y）≤ d（x，z）+d（z，y）。<br>称d（x，y）为X中的一个距离。</p><h4 id="向量空间"><a href="#向量空间" class="headerlink" title="向量空间"></a>向量空间</h4><p><strong>距离 + 线性结构⟶线性空间 = 向量空间</strong><br>线性结构如向量的加法、数乘，使其满足加法的交换律、结合律、零元、负元；数乘的交换律、单位一；数乘与加法的结合律（两个）共八点要求，从而形成一个线性空间，这个线性空间就是向量空间</p><h4 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h4><p>范数是一种强化了的距离概念，它在定义上比距离多了一条数乘的运算法则。可以简单把范数当作距离来理解。<br>范数分为：向量范数和矩阵范数。向量范数表征向量空间中向量的大小，矩阵范数表征矩阵引起变化的大小。<br>并满足一定的条件，即①非负性；②齐次性；③三角不等式。它常常被用来度量某个向量空间（或矩阵）中的每个向量的长度或大小。</p><ol><li>||x|| ≥0; </li><li>||ax||=|a|||x||; </li><li>||x+y||≤||x||+||y||。</li></ol><p><strong>范数的集合⟶ 赋范空间<br>赋范空间 +线性结构⟶线性赋范空间</strong></p><p><strong>距离的集合⟶ 度量空间<br>度量空间 +线性结构⟶线性度量空间</strong></p><h4 id="欧式空间"><a href="#欧式空间" class="headerlink" title="欧式空间"></a>欧式空间</h4><p>有限维线性内积空间称作欧几里得空间<br>已经构成的线性赋范空间上继续扩展，添加内积运算，使空间中有角的概念，形成内积空间：<br><strong>线性赋范空间+内积运算⟶ 内积空间</strong><br>有限维的内积空间也就是欧氏空间<br><strong>内积空间+有限维⟶欧几里德空间</strong></p><h4 id="希尔伯特空间"><a href="#希尔伯特空间" class="headerlink" title="希尔伯特空间"></a>希尔伯特空间</h4><p>线性完备内积空间称作希尔伯特空间<br><strong>线性赋范空间+内积运算⟶ 内积空间</strong><br><strong>内积空间+完备性⟶ 希尔伯特空间</strong><br>其中完备性的意思就是空间中的极限运算不能跑出该空间</p><h4 id="巴拿赫空间"><a href="#巴拿赫空间" class="headerlink" title="巴拿赫空间"></a>巴拿赫空间</h4><p>线性完备赋范空间称作巴拿赫空间<br><strong>范数的集合⟶ 赋范空间</strong><br><strong>赋范空间 +线性结构⟶线性赋范空间</strong><br><strong>线性赋范空间+完备性⟶巴拿赫空间</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;距离&quot;&gt;&lt;a href=&quot;#距离&quot; class=&quot;headerlink&quot; title=&quot;距离&quot;&gt;&lt;/a&gt;距离&lt;/h4&gt;&lt;p&gt;直线距离、向量距离、折线距离等等都是具体的距离，这里谈的距离是一个抽象的概念，需要满足非负、自反、三角不等式三个条件。&lt;br&gt;设X是任一非空
+      
+    
+    </summary>
+    
+      <category term="总结" scheme="http://minhzou.top/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="基础" scheme="http://minhzou.top/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>范数分类</title>
     <link href="http://minhzou.top/2019/06/25/%E8%8C%83%E6%95%B0%E5%88%86%E7%B1%BB/"/>
     <id>http://minhzou.top/2019/06/25/范数分类/</id>
@@ -140,31 +165,6 @@
     
     
       <category term="范数" scheme="http://minhzou.top/tags/%E8%8C%83%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>距离，范数，向量空间，欧几里得空间（欧式空间），希尔伯特空间，巴拿赫空间</title>
-    <link href="http://minhzou.top/2019/06/25/%E8%B7%9D%E7%A6%BB%EF%BC%8C%E8%8C%83%E6%95%B0%EF%BC%8C%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4%EF%BC%8C%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%A9%BA%E9%97%B4%EF%BC%88%E6%AC%A7%E5%BC%8F%E7%A9%BA%E9%97%B4%EF%BC%89%EF%BC%8C%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E7%A9%BA%E9%97%B4%EF%BC%8C%E5%B7%B4%E6%8B%BF%E8%B5%AB%E7%A9%BA%E9%97%B4/"/>
-    <id>http://minhzou.top/2019/06/25/距离，范数，向量空间，欧几里得空间（欧式空间），希尔伯特空间，巴拿赫空间/</id>
-    <published>2019-06-25T01:54:16.471Z</published>
-    <updated>2019-06-25T01:53:15.011Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="距离"><a href="#距离" class="headerlink" title="距离"></a>距离</h4><p>直线距离、向量距离、折线距离等等都是具体的距离，这里谈的距离是一个抽象的概念，需要满足非负、自反、三角不等式三个条件。<br>设X是任一非空集，对X中任意两点x，y，有一实数d（x，y）与之对应且满足：<br>1.d（x，y）≥ 0，且d（x，y）= 0 当且仅当 x=y；<br>2.d（x， y） = d（y，x）；<br>3.d（x，y）≤ d（x，z）+d（z，y）。<br>称d（x，y）为X中的一个距离。</p><h4 id="向量空间"><a href="#向量空间" class="headerlink" title="向量空间"></a>向量空间</h4><p><strong>距离 + 线性结构⟶线性空间 = 向量空间</strong><br>线性结构如向量的加法、数乘，使其满足加法的交换律、结合律、零元、负元；数乘的交换律、单位一；数乘与加法的结合律（两个）共八点要求，从而形成一个线性空间，这个线性空间就是向量空间</p><h4 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h4><p>范数是一种强化了的距离概念，它在定义上比距离多了一条数乘的运算法则。可以简单把范数当作距离来理解。<br>范数分为：向量范数和矩阵范数。向量范数表征向量空间中向量的大小，矩阵范数表征矩阵引起变化的大小。<br>并满足一定的条件，即①非负性；②齐次性；③三角不等式。它常常被用来度量某个向量空间（或矩阵）中的每个向量的长度或大小。</p><ol><li>||x|| ≥0; </li><li>||ax||=|a|||x||; </li><li>||x+y||≤||x||+||y||。</li></ol><p><strong>范数的集合⟶ 赋范空间<br>赋范空间 +线性结构⟶线性赋范空间</strong></p><p><strong>距离的集合⟶ 度量空间<br>度量空间 +线性结构⟶线性度量空间</strong></p><h4 id="欧式空间"><a href="#欧式空间" class="headerlink" title="欧式空间"></a>欧式空间</h4><p>有限维线性内积空间称作欧几里得空间<br>已经构成的线性赋范空间上继续扩展，添加内积运算，使空间中有角的概念，形成内积空间：<br><strong>线性赋范空间+内积运算⟶ 内积空间</strong><br>有限维的内积空间也就是欧氏空间<br><strong>内积空间+有限维⟶欧几里德空间</strong></p><h4 id="希尔伯特空间"><a href="#希尔伯特空间" class="headerlink" title="希尔伯特空间"></a>希尔伯特空间</h4><p>线性完备内积空间称作希尔伯特空间<br><strong>线性赋范空间+内积运算⟶ 内积空间</strong><br><strong>内积空间+完备性⟶ 希尔伯特空间</strong><br>其中完备性的意思就是空间中的极限运算不能跑出该空间</p><h4 id="巴拿赫空间"><a href="#巴拿赫空间" class="headerlink" title="巴拿赫空间"></a>巴拿赫空间</h4><p>线性完备赋范空间称作巴拿赫空间<br><strong>范数的集合⟶ 赋范空间</strong><br><strong>赋范空间 +线性结构⟶线性赋范空间</strong><br><strong>线性赋范空间+完备性⟶巴拿赫空间</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;距离&quot;&gt;&lt;a href=&quot;#距离&quot; class=&quot;headerlink&quot; title=&quot;距离&quot;&gt;&lt;/a&gt;距离&lt;/h4&gt;&lt;p&gt;直线距离、向量距离、折线距离等等都是具体的距离，这里谈的距离是一个抽象的概念，需要满足非负、自反、三角不等式三个条件。&lt;br&gt;设X是任一非空
-      
-    
-    </summary>
-    
-      <category term="总结" scheme="http://minhzou.top/categories/%E6%80%BB%E7%BB%93/"/>
-    
-    
-      <category term="基础" scheme="http://minhzou.top/tags/%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -322,9 +322,9 @@
       <category term="学习笔记" scheme="http://minhzou.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="机器学习" scheme="http://minhzou.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="基础" scheme="http://minhzou.top/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="机器学习" scheme="http://minhzou.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -376,11 +376,11 @@
       <category term="学习笔记" scheme="http://minhzou.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="机器学习" scheme="http://minhzou.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="基础" scheme="http://minhzou.top/tags/%E5%9F%BA%E7%A1%80/"/>
     
       <category term="学习笔记" scheme="http://minhzou.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="机器学习" scheme="http://minhzou.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -461,9 +461,9 @@
       <category term="学习笔记" scheme="http://minhzou.top/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="机器学习" scheme="http://minhzou.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="学习笔记" scheme="http://minhzou.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="机器学习" scheme="http://minhzou.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="人工智能" scheme="http://minhzou.top/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
